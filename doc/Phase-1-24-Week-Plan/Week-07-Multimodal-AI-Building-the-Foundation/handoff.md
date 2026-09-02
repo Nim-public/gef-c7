@@ -1,0 +1,126 @@
+# Handoff — Week 07 Multimodal AI Building the Foundation: Deep Expansion Phase
+
+> **Purpose:** the next agent session expands every `NN-*.md` topic file in this folder into its **own subfolder** containing multiple, more detailed files. This document is the complete brief — read it fully, then follow the session prompt at the bottom.
+
+---
+
+## 1. Current folder state
+
+| File | Role |
+|---|---|
+| `README.md` | week index — do not modify |
+| `Week-07-Multimodal-AI-Building-the-Foundation.md` | generated overview — do not modify |
+| `01-multimodal-ai-landscape.md` | topic deep-dive |
+| `02-modality-processing-pipelines.md` | topic deep-dive |
+| `03-multimodal-datasets-dataloaders.md` | topic deep-dive |
+| `04-data-alignment-synchronization.md` | topic deep-dive |
+| `05-evaluation-metrics-benchmarks.md` | topic deep-dive |
+| `06-practice-multimodal-explorer.md` | topic deep-dive |
+| `handoff.md` | this brief |
+
+## 2. Expansion convention (applies to EVERY `NN-*.md` file)
+
+1. Create subfolder `NN-<slug>/` named exactly after the file stem (e.g., `01-dpo-preference-optimization.md` → `01-dpo-preference-optimization/`).
+2. Inside, create **4–6 detailed files**:
+   - `README.md` — subtopic index: what this deep-dive covers, file map, study order, prerequisites (link back to `../NN-<slug>.md`).
+   - `01-<subtopic>.md` … `0N-<subtopic>.md` — one deep-dive per major subtopic, following the expansion plan below.
+   - `exercises.md` — expanded exercise set with worked approaches.
+   - optionally `solutions.md` and `quiz.md` (self-assessment).
+3. Each file: **4–8 KB**, same structure as the parent guides (What you'll learn → concepts with runnable code → tables → Exercises → Pitfalls → Resources).
+4. The parent `NN-<slug>.md` stays **unchanged** — it remains the week-level overview.
+5. Depth expectation: subfolders go **beyond** the parent — edge cases, end-to-end worked examples, failure drills, comparisons, performance notes — never a reformat of the parent.
+6. Subfolder READMEs link back to the parent; deep-dive files cross-link other weeks' files by relative path when they build on them.
+
+## 3. Quality rules (non-negotiable)
+
+- Windows/PowerShell: `py` (not `python`), `.venv\Scripts\Activate.ps1`. Use **repo-relative paths** in all examples (`doc/...`, `data/...`, `scripts/...`) — never machine-specific absolute paths.
+- All code **runnable**; verify framework APIs via **context7 MCP** before writing framework examples (note the library id used).
+- Brief pedagogical comments allowed; no filler prose; every concept paired with a runnable artifact.
+- Exercises tie to the capstone (GEF C7: RAG + agents over the learner's own corpus/tables/media).
+- Do **not** modify: `README.md`, `Week-XX-*.md` overviews, other weeks' folders, `doc/GEF-C7-Final-Schedule.md`.
+- **No compression, no placeholders** — full detail in every file (the user has explicitly rejected compressed outputs).
+
+## 4. Per-file expansion plan
+
+#### `01-multimodal-ai-landscape.md` → subfolder `01-multimodal-ai-landscape/`
+
+Deep-dive files to create (suggested titles — refine as you write):
+
+1. Modality comparison — representation, cost, tasks, model families
+2. Representation levels — raw/processed/embeddings storage strategy
+3. Metadata handling — manifests, EXIF, provenance, permissions
+4. The modality gap — bridges overview and capstone inventory
+
+#### `02-modality-processing-pipelines.md` → subfolder `02-modality-processing-pipelines/`
+
+Deep-dive files to create (suggested titles — refine as you write):
+
+1. Image pipeline — load/EXIF/convert/normalize, processor parity checks
+2. Audio pipeline — resample, mel spectrograms, whisper features
+3. Video pipeline — frame sampling, decode costs, keyframes
+4. Preprocessing determinism — seeded augs, validation-by-eye
+
+#### `03-multimodal-datasets-dataloaders.md` → subfolder `03-multimodal-datasets-dataloaders/`
+
+Deep-dive files to create (suggested titles — refine as you write):
+
+1. Dataset tour — COCO/Flickr/VQA/AudioCaps/video sets on the Hub
+2. Custom Dataset classes — lazy decode, dicts, collate functions
+3. DataLoader tuning — workers, pinning, batch shapes
+4. Video-in-dataset — frame sampling inside __getitem__
+
+#### `04-data-alignment-synchronization.md` → subfolder `04-data-alignment-synchronization/`
+
+Deep-dive files to create (suggested titles — refine as you write):
+
+1. Temporal alignment — subtitles↔frames↔audio on one clock
+2. Cross-modal validation — automated integrity checks
+3. Missing-data policies — drop/impute/flag tables
+4. Alignment pipeline — manifests, versioning, reports
+
+#### `05-evaluation-metrics-benchmarks.md` → subfolder `05-evaluation-metrics-benchmarks/`
+
+Deep-dive files to create (suggested titles — refine as you write):
+
+1. BLEU by hand — n-gram precision, brevity penalty, clipping
+2. CLIPScore — semantic caption evaluation implementation
+3. Retrieval metrics — R@1/5/10, MedR, both directions
+4. Benchmark tour — COCO/VQA/AudioCaps/MSR-VTT mapping
+
+#### `06-practice-multimodal-explorer.md` → subfolder `06-practice-multimodal-explorer/`
+
+Deep-dive files to create (suggested titles — refine as you write):
+
+1. Explorer build — dataset stats and Gradio viewer
+2. Alignment audit — validation report generation
+3. Metrics demo — BLEU + CLIPScore on real pairs
+4. Capstone modality inventory — scope integration
+
+## 5. Work order & pacing
+
+- Expand files in numeric order (`01` → last), one subfolder at a time.
+- After each subfolder: verify all inner files exist, are ≥4 KB, and cross-links resolve.
+- If the session runs low on context: stop after the current subfolder, tick its checkbox in §7, and leave a continuation note — the next session resumes from the checklist.
+
+## 6. Progress checklist (tick as you complete each subfolder)
+
+- [ ] `01-multimodal-ai-landscape/`
+- [ ] `02-modality-processing-pipelines/`
+- [ ] `03-multimodal-datasets-dataloaders/`
+- [ ] `04-data-alignment-synchronization/`
+- [ ] `05-evaluation-metrics-benchmarks/`
+- [ ] `06-practice-multimodal-explorer/`
+
+## 7. Next session prompt (paste into a fresh agent session)
+
+```text
+In the GEF C7 repository root (the folder containing doc/ and scripts/): open
+doc/Phase-1-24-Week-Plan/Week-07-Multimodal-AI-Building-the-Foundation/handoff.md and follow it completely.
+Expand EVERY NN-*.md topic file listed there into its own subfolder (named after the
+file stem) containing 4-6 detailed files per the expansion convention and per-file
+expansion plan in that handoff. Same quality and structure as the parent guides —
+runnable code, exercises, pitfalls, resources, 4-8 KB per file. Verify framework
+APIs with context7 MCP before writing framework examples. Work in numeric order,
+tick the progress checklist in handoff.md as you complete each subfolder, do not
+modify parent files or other weeks, and report the created tree when done.
+```
