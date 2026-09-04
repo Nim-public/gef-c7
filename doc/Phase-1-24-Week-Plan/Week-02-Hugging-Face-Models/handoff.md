@@ -108,12 +108,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-huggingface-platform/`
-- [ ] `02-ready-to-use-models/`
-- [ ] `03-nlp-tasks/`
-- [ ] `04-modern-models/`
-- [ ] `05-small-language-models/`
-- [ ] `06-capstone-task-huggingface-integration/`
+- [x] `01-huggingface-platform/`
+- [x] `02-ready-to-use-models/`
+- [x] `03-nlp-tasks/`
+- [x] `04-modern-models/`
+- [x] `05-small-language-models/`
+- [x] `06-capstone-task-huggingface-integration/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
