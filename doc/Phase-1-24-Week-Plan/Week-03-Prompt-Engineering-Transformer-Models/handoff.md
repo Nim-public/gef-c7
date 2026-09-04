@@ -113,12 +113,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-prompt-engineering-basics/`
-- [ ] `02-system-prompts-testing-injection/`
-- [ ] `03-neural-network-training/`
-- [ ] `04-transformer-step-by-step/`
-- [ ] `05-techniques-comparison/`
-- [ ] `06-capstone-task-conversational-bot/`
+- [x] `01-prompt-engineering-basics/`
+- [x] `02-system-prompts-testing-injection/`
+- [x] `03-neural-network-training/`
+- [x] `04-transformer-step-by-step/`
+- [x] `05-techniques-comparison/`
+- [x] `06-capstone-task-conversational-bot/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
