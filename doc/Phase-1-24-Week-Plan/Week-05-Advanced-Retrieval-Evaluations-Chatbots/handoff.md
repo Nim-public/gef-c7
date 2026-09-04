@@ -105,12 +105,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-advanced-chunking/`
-- [ ] `02-embedding-models/`
-- [ ] `03-hybrid-filtering-fusion-reranking/`
-- [ ] `04-rag-chatbot-guardrails/`
-- [ ] `05-response-evaluation-explanations/`
-- [ ] `06-capstone-task-rag-chatbot/`
+- [x] `01-advanced-chunking/`
+- [x] `02-embedding-models/`
+- [x] `03-hybrid-filtering-fusion-reranking/`
+- [x] `04-rag-chatbot-guardrails/`
+- [x] `05-response-evaluation-explanations/`
+- [x] `06-capstone-task-rag-chatbot/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
