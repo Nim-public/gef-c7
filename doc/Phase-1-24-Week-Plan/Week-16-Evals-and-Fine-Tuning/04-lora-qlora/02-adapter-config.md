@@ -83,3 +83,18 @@ silently trains nothing.
 3. Pin drill: write the manifest; the config committed with the run.
 4. Battery drill: run the §5 pitfalls as tests — zero-params detection,
    dropout assertion, alpha/r assertion.
+
+## 6. The config pin note (the adapter's manifest)
+
+```markdown
+# LoRA adapter (W16)
+- base: pinned-model-id
+- targets: q/k/v/o + gate/up/down
+- r=16, alpha=32, dropout=0.05
+- task: CAUSAL_LM, SFT data v1 (W16-03)
+- trainable params: 41.9M / 6.7B (0.62%)
+```
+
+The manifest is the adapter's identity — the same pin discipline as
+every artifact. The trainable-percentage row is the headline: 0.62% of
+the model, trained to change the behavior that mattered.

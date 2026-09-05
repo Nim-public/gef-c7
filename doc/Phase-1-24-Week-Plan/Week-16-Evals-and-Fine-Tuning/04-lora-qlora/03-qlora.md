@@ -70,6 +70,19 @@ trainer.train()
 The run is the W16-03 loop with a quantized base — the eval-during-
 training, best-pick, and diagnosis disciplines all apply unchanged.
 
+## 4. The QLoRA pin note (the run's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the QLoRA block: the
+NF4 config, the memory footprint measured, the quality drill result,
+and the pitfall battery command.
+
+**Worked approach:** the QLoRA manifest records the quantization
+config and the drills that verified the memory table and quality
+parity.
+
+**Pass criterion:** note committed; the battery command green as
+recorded.
+
 ## 5. The QLoRA pitfall battery (the single-GPU guard)
 
 | Pitfall | Symptom | Guard |
@@ -95,3 +108,5 @@ line.
    delta; the ~0.4 bits/param saving is the flag's value.
 4. Battery drill: run the §5 pitfalls as tests — the gradient check,
    the dtype assertion, the OOM guard.
+5. Pin drill: write the manifest; the battery command green as
+   recorded.

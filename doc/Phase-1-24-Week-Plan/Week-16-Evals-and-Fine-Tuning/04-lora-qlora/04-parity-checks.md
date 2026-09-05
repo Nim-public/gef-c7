@@ -54,7 +54,7 @@ The merged model must pass the *same* eval battery as the adapter —
 the merge is not a behavior change, and the battery is the proof. The
 W16-03 diagnosis pin's numbers re-verify post-merge.
 
-## 5. The parity pin note (the serving decision's record)
+## 4. The parity pin note (the serving decision's record)
 
 ```markdown
 # Serving parity (W16)
