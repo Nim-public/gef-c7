@@ -78,6 +78,22 @@ row's cite is a battery or a parity run from the program.
    battery row); dead ideas get pruned from the ledger.
 4. User-guide drill: for each "reach for" row, name the artifact a
    teammate would read to start — the guide's links must resolve.
+5. Appendix drill: build §5's evidence appendix; link every row to its
+   artifact; a reviewer clicks three at random — all must resolve.
+
+## 5. The verdict's evidence appendix (where each number lives)
+
+| Table row | Evidence artifact |
+|---|---|
+| W11 column | `reports/comparison.md` (W11-06) |
+| Agno column | `reports/framework-parity.md` + W12 eval runs |
+| CrewAI column | W12-06 bake-off report |
+| LangChain column | W14-04 parity table |
+| tokens p50 | the merged trajectory store |
+
+The evidence appendix is the table's audit trail — every cell names the
+artifact that produced it. The five-framework verdict is the program's
+most-cited page; its every number is checkable in one hop.
 
 ## Pitfalls
 

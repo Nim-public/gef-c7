@@ -58,6 +58,21 @@ The guardrails are the budget's enforcement — a table without
 re-measurement is a snapshot, not a budget. Each guardrail cites its
 mechanism (most are gates you built in W11–W13) and its cadence.
 
+## 5. The budget-topology one-page (the architecture's face)
+
+```text
+CAPSTONE ARCHITECTURE (W14)
+flows:   hot-path chain | long-tail agent | analytics graph
+         | interactive graph | voice cascade | codegen loop
+budgets: text 4k | data 5k | interactive 3k | voice 3k (p95)
+gates:   see gate inventory (W14-04)
+triggers: 4, executable (§3)
+```
+
+The one-pager is the merged memo's summary — the architecture on a
+postcard. It is what the demo, the README, and the reviewers cite; the
+detail lives in the four merged memos it links.
+
 ## Exercises
 
 1. Merge the four prior memos into `doc/capstone/architecture.md` —
@@ -68,3 +83,5 @@ mechanism (most are gates you built in W11–W13) and its cadence.
    executable from the memo alone.
 4. Guardrail drill: breach one budget on purpose; the alarm fires; the
    memo's optimization task is created by the drill, not by memory.
+5. One-pager drill: render §5 from the merged memo; the postcard and the
+   memo must agree on every number.

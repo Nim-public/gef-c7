@@ -70,6 +70,20 @@ The artifacts are the demo's evidence — the demo *prints* them and the
 repo *commits* them. A reviewer who missed the live demo reads these;
 the four-pillar page links every one.
 
+## 6. The pillar pin notes (the demo's manifest)
+
+| Pillar | Pinned components |
+|---|---|
+| RAG | knowledge version, grounding prompt pvN, encoder id |
+| SQL | warehouse path, verification policy, SQL validator version |
+| Voice | STT/TTS models, cascade budget version |
+| HITL | gate policy, interrupt list, checkpointer backend |
+
+The pillar pin notes extend `reports/sdk-versions.md` — one block per
+pillar, each listing the components the demo exercised and their
+verification dates. The demo's claims are auditable down to the
+checkpointer.
+
 ## Exercises
 
 1. Build the demo script; run all four pillars; every pillar prints its
@@ -81,6 +95,8 @@ the four-pillar page links every one.
    cache).
 4. Artifact drill: commit the four pillars' artifacts; the four-pillar
    page links them; every link resolves.
+5. Pin drill: write the four pillar blocks; every component's
+   verification date is current.
 
 ## Pitfalls
 
