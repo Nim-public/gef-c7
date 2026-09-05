@@ -77,6 +77,21 @@ it goes, and which local artifacts remain authoritative.
 4. Pin drill: write the manifest page; every claim links its drill or
    config.
 
+## 6. The hosted-vs-local decision table (what each surface is for)
+
+| Task | Hosted (LangSmith) | Local (parquet + harness) |
+|---|---|---|
+| interactive debugging | yes (click through trees) | via replay |
+| regression scoring | yes (hosted eval runs) | yes (nightly gate) |
+| metric trends | yes (charts) | yes (soak charts) |
+| long-term record | no (retention) | yes |
+| privacy-sensitive data | sampled/scrubbed only | full-fidelity, local |
+
+The decision table is the two-surface rule as a page — hosted for
+looking, local for knowing and keeping. Every row cites a real workflow
+from your program, not a feature list; the "long-term record" row is
+why the parquet store never goes away, whatever the platform offers.
+
 ## Pitfalls
 
 - Tracing left on with default settings in prod — full corpus content

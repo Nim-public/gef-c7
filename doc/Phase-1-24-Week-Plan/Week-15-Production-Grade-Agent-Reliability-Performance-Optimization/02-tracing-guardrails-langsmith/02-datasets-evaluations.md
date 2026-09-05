@@ -108,3 +108,17 @@ rule is enforced, not aspirational.
   scorer code; import, don't re-implement.
 - Hosted-only baselines — baselines update locally first; the platform
   reflects the decision.
+
+## 6. The hosted-eval value proposition (why mirror at all)
+
+| Capability | Local-only | Hosted adds |
+|---|---|---|
+| regression scoring | nightly gate | per-run comparison UIs |
+| experiment tracking | git-ignored reports | versioned, shared |
+| team review | screenshots | live links |
+| annotation queue | manual | built-in |
+
+The value proposition is *team* and *time*: the local harness is the
+automation, and the hosted layer adds shareable, versioned comparisons
+that a reviewer can open without your machine. The mirror costs one CI
+job; the value is every future review conversation.
