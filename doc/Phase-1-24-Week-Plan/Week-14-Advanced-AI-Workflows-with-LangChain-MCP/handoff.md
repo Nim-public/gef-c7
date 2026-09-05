@@ -104,12 +104,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-langchain-foundations/`
-- [ ] `02-project-csv-analyzer/`
-- [ ] `03-project-code-review-agent/`
-- [ ] `04-agentic-rag-langchain/`
-- [ ] `05-workflow-assistant-mcp/`
-- [ ] `06-practice-langchain-mcp/`
+- [x] `01-langchain-foundations/`
+- [x] `02-project-csv-analyzer/`
+- [x] `03-project-code-review-agent/`
+- [x] `04-agentic-rag-langchain/`
+- [x] `05-workflow-assistant-mcp/`
+- [x] `06-practice-langchain-mcp/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
