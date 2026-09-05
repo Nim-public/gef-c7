@@ -62,11 +62,27 @@ version — the gap per epoch is the overfitting curve's second axis.
 | held-out gap > 0.1 | stop; reduce epochs or data-repeat |
 | paraphrase collapse | the data is too thin — back to file 01 |
 
+## 5. The diagnosis pin note (the overfitting record)
+
+```markdown
+# Overfitting diagnosis (run 01)
+- divergence: eval rose from step 100 → best-pick at 75
+- paraphrase probe: 8% mean collapse (<20% threshold) — learned
+- held-out gap: 0.04 at best-pick (flat) — healthy
+- decision rules applied: stop at flat, keep step-75 checkpoint
+```
+
+The diagnosis pin records the probes and the decision — the divergence
+chart, the paraphrase collapse, the held-out gap, and the applied rules.
+It is the overfitting discipline's artifact: the diagnosis is data, not
+a feeling.
+
 ## Exercises
 
 1. Train with eval every 25 steps; produce the divergence chart; the
    best checkpoint named by the curve.
-2. Paraphrase drill: paraphrase 10 training questions; measure the
+2. Paraphrase probe: paraphrase 10 training questions; measure the
    collapse; if >20%, the model memorized — cut epochs and retrain.
 3. Held-out drill: eval on the held-out slice per checkpoint; the gap
    per epoch is the second axis of the chart.
+4. Pin drill: write the record; the probes' numbers cited.

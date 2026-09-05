@@ -68,6 +68,22 @@ The artifacts are the run's evidence — the same discipline as every
 decision memo: the config, the curve, and the eval results are
 committed together. A training run without them is unreproducible.
 
+## 5. The training pin note (the run's manifest)
+
+```markdown
+# SFT run 01 (W16)
+- data: SFT v1 (200 records, source mix 50/25/15/10)
+- args: epochs 3, eff-batch 32, LR 2e-5 cosine, bf16
+- eval: 15-case set every 25 steps; best-pick by eval loss
+- best checkpoint: step 75 (eval loss 1.09)
+- seed: 42 (config committed)
+- artifacts: config JSON, curve PNG, eval results parquet
+```
+
+The pin note is the run's manifest — data version, args, eval cadence,
+best-pick, seed, and the artifact trio. It is the W12 pin discipline
+applied to training: the run is reproducible from the note.
+
 ## Exercises
 
 1. Run the loop on your SFT data; produce the eval curve; the best-pick
@@ -76,3 +92,4 @@ committed together. A training run without them is unreproducible.
    divergence teaches the band's reason.
 3. Artifact drill: commit the config/curve/eval trio; a teammate
    reproduces the run from the config alone (seed included).
+4. Pin drill: write the note; the trio's hashes recorded.

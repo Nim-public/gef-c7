@@ -74,6 +74,19 @@ def audit_loader(loader, tok, n: int = 20):
 The loader audit runs before every training run — five minutes of
 checking against hours of training on mangled data.
 
+## 5. The tokenizer pin (the seam's manifest)
+
+| Pin | Value | Verified by |
+|---|---|---|
+| tokenizer | the model's own (`pinned-model-id`) | round-trip test |
+| chat template | the model's default, unchanged | structure count |
+| max_len | 2048 | length distribution |
+| masking | final assistant turn only | label-coverage check |
+
+The tokenizer pin records the seam's configuration — the template and
+masking choices are *the* data-to-tensor contract, and the four audits
+verify them per run.
+
 ## Exercises
 
 1. Apply the chat template to 20 records; decode and diff; the
@@ -83,3 +96,4 @@ checking against hours of training on mangled data.
 3. Truncation drill: force truncation on a long record; the audit
    asserts the citation tokens survive — the tail-protection rule,
    tested.
+4. Pin drill: write the pin table; the audit command green as recorded.

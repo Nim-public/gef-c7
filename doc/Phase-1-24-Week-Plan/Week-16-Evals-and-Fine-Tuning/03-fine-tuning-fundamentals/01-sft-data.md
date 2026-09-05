@@ -54,12 +54,42 @@ mined failures become training data; the refusal family is
 behavior you are teaching. The persona grid fills the thin coverage
 cells — the W16-02 grid, reused.
 
+## 5. The data-quantity question (how much is enough)
+
+| Records | What it can teach | What it cannot |
+|---|---|---|
+| 50–100 | format, refusal phrasing, style | broad domain coverage |
+| 200–500 | reliable format + narrow-domain competence | new knowledge |
+| 1000+ | robust behavior across the distribution | actual world knowledge |
+
+The quantity table sets the expectation: SFT teaches *format and
+behavior*, not knowledge — knowledge lives in your RAG stack (the W12
+lesson). The capstone's 200-record demo fine-tune teaches citation
+discipline and refusal phrasing; the eval set (file 02) must not test
+knowledge the model cannot have.
+
+## 6. The data pin note (the SFT set's manifest)
+
+```markdown
+# SFT dataset (W16)
+- source mix: 50% logs, 25% failure clusters, 15% refusals, 10% persona
+- records: 200 (v1, changelog in the dataset dir)
+- format: chat messages, masking on final assistant turn
+- validation: W16-02 gates green (labels, diversity, leakage, dist)
+```
+
+The manifest is the SFT set's pin — source mix, count, format, and the
+validation verdict. It is the dataset-governance page (W16 file 01-04)
+applied to training data.
+
 ## Exercises
 
 1. Build the SFT dataset from your corpus QA logs (the 15-case pattern,
    scaled); 200 records minimum for a demo fine-tune.
 2. Distribution drill: compute the source shares; adjust to the §3
    table; record the mix in the dataset's changelog.
-3. Format drill: one record whose assistant turn lacks a citation;
-   the fine-tune will learn to drop citations — the format rule, proven
-   by its violation.
+3. Format drill: one record whose assistant turn lacks a citation; the
+   fine-tune will learn to drop citations — the format rule, proven by
+   its violation.
+4. Pin drill: write the manifest; the validation command green as
+   recorded.
