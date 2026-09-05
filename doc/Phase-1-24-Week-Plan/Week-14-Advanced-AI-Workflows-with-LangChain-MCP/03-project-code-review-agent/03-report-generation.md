@@ -99,3 +99,18 @@ report edition.
    (count the markers); a mismatch is a generation bug.
 4. Provenance drill: verify every finding's source marker; a finding
    without provenance fails the report validation.
+
+## 6. The severity rubric (the sort's semantics)
+
+| Severity | Definition | Example |
+|---|---|---|
+| critical | will fail in production | unhandled exception path |
+| major | likely bug or security issue | SQL string building |
+| minor | quality/maintainability | magic numbers |
+| nit | style, naming | single-letter variable |
+
+The rubric is the sort's semantics — the LLM prompt carries it verbatim
+(the Finding model's severity description), and the sampled QA grades
+*consistency*: the same issue class must get the same severity across
+runs. A rubric drift is a calibration drift; the sampled QA catches it,
+and the pin note records the rubric version that was graded.

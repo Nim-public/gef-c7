@@ -98,3 +98,16 @@ directory family as every other artifact.
 5. Pin-note drill: extend `reports/sdk-versions.md` with the review
    stack (ruff version, Finding schema, CI trigger, determinism
    command).
+
+## 6. The review depth settings (the budget's dial)
+
+| Setting | Whole-file review | Diff review | Effect |
+|---|---|---|---|
+| context tokens | full file × files | full file × changed | diff saves on big files |
+| LLM scope | everything | changed lines + interactions | focused findings |
+| noise floor | restates existing issues | only new/interacting | the scope rule |
+
+The depth settings are the review's budget dial — the line-hint audit
+is what keeps the diff review honest (findings scoped to changes). The
+whole-file mode remains available for initial reviews; the diff mode is
+the CI default.
