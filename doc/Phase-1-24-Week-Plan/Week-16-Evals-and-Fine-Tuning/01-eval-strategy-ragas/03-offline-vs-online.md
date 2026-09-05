@@ -79,6 +79,27 @@ The failure modes are the radar's maintenance — a bridge that adds
 cases on every blip dilutes the eval set; the clustering step and the
 noise-floor calibration are what keep the radar's signal real.
 
+## 7. The signal dashboard (the radar's live page)
+
+```markdown
+# Online signals — week of [date]
+
+| signal | this week | threshold | status |
+|---|---|---|---|
+| refusal rate | 18% | <25% | ✓ |
+| zero-hit rate | 12% | <10% | ⚠ crossed |
+| route shift | 8% | <20% | ✓ |
+| latency p95 | 4.9s | <6s | ✓ |
+| correction rate | 3% | <5% | ✓ |
+
+Crossed signals → the bridge (§3): zero-hit rate up → mined cases
+"export-error-2026" family added to eval v3.
+```
+
+The dashboard is the radar's weekly page — signals, thresholds, status,
+and the bridge actions taken. It is the production review's radar
+section: one glance shows the drift and what was done about it.
+
 ## Exercises
 
 1. Implement the signal catalog's thresholds on your live logs (or
@@ -89,3 +110,5 @@ noise-floor calibration are what keep the radar's signal real.
    would miss — the two families' necessity, argued from your system.
 4. Calibration drill: set every threshold from its baseline's noise
    floor; a false alarm drill proves the calibration matters.
+5. Dashboard drill: render §7 from the live logs; a crossed signal
+   appears with its bridge action noted.

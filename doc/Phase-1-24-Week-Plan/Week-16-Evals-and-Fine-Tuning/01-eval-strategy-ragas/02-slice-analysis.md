@@ -86,3 +86,24 @@ measurement (the W10-05 rubric rule: set from baselines, held after).
    check whether it reveals a hidden weak cell.
 4. Gate drill: freeze the slice gates from the healthy table; a
    degraded slice (injected) turns the gate red.
+
+## 6. The slice report (the week's roadmap page)
+
+```markdown
+# Slice analysis — eval-set v3 — [date]
+
+## Table: route × doc type
+[table from §1]
+
+## Weakest slice
+kb/charts: context recall 0.60 — leaf RETRIEVAL
+
+## Action
+- OCR-merge for chart units (W9-02) — owner: week 16, due: next eval run
+- re-run after fix; the slice must move or the mapping was wrong
+```
+
+The report is the slice table plus the action — the weakest slice, its
+diagnosis leaf, its mapped fix, and the re-run commitment. It is the
+W10-05 rubric discipline applied per slice: every weakness gets an
+owner, an action, and a re-measurement.

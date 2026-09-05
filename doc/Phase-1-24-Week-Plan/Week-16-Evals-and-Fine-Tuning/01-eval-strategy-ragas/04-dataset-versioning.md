@@ -85,6 +85,18 @@ the eval set trustworthy as it grows through the self-improving loop.
 It is the W16 answer to "who watches the watchmen": the dataset's own
 changelog, splits, and leakage audits.
 
+## 6. The dataset changelog walkthrough (the governance in practice)
+
+| Bump | Entry | Review question |
+|---|---|---|
+| v1 → v2 | +3 mined cases (chart-ocr class) | were they clustered properly? |
+| v2 → v3 | gold correction on case 10 | was the old gold actually wrong? |
+| v3 → v4 | +1 ambiguous family, −1 duplicate | is the duplicate evidence solid? |
+
+The walkthrough is the changelog's audit — three bumps, three review
+questions. The governance page's checks (dedup, rotation, provenance)
+answer them; the walkthrough demonstrates the governance *working*.
+
 ## Exercises
 
 1. Restructure your eval set into the version model; write the v1
@@ -96,3 +108,5 @@ changelog, splits, and leakage audits.
    changelog explains why.
 4. Governance drill: run the §5 page's checks (dedup, rotation,
    provenance); every check green; the page cites them.
+5. Walkthrough drill: perform the §6 audit on your own bumps; the review
+   questions answered with evidence.
