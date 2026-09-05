@@ -93,3 +93,17 @@ behave correctly?" — is answered by the page.
 
 **Pass criterion:** the page answers the trust question in one read;
 every number cites its artifact.
+
+## 9. The rubric self-review (the week's final gate)
+
+| Criterion | Evidence | Points |
+|---|---|---|
+| SFT data: 200 records, governed, gates green | dataset + report | 4 |
+| Tokenization: four audits + startup gate | audit tests | 3 |
+| Training: curve + best-pick + trio | artifacts | 3 |
+| Overfitting: probes + decision rules | diagnosis | 3 |
+| Pin note: run config, seeds, data version | pin note | 3 |
+
+**Pass bar:** 15/18 to proceed to file 04 (LoRA/QLoRA). The diagnosis
+probes (3-pointer) are the week's honesty check — they distinguish a
+model that learned from one that memorized.
