@@ -95,3 +95,19 @@ themselves in one prevented demo failure.
    drift config); each tier must catch exactly its own bug.
 5. Cost drill: fill §5 with your actual counts; the CI minutes and API
    spend land in the program ledger.
+6. Shape drill: count tests per tier; draw the pyramid; name any
+   anti-pattern present and its fix.
+
+## 6. The pyramid's anti-patterns (what breaks the shape)
+
+| Anti-pattern | Symptom | Fix |
+|---|---|---|
+| the ice-cream cone | more integration than unit tests | push logic into pure functions |
+| the hourglass | heavy unit + heavy E2E, no contracts | add tier 2 cassettes |
+| the broken pyramid | real-model calls on push | move to nightly |
+| flaky middle | contract tests failing randomly | re-record; fix ordering |
+
+The anti-pattern catalog is the pyramid's health check — the shape is
+diagnosed by counting tests per tier. The fix column cites the
+structure: pure functions feed tier 1, recorded responses feed tier 2,
+real models stay in tiers 3–4.
