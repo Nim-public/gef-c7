@@ -81,6 +81,19 @@ which check is binding. The verification tokens' premium bought the
 numeric row's stability; the trade's fine print is the memo's
 justification.
 
+## 7. The before/after pin note (the table's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the before/after record:
+the baseline JSON hash, the after-state run ids, the quality-guard
+results, and the table-regeneration command.
+
+**Worked approach:** the table is the week's headline — the pin note
+makes it reproducible: the baseline hash, the after run ids, and the
+command that regenerates the markdown.
+
+**Pass criterion:** note committed; the regeneration command reproduces
+the table byte-identically.
+
 ## Exercises
 
 1. Run the after-state eval; fill the table; verify the attribution

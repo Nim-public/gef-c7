@@ -71,6 +71,19 @@ independent, and the compounding/counteracting effects are recorded.
 The honesty premium (verification tokens) surviving every interaction
 is the guard: the demo never quotes a cost that excluded it.
 
+## 6. The ledger pin note (the improvements' manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the ledger's state:
+row count, cumulative delta, the honesty premium's size, and the
+re-measurement command.
+
+**Worked approach:** the ledger's pin records the improvements' state —
+a future optimization adds a row and re-runs the attribution against
+the recorded cumulative state.
+
+**Pass criterion:** note committed; the re-measurement command
+reproduces the cumulative column.
+
 ## Exercises
 
 1. Create the ledger; add row 1 (prefix reorder) with its measured
