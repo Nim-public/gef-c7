@@ -74,6 +74,20 @@ is a §1–§2 mechanism or a W16-03 discipline. The zero-trainable-params
 symptom is the most common first-run failure: a target-name typo
 silently trains nothing.
 
+## 7. The adapter-format decision (safetensors and the pin)
+
+| Decision | Choice |
+|---|---|
+| adapter storage | safetensors (safe by default) |
+| naming | `sft-run-01-r16-a32` (task + capacity in the name) |
+| metadata | base model id, r/alpha/dropout in the config json |
+| registry | the adapter joins `reports/sdk-versions.md` |
+
+The format decisions mirror the W13 checkpoint policy: safetensors
+prevent pickle execution, the name carries capacity, and the metadata
+binds the adapter to its base model — an adapter loaded onto the wrong
+base silently produces garbage.
+
 ## Exercises
 
 1. Configure the adapter; count trainable params vs total; verify the
@@ -83,6 +97,9 @@ silently trains nothing.
 3. Pin drill: write the manifest; the config committed with the run.
 4. Battery drill: run the §5 pitfalls as tests — zero-params detection,
    dropout assertion, alpha/r assertion.
+5. Format drill: save the adapter in safetensors; verify the metadata
+   binds the base model id; load onto the wrong base and observe the
+   (bad) output — the binding's importance, demonstrated.
 
 ## 6. The config pin note (the adapter's manifest)
 

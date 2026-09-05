@@ -69,6 +69,20 @@ The pin note is the serving decision's record — both modes verified
 paritic, the dtype difference documented, and the deployment choice
 made. The W11 pin discipline applied to the serving layer's last mile.
 
+## 6. The serving-mode decision table (which mode when)
+
+| Deployment | Mode | Why |
+|---|---|---|
+| capstone demo (one behavior) | merged | simplest serving, no adapter loader |
+| multi-tenant (many behaviors) | adapters | one base, swapped per request |
+| A/B testing behaviors | adapters | instant switch, no reload |
+| memory-tight | merged | adapter loader's overhead removed |
+
+The decision table is the serving mode's contract — merged for single
+behavior, adapters for many. The W11 multi-tenant pattern (one base,
+many adapters) is the adapter mode's natural fit; the capstone demo is
+merged mode's natural fit.
+
 ## Exercises
 
 1. Merge the adapter; run the parity test on 20 prompts; token-identical
@@ -80,3 +94,5 @@ made. The W11 pin discipline applied to the serving layer's last mile.
 4. Dtype drill: merge in fp16 and load in fp16 vs load in bf16; the
    outputs differ slightly — dtype is part of the serving pin.
 5. Pin drill: write the note; the parity test command recorded.
+6. Decision drill: pick the serving mode for the capstone demo; the
+   table row cited.

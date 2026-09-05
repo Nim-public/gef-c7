@@ -66,6 +66,31 @@ dtype recorded.
 parity (4-pointer) is the efficiency week's proof — the adapter and the
 merged model are the same agent.
 
+## 6. The LoRA-QLoRA pin note (the efficiency manifest)
+
+**Task:** consolidate the efficiency stack in `reports/sdk-versions.md`:
+the LoRA math counts, the config sweep results, the QLoRA memory/quality
+drills, and the merge-parity record — one block.
+
+**Worked approach:** the efficiency manifest follows the pin discipline:
+the math's counts, the sweeps' results, and the parity proofs.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
+## 7. The efficiency quiz (self-tested)
+
+**Task:** answer without notes: (a) why does B start at zero? (b) what
+does alpha/r control? (c) why does NF4 preserve quality? (d) why must
+merged ≡ adapter? One paragraph each, checked against the files.
+
+**Worked approach:** the quiz is the concepts' compression test — the
+answers join the recap sheet family, and the stalls name the sections
+to re-read.
+
+**Pass criterion:** four paragraphs, mechanically correct against the
+files.
+
 ## Pitfalls recap
 
 - Raising r without raising alpha — the effective update *shrinks*; the
