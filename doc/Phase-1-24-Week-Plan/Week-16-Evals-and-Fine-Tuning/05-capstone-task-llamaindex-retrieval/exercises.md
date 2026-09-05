@@ -69,6 +69,32 @@ dependency trap.
 comparison (4-pointer) is the week's measurement — evidence-based
 adoption or a principled rejection.
 
+## 6. The llamaindex pin note (the comparison manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the LlamaIndex stack:
+Settings pin values, the shared-interface implementations, the
+comparison protocol, and the verdict memo reference.
+
+**Worked approach:** the pin note records the comparison stack — the
+settings, the protocol, and the verdict's location.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
+## 7. The comparison walkthrough (the reviewer's page)
+
+**Task:** write `reports/engine-comparison-walkthrough.md`: one query
+per engine walked end-to-end — the query, the retrieved nodes, the
+scores, and the difference — a reviewer reads it and understands both
+engines' behavior.
+
+**Worked approach:** the walkthrough is the comparison's documentation
+-by-example — one query per engine with the retrieved nodes shown, the
+deltas annotated with their causes from the comparison report.
+
+**Pass criterion:** three walked queries; every delta annotated; the
+page cites the comparison report.
+
 ## Pitfalls recap
 
 - Default embedders silently used — the space mismatch is the silent
