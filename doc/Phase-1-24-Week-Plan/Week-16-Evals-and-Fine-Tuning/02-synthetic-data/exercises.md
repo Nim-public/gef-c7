@@ -81,6 +81,21 @@ batches, and the validation command that gated them.
 **Pass criterion:** note committed; the validation command green for the
 current batches.
 
+## 8. The synthetic-data review page
+
+**Task:** write `reports/synthetic-review.md`: the expansion results
+(seeds, variants, axis spread), the persona grid coverage, the red-team
+escape rates, and the validation report — the synthetic week's evidence
+page.
+
+**Worked approach:** the page composes files 01–04 into one sheet: every
+batch's four gates, the grid's coverage, and the red-team escape rates.
+The reviewer question — "why trust data the model wrote?" — is answered
+by the gates and the provenance.
+
+**Pass criterion:** the page answers the trust question in one read;
+every batch cites its validation report.
+
 ## Pitfalls recap
 
 - Expansion beyond the diversity budget — echoes crowd out variety; the

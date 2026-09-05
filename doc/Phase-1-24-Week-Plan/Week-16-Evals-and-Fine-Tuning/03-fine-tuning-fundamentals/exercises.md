@@ -80,11 +80,16 @@ diagnosis record.
 **Pass criterion:** the manifest lists the stack with green commands as
 recorded.
 
-## Pitfalls recap
+## 8. The fine-tuning review page
 
-- Fine-tuning on prompts without masking — the model learns to write
-  prompts; the masking audit catches it.
-- Tail-truncation deleting citations — the middle-out policy protects
-  the behavior.
-- Best-pick by training loss — eval performance picks the checkpoint;
-  training loss always improves while overfitting.
+**Task:** write `reports/fine-tuning-review.md`: the SFT dataset's mix,
+the tokenization audits, the training curve with the best-pick, and the
+overfitting probes — the fine-tuning week's evidence page.
+
+**Worked approach:** the page composes files 01–04 into one sheet: the
+data's distribution, the loader audits, the run's curve and best-pick,
+and the probes. The reviewer question — "why does this fine-tuned model
+behave correctly?" — is answered by the page.
+
+**Pass criterion:** the page answers the trust question in one read;
+every number cites its artifact.
