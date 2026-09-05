@@ -99,6 +99,20 @@ recorded.
    honest refusal — the empty-parts path is a graded case.
 4. Pin drill: extend the note; confirm the bound and the probe coverage.
 
+## 6. The decomposition eval cases (the multi-hop battery)
+
+| Query | Parts | Sources |
+|---|---|---|
+| "Compare our Q3 margin to industry" | 2 | SQL + web |
+| "Why did margin drop and what does the chart show?" | 2 | SQL + vector |
+| "List our products and their market prices" | 2 | SQL + web |
+| "What is our best product?" | 1 | SQL |
+
+The battery asserts part counts, self-containment, and per-part source
+labels — the decomposition's quality is only as good as its routable
+parts. The last case is the boundary: single-hop questions must *not*
+decompose (the routing rule's negative case).
+
 ## Pitfalls
 
 - Sub-questions that reference each other — "self-contained" is the
