@@ -60,7 +60,7 @@ def test_settings_pinned():
 The audit runs at import in the eval harness — the pin is enforced, not
 documented.
 
-## 5. The settings pin note (the defaults' audit)
+## 4. The settings pin note (the defaults' audit)
 
 **Task:** extend `reports/sdk-versions.md` with the LlamaIndex Settings:
 embedder, llm, node parser, and the audit command — the pin's page.

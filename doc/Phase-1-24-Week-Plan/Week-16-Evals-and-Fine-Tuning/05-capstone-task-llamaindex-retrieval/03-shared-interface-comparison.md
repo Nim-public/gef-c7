@@ -60,7 +60,7 @@ The expected shape: LlamaIndex slightly behind *unless* its chunking is
 matched to yours — the chunker is the difference (file 02's pin). With
 matched chunking and embedder, the engines converge.
 
-## 5. The comparison report (the protocol's output)
+## 4. The comparison report (the protocol's output)
 
 ```markdown
 # Engine comparison — eval-set v3 — [date]
