@@ -94,6 +94,19 @@ date.
 **Pass criterion:** the manifest lists the stack with green commands as
 recorded.
 
+## 9. The parity mutation record
+
+**Task:** run the parity mutation (loosen one grounding instruction in
+the W14 agent); confirm the parity test fails on cases 1–5; restore;
+record the before/after in the parity table's footer.
+
+**Worked approach:** the mutation is the parity test's characterization
+— the same discipline as every gate in the program: a gate that has
+never failed a planted bug is not trusted.
+
+**Pass criterion:** the mutation caught; the record committed beside
+the parity pin note.
+
 ## Pitfalls recap
 
 - Tool descriptions duplicating the priority instructions — one priority

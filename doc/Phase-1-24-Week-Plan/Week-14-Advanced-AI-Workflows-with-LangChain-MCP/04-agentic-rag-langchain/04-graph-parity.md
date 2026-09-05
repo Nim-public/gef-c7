@@ -90,6 +90,18 @@ The boundaries keep the parity test honest: it proves *behavioral*
 equivalence on the eval set — not identical deployments. The interactive
 flows (W13 file 06) and the voice stack have their own parity stories.
 
+## 7. The parity drill record (the test working)
+
+```text
+mutation: the LangChain agent's grounding instruction loosened
+parity test: FAILED — cases 1–5 diverge on citations
+verdict: mutation caught; restore; green; the parity property is live
+```
+
+The drill record is the parity test's own characterization test — the
+same mutation-test discipline as every gate in this program. A parity
+test that has never failed cannot be trusted to catch a real divergence.
+
 ## Exercises
 
 1. Run the 15-case parity test; document any outcome divergence with
