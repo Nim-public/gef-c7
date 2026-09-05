@@ -86,6 +86,22 @@ component's version source and its re-verification battery. A dependency
 bump after the freeze re-runs the battery before the freeze is amended;
 the inventory is what makes that rule enforceable.
 
+## 6. The freeze's components (the parts being frozen)
+
+| Component | File/artifact | Gate |
+|---|---|---|
+| text RAG pipeline | `scripts/rag_pipeline.py` | the retrieval gate |
+| multimodal ingestion | `scripts/ingest_multimodal.py` | V1–V8 |
+| hybrid search + fusion | `scripts/retrieve.py` | the routing battery |
+| agent loop (SDK) | the W11 port | the trajectory shapes |
+| interactive flows | the W13 graphs | the invariant test |
+| voice cascade | `scripts/voice_demo.py` | the latency table |
+| eval harness + baselines | `scripts/eval_*.py` | the value gates |
+| demo | `scripts/four_pillars_demo.py` | the acceptance run |
+
+The components table is the freeze's body — one row per component, its
+file, and its gate. It is the capstone's architecture, executable.
+
 ## Exercises
 
 1. Run the freeze checklist end-to-end; every row verified by execution;
@@ -99,3 +115,6 @@ the inventory is what makes that rule enforceable.
    the freeze receipt is the capstone's milestone artifact.
 5. Inventory drill: fill §5; every battery green at the recorded
    versions; the annex joined to the freeze report.
+6. Components drill: verify the §6 table against the actual
+   `scripts/` tree; every component's file exists and its gate is
+   wired.
