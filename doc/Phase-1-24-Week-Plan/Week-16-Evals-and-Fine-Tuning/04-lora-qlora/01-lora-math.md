@@ -74,6 +74,19 @@ the LoRA delta's *placement* decides what the adapter can learn. The
 0.62% headline (40M of 6.7B) comes from attention+MLP — the standard
 behavior fine-tune.
 
+## 7. The LoRA pin note (the math's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the LoRA math block:
+the target projections, their dims, the r/alpha values, and the
+parameter counts (trainable vs total) — the math's record.
+
+**Worked approach:** the pin note is the math's artifact — the counts
+verified against `print_trainable_parameters`, and the zero-init
+property verified by the drill.
+
+**Pass criterion:** note committed; the counts match the runtime's
+report.
+
 ## 6. The multi-adapter trick (one base, many behaviors)
 
 ```python
@@ -88,6 +101,19 @@ The multi-adapter trick is LoRA's deployment superpower: one frozen
 base serves N behaviors by swapping 80 MB adapters — the W11
 multi-tenant pattern made trivial. The parity checks (file 04) verify
 each swap.
+
+## 7. The LoRA pin note (the math's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the LoRA math block:
+the target projections, their dims, the r/alpha values, and the
+parameter counts (trainable vs total) — the math's record.
+
+**Worked approach:** the pin note is the math's artifact — the counts
+verified against `print_trainable_parameters`, and the zero-init
+property verified by the drill.
+
+**Pass criterion:** note committed; the counts match the runtime's
+report.
 
 ## Exercises
 
