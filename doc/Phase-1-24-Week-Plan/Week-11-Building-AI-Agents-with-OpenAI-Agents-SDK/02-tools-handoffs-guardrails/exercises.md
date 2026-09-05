@@ -71,6 +71,21 @@ case has provenance.
 The guardrail pair (4-pointer) is the week's safety deliverable — blocking
 at generation time, not after.
 
+## 7. The trust-ladder summary
+
+**Task:** write `reports/trust-layers.md`: your defense stack in order —
+tool schemas, registry revalidation, input guardrail, output guardrails,
+citation validator, HITL gates — each with the battery case that proves
+it and the layer it backs up.
+
+**Worked approach:** the ladder is the W9 safety architecture + W11
+mechanisms, in one diagram: which layer catches what, and what happens
+when a layer is removed (the depth drill's map). It is the answer to
+"why do you have both X and Y?"
+
+**Pass criterion:** the ladder cites a case per layer; the depth drill's
+dependency map is embedded.
+
 ## 6. The contract-parity sweep
 
 **Task:** for each W10 contract (registry validation, error hints, gate

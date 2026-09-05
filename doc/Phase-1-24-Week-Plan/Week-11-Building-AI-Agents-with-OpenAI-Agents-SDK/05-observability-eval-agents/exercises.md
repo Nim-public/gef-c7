@@ -66,6 +66,20 @@ respective mutations.
 **Pass bar:** 13/16 to proceed to file 06 (the SDK capstone). The parity
 test (4-pointer) is the merge's foundation — one store or none.
 
+## 7. The replay runbook
+
+**Task:** write `reports/replay-runbook.md`: the debugging workflow as a
+runbook — the four questions, the signature-to-layer table, the replay
+snippet, the post-mortem template, and the speed KPI — the page you open
+at 2 a.m. before a demo.
+
+**Worked approach:** the runbook is the workflow in imperative form,
+tested once on the planted failure. Its quality gate is the speedrun:
+a teammate following it fixes the failure without talking to you.
+
+**Pass criterion:** the runbook drives a fresh fix under the time
+target; every command in it was executed as written.
+
 ## 6. The observability one-pager
 
 **Task:** write `reports/observability.md`: the capture architecture
