@@ -60,7 +60,7 @@ The expected shape: LlamaIndex slightly behind *unless* its chunking is
 matched to yours — the chunker is the difference (file 02's pin). With
 matched chunking and embedder, the engines converge.
 
-## 4. The comparison report (the protocol's output)
+## 5. The comparison report (the protocol's output)
 
 ```markdown
 # Engine comparison — eval-set v3 — [date]
@@ -81,9 +81,11 @@ The report is the protocol's output — the table, the header, and the
 verdict. It is the ship/adopt/reject decision's (file 04) input, and
 its every number is regenerable by the comparison script. The W10-05
 rubric discipline applies per slice: every weakness gets an owner, an
+action, and a re-measurement. The W10-05
+rubric discipline applies per slice: every weakness gets an owner, an
 action, and a re-measurement.
 
-## 5. The comparison protocol checklist (the run's preconditions)
+## 4. The comparison protocol checklist (the run's preconditions)
 
 ```text
 [ ] both engines consume the same corpus version (manifest hash)

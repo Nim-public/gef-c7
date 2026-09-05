@@ -20,9 +20,6 @@ W10 tool-surface discipline (adopt components, not frameworks) applied.
 ## 2. The decision memo
 
 ```markdown
-## 4. The decision memo
-
-```markdown
 ## LlamaIndex decision (W16)
 - Verdict: ADOPT (node parser only)
 - Evidence: chunk parity with W4 settings (file 02's pin);
@@ -30,11 +27,6 @@ W10 tool-surface discipline (adopt components, not frameworks) applied.
   ingestion code for new formats
 - Rejected: query engine (our synthesizer + citation gate are stricter)
 - Revisit: if LlamaIndex's retriever beats W9 on the weak slice
-```
-
-The memo is the decision's record — verdict, evidence, rejected parts,
-revisit trigger. The same format as the W11 framework verdict; the
-discipline is program-wide.
 ```
 
 The memo is the decision's record — verdict, evidence, rejected parts,
@@ -54,7 +46,33 @@ component joins the pin notes, the parity tests, and the upgrade
 schedule. The W14-06 gate inventory grows by the adopted component's
 tests.
 
-## 5. The decision drill set (the memo's evidence)
+## 4. The adopt decision's maintenance column (the standing cost)
+
+| Adopted component | Standing cost |
+|---|---|
+| node parser | version pin + chunk-parity test |
+| readers | format-coverage tests per reader |
+| query engine (if shipped) | harness adapters + full parity |
+
+The maintenance column is the adopt decision's honest cost — a store
+that only filters is still useful but must be documented as such in the
+architecture section. The W14-06 gate inventory grows by the adopted
+component's tests; the memo states the growth.
+
+## 5. The verdict's evidence appendix (the memo's audit trail)
+
+| Memo claim | Evidence artifact |
+|---|---|
+| retrieval parity | the comparison report (file 03) |
+| readers save time | the ingestion timing from file 01 |
+| adopt cost | the maintenance column (§4) |
+| revisit triggers | the standing trigger list |
+
+The appendix is the memo's audit trail — four claims, four artifacts.
+The W11 framework-verdict format, applied to a component decision: the
+reviewer clicks and verifies, no vibes.
+
+## Exercises
 
 1. Run the comparison (file 03); write the verdict memo with cited
    numbers; commit as the capstone's retrieval decision.
@@ -65,16 +83,16 @@ tests.
    reject); the trigger is measurable.
 4. Provenance drill: every memo number links to the comparison report;
    the walk-through takes a reviewer under five minutes.
+5. Appendix drill: build §5's evidence appendix; a reviewer clicks two
+   claims at random — both resolve.
 
-## 6. The adopt decision's maintenance column (the standing cost)
+## Pitfalls
 
-| Adopted component | Standing cost |
-|---|---|
-| node parser | version pin + chunk-parity test |
-| readers | format-coverage tests per reader |
-| query engine (if shipped) | harness adapters + full parity |
-
-The maintenance column is the adopt decision's honest cost — an adopted
-component joins the pin notes, the parity tests, and the upgrade
-schedule. The W14-06 gate inventory grows by the adopted component's
-tests; the memo states the growth.
+- Comparing implementations on different corpus/config versions — the
+  protocol header exists to prevent it.
+- n=10 conclusions about "better" — the table verifies the port;
+  statistical claims need the full eval set and repeats.
+- Hiding the W9-win rows — honest tables build trust in the verdict;
+  the memo reads them as fitter evidence.
+- Adoption without reversibility — the drill is the exit; adoption
+  without an exit is a trap.
