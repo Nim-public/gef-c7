@@ -98,3 +98,17 @@ the two data families meeting in one table.
 4. Mapping drill: allocate one seed's variants across the four
    destinations; the eval variant is the untouched one — the rule,
    demonstrated.
+
+## 7. The expansion pin note (the seeds' manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the expansion stack:
+the expansion prompt version, the dedup threshold, the destination
+mapping, and the seed sources' provenance (log-derived vs failure-
+cluster vs invented counts).
+
+**Worked approach:** the expansion is the synthetic data's first stage —
+the pin note records the prompt version, the diversity threshold, and
+the seed provenance counts so the expansion is auditable.
+
+**Pass criterion:** note committed; the seed provenance counts match
+the expansion ledger.
