@@ -68,6 +68,23 @@ next week; the test's shape does not.
    classify; write which fix class each implies (prompt vs eval).
 3. Speedrun drill: hand the post-mortem to a teammate; they fix from the
    artifact alone without re-bisecting — the artifact's quality gate.
+4. Second-class drill: repeat with a budget-death failure
+   (`max_turns=2` on task 8); confirm the signature table routes straight
+   to the handler fix, not the descriptions.
+
+## 6. The debugging speed metric (the workflow's KPI)
+
+| Drill | First run | After 5 drills | Target |
+|---|---|---|---|
+| symptom → post-mortem | ~90 min | ~45 min | <45 min |
+| bisection steps to layer | 4 | 3 | signature-routed |
+| post-mortem → fix merged | same day | same hour | <2 h |
+
+The table is the workflow's own eval — the speedup comes from the
+signature table (file 05-02) routing you straight to the owning layer,
+and from the post-mortem template being pre-written. Trace debugging is
+a skill with a practice curve; measure yours and put the number in the
+observability page.
 
 ## Pitfalls
 

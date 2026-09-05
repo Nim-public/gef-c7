@@ -63,15 +63,32 @@ expensive.
 | vendor coupling (strict schema, tracing key) | tool logic stays in plain functions; swap-out memo |
 | framework feature gravity ("let's use their memory") | the still-manual list is policy; additions re-enter through the battery |
 
+## 5. The verdict's review — five minutes, by a skeptic
+
+The memo is written for a skeptical reviewer. The five-minute audit:
+
+```text
+1. Costs cite git numbers?           (git log --stat, not estimates)
+2. Gains cite tests?                 (battery rows, not feature lists)
+3. Still-manual rows name owners?    (files + property tests)
+4. Triggers have weeks/metrics?      (W12+ calendar)
+5. Deletion drill in the log?        (no parallel path remains)
+```
+
+Any "no" is a memo gap, not a reviewer failure — the memo is the
+decision record *because* it survives this audit.
+
 ## Exercises
 
-1. Write the verdict memo from your port's actual numbers (hours, line
-   diffs from `git log --stat`); no estimated numbers.
+1. Write the verdict memo from your port's actual numbers (hours from
+   your log, lines from `git log --stat`); no estimated figures.
 2. Audit drill: hand the memo to a teammate; they must name your
    still-manual components from it alone — the five-minute audit.
-3. Trigger rehearsal: simulate one revisit trigger (bump the SDK a
-   minor version); verify the pinned-version fixture test catches the
-   span-shape change and names the fix.
+3. Trigger rehearsal: simulate one revisit trigger (SDK minor bump);
+   verify the pinned-version fixture catches it and names the fix.
+4. Counterfactual drill: write the one-paragraph case for *staying*
+   hand-rolled; if you cannot argue it, your memo's cost column is weak —
+   strengthen it.
 
 ## Pitfalls
 

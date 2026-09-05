@@ -73,6 +73,20 @@ post-hoc metric choices are how teams fool themselves.
 3. Capability-table drill: extend §3 with *your* W10 components; mark
    each SDK/manual/tie; the manual rows are the standing work list.
 
+## 5. The delta ledger (what changed and why)
+
+| Metric | W10 | SDK | Δ | Cause |
+|---|---|---|---|---|
+| mean steps | 2.4 | 2.2 | −0.2 | SDK error nudges |
+| mean tokens | 3.8k | 3.6k | −5% | loop prompt packing |
+| guardrail fires | 2 | 2 | 0 | same audits, new layer |
+| handoffs | 0 | 0 (v1) | — | topology unchanged |
+
+The ledger extends the table with a *cause* column — a delta without a
+cause is unexplained variance, and unexplained variance in a
+behavior-preserving port is a bug until proven otherwise. Fill the cause
+column from trace bispection, not from the changelog.
+
 ## Pitfalls
 
 - Comparing implementations on different corpus/config versions — the

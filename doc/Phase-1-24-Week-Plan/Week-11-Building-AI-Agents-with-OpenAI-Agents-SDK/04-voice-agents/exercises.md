@@ -69,6 +69,32 @@ realtime swap) listed.
 table (4-pointer) is the voice week's real artifact — the talking is
 context.
 
+## 6. The voice fallback ladder
+
+**Task:** implement graceful degradation for the voice path: STT down →
+text-only prompt in the UI; agent down → cached last answer + banner;
+TTS down → text response. Each with a drilled test.
+
+**Worked approach:** the ladder is the W8 fusion degradation matrix,
+voice edition — each rung has one kill-switch test. The demo should
+*never* hard-fail because one audio stage did.
+
+**Pass criterion:** three rungs drilled; the demo degrades with a
+visible banner; the latency table gains a "degraded mode" column.
+
+## 7. The demo script for review day
+
+**Task:** write `scripts/voice_review.py`: 5 scripted queries through the
+full voice path, printing the latency table line per query and the
+transcript — the artifact the capstone review plays.
+
+**Worked approach:** the script is the deterministic version of the demo
+— no live typing, seeded queries, the table as evidence. It doubles as
+the regression test for the voice path.
+
+**Pass criterion:** one command runs the whole review; the table's
+totals stay within the budget; transcript artifacts land in `reports/`.
+
 ## Pitfalls recap
 
 - Voice demo without the latency table — a party trick; the budget is

@@ -70,6 +70,33 @@ it without asking questions.
 **Pass bar:** 14/17 to close Week 11. The verdict memo (4-pointer) is
 the capstone's decision record — Weeks 12–16 cite it.
 
+## 6. The Week 12 integration rehearsal
+
+**Task:** dry-run Week 12's entry condition: from the readiness page
+(exercise 4 of file 05), a teammate runs the harness, reads the baseline,
+and names the two open questions — in under 10 minutes, without asking
+you anything.
+
+**Worked approach:** the rehearsal is the handoff's acceptance test — if
+the teammate stalls on any step, the missing artifact is a Week 12
+blocker discovered a week early.
+
+**Pass criterion:** teammate completes the run + read + questions in
+<10 min; every stall point fixed on the spot.
+
+## 7. The closing retrospective entry
+
+**Task:** append to `doc/capstone/retrospective.md`: what the port
+changed about your plan (capability bets, manual-policy list, boundary
+updates), each citing an artifact from this week.
+
+**Worked approach:** the retrospective entries are the compounding record
+— three citations (verdict memo, comparison ledger, handoff page) with
+one-line consequences each.
+
+**Pass criterion:** three entries, each with an artifact citation and a
+plan consequence.
+
 ## Pitfalls recap
 
 - Port steps committed without their gates — the discipline claim dies in

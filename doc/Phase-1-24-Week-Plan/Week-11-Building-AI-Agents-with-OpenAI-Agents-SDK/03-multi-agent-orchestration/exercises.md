@@ -83,6 +83,20 @@ after fixes; detectors in CI.
 suite (4-pointer) is the topology's insurance — it runs on every
 trajectory from now on.
 
+## 7. The topology one-pager
+
+**Task:** write `reports/topology.md`: your implemented topology as a
+diagram (router/specialists/chain stages), each agent's one-line job
+boundary, tool lists, and the measured router tax — the architecture
+page the capstone reviewers read.
+
+**Worked approach:** every claim in the diagram cites a number from
+exercises 2–5; the one-line boundaries are the bloat antidote (file 05)
+in documentation form.
+
+**Pass criterion:** the page passes the reviewer test — topology,
+boundaries, and costs in one read, no vibes.
+
 ## Pitfalls recap
 
 - Topologies chosen by novelty rather than the class distribution — the

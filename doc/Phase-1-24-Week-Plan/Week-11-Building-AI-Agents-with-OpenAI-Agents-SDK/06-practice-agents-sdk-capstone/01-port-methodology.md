@@ -60,6 +60,19 @@ fungible.
 | the registry was two layers: contract + transport | decorators are the transport |
 | traces replace hand instrumentation *if* merged | observability is a schema problem |
 
+## 5. The port's risk register (what could have gone wrong)
+
+| Risk | Detected by | Mitigation that worked |
+|---|---|---|
+| hint text mangled across the wire | fidelity test (file 02) | raise verbatim, format at boundary |
+| schema drift on tools | schema diff test | decorator derives from signature |
+| history poisoning by fallbacks | session drill | `include_in_history=False` |
+| trace shape changes | span-fixture test | pinned SDK + committed fixture |
+
+The register is filled *during* the port — each row cites the test that
+was running when the risk was live. It becomes the "known unknowns"
+section of the verdict memo.
+
 ## Exercises
 
 1. Port in the §1 order; at each step run the named battery gate; record
@@ -69,6 +82,8 @@ fungible.
    decision.
 3. Delete drill: remove the W10 loop; run the full suite (shape + value
    + battery); confirm green with no flag-flipping.
+4. Register drill: add one *newly discovered* risk from your port with
+   its detection test — the register stays honest after the memo.
 
 ## Pitfalls
 

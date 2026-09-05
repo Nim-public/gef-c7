@@ -66,6 +66,22 @@ respective mutations.
 **Pass bar:** 13/16 to proceed to file 06 (the SDK capstone). The parity
 test (4-pointer) is the merge's foundation — one store or none.
 
+## 6. The observability one-pager
+
+**Task:** write `reports/observability.md`: the capture architecture
+(spans → merge → parquet + JSONL), the two-layer regression suite, the
+replay workflow, and the failure taxonomy distribution — one page, every
+number cited.
+
+**Worked approach:** this is the week's face for reviewers: "how do you
+know what the agent did and whether it regressed?" — the page answers
+with the artifacts, not promises. The debug-speed number from file 02's
+drill belongs here.
+
+**Pass criterion:** the page passes the teammate test: they can
+reproduce a failure investigation from it alone, using the linked
+commands.
+
 ## Pitfalls recap
 
 - Post-mortems without added tests — the failure returns next week in a

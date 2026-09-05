@@ -81,10 +81,27 @@ The provenance table keeps the suite honest under pressure: a case that
 cannot name its reason gets deleted in review — batteries are curated,
 not accumulated.
 
+## 5. The suite's speed budget (the CI contract)
+
+| Suite | Budget | Enforced by |
+|---|---|---|
+| shape + canned battery | <10 s | `-m "not real_llm"` on push |
+| guardrail tripwires (canned) | <5 s | same marker |
+| real-model behavioral | <10 min | nightly job, report filed |
+
+```python
+# CI fails the *suite* if it exceeds budget — speed is a test property:
+@pytest.mark.battery
+def test_battery_suite_speed(pytestconfig): ...
+```
+
+A battery that takes minutes on every push trains developers to skip it —
+the speed budget is what keeps the safety net attached.
+
 ## Exercises
 
-1. Port the W9 battery table into `test_battery.py` verbatim (same rows);
-   run against the canned agent — all green before touching real models.
+1. Port the W9 battery table verbatim (same rows); run against the canned
+   agent — all green before touching real models.
 2. Marker drill: verify `-m "not real_llm"` runs in <10 s; the nightly
    job runs `-m real_llm` and files its report.
 3. Provenance drill: add the provenance column (case → reason → since);

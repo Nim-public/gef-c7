@@ -71,6 +71,22 @@ case has provenance.
 The guardrail pair (4-pointer) is the week's safety deliverable — blocking
 at generation time, not after.
 
+## 6. The contract-parity sweep
+
+**Task:** for each W10 contract (registry validation, error hints, gate
+policy, observation format), verify its SDK-era equivalent preserves the
+*content*: same hint text through `failure_error_function`, same gate
+decisions through `needs_approval`, same observation shape from
+formatters.
+
+**Worked approach:** the sweep is a 4-row table (W10 contract → SDK
+mechanism → parity test name). Any row without a test is a ported
+contract that lost its enforcement — the exact failure the sweep exists
+to catch.
+
+**Pass criterion:** 4/4 rows with parity tests green; the table linked
+from the port's verdict memo.
+
 ## Pitfalls recap
 
 - Docstrings that lost contract content in the port — the schema diff
