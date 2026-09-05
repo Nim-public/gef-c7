@@ -81,6 +81,19 @@ still running.
 **Pass criterion:** the page answers "what does this system do, how is
 it verified, and what is frozen?" in one read, every claim cited.
 
+## 7. The extension-weeks bridge (into Phase 3)
+
+**Task:** extend the Week-15 handoff with the extension plan: E1–E10
+branches, their themes from the W12 schedule, and each sprint's entry
+condition — the bridge from the core program into the extensions.
+
+**Worked approach:** the bridge is the roadmap (file 02-02) expanded to
+the extension weeks — each extension's theme, its entry condition, and
+its expected artifact.
+
+**Pass criterion:** the bridge committed; the acceptance command green;
+the first extension's entry condition checked.
+
 ## Pitfalls recap
 
 - Freeze by reading instead of executing — the 1:1 check is the freeze's
