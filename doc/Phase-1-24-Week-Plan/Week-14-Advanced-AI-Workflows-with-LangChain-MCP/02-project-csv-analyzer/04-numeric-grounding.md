@@ -88,6 +88,19 @@ scoring, now checking provenance as well as value.
 3. Verified-flag drill: an unverified total must carry a caveat (the W12
    rule); test both branches.
 
+## 5. The grounding pin note
+
+**Task:** extend `reports/sdk-versions.md` with the numeric-grounding
+stack: `NumberCheck` schema version, the pairing-audit rule set, and the
+audit-drill command.
+
+**Worked approach:** the grounding stack is the CSV project's honesty
+layer — the pin note records the pairing rules (every number sourced,
+totals verified) and the drill that proves them.
+
+**Pass criterion:** note committed; the audit-drill command green as
+recorded.
+
 ## Pitfalls
 
 - `numbers_supported` filled with the answer's own restatement — the

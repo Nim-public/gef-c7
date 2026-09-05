@@ -68,6 +68,19 @@ drill's flag fires in the harness gate.
 sandbox (4-pointer) is the CSV project's non-negotiable — user data plus
 model code is the program's sharpest edge.
 
+## 6. The CSV pin note (the project's version manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the CSV project's full
+stack: tool schemas date, sandbox level, feature prompt variants, and
+the grounding-audit command — the four exercises' pins, one page.
+
+**Worked approach:** the CSV project touches the sharpest edges; the
+manifest records every layer's verification date so the demo's claims
+are auditable.
+
+**Pass criterion:** the manifest lists all four layers with green drill
+commands as recorded.
+
 ## Pitfalls recap
 
 - `pd.read_csv` inside generated code — the `df` binding is the only

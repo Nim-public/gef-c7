@@ -87,14 +87,31 @@ def render_chart(code: str, file_id: str, chart_type: str, title: str) -> str:
 Same derivation rule as W12 file 03-03: charts come from *executed
 code over real data* — never from the model's memory of the numbers.
 
+## 5. The tool-surface review (the W10 standard, file edition)
+
+```text
+[ ] three tools, three docstrings with Args/Returns
+[ ] guards: 6 patterns + result-assignment requirement
+[ ] profiler-before-pandas order enforced (instruction + trace check)
+[ ] outputs: JSON-shaped, repo-relative paths, row counts stated
+[ ] error hints: valid input shape + next action (W10 file 02-02)
+```
+
+The review is the W10 tool-surface page applied to the file-analysis
+domain: every tool has a contract, a guard set, and a battery row. The
+derived schemas (from hints/docstrings) diff against this page — one
+source of truth, again.
+
 ## Exercises
 
-1. Build the profiler; require it before `run_pandas` via the
-   constitution; verify the trace order on 5 queries.
-2. Guard drill: run the six blocked patterns through `validate_pandas`;
-   every one refused with its hint.
+1. Build the profiler; run it on 3 uploaded CSVs (one with nulls, one
+   with mixed dtypes); verify the profile catches both.
+2. Guard drill: run the six blocked patterns; every refusal carries its
+   hint; zero side effects.
 3. Chart drill: render one chart per type; verify files land
    repo-relative and answers name them.
+4. Review drill: run the §5 checklist against the final tools; every row
+   cites its test.
 
 ## Pitfalls
 

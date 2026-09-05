@@ -78,6 +78,19 @@ cases, 3 per feature, one battery per assertion.
 3. Feature-parity drill: the analyze feature's outputs must pass the W12
    numeric gate verbatim — same validation, new skin.
 
+## 5. The feature-mode pin note
+
+**Task:** extend `reports/sdk-versions.md` with the feature matrix: the
+four prompt variants (pvN each), the mode-switch mechanism, and the
+feature-battery command.
+
+**Worked approach:** the four features share one tool surface — the pin
+note records which prompt variant each mode loads, so a variant edit
+and the battery re-run stay paired.
+
+**Pass criterion:** note committed; the feature battery green at the
+recorded variant versions.
+
 ## Pitfalls
 
 - Chat mode as ungrounded mode — data questions arrive in chat; the

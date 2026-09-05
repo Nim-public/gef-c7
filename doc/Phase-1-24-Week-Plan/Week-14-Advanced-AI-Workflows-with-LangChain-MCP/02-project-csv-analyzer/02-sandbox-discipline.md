@@ -88,6 +88,19 @@ def guarded_run(code: str, df) -> str:
 3. Size-cap drill: return a 100k-row frame; verify the 50-row cap and
    that the answer reports the true row count separately.
 
+## 5. The sandbox pin note
+
+**Task:** extend `reports/sdk-versions.md` with the CSV sandbox:
+restriction mechanism (restricted-exec vs subprocess), probe count,
+timeout/size caps, and the probe-drill command.
+
+**Worked approach:** the CSV path has the sharpest boundary in the
+program (user files + model code) — the pin note records which
+containment level guarded it and when the probes last ran.
+
+**Pass criterion:** note committed; the probe command green at the
+recorded containment level.
+
 ## Pitfalls
 
 - `eval`-based sandboxes without builtin restrictions — `__import__`
