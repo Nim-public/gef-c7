@@ -84,6 +84,51 @@ pillar, each listing the components the demo exercised and their
 verification dates. The demo's claims are auditable down to the
 checkpointer.
 
+## 7. The four-pillar eval wiring (the demo in the harness)
+
+| Pillar | Harness check | Gate |
+|---|---|---|
+| RAG | citation gate on 5 queries | refusal honesty |
+| SQL | numeric exact-match on 3 queries | verification policy |
+| Voice | latency table within budget | p95 ≤ budget |
+| HITL | invariant test (no advance w/o choice) | gate policy |
+
+The demo is not exempt from the harness — each pillar's one-command
+check joins the nightly gates, so a broken pillar fails CI before it
+fails on stage. The demo and the gates share the same fixtures.
+
+## Exercises
+
+1. Build the demo script; run all four pillars; every pillar prints its
+   mode, latency, and artifacts.
+2. Degradation drill: kill one component per pillar; verify flagged
+   fallbacks; restore.
+3. Fresh-clone drill: run from a clean clone; the ingest + demo pipeline
+   completes under 10 minutes (or the slow stage gets a documented
+   cache).
+4. Artifact drill: commit the four pillars' artifacts; the four-pillar
+   page links them; every link resolves.
+5. Pin drill: write the four pillar blocks; every component's
+   verification date is current.
+6. Harness drill: wire the four pillar checks into the nightly gates;
+   a broken pillar turns CI red before the demo.
+
+## Exercises
+
+1. Build the demo script; run all four pillars; every pillar prints its
+   mode, latency, and artifacts.
+2. Degradation drill: kill one component per pillar; verify flagged
+   fallbacks; restore.
+3. Fresh-clone drill: run from a clean clone; the ingest + demo pipeline
+   completes under 10 minutes (or the slow stage gets a documented
+   cache).
+4. Artifact drill: commit the four pillars' artifacts; the four-pillar
+   page links them; every link resolves.
+5. Pin drill: write the four pillar blocks; every component's
+   verification date is current.
+6. Harness drill: wire the four pillar checks into the nightly gates;
+   a broken pillar turns CI red before the demo.
+
 ## Exercises
 
 1. Build the demo script; run all four pillars; every pillar prints its
