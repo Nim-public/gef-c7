@@ -95,3 +95,16 @@ store keeps both; the policy cleans them later.
 4. Etiquette drill: fork three branches for three "what if" questions;
    record each intent; prune the uninformative ones per the retention
    schedule.
+
+## 6. The time-travel pin note
+
+**Task:** extend `reports/sdk-versions.md` with the time-travel stack:
+history API usage, fork procedure, retention interplay, and the
+determinism-drill command.
+
+**Worked approach:** time travel is the debugging layer's crown — the
+pin note records the replay/fork procedure and the drill that proves
+branch isolation.
+
+**Pass criterion:** note committed; the determinism drill green as
+recorded.

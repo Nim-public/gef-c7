@@ -83,6 +83,24 @@ it, per the standing pin discipline.
 **Pass criterion:** note committed; both drill commands green as
 recorded.
 
+**Pass criterion:** note committed; both drill commands green as
+recorded.
+
+## 7. The checkpointing review page
+
+**Task:** write `reports/checkpointing-review.md`: the durability
+proofs, the gate inventory, the edit protocol, and one fork post-mortem
+— the checkpointing week's face, composing files 01–04.
+
+**Worked approach:** the review composes the drills into one evidence
+sheet: durability (crash drills), gates (invariant test), corrections
+(edit protocol + refusals), and the counterfactual (fork branches). The
+reviewer question — "what happens when the demo crashes mid-flow?" — is
+answered by the page.
+
+**Pass criterion:** the page answers the crash question in one read,
+citing the drills.
+
 ## Pitfalls recap
 
 - MemorySaver in anything you show — the crash drill's negative proof is

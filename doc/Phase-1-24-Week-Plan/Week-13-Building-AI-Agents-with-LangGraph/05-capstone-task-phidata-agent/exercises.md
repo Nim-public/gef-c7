@@ -68,6 +68,21 @@ the capstone's standing architecture record.
 table (4-pointer) is the capstone's quality record — the last week's
 gates hang on it.
 
+## 7. The 15-case scoring walkthrough (the reviewer's page)
+
+**Task:** write `reports/eval-walkthrough.md`: one case per scoring type
+(numeric, citation, refusal, ambiguous) walked end-to-end — the query,
+the agent's artifacts, the score, and why. The page is how the rubric
+becomes legible.
+
+**Worked approach:** the walkthrough is the eval's documentation-by-
+example: one numeric case showing exact-match parsing, one citation
+case showing unit resolution, one refusal case showing the honest
+phrase family. A reviewer who reads it can score case 16 themselves.
+
+**Pass criterion:** four walked cases, one per scoring type; every
+scoring rule from §2 appears in at least one walkthrough.
+
 ## 6. The data-agent pin note
 
 **Task:** extend `reports/sdk-versions.md` with the data-agent stack:

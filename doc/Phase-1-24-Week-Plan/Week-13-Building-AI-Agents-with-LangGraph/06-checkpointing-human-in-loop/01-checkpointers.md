@@ -85,6 +85,20 @@ scheme, retention, and the two proofs. It is the settings-version
 discipline applied to durability: the page changes when the backend or
 scheme changes, and the tests re-run.
 
+## 6. The checkpointer choice memo (the durable page's opening)
+
+| Question | Answer for the capstone |
+|---|---|
+| single or multi-user? | single → Sqlite |
+| crash tolerance? | must resume → Sqlite minimum |
+| retention? | 20/thread, pruned |
+| audit need? | history = the trajectory's source of truth |
+
+The memo opens `reports/checkpoint-policy.md` — four questions whose
+answers are your deployment's durability contract. It is the settings-
+version discipline's final surface: the checkpoint layer is
+infrastructure, and infrastructure gets pinned too.
+
 ## Exercises
 
 1. Run a task with MemorySaver; kill the process; confirm state is gone
@@ -95,6 +109,8 @@ scheme changes, and the tests re-run.
    scheme, retention); implement the prune command.
 4. Retention drill: generate 25 checkpoints on one thread; run the
    prune; verify the last 20 survive and history still works.
+5. Memo drill: open the policy page with the §6 four-question table;
+   each answer cites the drill that justified it.
 
 ## Pitfalls
 

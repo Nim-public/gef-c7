@@ -68,18 +68,19 @@ cost, and auditability rows.
 comparison (4-pointer) closes the three-week routing arc — W9 rules, W11
 handoffs, W13 graph, one table.
 
-## 6. The router pin note
+## 7. The escalation drill set (the safety cases, one page)
 
-**Task:** extend `reports/sdk-versions.md` with the router graph: node
-inventory, edge order (escalation first), classification prompt version,
-and the three-way comparison command.
+**Task:** assemble the router's escalation evidence: the edge-order
+drill, the SLA measurements, the record-field check, and the battery —
+one page in `reports/escalation-drills.md`.
 
-**Worked approach:** the router is the program's first *graph* in
-production shape — the pin note records the wiring version so the
-comparison table stays reproducible after any edge reorder.
+**Worked approach:** escalation is the router's safety property; the
+page is its evidence — the order swap proving the ordering matters, the
+SLA numbers proving the human is reached, the record proving the handoff
+is complete.
 
-**Pass criterion:** note committed; the comparison command reproduces
-the three-way table.
+**Pass criterion:** the page answers "prove a blocked customer never
+meets the auto-responder" in one read.
 
 ## Pitfalls recap
 

@@ -81,6 +81,19 @@ router edition.
 4. Record drill: render §5 from the table; confirm the "kept from" rows
    cite real artifacts (your regex, your handoff descriptions).
 
+## 6. The router pin note
+
+**Task:** extend `reports/sdk-versions.md` with the router graph: node
+inventory, edge order (escalation first), classification prompt version,
+and the three-way comparison command.
+
+**Worked approach:** the router is the program's first *graph* in
+production shape — the pin note records the wiring version so the
+comparison table stays reproducible after any edge reorder.
+
+**Pass criterion:** note committed; the comparison command reproduces
+the three-way table.
+
 ## Pitfalls
 
 - Comparing with different classification prompts per implementation —
