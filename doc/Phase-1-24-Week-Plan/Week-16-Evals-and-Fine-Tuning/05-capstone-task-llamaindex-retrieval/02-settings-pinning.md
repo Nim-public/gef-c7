@@ -84,7 +84,20 @@ recorded.
 
 The pin table is the Settings block's record — values, sources, and the
 audit that enforces them. It is the preproc-settings discipline applied
-to LlamaIndex's global configuration.
+to LlamaIndex's global configuration; the table is also the audit's
+expected values, so the two cannot drift.
+
+## Exercises
+
+1. Write the pinning block; run the settings audit; deliberately unpin
+   one setting and watch the audit fail.
+2. Parity drill: run the parity loop (W12 file 02-01) with LlamaIndex
+   retrieval vs your W9 stack — identical hits or name the mismatch.
+3. Pin-note drill: record the Settings values in `reports/sdk-versions.md`;
+   the LlamaIndex version joins the pin.
+4. Cross-check drill: grep the codebase for LlamaIndex usage that does
+   *not* go through Settings — direct constructions bypass the pin;
+   route them through it.
 
 ## Exercises
 
