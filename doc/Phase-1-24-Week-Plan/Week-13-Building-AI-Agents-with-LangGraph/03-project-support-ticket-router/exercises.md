@@ -68,6 +68,19 @@ cost, and auditability rows.
 comparison (4-pointer) closes the three-week routing arc — W9 rules, W11
 handoffs, W13 graph, one table.
 
+## 6. The router pin note
+
+**Task:** extend `reports/sdk-versions.md` with the router graph: node
+inventory, edge order (escalation first), classification prompt version,
+and the three-way comparison command.
+
+**Worked approach:** the router is the program's first *graph* in
+production shape — the pin note records the wiring version so the
+comparison table stays reproducible after any edge reorder.
+
+**Pass criterion:** note committed; the comparison command reproduces
+the three-way table.
+
 ## Pitfalls recap
 
 - Reasons that restate categories — the hand-check rejects them; the

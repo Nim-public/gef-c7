@@ -99,6 +99,33 @@ story-edition).
    rejects; the retry rewrites — the schema as game master.
 3. Thread drill: make a promise in chapter 1 ("I'll return the pearl");
    verify `open_threads` carries it to chapter 4 until resolved.
+4. Audit drill: run a 5-chapter story; export the choice trail; confirm
+   every turn has options-offered and choice-made rows.
+
+## 6. The choice-audit trail (the player's story record)
+
+| Event | Recorded as |
+|---|---|
+| options offered | trajectory row (list) |
+| choice made | trajectory row + world diff |
+| fallback absorbed | `open_threads` + trajectory |
+| re-prompt | attempt counter + trajectory |
+
+The choice-audit trail is the story's save file *and* its telemetry:
+which options were offered, which were taken, which free-text ideas were
+absorbed. The demo replays it; the analytics (which options are popular)
+come from the same rows.
+
+## Exercises
+
+1. Implement the application node with the two routes; test all four
+   choice types; verify the fallback keeps stories alive.
+2. Schema drill: duplicate a character in `world_update`; the validator
+   rejects; the retry rewrites — the schema as game master.
+3. Thread drill: make a promise in chapter 1 ("I'll return the pearl");
+   verify `open_threads` carries it to chapter 4 until resolved.
+4. Audit drill: run a 5-chapter story; export the choice trail; confirm
+   every turn has options-offered and choice-made rows.
 
 ## Pitfalls
 

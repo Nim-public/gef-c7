@@ -67,6 +67,20 @@ The caveats are the A/B's honesty ledger — every design choice that
 could tilt the comparison, stated. The verdict stands *with* the
 caveats; a verdict that hides them is marketing.
 
+## 6. The architecture decision record (the A/B's output)
+
+```markdown
+## Agent architecture (W13)
+- Single agent (W11 SDK): default for single-context tasks
+- Self-repair graph: codegen + repair-heavy tasks
+- Supervisor team: multi-stage analysis (≥3 distinct stages)
+- Trigger for re-evaluation: a task class drifting between columns
+```
+
+The ADR is the A/B's product: per task class, the architecture, and the
+drift trigger. It sits next to the W10 boundary statement — the same
+document, one level deeper (per class, not per system).
+
 ## Exercises
 
 1. Run the protocol; produce the class-level table with ranges (3 runs);
@@ -76,6 +90,8 @@ caveats; a verdict that hides them is marketing.
 3. Crossover drill: find the task complexity where team starts winning
    (the crossover point); state it as a rule ("≥3 distinct stages →
    team").
+4. ADR drill: write the §6 record; cite the crossover rule and the
+   strongest per-class number.
 4. Caveat drill: re-run the strongest team win with a cold supervisor
    and natural phrasings; does the win survive? Record either way.
 

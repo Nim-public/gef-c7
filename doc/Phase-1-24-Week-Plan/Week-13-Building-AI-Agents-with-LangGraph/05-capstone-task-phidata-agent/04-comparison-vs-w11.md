@@ -68,3 +68,22 @@ for the honesty layer, and it belongs in the framework memo verbatim.
    count the numeric drifts — the node's value, measured.
 3. Final-memo drill: write the framework decision (§3) into the boundary
    memo; cite the table and one cost number.
+
+## 5. The comparison pin note
+
+**Task:** extend `reports/sdk-versions.md` with the comparison header:
+both agent versions, the 15-case set version, the protocol (3 runs,
+majority), and the rerun command.
+
+**Worked approach:** the four-way framework comparison arc ends here —
+the pin note is its reproducibility record, the same header discipline
+every comparison since W9 has carried.
+
+**Pass criterion:** note committed; the rerun command reproduces the
+table's outcome column.
+
+## Exercises (continued)
+
+4. Parity-failure drill: force a corpus-QA mismatch between the two
+   agents (change one instruction); the parity test must catch it —
+   the port's contract, proven by its violation.

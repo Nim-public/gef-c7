@@ -89,3 +89,16 @@ which numbers get which level.
    caveats (the W12 rendering contract, now graph-fed).
 4. Options drill: run the numeric eval with each of the three wiring
    options; produce the cost/guarantee table.
+
+## 6. The verification pin note
+
+**Task:** extend `reports/sdk-versions.md` with the verification stack:
+node inventory, wiring option (post-hoc/in-graph/in-loop), independence
+rule, and the mutation-drill command.
+
+**Worked approach:** verification is the capstone's honesty layer — the
+pin note records the wiring option per claim class and the drill that
+proves independence.
+
+**Pass criterion:** note committed; the mutation drill command green as
+recorded.

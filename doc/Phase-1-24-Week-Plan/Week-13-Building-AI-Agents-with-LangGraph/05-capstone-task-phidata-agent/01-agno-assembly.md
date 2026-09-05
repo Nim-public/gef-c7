@@ -82,6 +82,21 @@ citing an artifact from Weeks 10–12. It is the W10 pipeline gates
 constructor: the constructor is thin *because* everything behind it is
 tested.
 
+## 5. The assembly's component pin table
+
+| Component | Version/artifact | Verified by |
+|---|---|---|
+| toolkits | W12-03 battery date | parity test |
+| knowledge | W12-02 parity date | golden queries |
+| grounding rules | cvN | insufficiency battery |
+| typed output | schema v1 | validator tests |
+| model | pinned id | every run's header |
+
+The pin table is the assembly's version manifest — five components, five
+verification artifacts. The 15-case run inherits all five pins; any
+upgrade re-runs the corresponding battery before the table is trusted
+again.
+
 ## Exercises
 
 1. Assemble the agent; run the smoke test (W10-06 style) on both canned
@@ -90,6 +105,8 @@ tested.
    versions (toolkits, knowledge, rules, model).
 3. Thin-agent drill: list what is *not* in the constructor (ingest,
    battery, drills) — the surrounding system, named.
+4. Pin-table drill: fill §5 from `reports/sdk-versions.md`; any missing
+   verification blocks the 15-case run.
 4. Checklist drill: run the §4 review; every row cites its artifact;
    any red row blocks the 15-case run (file 02).
 

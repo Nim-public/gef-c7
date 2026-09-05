@@ -70,6 +70,19 @@ the determinism classification (temperature 0 ×5) included.
 is the checkpointing week's foundation — every HITL flow above it
 stands on the crash test.
 
+## 6. The durability pin note
+
+**Task:** extend `reports/sdk-versions.md` with the durability stack:
+checkpointer backend, thread scheme, interrupt inventory, edit
+allow-list, and the crash/invariant drill commands.
+
+**Worked approach:** the durability stack is the HITL flows' foundation —
+the pin note records the policy page (file 01) and the tests that prove
+it, per the standing pin discipline.
+
+**Pass criterion:** note committed; both drill commands green as
+recorded.
+
 ## Pitfalls recap
 
 - MemorySaver in anything you show — the crash drill's negative proof is

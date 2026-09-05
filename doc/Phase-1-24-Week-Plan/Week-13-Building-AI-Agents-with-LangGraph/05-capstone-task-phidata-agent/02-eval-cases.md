@@ -72,6 +72,18 @@ The gold table is code — computable checks, not prose. Case 13 is the
 interesting refusal: "forecast" is *unanswerable* because no future data
 exists — the gold asserts the agent says so rather than extrapolating.
 
+## 5. The eval-set version note (the set's changelog)
+
+| Version | Cases | Added because |
+|---|---|---|
+| v1 | 15 | this file's design |
+| v1.1 | +2 | post-mortem classes from W11/W12 |
+| v2 | +3 | new tool surface (W13 graph nodes) |
+
+The changelog is the eval set's version discipline — each addition names
+the scar it encodes. A case without a "because" is a vanity case; the
+set is curated like the battery (W11 file 02-05's provenance column).
+
 ## Exercises
 
 1. Write the 15-case table with gold answers *from your data*; verify
@@ -80,5 +92,9 @@ exists — the gold asserts the agent says so rather than extrapolating.
    separators, currency, decimals); test it against 10 formats.
 3. Adversarial-case drill: add one case per failure class you have seen
    (W10/W11/W12 post-mortems) — the eval set grows from your scars.
+4. Refusal drill: run case 13 three times; any extrapolated forecast is
+   a grounding failure — record and fix the constitution wording.
+5. Version drill: commit the set as v1; add one scar case as v1.1; the
+   header must show both.
 4. Refusal drill: run case 13 three times; any extrapolated forecast is
    a grounding failure — record and fix the constitution wording.

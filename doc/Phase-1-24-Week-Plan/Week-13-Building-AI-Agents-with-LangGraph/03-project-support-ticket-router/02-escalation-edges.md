@@ -81,6 +81,27 @@ The edge is where your refusal battery's cases *land*.
    construct a ticket that then mis-ships; restore — the ordering is
    the safety property, proven by its violation.
 
+## 6. The escalation SLA (the human side of the edge)
+
+| Metric | Definition | Target |
+|---|---|---|
+| escalation rate | escalated / total | 5–15% |
+| escalation latency | classify → human notified | <60 s |
+| resolution SLA | escalated → human answered | per severity |
+| bounce rate | escalated → re-auto-routed | 0 (a decision is final) |
+
+The SLA table makes the escalation edge a *measured* commitment: the
+rate proves the gate is calibrated, the latency proves the human is
+actually notified, and the bounce rule prevents hot-potato routing (an
+escalation that the human rejects goes to *review*, never back to auto).
+
+## Exercises (continued)
+
+4. Record drill: escalate one ticket; verify the record contains all
+   five fields and lands in the audit trail.
+5. SLA drill: measure classification→notification latency on 10 staged
+   escalations; the table's targets get your numbers.
+
 ## Pitfalls
 
 - Escalation gated behind confidence — a confidently-wrong urgent ticket

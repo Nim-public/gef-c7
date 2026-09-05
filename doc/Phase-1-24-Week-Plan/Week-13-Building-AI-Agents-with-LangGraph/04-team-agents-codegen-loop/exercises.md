@@ -83,6 +83,19 @@ loop's learning curve (attempts histogram) next to its containment proof
 **Pass criterion:** the review answers "what happens when the generated
 code misbehaves?" in one read, citing the probes.
 
+## 7. The codegen pin note
+
+**Task:** extend `reports/sdk-versions.md` with the codegen stack:
+LangGraph version, sandbox level per code source, escape-probe command,
+and the A/B protocol header.
+
+**Worked approach:** the codegen loop has the program's sharpest edges —
+the pin note records which sandbox level guarded which code source, and
+the probe command that proved it.
+
+**Pass criterion:** note committed; the probe command green at the
+recorded sandbox levels.
+
 ## Pitfalls recap
 
 - Test suites that assert only execution — the repair loop optimizes

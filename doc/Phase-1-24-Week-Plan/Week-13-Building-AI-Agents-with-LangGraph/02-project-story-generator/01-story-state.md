@@ -84,6 +84,18 @@ def invariants_hold(state: StoryState) -> list[str]:
 The invariant checker runs as a post-generation node — the story's
 constitution, enforced per step, reported per trajectory row.
 
+## 6. The story-state pin note
+
+**Task:** extend `reports/sdk-versions.md` with the story stack's state
+schema: fields, reducers, validators, and the invariant-checker command.
+
+**Worked approach:** the state schema is the story's API — the pin note
+records the reducer choices (append for chapters, overwrite for world)
+so a later refactor knows which merge semantics are load-bearing.
+
+**Pass criterion:** note committed; the invariant checker green as
+recorded.
+
 ## Exercises
 
 1. Build the state + two nodes; run one full generation; verify the

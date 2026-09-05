@@ -86,6 +86,20 @@ from §4, formalized as the node's contract test. The kb/data parity
 rows re-run the W12 validators verbatim: same hints, same refusals,
 different transport.
 
+## 6. The router graph review (the wiring sign-off)
+
+```text
+[ ] classify → route → {escalate, human, kb, data}  (complete mapping)
+[ ] kb 0-hit edge → escalate                         (no silent empty answers)
+[ ] data node validator = W12 validator (verbatim)
+[ ] escalation precedes both resolution branches
+[ ] node names match the architecture diagram
+```
+
+The sign-off is the graph review checklist (file 01-02) applied to the
+router — five rows, each asserting a property from this file. It is the
+last gate before the router serves tickets.
+
 ## Exercises
 
 1. Wire both nodes; run the four integration cases; assert node
@@ -96,6 +110,8 @@ different transport.
    the honest message — the W10 refusal path, graph edition.
 4. Matrix drill: run the §5 matrix; every drill's assertion green; the
    matrix itself committed next to the node code.
+5. Sign-off drill: run the §6 checklist against the final wiring; every
+   row cites the test that proved it.
 
 ## Pitfalls
 

@@ -70,6 +70,20 @@ parity within tolerance.
 bounded cycle (4-pointer) is the foundations' capstone — the W10 loop,
 now a picture.
 
+## 7. The graph-vs-framework comparison note
+
+**Task:** append to the recap sheet: the W10 loop vs the LangGraph graph
+— which artifacts each exposes (trace vs state history), which checks
+ported unchanged (battery, budget), and which are new (reducers, edge
+tables). One row per concept, three columns (W10 / LangGraph / verdict).
+
+**Worked approach:** the comparison note is the fourth framework mapping
+(W11 and W12 have theirs) — the verdict column answers "is the graph
+version an upgrade, a port, or a rewrite?" per concept, from your runs.
+
+**Pass criterion:** every W10 concept mapped; the verdicts cite runs
+from this week's exercises.
+
 ## 6. The foundations recap sheet
 
 **Task:** write `reports/langgraph-recap.md`: the week's five load-bearing

@@ -68,6 +68,19 @@ the capstone's standing architecture record.
 table (4-pointer) is the capstone's quality record — the last week's
 gates hang on it.
 
+## 6. The data-agent pin note
+
+**Task:** extend `reports/sdk-versions.md` with the data-agent stack:
+assembly component versions (from the pin table), the 15-case set
+version, the scoring parser version, and the eval-rerun command.
+
+**Worked approach:** the data agent is the capstone's quality record —
+the pin note ties the eval table to the exact component versions it was
+scored against.
+
+**Pass criterion:** note committed; the eval rerun reproduces the score
+table.
+
 ## Pitfalls recap
 
 - Gold labels from model outputs — facts from data, always.
