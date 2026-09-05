@@ -66,6 +66,10 @@ harness* — the scorecards never learned about handoffs; the store did.
 py scripts/agent_harness.py --from-traces data/traces/ --merge data/agent/trajectories.parquet
 ```
 
+One command renders the merged store into the scorecard format; the
+parity column rides along on every row, so a silently diverging capture
+path is visible in the same table that reports the metrics.
+
 ```text
 # harness output (v2)
 | metric            | value |

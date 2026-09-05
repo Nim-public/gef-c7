@@ -84,7 +84,7 @@ within tolerance; discrepancies documented.
 
 **Pass bar:** 12/15 to proceed to file 02 (tools, handoffs, guardrails).
 The typed-answer migration (4-pointer) is the week's first real win —
-validation moves to model time.
+validation moves to model time, where failures are cheaper.
 
 ## Pitfalls recap
 

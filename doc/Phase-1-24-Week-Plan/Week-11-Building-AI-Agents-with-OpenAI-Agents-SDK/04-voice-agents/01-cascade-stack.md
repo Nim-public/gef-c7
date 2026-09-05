@@ -78,7 +78,7 @@ core. The capstone rule: the text path works without the voice path.
 1. Build the three stages locally; measure per-stage latency on one
    query; fill the budget table with your numbers.
 2. First-sentence streaming drill: TTS the first sentence vs the whole
-   answer; measure perceived-latency delta (time to first audio).
+   answer; measure the perceived-latency delta (time to first audio).
 3. Failure drill: kill each stage in turn; verify the text path still
    answers — the cascade must be a garnish, not a dependency.
 
