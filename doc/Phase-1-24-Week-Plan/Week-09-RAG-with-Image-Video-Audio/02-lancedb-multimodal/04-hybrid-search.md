@@ -68,6 +68,26 @@ res_fts = (table.search("orientation histogram", query_type="fts")
 The capstone query planner, then, is: detect exact-token queries (regex for
 codes/ids) → lean FTS; else 50/50 RRF; always prefilter by modality scope.
 
+## 5. Tokenizer reality — where FTS matches, literally
+
+FTS is lexical: it matches *tokens*. Three practical consequences:
+
+| Query | FTS result | Why |
+|---|---|---|
+| "EBITDA" vs "EBITDA margin" | both hit rows containing "EBITDA" | token overlap |
+| "don't" vs "do not" | miss unless tokenizer splits/normalizes | tokenization choice |
+| "C++" | often tokenized oddly (C, ) | punctuation handling |
+
+```python
+# test your corpus's tokenizer behavior with the three pairs above —
+# record what matches before trusting FTS-lean routing
+```
+
+The router's exact-term detection (patterns file 05) assumes FTS behaves
+sanely on codes and names — verify with your *actual* units, since
+ LanceDB's default tokenizer handles hyphens and symbols differently than
+your intuition expects.
+
 ## Exercises
 
 1. Build FTS on your captions; find 5 queries where FTS beats vector-only
@@ -82,12 +102,14 @@ codes/ids) → lean FTS; else 50/50 RRF; always prefilter by modality scope.
 
 - FTS on *empty* captions — build the index after fillna("") and expect
   those rows never to hit; document it.
-- Comparing fused results against GT built from vector-only — hybrid changes
-  the notion of relevance; GT must be human-labeled for fusion evals.
+- Comparing fused results against GT built from vector-only — hybrid
+  changes the notion of relevance; GT must be human-labeled for fusion
+  evals.
 - Tokenizer mismatch (FTS default tokenizer vs your queries) — quote-heavy
   or code queries need the right tokenizer setting; test with real queries.
 
 ## Resources
 
 - LanceDB full-text search docs (create_index FTS, query_type="fts").
-- Cormack et al. 2009 (RRF); your fusion file (W8) — the same fusion, engine-side.
+- Cormack et al. 2009 (RRF); your fusion file (W8) — the same fusion,
+  engine-side.

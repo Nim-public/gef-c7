@@ -68,6 +68,35 @@ cited number links to a `reports/` artifact.
 **Pass criterion:** the section passes the "teammate test": they can name
 your retrieve path, quota policy, and fallback behavior from it alone.
 
+## 6. The pattern portfolio one-pager
+
+**Task:** reduce the whole week to one page: the four patterns as rows,
+columns = query-time cost, offline cost, grounding quality, failure mode,
+and *your measured R@10 per class*. Commit as
+`doc/capstone/pattern-portfolio.md`.
+
+**Worked approach:** every cell from a `reports/` artifact or "n/a"; the
+one-pager is what you show at the capstone review when someone asks "why
+not just use a VLM for everything?" — the answer is the cost column, with
+your numbers.
+
+**Pass criterion:** the page passes the reviewer test: no cell without a
+number or a reason; the router table follows from it without new claims.
+
+## 7. The pattern-switch drill
+
+**Task:** take one query class and run it through a *wrong* pattern
+(exact-term query through P2; scene query through FTS-lean); record the
+R@10 damage. This is the cost of routing errors, measured.
+
+**Worked approach:** the two misrouted cells quantify what a routing
+mistake costs per class — the numbers that justify router maintenance
+(file 05's trigger table). Expect 10–30 R@10 points of damage per
+misroute.
+
+**Pass criterion:** the two misrouted numbers in the portfolio page's
+router section, cited as the router's error cost.
+
 ## Pitfalls recap
 
 - Pattern comparisons on fewer than 5 queries per class — the class means

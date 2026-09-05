@@ -74,6 +74,28 @@ When the corpus changes, GT regenerates and the old table is historical —
 never compare recall numbers across corpus versions (the Week-07
 eval-harness rule, same trap).
 
+## 5. Failure analysis — where the misses come from
+
+A recall number without a miss taxonomy is half a measurement. Bucket the
+sweep's misses:
+
+| Miss cause | Detection | Fix lever |
+|---|---|---|
+| True neighbor in unvisited cell | compare query's cell vs gt's cell | ↑ nprobe, ↑ nlist |
+| PQ distortion (visited cell, ranked low) | gt present in visited cell's candidates | ↑ refine_factor, ↑ m |
+| Tie/ordering noise | gt at rank k+1 | ↑ k in search, re-rank |
+
+```python
+def miss_cause(q, gt_id, table, nprobe):
+    cells = table.search(q, vector_column_name="text_vec").nprobe(nprobe)
+    visited = {r["unit_id"] for r in cells.to_list()}
+    return "cell-miss" if gt_id not in visited else "pq-distortion"
+```
+
+One line of bookkeeping converts "recall is 0.78" into "78% → 12 points
+cell-miss, 6 points PQ" — and the fix lever follows from the bucket, not
+from vibes.
+
 ## Exercises
 
 1. Run the full sweep on your units table; produce the 5-row table with
@@ -86,9 +108,12 @@ eval-harness rule, same trap).
 
 ## Pitfalls
 
-- Recall computed against a *different* k than the reported one — fix k=10 everywhere or the table lies.
-- Sweeping with random *new* queries each run — queries are part of the fixture; seed them.
-- Reporting ms/q from a cold process — warm up with 20 throwaway queries first.
+- Recall computed against a *different* k than the reported one — fix k=10
+  everywhere or the table lies.
+- Sweeping with random *new* queries each run — queries are part of the
+  fixture; seed them.
+- Reporting ms/q from a cold process — warm up with 20 throwaway queries
+  first.
 
 ## Resources
 

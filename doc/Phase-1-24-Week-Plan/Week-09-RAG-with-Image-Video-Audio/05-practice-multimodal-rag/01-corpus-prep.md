@@ -51,6 +51,51 @@ Step 3's addition this week: the missing-data report now includes *sidecar
 coverage per unit class* — charts without OCR are the number to drive to
 zero before indexing.
 
+## 4. The classification table, worked end-to-end
+
+A concrete 12-unit example — the table your prep run produces:
+
+| unit_id | kind | caption? | ocr? | crops? | sidecar_status |
+|---|---|---|---|---|---|
+| u001 | photo | ✓ | — | — | ready |
+| u002 | chart | ✓ | ✓ | ✓(4) | ready |
+| u003 | scan | — | ✓ | — | ready |
+| u004 | text | — | — | — | n/a |
+| u005 | photo | ✓ | — | — | ready |
+| u006 | chart | ✓ | ✗ | ✗ | **blocked: no OCR** |
+
+The audit's headline number: charts-without-OCR (u006) must reach zero —
+either the OCR run completes or the unit is flagged out of the served
+corpus. One blocked chart unit silently poisons every chart query it
+would have answered.
+
+```python
+def coverage_report(df) -> dict:
+    per_class = df[df.kind == "chart"]
+    return {"charts": len(per_class),
+            "with_ocr": int(per_class.sidecar_status.eq("ready").sum())}
+```
+
+## 5. Prep costs — the runbook numbers
+
+| Stage | Time (2k units) | Re-runs when |
+|---|---|---|
+| manifest build | ~40 s | corpus files change |
+| captions (photos+charts) | ~25 min CPU | captioner version bump |
+| OCR (charts+scans) | ~6 min | OCR engine change |
+| crops (charts) | ~2 min | crop strategy change |
+| ingest to LanceDB | ~2 min | any of the above |
+| audit + gate | ~1 min | always (every prep) |
+
+```python
+# every stage logs its own duration — the runbook writes itself:
+log.info("stage=%s units=%d sec=%.0f", "captions", n, dt)
+```
+
+The runbook turns "prep takes a while" into a schedulable job: full prep
+is a ~40-minute overnight run; targeted re-runs (caption bump) are
+minutes. Budget honestly in the capstone plan.
+
 ## Exercises
 
 1. Run the full prep on your corpus; fill the sidecar-coverage table per
@@ -58,7 +103,8 @@ zero before indexing.
 2. Misclassification hunt: sample 10 classified units; verify class
    labels; fix one rule and re-run — the loop that tunes `classify_unit`.
 3. Version drill: bump `caption_version` for photos only; verify only
-   photo rows re-embed (the targeted re-ingest from W9-04).
+   photo rows re-embed — and record the measured re-run cost against the
+   runbook table.
 
 ## Pitfalls
 

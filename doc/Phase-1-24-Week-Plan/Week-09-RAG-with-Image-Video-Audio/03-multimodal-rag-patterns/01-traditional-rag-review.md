@@ -45,6 +45,40 @@ discipline, row-alignment invariants. Week 04's `eval_retrieval.py`
 extends to multimodal by adding a column, not by rewriting — that is the
 point of stating the contract first.
 
+## 4. The contract in code — one function per clause
+
+```python
+def rag_answer(query: str) -> dict:
+    chunks = ingest_and_chunk(CORPUS)            # clause 1 (offline)
+    index = build_index(chunks)                  # clause 2 (offline)
+    hits = retrieve(query, index, k=5)           # clause 3
+    prompt = augment(query, hits)                # clause 4
+    answer = generate(prompt)                    # clause 5
+    return {"answer": answer, "citations": [h["unit_id"] for h in hits]}
+```
+
+Naming clauses in code is the whole point: when a multimodal pattern
+amends clause 3 (unified space), the diff is *one function* — and the
+other four clauses' tests keep passing untouched. The contract is also
+your eval structure: one harness section per clause.
+
+## 5. The clause-to-test matrix
+
+Each clause needs at least one automated check — the matrix that keeps
+the contract enforced as patterns change:
+
+| Clause | Cheapest test | Runs |
+|---|---|---|
+| Ingest | row count + hash validation (W7 gate) | per ingest |
+| Index | schema check + GT smoke query | per index build |
+| Retrieve | R@10 ≥ baseline on 25 queries | per eval run |
+| Augment | token budget assertion (W9-04) | per answer |
+| Generate | citation audit + faithfulness (W5) | per answer |
+
+The matrix is deliberately boring: every cell is an artifact you already
+built in Weeks 04–09. Its value is completeness — any clause without a
+test is where the next silent regression lands.
+
 ## Exercises
 
 1. Write the contract for *your* capstone with the amended clauses marked;
@@ -54,6 +88,8 @@ point of stating the contract first.
    numbers; caption duplicates page text).
 3. For each violation in exercise 2, name the week's artifact that detects
    it (validation report, eval harness, citation audit).
+4. Map your existing Week-04 code to the five clauses — anything that
+   spans two clauses is refactor bait; note it.
 
 ## Pitfalls
 
@@ -61,6 +97,8 @@ point of stating the contract first.
   makes patterns comparable and costs estimable.
 - Amending two clauses at once and losing attribution — one amendment per
   experiment, or deltas are unexplainable.
+- Contract without clause-level tests — a "failing RAG" tells you nothing;
+  a failing clause tells you what to fix.
 
 ## Resources
 

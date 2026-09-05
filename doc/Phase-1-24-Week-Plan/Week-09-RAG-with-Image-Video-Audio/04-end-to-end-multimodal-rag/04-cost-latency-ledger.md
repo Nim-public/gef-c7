@@ -64,6 +64,46 @@ p95 × expected chain depth, never p50.
 The quota's purpose becomes a dollar line: P3 at 10% of 1k answers/day =
 $20/day vs $2 all-P1. The memo quotes both.
 
+## 5. Ledger anti-patterns — how ledgers start lying
+
+| Anti-pattern | What it looks like | Fix |
+|---|---|---|
+| Stage soup | one "pipeline" stage at 2400 ms | split until each stage ≤300 ms or is a model call |
+| Best-of runs | table built from the fastest of 5 runs | always report all runs; median |
+| Missing machine spec | "p95 = 80 ms" (on what?) | header line, mandatory |
+| Post-hoc stages | "audit" added after eval, unmeasured | any new stage re-measures everything |
+| Quoted means for tails | "typically ~400 ms" in a contract | p50/p95 only |
+
+```python
+LEDGER_HEADER = {
+    "corpus": "v3", "date": "2026-09-05", "machine": "6-core CPU, 32GB",
+    "runs": 2, "n_queries": 25,
+}
+```
+
+The header dict is the ledger's honesty anchor — every table renders it,
+and any number without a matching header row is not a number.
+
+## 6. From ledger to capacity plan
+
+The ledger's final job: answer "how many users can demo support?"
+
+```text
+capacity = horizon_ms / p95_total
+         = 5000 ms / 655 ms     (P1 p95, ledger table)
+         ≈ 7 concurrent answers  → then the queue absorbs the rest
+```
+
+| Demand | p95 | Capacity | Verdict |
+|---|---|---|---|
+| 1 user | 655 | 7× | comfortable |
+| 5 users | 655 (queued) | queue depth ~1 | fine |
+| 20 users | queue overflow | — | cap or shed load |
+
+The capacity line goes into the deployment report next to the latency
+table — it is the number that turns "it works" into "it works for N
+people", which is what a demo actually promises.
+
 ## Exercises
 
 1. Instrument the full path; run your 25-query set twice; produce the
@@ -73,7 +113,8 @@ $20/day vs $2 all-P1. The memo quotes both.
    budget a Week-10 agent can promise.
 3. Cost model: compute daily cost at your demo's query rate for
    (a) current quota, (b) no quota, (c) P1-only; the memo cites (a) with
-   (c) as the floor.
+   (c) as the floor — then compute capacity and add it to the deployment
+   report.
 
 ## Pitfalls
 

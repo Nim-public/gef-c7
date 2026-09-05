@@ -61,6 +61,27 @@ class, including one deliberate router-miss (domain query hitting default)
 to show logging. The Week-10 agent inherits this table as its tool-routing
 prior.
 
+## 5. Router maintenance — the table rots, the loop keeps it honest
+
+The routing table encodes *this corpus's* measured best patterns. Two
+maintenance triggers:
+
+| Trigger | Action |
+|---|---|
+| corpus class mix shifts >20% | re-run the pattern eval; re-derive gold |
+| a route's R@10 drops below its class baseline | investigate before re-routing |
+| new query class appears in logs ≥5× | add a row; measure before enabling |
+
+```python
+def route_with_log(query: str, log) -> str:
+    r = route(query)
+    log.info("route=%s q=%s", r, query[:80])     # every miss review starts here
+    return r
+```
+
+The log line is the table's heartbeat: week-over-week miss reviews are how
+regexes evolve into a tiny classifier, on evidence rather than vibes.
+
 ## Exercises
 
 1. Build the gold map for your 25 queries from the pattern evals; compute

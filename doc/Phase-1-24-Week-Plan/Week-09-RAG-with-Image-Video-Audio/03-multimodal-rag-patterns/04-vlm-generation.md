@@ -61,12 +61,37 @@ def citation_audit(answer_units: list[str], retrieved: list[str]) -> bool:
 Cheap, automatable, and catches the most common P3 failure: citing
 plausible-but-unretrieved units.
 
+## 5. The grounding failure catalog — what P3 gets wrong
+
+Ten P3 runs on chart queries will produce a small, repeating failure set.
+Name them before eval so the audit can bucket them:
+
+| Failure | Example | Audit check that catches it |
+|---|---|---|
+| Number invention | "margin rose 23%" (chart says 12%) | claim vs OCR text comparison |
+| Wrong series | quotes the wrong bar/line | human spot-check or VLM-verify |
+| Hallucinated trend | "steady growth" on flat data | trend-claim flagging |
+| Phantom citation | cites unit not in retrieved set | `citation_audit` (one function) |
+| Over-claiming scope | "all quarters" from one quarter | quantifier detection (regex "all|every") |
+
+```python
+QUANTIFIERS = re.compile(r"\b(all|every|always|never|only)\b", re.I)
+
+def overclaim_flag(answer: str) -> bool:
+    return bool(QUANTIFIERS.search(answer))
+```
+
+The overclaim flag is deliberately crude — its job is to *route* answers
+to the 10% human spot-check, not to judge. Ten flagged answers hand-checked
+per eval run is the cheapest grounding insurance available.
+
 ## Exercises
 
 1. Build the token-budget table for *your* context: images + snippets +
    answer; write the max-images number into the tool contract.
 2. Run one P3 answer end-to-end on a chart query; audit citations and
-   hand-verify the visual claim; log both results.
+   hand-verify the visual claim; log both results with the failure
+   bucket it hit (or "clean").
 3. Cost model: at your demo's expected query rate, compute P3's daily cost
    local vs hosted; the memo records the chosen P3 quota (e.g., "≤10%
    of queries").
@@ -80,5 +105,6 @@ plausible-but-unretrieved units.
 
 ## Resources
 
-- Week-08 fusion file 04 (LLaVA projection, token math); Week-05 faithfulness harness.
+- Week-08 fusion file 04 (LLaVA projection, token math); Week-05
+  faithfulness harness.
 - Your hybrid retriever — P3's upstream.

@@ -62,6 +62,34 @@ agent will call — one codebase, two consumers.
 [ ] run tuple displayed with every generated artifact
 ```
 
+## 5. Monitoring the deployed app — the minimum viable set
+
+| Signal | Where | Alert threshold |
+|---|---|---|
+| p95 latency | your ledger, logged per request | > 2× baseline |
+| error rate | handler try/except counter | > 1% |
+| queue depth | `queue.max_size` headroom | sustained > 50% |
+| disk (cache/models) | Space metrics | > 80% |
+
+```python
+import logging, time
+
+log = logging.getLogger("app")
+
+def timed_handler(fn):
+    def wrap(*args, **kw):
+        t0 = time.perf_counter()
+        try:
+            return fn(*args, **kw)
+        finally:
+            log.info("latency_ms=%.0f fn=%s", (time.perf_counter() - t0) * 1000, fn.__name__)
+    return wrap
+```
+
+A structured log line per request is the whole monitoring stack for a
+capstone demo — grep-able, exportable, and enough to answer "was it slow
+for everyone or just you" after the fact.
+
 ## Exercises
 
 1. Deploy the cataloger to a free CPU Space; measure cold-start and

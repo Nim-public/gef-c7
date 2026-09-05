@@ -68,6 +68,36 @@ under one page — Week 10 reads it before building the agent.
 **Pass criterion:** schema committed; a `curl` example reproduces the
 documented response byte-for-byte (same fixture).
 
+## 7. The concurrency ladder
+
+**Task:** run the app at concurrency 1, 2, 4 (Gradio queue
+`default_concurrency_limit` or equivalent) and record p50/p95 per level —
+find where latency starts degrading and set production concurrency one
+step below.
+
+**Worked approach:** 10 requests per level via the API client; the
+degradation point is where p95 exceeds 1.5× the concurrency-1 p95. One
+number, one line in `reports/deployment.md`: "concurrency=N is safe".
+
+**Pass criterion:** the three-level table exists; the chosen production
+concurrency is justified by the measured knee.
+
+## 6. The one-app integration drill
+
+**Task:** combine all three apps into one Blocks app with tabs (Generate /
+Catalog / Deploy-status), one shared model-loading module, and a health
+tab that pings each component (CLIP, BLIP, diffusion, LanceDB) and shows
+latency.
+
+**Worked approach:** the shared loader is the payoff of the pure-function
+discipline — `models.py` with lazy singletons; the health tab is a loop of
+try/imports with timing. This is the app you actually deploy in file 04's
+exercise; build it once here.
+
+**Pass criterion:** one process, four tabs, health tab green with each
+component's load time; a killed component shows red without crashing the
+app.
+
 ## Pitfalls recap
 
 - UI types (`gr.Image`) leaking into handler signatures — pure functions +

@@ -61,6 +61,30 @@ Two retrieval modes fall out: coarse (parents only) for context windows,
 fine (crops included) for citations. Filter with `WHERE parent_id IS NULL`
 for the coarse pass.
 
+## 4. The staging swap — how production ingest actually runs
+
+`mode="overwrite"` on a live table is a demo-day outage waiting to happen.
+The staging pattern:
+
+```text
+1. ingest → units_staging (full rebuild, any schema)
+2. validate staging (W7 gate) + row-count check vs manifest
+3. smoke queries: 5 golden queries, compare top-3 vs live table
+4. swap: units → units_backup; units_staging → units
+5. keep backup one cycle; delete only after next successful ingest
+```
+
+```python
+def promote(db, golden: list[str]):
+    assert live_top3_matches(db, "units_staging", golden), "smoke failed"
+    db.table_names()  # sanity: staging exists
+    # rename dance via your client's table ops; backups beat in-place edits
+```
+
+The smoke step is what catches the silent schema drift that validation's
+shape checks miss (e.g., vectors now float64 — passes counts, breaks
+cosine precision).
+
 ## Exercises
 
 1. Add crop units for 5 chart images (quadrant splitting is fine); verify
@@ -68,7 +92,8 @@ for the coarse pass.
 2. Idempotency proof: run ingest twice; assert table row count and vector
    hashes identical.
 3. Gate drill: corrupt one hash post-ingest; run the validation gate; it
-   must fail *before* the table is served.
+   must fail *before* the table is served. Then run the staging swap with
+   the golden-query smoke test and confirm zero user-visible change.
 
 ## Pitfalls
 
@@ -76,8 +101,8 @@ for the coarse pass.
   verified against the source unit.
 - Re-encoding the whole corpus to change one captioner — caption_version
   enables targeted re-ingest; use it.
-- `mode="overwrite"` on the live table — stage to `units_staging`, validate,
-  then swap.
+- `mode="overwrite"` on the live table — stage to `units_staging`,
+  validate, then swap.
 
 ## Resources
 

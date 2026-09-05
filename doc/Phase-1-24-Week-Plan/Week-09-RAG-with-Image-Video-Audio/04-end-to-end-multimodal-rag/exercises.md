@@ -62,6 +62,33 @@ output *is* the architecture section's evidence.
 **Pass criterion:** fresh-clone run succeeds; every answer shows mode +
 citations; ledger lines sum to sane totals (<p95 × 1.5).
 
+## 7. The one-command acceptance run
+
+**Task:** wrap everything (ingest check → battery → eval tables → demo)
+into `scripts/accept.py` that exits nonzero on any failure — the single
+command a reviewer (or you, pre-demo) runs to certify the build.
+
+**Worked approach:** acceptance = the four gates in sequence with early
+exit and a final one-line verdict per gate. Runtime budget: <5 min;
+anything slower means caching, not skipping.
+
+**Pass criterion:** green run prints four PASS lines; any injected
+failure (bad hash, nprobe=1) makes the corresponding gate red.
+
+## 6. The kill-chain drill (the demo's real test)
+
+**Task:** run `demo.py` five times, killing a different component each
+time (LanceDB, BLIP, the LLM, the router's FTS index, the quota counter)
+— the demo must degrade with a visible mode flag every time, never crash.
+
+**Worked approach:** kill = point the component at a bad path (no monkey-
+patching); the degradation ladder from W8 + the flagged answers from file
+03 are the expected behavior. Log which component died and what the user
+saw — that log *is* the reliability section of your README.
+
+**Pass criterion:** 5/5 degradations handled; user-visible messages name
+the degraded mode; ledger still records timings.
+
 ## Pitfalls recap
 
 - Demo scripts that import UI modules — pure pipeline only; the app is a

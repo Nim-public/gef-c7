@@ -78,6 +78,26 @@ Your capstone (~1k–10k units) is firmly in "flat" territory — build the
 IVF-PQ *skills* here, use the flat path in the demo, and say so in the
 decision memo. Compression is a scale tool, not a rite of passage.
 
+## 5. Build-time cost, measured (the other half of the trade)
+
+| Config | Build time (10k × 384-d) | Notes |
+|---|---|---|
+| flat (no index) | 0 s | nothing to build |
+| IVF-PQ nlist=64, m=48 | ~40–90 s | k-means over sub-spaces dominates |
+| IVF-PQ nlist=256, m=96 | ~3–6 min | diminishing recall returns |
+
+```python
+import time
+t0 = time.perf_counter()
+table.create_index(metric="cosine", vector_column_name="text_vec",
+                   index_type="IVF_PQ", num_partitions=64, num_sub_vectors=48)
+print(f"built in {time.perf_counter()-t0:.0f}s")
+```
+
+The build cost is a one-time ingest-stage number — but it lands in the
+same ledger as everything else, and it decides whether index rebuilds
+(needed on any corpus or encoder change) are routine or feared.
+
 ## Exercises
 
 1. Verify the 8× compression claim with the §1 code; then compute it for
@@ -90,9 +110,12 @@ decision memo. Compression is a scale tool, not a rite of passage.
 
 ## Pitfalls
 
-- `num_sub_vectors` not dividing the dim — build error; 384/8=48 ✓, 512/8=64 ✓.
-- Sweeping nprobe on *trained* embeddings without fixed queries — recall numbers need a fixed query set and fixed ground truth.
-- Reading "IVF-PQ is faster" as unconditional — at your scale flat wins; measure at your n.
+- `num_sub_vectors` not dividing the dim — build error; 384/8=48 ✓,
+  512/8=64 ✓.
+- Sweeping nprobe on *trained* embeddings without fixed queries — recall
+  numbers need a fixed query set and fixed ground truth.
+- Reading "IVF-PQ is faster" as unconditional — at your scale flat wins;
+  measure at your n.
 
 ## Resources
 

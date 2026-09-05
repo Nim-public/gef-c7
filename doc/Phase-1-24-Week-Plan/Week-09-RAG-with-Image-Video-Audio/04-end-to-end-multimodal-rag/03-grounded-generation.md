@@ -69,6 +69,23 @@ Two modes in one function: P1 summary by default, P3 on route + quota —
 the router's decisions are visible in the response, which is what makes
 the eval possible (per-mode faithfulness, next file).
 
+## 5. The answer contract — what `answer()` promises
+
+Freezing the response schema now keeps Week 10's agent stable:
+
+```python
+# answer() promises, per response:
+#   answer:    str            — the text (never empty; "not found" is valid)
+#   mode:      "P1" | "P3"    — which generation path ran
+#   citations: list[dict]     — unit_id + score + path, ⊆ retrieved set
+#   audit:     dict | None    — ok/issues (P3 only)
+#   degraded:  bool           — True iff a fallback fired (quota, audit fail)
+```
+
+Five fields, one page of consumer documentation, zero surprises. The
+`degraded` flag is the one agents check first — it changes how much they
+trust the answer and whether they re-query.
+
 ## Exercises
 
 1. Implement `build_context` and verify token counts against the budget
@@ -76,7 +93,8 @@ the eval possible (per-mode faithfulness, next file).
 2. Break the audit: inject a phantom citation; confirm the response is
    flagged `[unverified]` and the issue is logged.
 3. Mode-mix drill: 5 P3 queries and 5 P1 queries through `answer`; check
-   the response `mode` field matches the router decision every time.
+   the response `mode` field matches the router decision every time, and
+   that every response validates against the frozen schema.
 
 ## Pitfalls
 

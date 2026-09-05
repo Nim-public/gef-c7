@@ -63,6 +63,30 @@ must return mode=P1 with flag) and empty-retrieval honesty ("not found"
 with no hallucinated units). Both are cheap tests that prevent demo-day
 improvisation.
 
+## 4. The battery in CI — safety as a build step
+
+The battery is only real if it runs on every push:
+
+```yaml
+# .github/workflows/safety.yml (excerpt)
+- run: py -m pytest tests/ -m "battery and not slow"
+```
+
+```python
+# pytest marker wiring:
+# @pytest.mark.battery def test_route_revenue(): ...
+# @pytest.mark.slow    def test_full_injection_suite(): ...
+```
+
+| Tier | Marker | Runtime | When |
+|---|---|---|---|
+| Route smoke | `battery` | <10 s | every push |
+| Full battery | `battery + slow` | <60 s | nightly + pre-demo |
+
+The tiering matters because the full battery includes poisoned-unit
+fixtures and quota simulations that need the indexed corpus — nightly is
+honest; every-push would slow the loop without adding coverage.
+
 ## Exercises
 
 1. Run the full battery against your pipeline; fix failures in order:

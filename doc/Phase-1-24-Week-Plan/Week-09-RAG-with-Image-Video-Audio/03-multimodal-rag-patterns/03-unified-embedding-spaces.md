@@ -60,6 +60,29 @@ for — run it, and let the numbers pick per query class (file 05's router).
 - **Zero-shot routing** (W8 file 02) — same space doubles as classifier.
 - **Multi-lingual/lightweight query paths** — no LLM in the loop.
 
+## 5. A worked calibration example
+
+Given one query retrieved against both indexes:
+
+```text
+text-index scores:  [0.71, 0.68, 0.66, 0.60, 0.58]   (within-text scale)
+image-index scores: [0.34, 0.31, 0.30, 0.28, 0.27]   (cross-modal scale)
+```
+
+Naive merge by absolute score returns all text hits — the scales, not the
+relevance, decided. Z-scoring per index:
+
+```text
+text z:  [1.37, 0.55, 0.14, -0.96, -1.09]     → rank: 0,1,2,3,4
+image z: [1.51, 0.70, 0.29, -0.11, -0.51]     → rank: 0,1,2,3,4
+```
+
+With ranks 0–4 per list, RRF (k=60) gives each list's first hit 1/60 ≈
+0.0167 — and a unit hitting rank 0 in *both* lists scores 0.033, surfacing
+cross-index agreement without any calibration constant. This is why the
+fusion file prescribed rank fusion, and why the router merges at the rank
+level, never the score level.
+
 ## Exercises
 
 1. Run P2 on your 20-query set vs the P1 merged-index from file 02; report
@@ -72,11 +95,11 @@ for — run it, and let the numbers pick per query class (file 05's router).
 ## Pitfalls
 
 - Mixing P2 scores into a P1 pipeline without calibration — the modality
-  gap makes one of the two scores systematically larger; rank fusion fixes.
+  gap makes one scale systematically larger; rank fusion fixes it.
 - Judging P2 by its best queries — pattern selection needs the *spread*
-  across your query classes, not the max.
+  across query classes, not the max.
 - Re-encoding images after a CLIP upgrade without a version bump — stale
-  space, silent degradation; settings-version discipline applies.
+  space, silent degradation; the settings-version discipline applies.
 
 ## Resources
 

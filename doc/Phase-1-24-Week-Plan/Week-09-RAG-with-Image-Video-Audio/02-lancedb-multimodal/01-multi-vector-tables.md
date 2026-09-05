@@ -78,6 +78,28 @@ restrictive filters); `postfilter` is faster for loose filters but can
 return fewer than `limit` rows. Choose per query — the flag is a semantics
 decision, not a tuning knob.
 
+## 5. Schema evolution — the change you will actually make
+
+Inevitable change: adding a third vector column (e.g., `audio_vec` in
+Week 10). LanceDB tables are versioned artifacts:
+
+```python
+# add a column: rewrite via staging (no in-place ALTER for vector columns)
+old = table.to_pandas()
+old["audio_vec"] = None                      # backfill later, per unit
+db["units_v2"].add(old)
+# validate v2, then swap names; keep v1 until the swap is verified
+```
+
+| Change | Mechanism |
+|---|---|
+| add nullable column | staging table + swap (above) |
+| change vector dim | new table + full re-encode (version bump) |
+| add metadata field | staging + backfill from manifest |
+
+The version-in-filename discipline from the alignment pipeline applies:
+`units-v3` in the table name beats a mysterious silent schema.
+
 ## Exercises
 
 1. Migrate the cataloger's matrix+SQLite to one LanceDB table; verify the

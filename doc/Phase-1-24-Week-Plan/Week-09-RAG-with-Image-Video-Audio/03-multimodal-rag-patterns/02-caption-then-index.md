@@ -50,6 +50,28 @@ When it is not: chart-heavy corpora without OCR (numbers lost), or
 fine-grained visual queries ("the frame where the cursor is at the
 top-right") — captioning compresses exactly what those queries need.
 
+## 4. The caption QA harness — catching failure mode #2 automatically
+
+Hallucinated detail is the failure mode hand-checks miss at scale. A cheap
+automated check: re-embed the caption and the image, and flag pairs whose
+cross-modal similarity is anomalously low *relative to the corpus*:
+
+```python
+import numpy as np
+
+def caption_qa(img_emb: np.ndarray, cap_emb: np.ndarray,
+               corpus_scores: np.ndarray) -> bool:
+    cos = float(img_emb @ cap_emb / (np.linalg.norm(img_emb) *
+                                     np.linalg.norm(cap_emb)))
+    mu, sd = corpus_scores.mean(), corpus_scores.std() + 1e-9
+    return cos > mu - 3 * sd          # flag only true outliers
+```
+
+Run it at caption time; flagged units go to the quarantine list with
+`notes += " |caption-qa:low-sim"` — the Week-07 flag discipline, applied
+to generated text. Expect ~1–3% flag rate on healthy corpora; 10%+ means
+the caption model is wrong for your domain, not that your threshold is.
+
 ## Exercises
 
 1. Caption 30 of your images; merge with OCR where present; hand-check 10

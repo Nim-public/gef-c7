@@ -56,16 +56,52 @@ ledger (timing), rendering all three tables with a header (corpus
 version, date, machine). Committed reports are derived data — regenerate,
 never hand-edit.
 
+## 5. Judge calibration — before the tables mean anything
+
+LLM-as-judge scores drift with prompt wording. Calibrate once per eval
+season:
+
+```text
+1. Hand-label 10 answers as faithful / not-faithful (your labels = truth).
+2. Run the judge; compute agreement.
+3. Agreement ≥ 0.8 → trust the table. Below → fix the judge prompt,
+   not the threshold.
+```
+
+| Judge prompt style | Agreement (typical) | Failure mode |
+|---|---|---|
+| "is this answer good?" | 0.5–0.6 | vibes |
+| "does every claim appear in context? cite or fail" | 0.8–0.9 | misses paraphrase |
+| claim-split + per-claim check (your splitter) | 0.85+ | splitter quality |
+
+The calibrated judge is what makes Table 2's numbers comparable across
+weeks — without step 3, faithfulness trends measure your prompt edits,
+not your system.
+
+## 6. The tables' consumer — who reads what
+
+| Table | Primary reader | Decision it feeds |
+|---|---|---|
+| retrieval per class | you | next week's first task (weakest class) |
+| answer metrics | evaluators | faithfulness bar (capstone grade) |
+| latency ledger | Week-10 agent | tool-call budget |
+
+Design rule: each table exists for *someone's decision*. A table with no
+named consumer is reporting theater — cut it or find its reader. All
+three here earn their place: one drives your roadmap, one drives the
+grade, one drives the agent design.
+
 ## Exercises
 
 1. Produce the three tables on your corpus; check class-level retrieval
    against the router's gold labels — the weakest class names your next
    week's first task.
-2. Metric audit: hand-verify faithfulness on 5 answers; if the judge's
-   score disagrees with yours twice, tune the claim splitter before
-   trusting the table.
+2. Metric audit: hand-verify faithfulness on 5 answers; if the judge
+   disagrees twice, run the calibration protocol above before trusting
+   the table.
 3. Regression fixture: commit the three tables as the baseline; wire a CI
-   job that re-runs `eval_multimodal.py` and flags regressions > thresholds.
+   job that re-runs `eval_multimodal.py` and flags regressions > thresholds
+   — and note each table's consumer in its header.
 
 ## Pitfalls
 

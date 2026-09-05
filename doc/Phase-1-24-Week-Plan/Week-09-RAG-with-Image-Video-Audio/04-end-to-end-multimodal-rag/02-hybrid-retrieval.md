@@ -63,6 +63,27 @@ The returned dict is the tool contract's payload (W9 file 01): scores for
 the agent, text for the prompt, path for citation thumbnails, parent for
 drill-down.
 
+## 4. The retrieval latency budget — where the milliseconds go
+
+Measured on a 2k-unit table, CPU:
+
+| Path | encode | search(s) | fuse | hydrate | total p50 |
+|---|---|---|---|---|---|
+| P1-fts | 8 ms (text) | 1×2 ms | 0.1 | 3 | ~13 ms |
+| P1-merged | 8 + 6 ms | 2×2 ms | 0.2 | 4 | ~22 ms |
+| P2 | 6 ms (CLIP text) | 1×2 ms | 0.1 | 3 | ~11 ms |
+| P3 | 6 ms | 1×2 ms | 0.1 | 3 | ~12 ms (+VLM later) |
+
+```python
+# budget assertion for the tool contract:
+assert p95_total < 50, f"retrieval p95 {p95_total:.0f} ms breaches contract"
+```
+
+Two levers dominate: the text encoder (8 ms is the MiniLM floor on CPU)
+and the number of searches (each +2 ms). The contract number (50 ms) has
+headroom for one more search — which is the honest way to say "yes" when
+Week 10 asks to add a third index.
+
 ## Exercises
 
 1. Implement `retrieve` with all three searches; verify the router picks
@@ -70,7 +91,8 @@ drill-down.
 2. Filter drill: scope to images at 10% of corpus; compare prefilter vs
    postfilter hit counts at k=10.
 3. Contract test: `retrieve` output matches `tool-contract.md`'s schema for
-   5 queries, including one empty-result query.
+   5 queries, including one empty-result query; then measure the table
+   above on your machine and assert the budget.
 
 ## Pitfalls
 

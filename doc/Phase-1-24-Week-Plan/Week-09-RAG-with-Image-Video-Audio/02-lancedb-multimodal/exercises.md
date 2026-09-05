@@ -70,6 +70,34 @@ Week 08's memo.
 **Pass criterion:** memo row cites `reports/lancedb-sweep.md` and the
 migration test; no uncited claims.
 
+## 7. The backup-and-restore drill
+
+**Task:** export the table (all rows) to a parquet snapshot; drop and
+recreate it from the snapshot; verify identical search results on 5
+golden queries. Record snapshot size and restore time.
+
+**Worked approach:** the snapshot is your migration rollback — the drill
+proves it restores to byte-equal behavior, not just row counts. Snapshot
+naming follows the version discipline (`units-v3-snapshot.parquet`).
+
+**Pass criterion:** 5/5 golden queries identical post-restore; snapshot
+size/time in `reports/lancedb-sweep.md`.
+
+## 6. The migration's last mile — delete the old path
+
+**Task:** once the migration proof passes, *delete* the matrix+SQLite
+brute-force path from the cataloger (git history keeps it) and re-point
+the app at LanceDB. Run the full app test suite; the deletion is only
+done when the suite is green without the old code.
+
+**Worked approach:** keep a `LegacyStore` adapter interface if you need a
+fallback — but the default path must be the new store, with the old one
+either gone or explicitly behind a flag. Half-migrated codebases fail at
+demo time in the least debuggable ways.
+
+**Pass criterion:** `grep -r "matrix" scripts/` shows no active
+brute-force search path; suite green; README updated.
+
 ## Pitfalls recap
 
 - Migrations verified by "it ran" instead of identical-rank checks — equality is the proof, counts are not.

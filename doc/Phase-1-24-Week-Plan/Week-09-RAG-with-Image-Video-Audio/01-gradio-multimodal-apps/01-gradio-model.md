@@ -93,11 +93,33 @@ the pattern above is the conceptual shape.)
    requests with `curl`, record the failure mode; then re-enable and
    compare.
 
+## 5. Debugging handlers — the four usual suspects
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| UI updates but value "resets" | handler returned the *same* mutable object | return new containers (see §3) |
+| Works locally, hangs under 2 tabs | no `queue()`; second request blocks | `demo.queue()` |
+| `TypeError` on output | handler returned a type the output component cannot render | match types per component (`type="pil"`) |
+| Model reloads per request | load inside the handler | load once at module import |
+
+```python
+# quick handler probe without the UI:
+print(caption_image("data/processed/images-224/fig3.jpg"))   # pure function
+demo.launch()                                                # then the UI
+```
+
+Handlers are pure functions by design (file 04's API rule) — every handler
+is testable without Gradio. A two-minute probe of the function beats twenty
+UI refreshes, and the probe doubles as your pytest body.
+
 ## Pitfalls
 
-- Globals for models are fine; globals for *user state* are not — models once at import, state via `gr.State`.
-- `launch(share=True)` on a work machine — a public URL to your corpus; treat as deployment (file 04).
-- Heavy work in `__main__` before `launch()` delays app boot; lazy-load on first request if boot time matters.
+- Globals for models are fine; globals for *user state* are not — models
+  once at import, state via `gr.State`.
+- `launch(share=True)` on a work machine — a public URL to your corpus;
+  treat as deployment (file 04).
+- Heavy work in `__main__` before `launch()` delays app boot; lazy-load on
+  first request if boot time matters.
 
 ## Resources
 

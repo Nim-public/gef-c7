@@ -67,6 +67,35 @@ untouched by hand.
 week's real deliverable — it is the safety net the agent week will hang
 its tools on.
 
+## 6. The handoff page for Week 10
+
+**Task:** write `doc/capstone/agent-handoff.md` (one page): the tool
+contract summary, the routing table, the quota, the degradation ladder,
+and the three eval tables' headline numbers — everything a Week-10 agent
+builder needs without opening this week's folders.
+
+**Worked approach:** every line cites its source artifact; the page is
+generated where possible (tables) and hand-written only for the contract
+summary. The Week-10 session starts by reading this page — make it the
+single entry point.
+
+**Pass criterion:** a teammate answers "what tools exist, what do they
+return, when do they degrade?" from the page alone.
+
+## 7. The week's retrospective note
+
+**Task:** append to `doc/capstone/retrospective.md`: three things the
+week's numbers changed about your plan (e.g., sidecar work prioritized,
+quota lowered, store demoted), each citing the artifact that forced the
+change.
+
+**Worked approach:** the retrospective is the memo's living journal —
+numbers in, plan changes out. Three entries with citations beats a page
+of impressions.
+
+**Pass criterion:** three entries, each with a `reports/` citation and a
+one-line plan consequence.
+
 ## Pitfalls recap
 
 - Certification hand-written — regenerate or it lies within a week.
