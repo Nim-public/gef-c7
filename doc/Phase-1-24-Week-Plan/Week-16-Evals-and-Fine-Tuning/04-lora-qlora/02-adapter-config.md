@@ -60,6 +60,20 @@ The manifest is the adapter's identity — the same pin discipline as
 every artifact. The trainable-percentage row is the headline: 0.62% of
 the model, trained to change the behavior that mattered.
 
+## 5. The config's pitfall battery (the sweep's guard)
+
+| Pitfall | Symptom | Guard |
+|---|---|---|
+| alpha not scaled with r | effective update shrinks | alpha = 2r convention |
+| dropout 0 on small data | overfitting (W16-03) | 0.05 default |
+| wrong target names | zero trainable params | `print_trainable_parameters` |
+| r too high for the data | memorization (W16-03 file 04) | the paraphrase probe |
+
+The pitfall battery is the config's own test suite — each row's guard
+is a §1–§2 mechanism or a W16-03 discipline. The zero-trainable-params
+symptom is the most common first-run failure: a target-name typo
+silently trains nothing.
+
 ## Exercises
 
 1. Configure the adapter; count trainable params vs total; verify the
@@ -67,3 +81,5 @@ the model, trained to change the behavior that mattered.
 2. Targets drill: attention-only vs attention+MLP on the citation
    battery; the behavioral difference is the targets' effect, measured.
 3. Pin drill: write the manifest; the config committed with the run.
+4. Battery drill: run the §5 pitfalls as tests — zero-params detection,
+   dropout assertion, alpha/r assertion.

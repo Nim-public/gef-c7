@@ -61,6 +61,34 @@ This is LoRA's stability property: no catastrophic early drift.
 raising alpha *shrinks* the effective update. The convention
 `alpha = 2r` keeps the scale constant while you tune capacity.
 
+## 5. Which projections to target (the capacity allocation)
+
+| Module set | Trainable (7B, r=16) | Learns |
+|---|---|---|
+| attention only (q,k,v,o) | ~13M | style, format, tone |
+| + MLP (gate/up/down) | ~40M | domain behavior, vocabulary |
+| + embeddings/lm_head | huge | rarely worth it |
+
+The target table connects the math to the config decision (file 02):
+the LoRA delta's *placement* decides what the adapter can learn. The
+0.62% headline (40M of 6.7B) comes from attention+MLP — the standard
+behavior fine-tune.
+
+## 6. The multi-adapter trick (one base, many behaviors)
+
+```python
+# adapters share the frozen base — hot-swap per request:
+# base (6.7B, fp16) = 14 GB
+# adapter A (citations style) = 80 MB
+# adapter B (terse voice)     = 80 MB
+# adapter C (refusal-heavy)   = 80 MB
+```
+
+The multi-adapter trick is LoRA's deployment superpower: one frozen
+base serves N behaviors by swapping 80 MB adapters — the W11
+multi-tenant pattern made trivial. The parity checks (file 04) verify
+each swap.
+
 ## Exercises
 
 1. Compute the parameter counts for r ∈ {8, 16, 32, 64} on your target
@@ -69,3 +97,5 @@ raising alpha *shrinks* the effective update. The convention
    LoRA model's outputs must equal the base model's exactly.
 3. Alpha drill: fix r=16, sweep alpha ∈ {8, 16, 32, 64}; the effective
    scale's effect on the eval curve is the knob's lesson.
+4. Target-table drill: fill §5's counts for your model; the allocation
+   decision (attention-only vs +MLP) is data for file 02.

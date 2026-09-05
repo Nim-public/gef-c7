@@ -54,6 +54,21 @@ The merged model must pass the *same* eval battery as the adapter —
 the merge is not a behavior change, and the battery is the proof. The
 W16-03 diagnosis pin's numbers re-verify post-merge.
 
+## 5. The parity pin note (the serving decision's record)
+
+```markdown
+# Serving parity (W16)
+- adapter path: PeftModel, base + r=16 adapters, hot-swap capable
+- merged path: W'=W+B·A folded, fp16, byte-identical outputs verified
+- eval parity: 15/15 both modes, judge 6.9 both
+- dtype: fp16 adapter / fp16 merged (bf16 differs slightly — recorded)
+- decision: merged for the capstone demo; adapters for multi-tenant
+```
+
+The pin note is the serving decision's record — both modes verified
+paritic, the dtype difference documented, and the deployment choice
+made. The W11 pin discipline applied to the serving layer's last mile.
+
 ## Exercises
 
 1. Merge the adapter; run the parity test on 20 prompts; token-identical
@@ -64,3 +79,4 @@ W16-03 diagnosis pin's numbers re-verify post-merge.
    requests; verify no cross-contamination of behaviors.
 4. Dtype drill: merge in fp16 and load in fp16 vs load in bf16; the
    outputs differ slightly — dtype is part of the serving pin.
+5. Pin drill: write the note; the parity test command recorded.

@@ -70,6 +70,21 @@ trainer.train()
 The run is the W16-03 loop with a quantized base — the eval-during-
 training, best-pick, and diagnosis disciplines all apply unchanged.
 
+## 5. The QLoRA pitfall battery (the single-GPU guard)
+
+| Pitfall | Symptom | Guard |
+|---|---|---|
+| base weights updated by accident | frozen-params assert fails | gradient check |
+| prepare_model skipped | NaN losses or frozen norms | the cast step |
+| bf16 compute on fp16 checkpoint | dtype mismatch errors | consistent compute dtype |
+| gradient checkpointing off | OOM at accumulation | the memory table's assumption |
+| eval during training OOMs | crash at step 25 | eval batch size 1–2 |
+
+The pitfall battery is the QLoRA run's own suite — each row's guard is
+a §1–§3 mechanism. The gradient check (frozen base) is the
+reinforcement-learning-of-the-base-weights failure; the assert is one
+line.
+
 ## Exercises
 
 1. Load the base in NF4; verify the memory footprint against §1's
@@ -78,3 +93,5 @@ training, best-pick, and diagnosis disciplines all apply unchanged.
    NF4's cost — usually within noise for behavior fine-tunes.
 3. Double-quant drill: toggle `use_double_quant`; measure the memory
    delta; the ~0.4 bits/param saving is the flag's value.
+4. Battery drill: run the §5 pitfalls as tests — the gradient check,
+   the dtype assertion, the OOM guard.
