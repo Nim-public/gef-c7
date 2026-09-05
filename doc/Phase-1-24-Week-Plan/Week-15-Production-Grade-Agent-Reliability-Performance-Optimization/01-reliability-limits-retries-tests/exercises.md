@@ -79,6 +79,18 @@ caught; CI slots wired.
 (4-pointer) is the reliability week's foundation — every rail is a
 production promise.
 
+## 7. The reliability pin note
+
+**Task:** extend `reports/sdk-versions.md` with the reliability stack:
+tenacity version, budget config version, breaker thresholds, and the
+pyramid's CI slots — one block.
+
+**Worked approach:** the reliability layer is policy-heavy — the pin
+note records which policy versions the drills verified.
+
+**Pass criterion:** note committed; the drill commands green as
+recorded.
+
 ## Pitfalls recap
 
 - A turn cap as the only budget — one giant model response blows tokens,

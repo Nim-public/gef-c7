@@ -96,6 +96,22 @@ the *budget* (failing fast instead of retrying for the full budget).
 Per-dependency breakers: the model, the vector DB, the warehouse each
 get one.
 
+## 5. The retry decision table (what retries, what doesn't)
+
+| Failure | Retry? | Why |
+|---|---|---|
+| 429 rate limit | yes, with backoff | transient by design |
+| timeout | yes, once | may have been a blip |
+| connection reset | yes | transient |
+| schema/validation error | no | the input is the problem |
+| 401/403 auth | no | retrying won't fix credentials |
+| tool contract error | no | the hint teaches instead |
+
+The decision table is the policy's content — tenacity's
+`retry_if_exception_type` encodes it, and the table is its
+documentation. The two-column rule: transient → retry with backoff;
+everything else → fail fast into the user contract (file 03).
+
 ## Exercises
 
 1. Implement the policy; fault-inject 3 transient failures; verify
@@ -105,3 +121,5 @@ get one.
    attempt.
 3. Breaker drill: fail the dependency 5×; the breaker opens; subsequent
    calls fail fast; after cooldown, one probe.
+4. Table drill: for each §5 row, name the code path that implements the
+   decision — the table is the policy, the code is its enforcement.

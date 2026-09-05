@@ -69,6 +69,20 @@ pre-demo: [tier-1..3 + acceptance]
 | nightly failures block deploys | tier 3 is the deploy gate |
 | soak failures open tickets | weekly; the drift chart drives |
 
+## 5. The pyramid's cost table (the CI budget)
+
+| Tier | Runs/week | Machine time | $/week (API) |
+|---|---|---|---|
+| 1. unit | ~2000 | ~70 min CI | 0 |
+| 2. contract | ~200 | ~35 min CI | 0 |
+| 3. integration | ~30 | ~45 min | ~$5 |
+| 4. soak | 1 | ~8 h | ~$20 |
+
+The cost table is the pyramid's own budget — the test suite's spend is
+part of the program's ledger. Tier 3/4 API costs are the price of the
+nightly drift detection and the weekly trend chart; both pay for
+themselves in one prevented demo failure.
+
 ## Exercises
 
 1. Organize the existing suites into the pyramid; verify tier runtimes;
@@ -79,3 +93,5 @@ pre-demo: [tier-1..3 + acceptance]
    trend chart (RSS, cost, quality) is the deliverable.
 4. Pyramid drill: introduce one bug per tier (logic, template, wiring,
    drift config); each tier must catch exactly its own bug.
+5. Cost drill: fill §5 with your actual counts; the CI minutes and API
+   spend land in the program ledger.

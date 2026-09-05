@@ -80,6 +80,19 @@ The battery asserts: no internals leak, the message is actionable, and
 the reference id appears on last-resort failures. The leak-check list
 grows with every new internal surface.
 
+## 5. The contract's tone guide (the messages' style rules)
+
+| Rule | Bad | Good |
+|---|---|---|
+| name the class, not the cause-chain | "OpenAI API returned 429 after 3 retries" | "The service is busy right now." |
+| one next action | "you could try A, B, or C" | "Please retry in a minute." |
+| no blame | "your request was invalid" | "I couldn't produce a properly formatted answer." |
+| no over-apology | "We deeply apologize for this inconvenience" | "Something went wrong on our side." |
+
+The tone guide is the map's style contract — the battery asserts
+*content* (no leaks, next action present); the tone guide asserts
+*voice*. Both live in the same artifact, versioned with the map.
+
 ## Exercises
 
 1. Implement the handler map; wire it at the API boundary; run the
@@ -89,3 +102,5 @@ grows with every new internal surface.
    the boundary.
 3. Reference drill: trigger the last-resort path; paste the reference id
    into the trace lookup; the exact run must be findable.
+4. Tone drill: review all messages against §5's rules; rewrite the worst
+   offender; the battery re-runs green.

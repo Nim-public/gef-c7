@@ -86,6 +86,32 @@ Every run's row lands in the trajectory store — the budget table (file
 production reliability metrics: a spend rail tripping 5% of the time is
 a cost-model alarm.
 
+## 5. The budget pin (the limits as configuration)
+
+```python
+# data/manifests/budgets.json — committed
+{
+  "version": 2,
+  "defaults": {"max_turns": 6, "max_tokens": 50000,
+                "max_seconds": 120, "max_spend_usd": 0.50},
+  "per_component": {
+    "analytics": {"max_tokens": 60000, "max_spend_usd": 0.80},
+    "voice":     {"max_seconds": 8}
+  }
+}
+```
+
+| Rule | Why |
+|---|---|
+| budgets are committed config | limits are policy, not code |
+| per-component overrides | voice's time budget ≠ analytics' token budget |
+| version stamped in trajectories | limit changes are attributable |
+
+The budget pin is the settings-version discipline applied to limits —
+the same artifact shape as `preproc-settings.json` (W7) and the fusion
+policies (W12). A limit change without a version bump is an
+unattributable behavior change.
+
 ## Exercises
 
 1. Implement `RunBudget`; stress each rail (tiny limits); all four trip
@@ -94,3 +120,5 @@ a cost-model alarm.
    findings render in the degraded answer.
 3. Ledger drill: 20 runs under budget; the trip-rate table; no rail
    above 5% on healthy tasks.
+4. Pin drill: write `budgets.json`; move the limits from code constants;
+   bump the version once and verify the trajectories split cleanly.
