@@ -99,6 +99,8 @@ recorded.
    honestly ("not in corpus; web disabled").
 4. Pin drill: extend the note; confirm the battery cases match the W12
    set verbatim (the port's parity, router edition).
+5. Drift drill: wire the routing battery into the nightly report with a
+   −0.05 drift threshold; a planted degradation turns it red.
 
 ## Pitfalls
 
