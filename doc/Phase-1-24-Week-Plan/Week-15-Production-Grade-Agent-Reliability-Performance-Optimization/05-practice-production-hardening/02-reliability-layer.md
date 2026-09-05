@@ -74,6 +74,22 @@ produces a user-visible behavior AND an internal ledger row. The suite
 runs in CI (tier 2, canned faults) and live (tier 3, real faults)
 before any production claim.
 
+## 7. The chaos-to-contract flow (the drill's full output)
+
+```text
+fault injected
+  → tenacity retries (bounded)
+  → breaker opens if persistent
+  → budget rails trip if prolonged
+  → handler map produces the user message
+  → trajectory row records: fault, rail/breaker, message, run_id
+```
+
+The flow is one fault's journey through the reliability stack — every
+stage from the drills appears in the user-visible behavior and the
+ledger row. The W10 contract battery (file 01-03) asserts the last two
+stages; the fault-injection harness asserts the first three.
+
 ## Exercises
 
 1. Deploy the layer per the checklist; run the four chaos drills; every
@@ -86,3 +102,5 @@ before any production claim.
    wire all five into CI as the reliability suite.
 5. Pin drill: write the reliability manifest (budgets.json version,
    breaker thresholds, chaos suite) into `reports/sdk-versions.md`.
+6. Flow drill: trace one fault's journey through §7's flow; every stage
+   visible in the drill output; the flow diagram matches reality.
