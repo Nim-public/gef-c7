@@ -1,0 +1,61 @@
+# Slice Analysis — Per Route/Doc-Type Tables
+
+**What you'll learn:** slice the eval by route, doc type, and query
+class — aggregates hide the weak slice, and the weak slice is the
+roadmap.
+
+## 1. The slice table
+
+| Slice | n | faith. | relev. | ctx prec. | ctx rec. | Leaf |
+|---|---|---|---|---|---|---|
+| route=kb, doc=chart | 6 | 0.95 | 0.90 | 0.88 | 0.60 | RETRIEVAL |
+| route=kb, doc=text | 5 | 0.92 | 0.88 | 0.90 | 0.85 | ok |
+| route=data, table=orders | 4 | 0.98 | 0.85 | — | — | ok |
+
+```python
+def slice_table(df: pd.DataFrame, by: list[str]) -> pd.DataFrame:
+    return (df.groupby(by)
+              .agg(n=("case_id", "count"), faith=("faithfulness", "mean"),
+                   rec=("context_recall", "mean"))
+              .reset_index())
+```
+
+The slice dimensions come from your manifest: route (the W9/W12 router),
+doc type (chart/text/scan), modality, class. The weakest slice's leaf
+is the next fix — the same reading discipline as the class-split
+scorecards (W13 file 04-02).
+
+## 2. The slice selection (what to slice by)
+
+| Slice | Answers | Source |
+|---|---|---|
+| route | is each pattern healthy? | the router's decision |
+| doc type | which corpus material fails? | the manifest's `kind` |
+| query class | which user shapes fail? | the eval set's class column |
+| model | did the framework/model change anything? | the pin notes |
+
+Slice by *at most two* dimensions per table — three-way slices produce
+cells too small to read. The manifest-driven slices are free (the data
+exists); invented slices need justification.
+
+## 3. The slice-to-action mapping
+
+| Weak slice | Typical leaf | Action |
+|---|---|---|
+| charts (low recall) | retrieval | OCR merge (W9) or crops (W13) |
+| scans (low precision) | ranking | rerank or page-level units |
+| exact-term (low recall) | retrieval | FTS-lean routing (W9-05) |
+| ambiguous (low relevancy) | understanding | decomposition (W14-04-02) |
+
+The mapping is the routing table (W12-05) joined with the diagnosis
+tree (file 01) — each weak slice names its fix's week and file.
+
+## Exercises
+
+1. Build the two-dimensional slice table (route × doc type) over your
+   eval runs; mark the weakest slice per metric.
+2. Fix-drill: apply the weakest slice's mapped action; re-run the eval;
+   the slice must improve — or the mapping was wrong, and the table gets
+   corrected.
+3. Slice-drill: add one new slice dimension (e.g., answer length);
+   check whether it reveals a hidden weak cell.
