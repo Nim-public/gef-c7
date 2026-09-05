@@ -91,8 +91,10 @@ its every number is regenerable by the comparison script.
 3. Synthesis-drill: with identical retrieved nodes, compare both
    synthesizers' faithfulness — separating retrieval from generation
    quality.
-4. Report drill: render §5; the header carries the protocol; the verdict
+4. Report drill: render §4; the header carries the protocol; the verdict
    cites the table.
+5. Delta-drill: attribute the largest Δ — chunking, embedder, or
+   ranking — with an isolated experiment per hypothesis.
 
 ## Pitfalls
 
