@@ -59,6 +59,23 @@ The rehearsal is the chaos drills (W15 file 02) run in demo sequence —
 every rehearsed failure has a fallback that was *executed* before, not
 imagined.
 
+## 5. The demo-day runbook (the minute-by-minute plan)
+
+```text
+0:00 welcome + the four-pillar architecture slide (one page)
+1:00 RAG demo (seeded query, citations shown)
+3:00 SQL demo (query shown, number verified)
+5:00 VOICE demo (the cascade + latency overlay)
+7:00 HITL demo (the gate, approval, resume)
+9:00 the failure drill (one component killed, fallback shown)
+10:00 the metrics page (the four pillars' table)
+11:00 Q&A (the acceptance command runs live if asked)
+```
+
+The runbook is the demo's minute-by-minute plan — every segment timed,
+every fallback placed, the Q&A prepared. The acceptance command is the
+Q&A's ace: if asked "does it really work", the command runs live.
+
 ## Exercises
 
 1. Build the demo script; run it end-to-end twice; byte-identical
@@ -67,3 +84,5 @@ imagined.
    numbers match the ledger's p50s.
 3. Fallback rehearsal: run the five failure drills in demo order; the
    fallbacks fire visibly; the committed transcript covers them.
+4. Runbook drill: rehearse the §5 plan with a timer; the segments fit;
+   the Q&A's acceptance command rehearsed.

@@ -44,6 +44,19 @@ planning as every decision memo in the program.
 [ ] the roadmap is committed and reviewed at each sprint's end
 ```
 
+## 5. The roadmap's risk register (what could derail each sprint)
+
+| Sprint | Top risk | Mitigation |
+|---|---|---|
+| W17–18 orchestration | scope creep into new frameworks | the W12 verdict holds; extend, don't migrate |
+| W19–20 red-team | escape rates don't fall | budget the fixes; report honestly |
+| W21–22 deployment | hosting costs exceed the budget | the W15 cost model gates the scale |
+| W23–24 polish | quality regressions from late changes | the freeze process gates changes |
+
+The risk register is the roadmap's honesty — each sprint's most likely
+derailment named with its mitigation. The register is reviewed at each
+sprint's end; risks that fired get post-mortems.
+
 ## Exercises
 
 1. Fill the sprint table with your themes, exit artifacts, and gates;
@@ -53,3 +66,5 @@ planning as every decision memo in the program.
    one.
 3. Review drill: at the first sprint's end, review the exit artifact
    against its gate; the review's verdict is recorded in the roadmap.
+4. Risk drill: add one risk per sprint from your own history; the
+   mitigation column cites the program's artifacts.

@@ -50,6 +50,27 @@ The freeze does not stop work — it makes changes *expensive enough to
 be deliberate*. Every post-freeze change cites its trigger and re-runs
 the affected gates.
 
+## 4. The freeze report (the committed artifact)
+
+```markdown
+# Architecture freeze — [date] — commit [hash]
+
+## Checklist: 10/10 rows verified by execution
+[table from §1 with checkmarks and evidence commands]
+
+## Side conditions: 5/5 green
+[the §2 table with results]
+
+## Change process: active (the §3 table governs from here)
+
+Frozen by: [name]. Revisits require: a fired trigger, a memo update,
+and gate re-runs.
+```
+
+The freeze report is the freeze's receipt — committed, dated, hash-
+pinned. It is the document that says "this architecture is the release
+candidate"; every later change cites it and its process.
+
 ## Exercises
 
 1. Run the freeze checklist end-to-end; every row verified by execution;
@@ -59,3 +80,5 @@ the affected gates.
 3. Change-process rehearsal: make one post-freeze change through the
    process (trigger cited, gates re-run) — the freeze's maintenance,
    rehearsed.
+4. Report drill: render §4 from the checklist results; the hash pinned;
+   the freeze receipt is the capstone's milestone artifact.

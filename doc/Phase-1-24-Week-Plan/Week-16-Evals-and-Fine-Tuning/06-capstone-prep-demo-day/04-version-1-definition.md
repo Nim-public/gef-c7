@@ -45,6 +45,26 @@ The tag is a git commit with the five bars' evidence linked — the same
 release discipline as any software project, earned by 16 weeks of
 gates.
 
+## 5. The 1.0 scorecard (the five bars, measured)
+
+```markdown
+# Version 1.0 scorecard — [date]
+
+| bar | threshold | measured | evidence |
+|---|---|---|---|
+| quality | ≥85% numeric, judge ≥7 | 87%, 7.1 | eval runs |
+| reliability | ≥90% success, rails <5% | 93%, 2% | reliability ledger |
+| cost | within budget table | 0.014/task | optimization ledger |
+| safety | <5% escapes, 0 leaks | 3%, 0 | red-team rounds |
+| documentation | freeze 100%, pins current | 10/10, current | freeze report |
+
+verdict: 1.0 ✓ — tag [hash]
+```
+
+The scorecard is the 1.0 definition's measurement — five bars, five
+thresholds, five evidence links. It is the release's receipt; the tag
+is earned, not declared.
+
 ## Exercises
 
 1. Measure all five bars; produce the 1.0 scorecard; the gaps named with
@@ -54,3 +74,6 @@ gates.
 3. Tag rehearsal: simulate the 1.0 process end-to-end on a scratch
    branch; the release notes generated; the process rehearsed before
    the real tag.
+4. Scorecard drill: render §5 from the gates' outputs; the measured
+   values must match the gate logs — the scorecard is derived, not
+   hand-written.

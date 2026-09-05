@@ -67,6 +67,20 @@ green.
 and the 1.0 definition (4-pointer) are the twin deliverables — the
 architecture frozen and "done" defined.
 
+## 6. The core-24-weeks retrospective (the program's closing note)
+
+**Task:** write `reports/core-retrospective.md`: the 24 weeks compressed
+into the five bars' evidence chain — what was built, what was measured,
+what was trusted, and what was frozen. One page, every claim cited.
+
+**Worked approach:** the retrospective is the program's summary — the
+five bars (W16 file 04) as the outline, each bar's evidence chain cited
+from its weeks. The gate inventory is the closing image: everything
+still running.
+
+**Pass criterion:** the page answers "what does this system do, how is
+it verified, and what is frozen?" in one read, every claim cited.
+
 ## Pitfalls recap
 
 - Freeze by reading instead of executing — the 1:1 check is the freeze's
