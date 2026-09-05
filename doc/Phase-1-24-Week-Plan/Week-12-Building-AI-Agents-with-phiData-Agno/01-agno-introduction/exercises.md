@@ -69,7 +69,8 @@ difference is an embedder or chunking mismatch; name it.
 | Version pin note updated | reports/sdk-versions.md | 2 |
 
 **Pass bar:** 11/14 to proceed to file 02 (knowledge and databases). The
-port (4-pointer) is the week's foundation — same contract, new skin.
+port (4-pointer) is the week's foundation — same contract, new skin, same
+tests proving it.
 
 ## 6. The framework cheat sheet
 

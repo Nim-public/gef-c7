@@ -78,6 +78,12 @@ def numeric_gate(r: AnalysisResult, context) -> bool:
 The guardrail is one line: *numbers require SQL provenance* — the whole
 file in one assertion, running in the W11 regression suite.
 
+## 5. The display in the demo (the review-day view)
+
+The demo shows both renderings live: user view for the answer, reviewer
+view on demand. One toggle proves the whole file — the data is identical,
+the audiences are served, and the caveats never disappear.
+
 ## Exercises
 
 1. Implement both renderers; verify the reviewer view contains every
