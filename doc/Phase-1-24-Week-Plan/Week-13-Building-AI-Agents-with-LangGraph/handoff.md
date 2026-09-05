@@ -104,12 +104,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-langgraph-foundations/`
-- [ ] `02-project-story-generator/`
-- [ ] `03-project-support-ticket-router/`
-- [ ] `04-team-agents-codegen-loop/`
-- [ ] `05-capstone-task-phidata-agent/`
-- [ ] `06-checkpointing-human-in-loop/`
+- [x] `01-langgraph-foundations/`
+- [x] `02-project-story-generator/`
+- [x] `03-project-support-ticket-router/`
+- [x] `04-team-agents-codegen-loop/`
+- [x] `05-capstone-task-phidata-agent/`
+- [x] `06-checkpointing-human-in-loop/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
