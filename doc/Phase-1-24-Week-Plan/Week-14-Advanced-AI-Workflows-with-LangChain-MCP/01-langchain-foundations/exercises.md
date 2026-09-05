@@ -71,6 +71,34 @@ middleware fault-injection green.
 (4-pointer) is the fourth framework re-expression — the battery is the
 arbiter, as always.
 
+## 6. The LangChain pin note
+
+**Task:** extend `reports/sdk-versions.md` with the LangChain stack:
+library version, `create_agent` date verified, the context7 id
+(`/websites/langchain_oss_python_langchain`), and the three behaviors
+the port depends on (LCEL semantics, structured output, middleware).
+
+**Worked approach:** the pin note is the fourth framework entry — same
+format, same discipline: what was verified, when, and what breaks if it
+changes.
+
+**Pass criterion:** note committed; the battery command in it runs green
+as recorded.
+
+## 7. The template inventory page
+
+**Task:** write `reports/prompt-inventory.md`: every prompt template in
+the program (W10 constitution, W12 grounding, W13 router, W14 LCEL),
+each with its version, variables, and battery case — the W10 file 05-07
+diagram, completed with the fourth framework's prompts.
+
+**Worked approach:** the inventory is the prompt layer's source of
+truth — a prompt not in the table is an untested prompt. The startup
+validation (file 01) reads this table.
+
+**Pass criterion:** every deployed prompt listed with pvN and a battery
+case; the startup validator loads exactly these.
+
 ## Pitfalls recap
 
 - Templates without startup validation — mid-demo failures that a test

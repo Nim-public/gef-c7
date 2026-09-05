@@ -78,6 +78,29 @@ The rule from your boundary memo: LCEL for linear chains (preprocessing
 → prompt → model → parse), LangGraph when anything branches or loops.
 The two compose — your W13 graphs already contain LCEL-style nodes.
 
+## 5. The LCEL debugging surface (what the pipe exposes)
+
+| Need | LCEL mechanism |
+|---|---|
+| inspect a stage's input/output | wrap the stage in a logging `RunnableLambda` |
+| time a stage | same wrapper, `perf_counter` around the call |
+| trace the whole chain | LangSmith callback, or your trajectory merge |
+
+```python
+def logged(name: str, fn):
+    def inner(x):
+        t0 = time.perf_counter()
+        out = fn(x)
+        log.info("%s in=%.0fms", name, (time.perf_counter() - t0) * 1000)
+        return out
+    return RunnableLambda(inner)
+```
+
+LCEL's abstraction hides the stages unless you instrument them — the
+logged wrapper is the minimal observability that keeps the W10 ledger
+alive inside a declarative pipeline. The ledger's stages map 1:1 to the
+wrapped runnables.
+
 ## Exercises
 
 1. Express the W9 hot path as one LCEL chain; run the eval set; verify
@@ -88,6 +111,8 @@ The two compose — your W13 graphs already contain LCEL-style nodes.
 3. Resilience drill: kill the primary model (bad key); verify the
    fallback serves; count the retry attempts; both events in the
    trajectory rows.
+4. Ledger drill: wrap each stage in `logged`; compare the per-stage
+   table with the W9-04 ledger — the composition is the same cost model.
 
 ## Pitfalls
 

@@ -68,6 +68,19 @@ result["structured_response"]        # Answer instance
 The three-framework mapping table (W12 file 01-03) gains its final
 column with this row.
 
+## 5. The three-framework structured-output note (the mapping row)
+
+| Aspect | W11 SDK | W12 Agno | W14 LangChain |
+|---|---|---|---|
+| declaration | `output_type=Answer` | `output_schema=Answer` | `with_structured_output(Answer)` |
+| strictness | strict JSON schema | Pydantic | provider-dependent + Pydantic |
+| validator hook | field validators | field validators | field validators |
+| raw access | `raw_responses` | `response.metrics` | `include_raw=True` |
+
+The fourth column of the mapping table (W12 file 01-03) — the validator
+logic is identical across all four frameworks; only the *hook point*
+moved. This is the porting economics in one row: your audits travel.
+
 ## Exercises
 
 1. Port the `Answer` model + citation validator to the LCEL chain;
@@ -76,6 +89,8 @@ column with this row.
    row; verify token counts read from `raw.usage_metadata`.
 3. Failure-taxonomy drill: force a malformed-JSON response (bad model);
    classify the failure per §3's table; wire the degradation.
+4. Table drill: fill the §5 mapping row from your own runs — one run per
+   framework, same validator, same case.
 
 ## Pitfalls
 
