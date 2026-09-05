@@ -95,11 +95,11 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-gradio-multimodal-apps/`
-- [ ] `02-lancedb-multimodal/`
-- [ ] `03-multimodal-rag-patterns/`
-- [ ] `04-end-to-end-multimodal-rag/`
-- [ ] `05-practice-multimodal-rag/`
+- [x] `01-gradio-multimodal-apps/`
+- [x] `02-lancedb-multimodal/`
+- [x] `03-multimodal-rag-patterns/`
+- [x] `04-end-to-end-multimodal-rag/`
+- [x] `05-practice-multimodal-rag/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
