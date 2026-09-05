@@ -54,7 +54,7 @@ The merged model must pass the *same* eval battery as the adapter —
 the merge is not a behavior change, and the battery is the proof. The
 W16-03 diagnosis pin's numbers re-verify post-merge.
 
-## 4. The parity pin note (the serving decision's record)
+## 7. The parity pin note (the serving decision's record)
 
 ```markdown
 # Serving parity (W16)
@@ -69,7 +69,7 @@ The pin note is the serving decision's record — both modes verified
 paritic, the dtype difference documented, and the deployment choice
 made. The W11 pin discipline applied to the serving layer's last mile.
 
-## 6. The serving-mode decision table (which mode when)
+## 5. The serving-mode decision table (which mode when)
 
 | Deployment | Mode | Why |
 |---|---|---|
@@ -82,6 +82,20 @@ The decision table is the serving mode's contract — merged for single
 behavior, adapters for many. The W11 multi-tenant pattern (one base,
 many adapters) is the adapter mode's natural fit; the capstone demo is
 merged mode's natural fit.
+
+## 6. The parity drill record (the test working)
+
+```text
+mutation: merge with a dtype mismatch (bf16 merge, fp16 serve)
+parity test: FAILED — token divergence from token ~40
+verdict: mutation caught; dtype unified; green; the parity property
+is live
+```
+
+The drill record is the parity test's characterization — the same
+mutation-test discipline as every gate. The dtype mutation is the
+realistic one: it ships silently and diverges subtly, exactly what the
+record exists to demonstrate.
 
 ## Exercises
 
