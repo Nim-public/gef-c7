@@ -72,6 +72,20 @@ inverted: facts from tools, judgment from the model, the report binding
 both. The LLM layer *sees* the deterministic findings — its job is the
 judgment calls they cannot make (naming, design, missing tests).
 
+## 5. The scanner inventory (facts, versioned)
+
+| Scanner | Version pin | Finding format | CI gate |
+|---|---|---|---|
+| AST walk | your code, tested | `{rule, line, detail}` | unit tests |
+| ruff | version in pin note | rule codes (E/F/B) | `--exit-zero` + parse |
+| (extendable) | per scanner | per scanner | per scanner |
+
+The scanner inventory is the deterministic layer's manifest: each
+scanner's version pinned (ruff output formats change), each with a CI
+gate that runs on the fixture file. The findings' *shape* is the
+contract the LLM prompt and the report generator both consume — change
+it and both update.
+
 ## Exercises
 
 1. Build the AST walk; run it on a deliberately bad file (bare excepts,
@@ -80,6 +94,9 @@ judgment calls they cannot make (naming, design, missing tests).
    stable across two runs.
 3. Layer drill: feed the deterministic findings into the LLM prompt;
    the review must *reference* them, not re-discover them.
+4. Inventory drill: add one AST rule of your own (e.g., mutable default
+   argument); the fixture test covers it; the inventory table gains a
+   row.
 
 ## Pitfalls
 

@@ -69,6 +69,26 @@ The determinism test is the W7 discipline applied to reports: same
 inputs, byte-identical output. Temperature 0 for the LLM layer, sorted
 merges for both layers.
 
+## 5. The report's provenance block (findings' origin, per row)
+
+| Field | Meaning |
+|---|---|
+| `source: scanner` | from AST/ruff — verifiable, rule-coded |
+| `source: llm` | judgment — sampled-QA'd |
+| `deduped_from` | the scanner finding it would have duplicated |
+
+```python
+def with_provenance(merged: list[Finding]) -> list[Finding]:
+    for f in merged:
+        f.suggestion = f"[{f.source}] {f.suggestion}"
+    return merged
+```
+
+The provenance marker per finding is the review agent's honesty layer —
+the reviewer knows which findings are facts and which are judgment. It
+is the W12 reasoning-display contract (user view vs reviewer view),
+report edition.
+
 ## Exercises
 
 1. Build the generator; run it on the fixture file twice; byte-identity
@@ -77,3 +97,5 @@ merges for both layers.
    fail loudly (KeyError) — then fix the map, not the finding.
 3. Summary drill: verify the counts summary matches the detail list
    (count the markers); a mismatch is a generation bug.
+4. Provenance drill: verify every finding's source marker; a finding
+   without provenance fails the report validation.

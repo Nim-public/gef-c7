@@ -93,3 +93,8 @@ directory family as every other artifact.
    must be in `changed_lines` — the audit enforces scope.
 3. Off-by-one drill: plant a finding one line above the change; the
    audit rejects it; fix the parser, not the audit.
+4. CI drill: open a fixture PR; the review comment appears with
+   severity-sorted findings scoped to the diff.
+5. Pin-note drill: extend `reports/sdk-versions.md` with the review
+   stack (ruff version, Finding schema, CI trigger, determinism
+   command).

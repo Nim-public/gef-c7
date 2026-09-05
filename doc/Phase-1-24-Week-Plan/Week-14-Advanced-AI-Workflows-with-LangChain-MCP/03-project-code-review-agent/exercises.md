@@ -68,6 +68,19 @@ PR; findings scoped to the diff.
 determinism (4-pointer) is the review agent's trust anchor — a review
 that changes between runs is not a review.
 
+## 6. The review-agent pin note
+
+**Task:** consolidate the review stack in `reports/sdk-versions.md`:
+scanner inventory, Finding schema, report generator version, CI
+triggers, and the determinism command — one block.
+
+**Worked approach:** the review agent reviews your code; its own stack
+gets pinned first. The note is the same format as every framework week:
+what was verified, when, by which command.
+
+**Pass criterion:** note committed; the determinism and audit commands
+green as recorded.
+
 ## Pitfalls recap
 
 - LLM-only reviews — hallucinated line numbers and missed mechanical
