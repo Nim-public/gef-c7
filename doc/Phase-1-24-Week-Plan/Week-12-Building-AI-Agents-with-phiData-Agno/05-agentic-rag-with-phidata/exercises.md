@@ -68,6 +68,34 @@ kept fixed with cited recall numbers.
 (4-pointer) is the week's measurement crown — regex vs model vs hybrid,
 on your data.
 
+## 7. The RAG pin note
+
+**Task:** extend `reports/sdk-versions.md` with the RAG-mode stack:
+`search_knowledge` flag state, floor-instruction version, fixed-pipeline
+route list, and the head-to-head command.
+
+**Worked approach:** the mode mix is a configuration — the pin note
+records which classes run agentic vs fixed as of which date, so the
+mode map and the code cannot silently diverge.
+
+**Pass criterion:** note committed; the mode map matches the running
+configuration (verified by the head-to-head command).
+
+## 6. The RAG-modes review page
+
+**Task:** write `reports/rag-modes.md`: the fixed-vs-agentic decision
+memo, the head-to-head route table, the blended cost/quality table, and
+the mode map (which class runs which mode) — the retrieval week's
+decision record.
+
+**Worked approach:** the page composes files 01–04 into one evidence
+sheet: every mode decision cites its recall numbers, every cost cites
+its instrument, and the hybrid row is computed. The reviewer question —
+"why agentic here and fixed there?" — is answered by the table itself.
+
+**Pass criterion:** the page answers the reviewer question in one read;
+every number cites an artifact.
+
 ## Pitfalls recap
 
 - Mode comparisons across corpus versions — the header discipline is not

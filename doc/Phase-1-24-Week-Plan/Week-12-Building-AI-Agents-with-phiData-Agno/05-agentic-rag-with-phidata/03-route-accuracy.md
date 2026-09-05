@@ -69,14 +69,32 @@ query matches an exact-term pattern, else trust the model. It reuses
 your W9 router *as a component* — the framework week's theme, one more
 time.
 
+## 5. The router's retirement plan (or promotion)
+
+The head-to-head ends in one of three verdicts, each with a next step:
+
+| Verdict | Action |
+|---|---|
+| model ≥ regex everywhere | retire the regex; the model routes |
+| regex wins the rigid classes | hybrid: regex pre-router + model |
+| model wins everywhere, hybrid untested | test hybrid before believing |
+
+The retirement is *conditional*: the regex stays as a pre-router for
+classes it wins, gets deleted for classes the model dominates, and the
+eval set keeps both rows forever — the comparison is the artifact, not
+the code.
+
 ## Exercises
 
-1. Run the head-to-head over your 25 queries; produce the table with the
-   Δ column and readings.
-2. Miss-analysis drill: take every model miss; classify into the §3
-   types; fix the modal type; remeasure.
+1. Run the head-to-head over your 25 queries; produce the class table
+   with the Δ column and readings.
+2. Miss-analysis drill: classify every model miss into the §3 types;
+   fix the modal type; remeasure (before/after numbers committed).
 3. Hybrid drill: implement the regex-for-exact-term pre-router; measure
-   the hybrid accuracy; decide per the table.
+   the hybrid accuracy; write the §4 table with the third row earned.
+4. Retirement drill: for the classes the model dominates, delete the
+   regex route; rerun the W9 battery — green means the retirement is
+   safe.
 
 ## Pitfalls
 

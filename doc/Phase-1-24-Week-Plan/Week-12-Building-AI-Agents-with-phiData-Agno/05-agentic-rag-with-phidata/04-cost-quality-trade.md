@@ -68,14 +68,29 @@ Blended: +8% tokens, +9 pts quality vs all-fixed.
 The same memo discipline as W11's verdict: numbers, per-class decisions,
 a blended row, a revisit trigger.
 
+## 5. The quality measurement (the other half of the trade)
+
+Cost without quality measurement is half a decision. The quality rows:
+
+| Metric | Instrument | Source |
+|---|---|---|
+| groundedness | citation gate pass rate | harness |
+| coverage (multi-hop) | R@5-equivalent per hop | eval set |
+| refusal honesty | absent-fact battery | insufficiency battery |
+| route robustness | head-to-head (file 03) | route table |
+
+The agentic verdict needs *both* tables — cost up is only acceptable
+where quality up is measured. The two tables land side by side in the
+decision memo (file 01's row), each citing its instrument.
+
 ## Exercises
 
-1. Measure both modes over your eval set; produce the §1 table with your
+1. Measure both modes over the eval set; produce the §1 table with your
    numbers; compute the blended row over your class distribution.
 2. Component drill: attribute the agentic delta — routing vs extra
    retrieval vs context stuffing (the fitter's ledger splits it).
-3. Memo drill: write the §4 table; one class *must* stay fixed (justify
-   with the recall numbers) or the memo is incomplete.
+3. Memo drill: write the §4 table; one class must stay fixed (justify
+   with recall numbers) or the memo is incomplete.
 
 ## Pitfalls
 

@@ -68,6 +68,34 @@ tolerance for this metric is zero (numbers are exact).
 drill (4-pointer) is the analytics week's teeth — it proves the defenses
 fire when reality disagrees with the model.
 
+## 7. The analytics pin note
+
+**Task:** extend `reports/sdk-versions.md` with the analytics stack:
+prebuilt toolkit ids, warehouse path, verification policy version, and
+the defense-matrix test command.
+
+**Worked approach:** the analytics agent has the most moving parts of
+any week's build — the pin note records which versions the four defense
+layers were tested against, so a future upgrade re-runs the matrix
+instead of trusting memory.
+
+**Pass criterion:** note committed; the defense matrix command runs
+green as recorded.
+
+## 6. The analytics review page
+
+**Task:** write `reports/analytics-review.md`: the defense stack
+diagram, the policy table, the numeric eval results (exact-match on 5
+tasks), and the mismatch-drill grading — the analytics week's face.
+
+**Worked approach:** the page composes the drills into one evidence
+sheet: every defense layer cites its test, every number cites its SQL,
+every caveat cites its drill. The reviewer reads this page and the
+transcripts it links.
+
+**Pass criterion:** the page answers "why should I trust a number in
+this agent's answers?" in one read, citing your artifacts.
+
 ## Pitfalls recap
 
 - Prebuilt tools trusted without provenance — wrap for timestamps and

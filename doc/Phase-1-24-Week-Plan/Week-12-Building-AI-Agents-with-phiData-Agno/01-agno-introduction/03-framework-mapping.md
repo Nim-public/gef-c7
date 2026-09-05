@@ -51,15 +51,30 @@ Each framework forced you to re-express the same four concerns:
 Your answers are framework-independent — which is exactly why the
 verdict memos (W11) and the completion table here can coexist.
 
+## 5. The migration cost column (the table's fine print)
+
+| Move | Cost | Paid by |
+|---|---|---|
+| W10 → W11 SDK | ~6 h port, battery per step | W11 file 06 |
+| W11 → Agno | ~2 h (tools+instructions mostly 1:1) | this week's exercises |
+| any → CrewAI | ~2 h (roles) + process choice | this week's file 06 |
+| any framework bump | re-run battery + pin note | standing rule |
+
+The cost column is why the decision (file 06 of this week) is allowed to
+be "stay": every framework hop re-runs the battery, and the battery's
+pass rate is the only currency that matters. A framework that cannot
+pass your existing tests does not get adopted for features alone.
+
 ## Exercises
 
-1. Fill the completion table with *your* implementation status per cell
+1. Fill the W10/W11/W12 table with your implementation status per cell
    (ported / tested / N/A); the N/A cells are Week 13+ scoping input.
-2. Transfer drill: take one W11 test (trajectory shape) and run it
-   against the Agno port unchanged — the schema is the contract; the
-   test either ports cleanly or names a gap.
-3. Decision drill: for the capstone's final build, pick ONE framework
-   and write the three-sentence justification citing the table.
+2. Cross-test drill: run one W11 test (trajectory shape) against the
+   Agno port unchanged — the schema is the contract; the test either
+   ports cleanly or names a gap.
+3. Decision drill: pick ONE framework for the final build; write the
+   three-sentence justification citing the table and one cost column
+   number.
 
 ## Pitfalls
 

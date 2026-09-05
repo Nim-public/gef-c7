@@ -71,6 +71,21 @@ difference is an embedder or chunking mismatch; name it.
 **Pass bar:** 11/14 to proceed to file 02 (knowledge and databases). The
 port (4-pointer) is the week's foundation — same contract, new skin.
 
+## 6. The framework cheat sheet
+
+**Task:** write `reports/framework-cheatsheet.md`: one page, three
+columns (W11 SDK / Agno / CrewAI), rows = the ten things you do every
+week (define agent, add tool, typed output, session, UI, trace, eval,
+budget, gate, deploy). Each cell: the exact API name.
+
+**Worked approach:** the cheat sheet is the translation dictionary you
+will use for the rest of the program — every row is a construct you have
+*run*, not a doc quote. Rows you cannot fill from memory mark constructs
+you never actually used (useful to know).
+
+**Pass criterion:** 10 rows × 3 columns filled from your own code; the
+sheet linked from all three framework subfolders' READMEs.
+
 ## Pitfalls recap
 
 - Mapping tables that skip the "manual, still mine" rows — budgets, gates,

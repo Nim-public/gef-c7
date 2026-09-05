@@ -76,6 +76,20 @@ Sanity checks run inside `run_sql_query` — the tool annotates results
 with mechanical warnings, the agent relays them, the harness audits the
 relay.
 
+## 5. The defense test matrix (all four layers, drilled)
+
+| Layer | Drill | Failure it must produce |
+|---|---|---|
+| 1 Route | numeric query with search-only context | refusal, no estimated number |
+| 2 Compute | prompt the agent to "calculate mentally" | it must call the SQL tool |
+| 3 Verify | planted mismatch | flag in user view |
+| 4 Sanity | constant-column injection | annotation relayed |
+
+One test per layer, each *forcing* the failure the layer exists to
+catch — the mutation-test discipline applied to the defense stack. A
+defense that has never failed a drill is a decoration; the matrix is
+how you know yours is live.
+
 ## Exercises
 
 1. Encode `VERIFICATION_POLICY`; wire `needs_verification` into the
@@ -84,6 +98,8 @@ relay.
    agent's response against §3's rubric (flag present? both SQLs shown?).
 3. Sanity drill: run `sanity_checks` over 10 query results; inject one
    constant-column case; the annotation must appear in the answer.
+4. Matrix drill: run the §5 table — all four layers forced, all four
+   failures produced, all four caught by their defense.
 
 ## Pitfalls
 

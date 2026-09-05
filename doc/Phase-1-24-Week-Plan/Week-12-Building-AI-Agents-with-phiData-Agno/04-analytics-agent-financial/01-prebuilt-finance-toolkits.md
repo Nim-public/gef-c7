@@ -81,12 +81,27 @@ it was never told. This is the W10 docstring bar applied to a toolkit
 you did not write: read its actual behavior, then write the description
 that tells the truth about it.
 
+## 5. The prebuilt-vs-custom decision rule
+
+| Signal | Decision |
+|---|---|
+| read-only public data, demo-grade freshness OK | prebuilt, wrapped |
+| numbers cited in answers | wrapped with provenance |
+| write-capable prebuilt tool | not in the capstone |
+| rate-limited external API | wrapped + cache + backoff |
+
+The decision rule generalizes to every prebuilt toolkit you will meet
+(YFinance, DuckDb, web search): *prebuilt is fine until a number or a
+citation depends on it* — then the wrapper layer is not optional. The
+wrapper is ~10 lines; an unverified number in a capstone answer is a
+failed rubric row.
+
 ## Exercises
 
-1. Run the prebuilt toolkit; capture raw outputs for 5 queries; write
-   the trust-level column (freshness, source opacity) for each.
-2. Wrapper drill: add `verified_stock_price`; the answer's numbers must
-   now carry `as_of` — verify in 3 responses.
+1. Run the prebuilt toolkit; capture 5 raw responses; write the
+   trust-level column (freshness, source opacity, limits) per tool.
+2. Wrapper drill: add `verified_stock_price`; every cited number carries
+   `as_of` + `source`; the ledger gains the wrapper's tokens.
 3. Limit drill: rate-limit or block the tool (proxy); verify the retry
    + degradation path produces an honest "source unavailable" answer.
 

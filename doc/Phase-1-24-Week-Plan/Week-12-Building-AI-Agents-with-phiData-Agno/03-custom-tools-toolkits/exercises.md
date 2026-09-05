@@ -57,6 +57,48 @@ any) ticketed with owners.
 parity test (4-pointer) is the discipline anchor — one source of truth
 for tools, two skins.
 
+## 8. The toolkit pin note
+
+**Task:** extend `reports/sdk-versions.md` with the toolkit inventory:
+class names, derived-schema date, Agno version, and the parity-test
+command from exercise 3.
+
+**Worked approach:** toolkits are code, but their *schemas* are derived
+at runtime — the pin note records when the derivation was last verified
+against the W10 hand-written contracts.
+
+**Pass criterion:** note committed; the parity command green as of the
+recorded date.
+
+## 6. The toolkit design review
+
+**Task:** present your two toolkits (`CorpusTools`, `AnalyticsTools`) to
+the review persona: surface list, scoping matrix (which agent sees what),
+flag inventory (stop/cache/show), and error contracts per tool — one
+page in `reports/toolkit-review.md`.
+
+**Worked approach:** the review is the tool-surface page (W10 file 03)
+re-skinned: same rigor, new mechanism. Every tool row carries its
+derivation source (hints/docstrings) and its battery cases; the review
+passes the W10 standard or it is not done.
+
+**Pass criterion:** every tool has a contract, a battery row, and a
+scoping entry; the page links the parity test.
+
+## 7. The flag decision table
+
+**Task:** for each tool in both toolkits, decide: `stop_after_tool_call`?
+`show_result`? `cache_results`? Write the table with the *reason* per
+decision — flags are behavior, not decoration.
+
+**Worked approach:** terminal tools (finalize, submit) get
+`stop_after`; formatting tools get `show_result`; expensive deterministic
+tools get cache with a TTL. A flag without a reason gets removed — the
+table is the review that keeps the toolkit minimal.
+
+**Pass criterion:** decision table committed; one flag deliberately
+*removed* with the reason (proving the review was real).
+
 ## Pitfalls recap
 
 - Toolkits without docstring discipline — the model reads them exactly

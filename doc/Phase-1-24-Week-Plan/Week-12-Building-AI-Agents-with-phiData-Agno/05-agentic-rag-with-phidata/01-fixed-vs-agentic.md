@@ -62,15 +62,31 @@ whether the floor holds.
 
 The same memo discipline: numbers, triggers, owner.
 
+## 5. The mode-mixing pattern (what ships)
+
+Real systems do not pick one mode — they mix by *route*, and the mix is
+the architecture:
+
+```text
+route = regex (exact-term) → fixed FTS-lean pipeline
+route = known simple classes → fixed pipeline (W9 hot path)
+route = long tail / multi-hop → agentic agent with floor
+```
+
+The W9 router survives as the *pre-router*; agentic RAG serves the
+classes the regex was weak on (your W9 miss log is the evidence). This
+is the W11 framework-decision pattern again: measured routing, layered
+mechanisms, one eval set grading all of it.
+
 ## Exercises
 
 1. Run the eval set in both modes (fixed via your W9 pipeline; agentic
    via `search_knowledge=True`); fill the class × mode table with R@5
-   and call counts.
+   and tokens.
 2. Floor drill: add the "search once" instruction; re-run the chitchat
    and absent-fact cases; verify the floor fires on domain terms only.
 3. Decision drill: write the memo row from your own table; name the
-   revisit trigger with its threshold.
+   revisit trigger with its threshold (skip-rate >5% on domain queries).
 
 ## Pitfalls
 

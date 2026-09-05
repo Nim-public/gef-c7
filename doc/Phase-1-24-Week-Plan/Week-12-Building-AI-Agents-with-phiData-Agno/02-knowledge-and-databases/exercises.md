@@ -71,6 +71,34 @@ guardrails verified (zero side effects).
 (4-pointer) is the grounding deliverable — the skip case is new, and it
 is the one that ships wrong.
 
+## 7. The embedder pin note
+
+**Task:** record in `reports/sdk-versions.md`: the embedder id, chunking
+settings, `SearchType`, and reranker (if any) used by the `Knowledge`
+wrap — plus the parity-test command.
+
+**Worked approach:** the pin note is the knowledge layer's settings
+version (the W7 discipline, one more surface): any drift between your
+W09 index and the Agno wrap is now a diffable setting, not a mystery.
+
+**Pass criterion:** note committed; the parity command in it runs green
+on the current corpus.
+
+## 6. The knowledge-ops runbook
+
+**Task:** write `reports/knowledge-ops.md`: how the knowledge base is
+rebuilt from scratch (ingest order, validation gates, parity checks) and
+how it is updated incrementally (changed units only) — one page, two
+commands.
+
+**Worked approach:** the runbook composes this week's pieces: manifest →
+ingest → validation gate → parity loop → idempotency proof. Its quality
+gate: a teammate rebuilds the knowledge base from a fresh clone and gets
+identical retrieval results on the golden queries.
+
+**Pass criterion:** the runbook's two commands work from a fresh clone;
+golden-query results identical; the page cites the tests by name.
+
 ## Pitfalls recap
 
 - Embedder drift between stacks — parity loop catches it in one run;

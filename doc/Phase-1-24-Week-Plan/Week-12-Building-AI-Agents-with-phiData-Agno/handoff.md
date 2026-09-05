@@ -104,12 +104,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-agno-introduction/`
-- [ ] `02-knowledge-and-databases/`
-- [ ] `03-custom-tools-toolkits/`
-- [ ] `04-analytics-agent-financial/`
-- [ ] `05-agentic-rag-with-phidata/`
-- [ ] `06-capstone-task-crewai-workflow/`
+- [x] `01-agno-introduction/`
+- [x] `02-knowledge-and-databases/`
+- [x] `03-custom-tools-toolkits/`
+- [x] `04-analytics-agent-financial/`
+- [x] `05-agentic-rag-with-phidata/`
+- [x] `06-capstone-task-crewai-workflow/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 

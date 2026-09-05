@@ -82,14 +82,35 @@ them like citations.
 The W10 eval-set pattern with a numeric column: the gold value is
 computable, so the harness checks the *number*, not the phrasing.
 
+## 5. The warehouse contract (the second store's page)
+
+The dual-pipeline's SQL side deserves the same contract page as the
+knowledge side: allowed tables + their DDL, the validator's rules
+(§2), result limits, and the citation format ("query + row count").
+The page is generated from the toolkit's config so it cannot drift:
+
+```python
+def emit_warehouse_contract() -> str:
+    return "\n".join([
+        "# Warehouse contract",
+        f"tables: {sorted(ALLOWED_TABLES)}",
+        f"rules: {'; '.join(SQL_GUARDRAILS)}",
+        "row cap: 50 | statement cap: 1 | mode: SELECT-only",
+    ])
+```
+
+The generated page replaces hand-written SQL prose that rots — the
+derived-artifact discipline applied to the analytics half.
+
 ## Exercises
 
 1. Assemble the agent; run the composition loop on 5 analytics queries;
    verify every answer carries `sql_used`.
-2. Row-handling drill: force each §3 situation (LIMIT cutoff, 0 rows,
-   NULL-heavy column); verify the mandated behaviors.
-3. Numeric-eval drill: add 5 numeric tasks with computable golds to the
-   eval set; score exact-match on the number.
+2. Schema-drill: ask about an unfamiliar table; verify `get_schema` fires
+   *before* the first query (trace order is the evidence).
+3. Result-handling drill: force each §3 situation (LIMIT cutoff, 0 rows,
+   NULL-heavy column, ambiguous units); verify the mandated behavior in
+   every answer.
 
 ## Pitfalls
 

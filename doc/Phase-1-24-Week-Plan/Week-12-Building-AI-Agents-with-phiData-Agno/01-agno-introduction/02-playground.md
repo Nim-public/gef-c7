@@ -79,6 +79,19 @@ consumer of the same handlers (UI, API, agent).
 3. Client drill: connect `AgentOSClient` to the served agent; call your
    retrieval tool; verify the response matches the tool contract schema.
 
+## 5. The UI strategy (three consoles, one store)
+
+| Console | Shows | Store role |
+|---|---|---|
+| Gradio explorer (W9) | corpus units, metadata | read-only over parquet |
+| Playground/AgentOS | agent runs, tool calls | interactive view of traces |
+| Your harness tables | metrics, regressions | the analysis surface |
+
+Three consoles, one trajectory store — the strategy is that every UI is
+a *projection* of the store, never a second copy. The drills above are
+what keep that promise honest: the UI's runs must agree with the store's
+rows on the same queries, or one of them is lying.
+
 ## Pitfalls
 
 - Playground as the system of record — it is a console; the store is the
