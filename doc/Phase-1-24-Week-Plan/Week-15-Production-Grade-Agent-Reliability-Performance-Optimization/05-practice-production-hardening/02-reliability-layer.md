@@ -55,6 +55,25 @@ family as every week, now covering the failure paths. The trip rates
 under normal load are the calibration check: a rail tripping constantly
 means the budget or the task design is wrong, not the rail.
 
+## 5. The reliability drill set (the chaos suite, numbered)
+
+1. **Model API killed mid-run** — proxy drops connections after 2
+   calls. Expected: retry ×2 → breaker opens → honest message with the
+   reference id. Ledger: breaker event + contract row.
+2. **Model slowed 10×** — latency-injecting proxy. Expected: time rail
+   trips at the budget → partial results render → `degraded=True`.
+3. **Spend spike** — inflated usage accounting (×50). Expected: spend
+   rail trips on the first response → the cheapest complete answer.
+4. **Corrupt tool response** — malformed payload from one tool.
+   Expected: ToolError hint → user contract → no crash.
+5. **KB empty** — retrieval returns nothing. Expected: the 0-hit
+   escalation path (W13 router) — honest refusal, no invention.
+
+The drill set is the chaos suite, numbered and assertable — each drill
+produces a user-visible behavior AND an internal ledger row. The suite
+runs in CI (tier 2, canned faults) and live (tier 3, real faults)
+before any production claim.
+
 ## Exercises
 
 1. Deploy the layer per the checklist; run the four chaos drills; every
@@ -63,3 +82,5 @@ means the budget or the task design is wrong, not the rail.
    rail above 5%.
 3. Budget-tuning drill: from the trip-rate data, tune one limit (tighter
    or looser); record the change in `budgets.json` with a version bump.
+4. Drill-set drill: implement §5's fifth drill (KB empty) if missing;
+   wire all five into CI as the reliability suite.

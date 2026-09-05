@@ -42,6 +42,38 @@ The weak-spot table is the hardening week's agenda — each row names the
 baseline number and the fix's week. The before/after table (file 04)
 has one row per weak spot.
 
+## 4. The baseline metric definitions (the left column's spec)
+
+| Metric | Definition | Instrument |
+|---|---|---|
+| success rate | gold-matched outcomes / runs | eval set + harness |
+| p50/p95 tokens | per-task token distribution | fitter ledger |
+| p50/p95 latency | end-to-end wall time | the ledger wrapper |
+| $/task | spend per completed task | cost model + usage |
+| quality judge | rubric total / 8 | the calibrated judge |
+| rail trip rates | aborts per rail | the budget ledger |
+
+The definitions are the baseline's spec — every metric names its
+instrument, so the after-state cannot quietly change the measuring
+stick. The W9-04 metric dictionary holds the full formulas; this table
+is the production week's subset.
+
+## 5. The environment pin (the noise floor's declaration)
+
+```markdown
+# Baseline environment
+- machine: [your spec], [OS], [python]
+- model: [pinned id], temperature 0
+- corpus: manifest v[N], knowledge wrap parity green
+- network: [connection class if hosted APIs]
+- time of runs: [window — hosted APIs vary by load]
+```
+
+The environment pin is the noise floor's declaration — hosted APIs vary
+by time of day, and a baseline captured at 3 a.m. is not comparable to
+an after-state captured at peak. The pin makes the comparison honest or
+explains the noise.
+
 ## Exercises
 
 1. Capture the baseline under the protocol; commit the JSON with the
@@ -51,3 +83,6 @@ has one row per weak spot.
    demonstrated.
 3. Header drill: the baseline JSON carries the full version stamp; a
    teammate reproduces it from a fresh clone.
+4. Noise-floor drill: run the baseline twice at different hours; the
+   delta bounds the noise — the after-state's improvements must exceed
+   it to count.

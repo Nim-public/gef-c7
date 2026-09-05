@@ -68,6 +68,33 @@ demo page rendered with linked artifacts.
 hardening week's honesty — improvements without attribution are
 anecdotes.
 
+## 6. The production-hardening pin note (the week's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the hardening stack: the
+budget config version, the chaos-drill suite, the ledger version, and
+the before/after run ids — one block.
+
+**Worked approach:** the hardening week changed the runtime's behavior
+(budgets, retries, handlers) — the manifest records which versions the
+chaos drills and the before/after table verified.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
+## 7. The production review page
+
+**Task:** write `reports/production-review.md`: the baseline, the
+reliability drill set, the ledger, and the before/after table — one
+page answering "is this production-grade, and what is the evidence?"
+
+**Worked approach:** the page composes files 01–04 into the week's
+face: the before-state demonstrated, the layer chaos-proven, the
+improvements attributed, and the quality guard green. The reviewer
+question is answered by the table and its evidence chain.
+
+**Pass criterion:** the page answers the production question in one
+read; every claim cites its artifact.
+
 ## Pitfalls recap
 
 - Improvements claimed without isolation — the ledger's attribution

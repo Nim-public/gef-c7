@@ -58,6 +58,19 @@ The maintenance is the standing rule: the ledger is a living table, and
 the demo quotes the cumulative column — which is why every row's
 attribution matters.
 
+## 5. The ledger's interaction log (where optimizations collide)
+
+| Interaction | Effect | Handling |
+|---|---|---|
+| caching × routing | cached weak-model calls compound savings | measure the combo, not the sum |
+| verification × caching | verify queries are variable → uncached | accept: honesty is uncached |
+| routing × verification | weak model may need *more* verification | policy per model |
+
+The interaction log is the ledger's fine print — optimizations are not
+independent, and the compounding/counteracting effects are recorded.
+The honesty premium (verification tokens) surviving every interaction
+is the guard: the demo never quotes a cost that excluded it.
+
 ## Exercises
 
 1. Create the ledger; add row 1 (prefix reorder) with its measured
@@ -67,3 +80,5 @@ attribution matters.
    (caching changes the routing economics).
 3. Honesty drill: add the verification row (positive token cost); the
    ledger shows the honesty premium — and the memo defends it.
+4. Interaction drill: measure caching+routing *combined*; compare with
+   the sum of individual deltas; the interaction term is the finding.

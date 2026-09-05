@@ -51,6 +51,20 @@ The presentation cites the baseline and the ledger, links the
 acceptance command, and states the quality guard. It is the capstone's
 production chapter — the before/after table *is* the hardening week.
 
+## 5. The before/after's audit trail (the table's evidence chain)
+
+| Table cell | Evidence chain |
+|---|---|
+| before value | `reports/baseline-w15.json` + its run ids |
+| after value | the eval run ids + the ledger rows |
+| Δ | arithmetic on the two, shown |
+| attribution | the ledger row + its isolated runs |
+
+The evidence chain is the table's auditability — every cell traces to
+committed artifacts, and the chain is walkable by a reviewer in minutes.
+The chain is also the anti-fraud mechanism: a number that cannot show
+its chain is removed from the table.
+
 ## Exercises
 
 1. Run the after-state eval; fill the table; verify the attribution
@@ -59,3 +73,5 @@ production chapter — the before/after table *is* the hardening week.
    it does, the optimization that caused it reverts (the trade's rule).
 3. Demo-page drill: render §3 into the capstone README; every number
    traces to the ledger and the baseline.
+4. Chain drill: pick three cells; walk each evidence chain live for a
+   reviewer — the walk is the table's acceptance test.
