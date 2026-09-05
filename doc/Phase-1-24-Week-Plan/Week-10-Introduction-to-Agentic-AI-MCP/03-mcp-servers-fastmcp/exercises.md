@@ -71,6 +71,20 @@ CI.
 wiring (4-pointer) is the deliverable that makes every later week's
 agent changes safe.
 
+## 7. The client compatibility note
+
+**Task:** write `reports/mcp-client-notes.md`: how a *new* client (the
+Week-11 UI, another agent) connects to your server — the initialize
+handshake, the version assert, the tools/list diff, error semantics, and
+the timeout expectations per tool.
+
+**Worked approach:** the note is the server-side half of the tool
+surface page — written from the client's seat. Each handshake step links
+to the test that proves it.
+
+**Pass criterion:** a teammate connects a fresh client using only the
+note, first try, including one forced-error case handled correctly.
+
 ## 6. The out-of-process migration story
 
 **Task:** document the migration in `reports/mcp-migration.md`: the

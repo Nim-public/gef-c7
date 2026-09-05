@@ -71,6 +71,21 @@ dimensions; the fourth documented as "known weak, hand-checked".
 scorecard (4-pointer) is the harness's face — it feeds every later
 week's regression gates.
 
+## 7. The metric dictionary
+
+**Task:** write `reports/metric-dictionary.md`: every metric the harness
+produces (success rate, refusal correctness, p50 steps/tokens, loop rate,
+recovery rate, gate rate, judge totals), each with its formula, capture
+seam, and known failure mode.
+
+**Worked approach:** the dictionary is the harness's README — a metric
+whose formula lives in code comments is a metric nobody can audit. One
+row per metric; the failure-mode column names what a bad value usually
+means (e.g., "loop rate spike → description rot, not model regression").
+
+**Pass criterion:** every scorecard and report cell resolvable to a
+dictionary row; two metrics enriched with a real observed example.
+
 ## 6. The instrumentation debt audit
 
 **Task:** list every field in the trajectory schema; for each, name its

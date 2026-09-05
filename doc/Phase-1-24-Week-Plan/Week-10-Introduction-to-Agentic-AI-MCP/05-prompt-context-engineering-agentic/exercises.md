@@ -70,6 +70,20 @@ version boundary; aggregate delta reported.
 certification (4-pointer) is the deliverable — an untested constitution
 is prose, not engineering.
 
+## 7. The prompt architecture diagram
+
+**Task:** draw the final prompt-architecture diagram (as text) in
+`reports/prompt-architecture.md`: constitution → fitter layers →
+observation formats → hint variants, with each block's version string
+and token budget.
+
+**Worked approach:** the diagram is the week's map — every block is a
+tested artifact with a version, and the arrows are the fitter's priority
+order. It is the picture file 06's assembly references.
+
+**Pass criterion:** diagram (ASCII or mermaid) committed; every block's
+version matches the trajectory-store stamps.
+
 ## 6. The prompt regression suite
 
 **Task:** collect every prompt artifact you touched this week

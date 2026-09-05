@@ -69,6 +69,22 @@ conclusions; the compression drill (70% budget) leaves answers unchanged.
 are the week's quiet keystone — every later context change runs through
 them.
 
+## 7. The schema-drill recap sheet
+
+**Task:** produce a one-page recap (`reports/tools-memory-recap.md`) with
+the week's five load-bearing invariants: registry gate order (existence →
+schema → contract), observation format rules (id, score, boundary
+truncation), tier contents (what never crosses), fitter priorities
+(cut-from-end order), and the answer reserve. One line each, with the
+test that enforces it.
+
+**Worked approach:** the recap is the week's *interface* — file 03 and
+file 06 read it instead of re-deriving the rules. Every line pairs a rule
+with its enforcing test, so the recap is also the test index.
+
+**Pass criterion:** five rules, five test names, all green; the recap
+linked from this subfolder's README.
+
 ## 6. The memory lifecycle drill
 
 **Task:** take one finished 8-step trajectory and walk it through the full
