@@ -81,15 +81,15 @@ and when the battery last ran.
 **Pass criterion:** note committed; the battery command green as
 recorded.
 
-## 6. The injection drills (the battery in exercises)
+## 6. The injection battery (drills, numbered)
 
-1. Plant the poison via the files server; run the ingest chain; verify
-   every stage's defense fired (the §1 table, one row each).
+1. Poison via the files server; run the ingest chain; verify every
+   stage's defense fired (the §1 table, one row each).
 2. Metadata-drill: poison a RAG *metadata field* (not text); the ingest
    firewall must cover metadata too — extend it if not.
 3. The realistic-footer drill: hide the injection in a legitimate doc's
-   footer; verify the content scan catches it while the file passes
-   human review (too long to read fully).
+   footer; the content scan catches it while the file passes human
+   review (too long to read fully).
 4. Pin drill: extend the note; confirm the battery covers all five
    stages.
 

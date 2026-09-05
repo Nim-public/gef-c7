@@ -98,6 +98,19 @@ The W13 team-state discipline (file 04-03), federated: one writer per
 field, the human writes through `update_state`, and the failed-list is
 the partial-failure drill's substrate.
 
+## 6. The chain pin note
+
+**Task:** extend `reports/sdk-versions.md` with the chain's definition:
+node-to-server mapping, the interrupt list (gates), the checkpointer
+backend, and the chain-battery command.
+
+**Worked approach:** cross-server chains are the federated system's
+write paths — the pin note records which node touches which server and
+which nodes gate, so the audit trail's structure is pinned.
+
+**Pass criterion:** note committed; the chain battery green as
+recorded.
+
 ## Exercises
 
 1. Build the ingest chain; run the approve flow end-to-end; verify both

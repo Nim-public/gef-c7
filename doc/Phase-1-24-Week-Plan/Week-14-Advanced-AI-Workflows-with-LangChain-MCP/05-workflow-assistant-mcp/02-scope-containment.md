@@ -95,6 +95,20 @@ adapter change; a wall that stops being tested is a wall in name only.
 4. Battery drill: implement the §5 cases; wire into CI; one wall-removal
    mutation must turn the suite red.
 
+## 6. The scope-of-scope (what containment does not cover)
+
+| Outside containment | Residual risk | Mitigation elsewhere |
+|---|---|---|
+| prompt injection in file *content* | the model reads it | W13/W14 firewall layers |
+| social engineering of the approver | bad approvals | the approve-UI evidence panel |
+| supply-chain compromise of deps | arbitrary code in-server | dependency pin notes |
+
+The containment matrix covers *data and privilege flow*; content-level
+injection is file 04's battery, human factors are the gate UI's
+evidence panel, and supply chain is the pin notes' job. Containment is
+one layer of a stack — the security page (file 04 §4) links all of
+them.
+
 ## Pitfalls
 
 - Shared tokens across servers — one compromised server leaks everything;
