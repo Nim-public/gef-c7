@@ -79,6 +79,19 @@ caught; CI slots wired.
 (4-pointer) is the reliability week's foundation — every rail is a
 production promise.
 
+## 8. The reliability review page
+
+**Task:** write `reports/reliability-review.md`: the budget table, the
+retry decision table, the breaker states, the contract map, and the
+pyramid shape — the reliability week's evidence page.
+
+**Worked approach:** the review composes files 01–04 into one sheet:
+every rail cites its stress drill, every retry row cites its code path,
+every tier cites its bug drill.
+
+**Pass criterion:** the page answers "what happens when everything
+fails at once?" in one read.
+
 ## 7. The reliability pin note
 
 **Task:** extend `reports/sdk-versions.md` with the reliability stack:
