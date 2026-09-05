@@ -60,6 +60,18 @@ def test_settings_pinned():
 The audit runs at import in the eval harness — the pin is enforced, not
 documented.
 
+## 5. The settings pin note (the defaults' audit)
+
+**Task:** extend `reports/sdk-versions.md` with the LlamaIndex Settings:
+embedder, llm, node parser, and the audit command — the pin's page.
+
+**Worked approach:** the pin note records the Settings values and the
+audit that enforces them — the same pin discipline as every framework
+week's configuration.
+
+**Pass criterion:** note committed; the audit command green as
+recorded.
+
 ## Exercises
 
 1. Write the pinning block; run the settings audit; deliberately unpin
@@ -68,3 +80,6 @@ documented.
    retrieval vs your W9 stack — identical hits or name the mismatch.
 3. Pin-note drill: record the Settings values in `reports/sdk-versions.md`;
    the LlamaIndex version joins the pin.
+4. Cross-check drill: grep the codebase for LlamaIndex usage that does
+   *not* go through Settings — direct constructions bypass the pin;
+   route them through it.

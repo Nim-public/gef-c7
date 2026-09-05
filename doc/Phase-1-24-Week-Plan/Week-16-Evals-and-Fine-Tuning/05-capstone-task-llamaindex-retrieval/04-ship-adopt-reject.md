@@ -46,7 +46,7 @@ component joins the pin notes, the parity tests, and the upgrade
 schedule. The W14-06 gate inventory grows by the adopted component's
 tests.
 
-## Exercises
+## 5. The decision drill set (the memo's evidence)
 
 1. Run the comparison (file 03); write the verdict memo with cited
    numbers; commit as the capstone's retrieval decision.
@@ -55,3 +55,18 @@ tests.
    eval.
 3. Revisit drill: name the trigger that would flip adopt → ship (or
    reject); the trigger is measurable.
+4. Provenance drill: every memo number links to the comparison report;
+   the walk-through takes a reviewer under five minutes.
+
+## 6. The adopt decision's maintenance column (the standing cost)
+
+| Adopted component | Standing cost |
+|---|---|
+| node parser | version pin + chunk-parity test |
+| readers | format-coverage tests per reader |
+| query engine (if shipped) | harness adapters + full parity |
+
+The maintenance column is the adopt decision's honest cost — an adopted
+component joins the pin notes, the parity tests, and the upgrade
+schedule. The W14-06 gate inventory grows by the adopted component's
+tests; the memo states the growth.

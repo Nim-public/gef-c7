@@ -64,6 +64,35 @@ convenient; your *manifest, hybrid search, and harness* are the
 discipline. The comparison (file 03) measures whether the convenience
 costs quality.
 
+## 5. The four-object review (the wiring checklist)
+
+```text
+[ ] reader: loads your corpus (or a subset) without errors
+[ ] node parser: chunk settings from your W4 pin (not defaults)
+[ ] index: built over nodes carrying unit_id metadata
+[ ] query engine: retriever + synthesizer, both pinned via Settings
+[ ] round-trip: node metadata → manifest rows resolve
+```
+
+The wiring checklist is the four objects' review — the same structure
+as the W10 assembly checklist. The round-trip row is the life-line: a
+node whose metadata lost the unit_id produces uncitable answers.
+
+## 6. LlamaIndex vs your pipeline (the vocabulary translation)
+
+| LlamaIndex term | Your program's term |
+|---|---|
+| document | a loaded file (pre-chunk) |
+| node | a chunk — a *unit* in your manifest |
+| index | the vector store + embedding config |
+| retriever | your hybrid retrieval |
+| query engine | retriever + synthesizer (your RAG node) |
+| response synthesizer | the generation prompt + LLM call |
+
+The translation table is the week's vocabulary lesson — every LlamaIndex
+concept has a W7–W9 name you already own. Reading LlamaIndex docs is now
+translation, not learning from scratch.
+
 ## Exercises
 
 1. Build the four objects over a subset of your corpus; query it;
@@ -73,6 +102,7 @@ costs quality.
    rule), LlamaIndex edition.
 3. Retriever drill: run the retriever alone on 5 queries; R@5 vs your
    W9 retriever — the retriever half, isolated.
+4. Review drill: run the §5 checklist; every row cites its test.
 
 ## Pitfalls
 

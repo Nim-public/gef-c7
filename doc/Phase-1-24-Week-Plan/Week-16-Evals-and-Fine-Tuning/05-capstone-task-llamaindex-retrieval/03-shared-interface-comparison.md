@@ -60,6 +60,27 @@ The expected shape: LlamaIndex slightly behind *unless* its chunking is
 matched to yours — the chunker is the difference (file 02's pin). With
 matched chunking and embedder, the engines converge.
 
+## 5. The comparison report (the protocol's output)
+
+```markdown
+# Engine comparison — eval-set v3 — [date]
+
+| metric | W9 stack | LlamaIndex | Δ | cause |
+|---|---|---|---|---|
+| R@5 charts | 0.78 | 0.74 | −0.04 | chunking |
+| R@5 text | 0.85 | 0.84 | −0.01 | parity |
+| MRR | 0.71 | 0.68 | −0.03 | ranking |
+| faith (same nodes) | 0.91 | 0.91 | 0 | same synthesizer |
+
+protocol: 15 cases, k=5, chunk-matched, embedder pinned
+verdict: parity within noise after chunk-matching; the retriever's
+ranking is the remaining delta
+```
+
+The report is the protocol's output — the table, the header, and the
+verdict. It is the ship/adopt/reject decision's (file 04) input, and
+its every number is regenerable by the comparison script.
+
 ## Exercises
 
 1. Implement the shared interface for both engines; run the comparison;
@@ -70,6 +91,8 @@ matched chunking and embedder, the engines converge.
 3. Synthesis-drill: with identical retrieved nodes, compare both
    synthesizers' faithfulness — separating retrieval from generation
    quality.
+4. Report drill: render §5; the header carries the protocol; the verdict
+   cites the table.
 
 ## Pitfalls
 
