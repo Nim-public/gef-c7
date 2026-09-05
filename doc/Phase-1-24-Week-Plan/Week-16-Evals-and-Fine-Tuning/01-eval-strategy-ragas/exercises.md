@@ -81,6 +81,20 @@ discipline as every policy artifact.
 **Pass criterion:** the manifest lists the eval stack with green
 commands as recorded.
 
+## 7. The eval-strategy review page
+
+**Task:** write `reports/eval-strategy-review.md`: the diagnosis tree,
+the slice gates, the signal dashboard, and the governance page — the
+eval week's face, composing files 01–04.
+
+**Worked approach:** the review composes the drills into one evidence
+sheet — the reviewer question is "how do you know the scores mean
+anything?" and each section answers with its calibration or governance
+evidence.
+
+**Pass criterion:** the page answers the trust question in one read,
+citing the drills and the governance checks.
+
 ## Pitfalls recap
 
 - Faithfulness without claim splitting — one-sentence answers score
