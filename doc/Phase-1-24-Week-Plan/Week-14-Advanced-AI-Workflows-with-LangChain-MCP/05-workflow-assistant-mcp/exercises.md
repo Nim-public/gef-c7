@@ -82,6 +82,20 @@ verification date.
 **Pass criterion:** the manifest lists all servers with green commands
 as recorded.
 
+## 7. The federation security page
+
+**Task:** write `reports/federation-security.md`: the trust-boundary
+diagram (file 04's §4), the containment matrix, the injection battery
+results, and the containment scope-of-scope (file 02's §6) — the
+federation's security face.
+
+**Worked approach:** the page composes the drills into one evidence
+sheet — the reviewer question is "what happens when one server is
+compromised?" and each row answers with its blast radius and defense.
+
+**Pass criterion:** the page answers the compromise question per server
+in one read, citing the drills.
+
 ## Pitfalls recap
 
 - Unnamespaced federated tools — collisions surface as wrong answers;

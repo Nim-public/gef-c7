@@ -92,6 +92,9 @@ recorded.
    review (too long to read fully).
 4. Pin drill: extend the note; confirm the battery covers all five
    stages.
+5. Negative-control drill: run the battery against a chain with *all*
+   defenses intact and clean files; every case must pass silently —
+   proving the battery has no false-positive noise.
 
 ## Pitfalls
 
