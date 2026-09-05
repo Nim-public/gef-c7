@@ -70,6 +70,28 @@ The W10 surface page, one row per server. The client asserts every
 server's version and diff-checks every server's tool list — a server
 that changes unannounced fails the connection, not the demo.
 
+## 5. The adapter test suite (the federation's contract tests)
+
+```python
+def test_namespacing():
+    names = [t.name for t in adapter.exposed_tools()]
+    assert all("__" in n for n in names)              # every tool namespaced
+    assert len(names) == len(set(names))              # no collisions
+
+def test_version_asserts():
+    with pytest.raises(VersionMismatch):
+        adapter_with_bad_config()                     # bumped server, old config
+
+def test_server_isolation():
+    rag_tools = {t.name for t in adapter.exposed_tools() if t.name.startswith("rag__")}
+    files_tools = {t.name for t in adapter.exposed_tools() if t.name.startswith("files__")}
+    assert rag_tools and files_tools and not (rag_tools & files_tools)
+```
+
+Three tests are the adapter's contract: namespacing completeness,
+version enforcement, and per-server isolation. They run in CI on every
+server change — the federation's wiring is tested like everything else.
+
 ## Exercises
 
 1. Build the adapter over three servers; print the federated surface;
@@ -78,6 +100,8 @@ that changes unannounced fails the connection, not the demo.
    namespacing prevents the collision (both surface, both callable).
 3. Contract drill: bump one server's version without updating the
    config; the connect assert must fail loudly.
+4. Suite drill: implement §5's three tests; wire into CI; any server
+   change re-runs them.
 
 ## Pitfalls
 

@@ -76,6 +76,28 @@ Every cross-server event lands in the store with its server namespace —
 the audit trail answers "which server did what, when, on whose
 approval", which is the question every federated system must answer.
 
+## 5. The chain's state schema (the workflow's contract)
+
+```python
+class IngestState(TypedDict):
+    files: list[str]
+    plan: str
+    approved: bool
+    ingested: Annotated[list[str], operator.add]
+    failed: Annotated[list[str], operator.add]
+```
+
+| Field | Writer | Reader |
+|---|---|---|
+| `files` | list_files node | propose node |
+| `plan` | propose node | human gate |
+| `approved` | human (via update_state) | ingest node |
+| `ingested` / `failed` | ingest node (append) | retry planner |
+
+The W13 team-state discipline (file 04-03), federated: one writer per
+field, the human writes through `update_state`, and the failed-list is
+the partial-failure drill's substrate.
+
 ## Exercises
 
 1. Build the ingest chain; run the approve flow end-to-end; verify both
@@ -84,3 +106,5 @@ approval", which is the question every federated system must answer.
    reason lands in the store.
 3. Partial-failure drill: kill the RAG re-index mid-chain; the sandbox
    files are marked and the retry plan proposes only the remainder.
+4. Schema drill: write the §5 table; probe for two-writer fields; add
+   merge policies or split.

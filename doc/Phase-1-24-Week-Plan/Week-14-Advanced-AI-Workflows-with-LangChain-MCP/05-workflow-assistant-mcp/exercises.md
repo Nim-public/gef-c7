@@ -69,6 +69,19 @@ fixed; the containment table complete.
 federated injection battery (4-pointer) is the security deliverable —
 the federation must add stages of defense, not doors.
 
+## 6. The federated pin note (the workflow assistant's manifest)
+
+**Task:** consolidate the federated stack in `reports/sdk-versions.md`:
+the adapter config, the containment matrix, the chain's state schema
+version, and the injection battery command — one block.
+
+**Worked approach:** the federated build has the most moving parts of
+any week — the manifest lists every server, its scope, and its
+verification date.
+
+**Pass criterion:** the manifest lists all servers with green commands
+as recorded.
+
 ## Pitfalls recap
 
 - Unnamespaced federated tools — collisions surface as wrong answers;

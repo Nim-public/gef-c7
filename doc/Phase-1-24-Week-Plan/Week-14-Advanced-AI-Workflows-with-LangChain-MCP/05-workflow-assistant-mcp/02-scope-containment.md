@@ -65,15 +65,35 @@ The LLM sees the federated tools — *minus* anything the gates hold back
 (the files server's write tool is gated, W10 file 04). The adapter's
 exposure list is the gate policy's projection: what exists, what is
 gated, what the model may see.
+## 5. The containment battery (the matrix as tests)
+
+```python
+CONTAINMENT_CASES = [
+    ("rag server reads outside data/lancedb", "refused"),
+    ("files server writes outside data/sandbox", "refused"),
+    ("util server reads another server's env", "impossible: env isolation"),
+    ("assistant calls an unexposed tool", "refused at adapter"),
+]
+
+@pytest.mark.parametrize("attempt,expected", CONTAINMENT_CASES)
+def test_containment(attempt, expected): ...
+```
+
+The battery is the containment matrix as executable tests — four
+attempts, four refusals, one per wall. It runs in CI on every server or
+adapter change; a wall that stops being tested is a wall in name only.
 
 ## Exercises
 
 1. Build the containment matrix; verify each server's process env with
-   a probe (print env keys inside each server — CI-assert the isolation).
+   a probe (print env keys inside each server — CI-assert the
+   isolation).
 2. Path-scoping drill: point the files server at `data/raw/`; the
    validator must refuse — the scope is the wall, tested.
 3. Exposure drill: remove a tool from `EXPOSED_TO_LLM`; verify the model
    cannot call it (the adapter filters the schemas).
+4. Battery drill: implement the §5 cases; wire into CI; one wall-removal
+   mutation must turn the suite red.
 
 ## Pitfalls
 

@@ -68,7 +68,20 @@ not weaknesses, when each stage carries its own defense.
 - No server trusts another server's output raw.
 ```
 
-## Exercises
+## 5. The injection pin note
+
+**Task:** extend `reports/sdk-versions.md` with the federated security
+stack: the defense layers per stage (§3's table), the battery command,
+and the last drill date.
+
+**Worked approach:** the federated battery has the most stages of any
+security drill — the pin note records which layer fired at which stage
+and when the battery last ran.
+
+**Pass criterion:** note committed; the battery command green as
+recorded.
+
+## 6. The injection drills (the battery in exercises)
 
 1. Plant the poison via the files server; run the ingest chain; verify
    every stage's defense fired (the §1 table, one row each).
@@ -77,6 +90,8 @@ not weaknesses, when each stage carries its own defense.
 3. The realistic-footer drill: hide the injection in a legitimate doc's
    footer; verify the content scan catches it while the file passes
    human review (too long to read fully).
+4. Pin drill: extend the note; confirm the battery covers all five
+   stages.
 
 ## Pitfalls
 
