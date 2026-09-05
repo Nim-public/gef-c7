@@ -73,6 +73,21 @@ The one-pager is the merged memo's summary — the architecture on a
 postcard. It is what the demo, the README, and the reviewers cite; the
 detail lives in the four merged memos it links.
 
+## 6. The topology decision tests (each row's evidence test)
+
+| Flow | Decision test |
+|---|---|
+| hot-path chain | 5 queries through the chain, R@10 ≥ baseline |
+| long-tail agent | the ambiguous-class cases route and succeed |
+| analytics graph | numeric gate green (exact-match) |
+| interactive graph | invariant test (no advance without choice) |
+| voice cascade | latency table within budget |
+| codegen loop | attempts histogram median ≤2 |
+
+Each topology row carries its evidence test — the decision is verified
+by running the test, not by re-reading the memo. The tests are the
+architecture's executable form; the memo cites them.
+
 ## Exercises
 
 1. Merge the four prior memos into `doc/capstone/architecture.md` —
@@ -85,3 +100,5 @@ detail lives in the four merged memos it links.
    memo's optimization task is created by the drill, not by memory.
 5. One-pager drill: render §5 from the merged memo; the postcard and the
    memo must agree on every number.
+6. Decision-test drill: run all six decision tests in one command; six
+   green lines is the architecture's health check.
