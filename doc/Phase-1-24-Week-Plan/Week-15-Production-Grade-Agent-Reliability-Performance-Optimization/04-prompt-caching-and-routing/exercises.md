@@ -82,6 +82,20 @@ measured savings.
 **Pass criterion:** the manifest lists both levers with green commands
 and measured savings.
 
+## 7. The calibration walkthrough (the reviewer's page)
+
+**Task:** write `reports/routing-walkthrough.md`: one query per band
+(weak-safe, strong-required, ambiguous) walked end-to-end — the query,
+both models' answers, the delta, and the route decision. The page is
+how the thresholds become legible.
+
+**Worked approach:** the walkthrough is the calibration's documentation
+-by-example — a reviewer who reads it can predict the router's choice
+for a new query.
+
+**Pass criterion:** three walked bands; every delta cited from the
+delta table; the router's config matches the walkthrough.
+
 ## Pitfalls recap
 
 - Variable content in the prefix — one timestamp kills the cache; the

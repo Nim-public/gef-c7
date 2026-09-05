@@ -97,3 +97,18 @@ same format as the tool-surface policy. Rung 3's deferral is a
 3. Ladder drill: measure cost and quality per rung on the eval set; the
    promotion decision (when to move from rules to classifier) is data.
 4. Pin drill: write the manifest; the promotion trigger named.
+5. Asymmetry drill: compute §6's economics table with your prices; the
+   default-to-strong rule justified in dollars.
+
+## 6. The routing asymmetry table (the economics, computed)
+
+| Scenario | Strong model | Weak model | Delta |
+|---|---|---|---|
+| hard query routed weak | correct answer | wrong answer | quality loss: unbounded |
+| easy query routed strong | correct answer | correct answer | cost delta: ~$0.004 |
+| 100 easy queries/day | $0.40 | $0.02 | saving: $0.38 |
+
+The table is the asymmetry principle's arithmetic: the *maximum* saving
+from weak-routing easy queries is pennies; the cost of weak-routing one
+hard query is a failed demo or a wrong number. The default-to-strong
+rule is not conservatism — it is the arithmetic.

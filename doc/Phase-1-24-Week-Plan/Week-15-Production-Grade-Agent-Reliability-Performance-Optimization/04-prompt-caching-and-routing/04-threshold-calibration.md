@@ -75,6 +75,20 @@ boundary, the table, and the verification. The same page format as
 every calibrated artifact in the program (the W9 judge thresholds, the
 W13 confidence gates).
 
+## 6. The calibration drill record (the threshold's evidence)
+
+```text
+delta table: 100 cases, both models
+weak-safe band: short, factual, single-tool (40 cases, Δ=0.00)
+threshold: route weak iff len<80 tokens AND single-tool AND factual
+verification: 20 weak-routed cases re-run — 0 regression
+```
+
+The drill record is the calibration's evidence — the delta table, the
+band's characterization, the threshold, and the verification. The same
+record format as every calibrated artifact since the W9 judge
+thresholds.
+
 ## Exercises
 
 1. Run the eval on both models; build the per-case delta table; find the
@@ -86,3 +100,5 @@ W13 confidence gates).
    cost the demo?) vs the token saving; the default-to-strong rule's
    economics, made explicit.
 4. Pin drill: write the note; the threshold change is a version bump.
+5. Record drill: fill §6's record from your drills; the page joins the
+   pin-note family.
