@@ -69,6 +69,19 @@ the memo updated.
 self-improving loop (4-pointer) is the week's compounding deliverable —
 the eval set that maintains itself.
 
+## 6. The RAG pin note (the agentic-RAG manifest)
+
+**Task:** consolidate the agentic-RAG stack in `reports/sdk-versions.md`:
+the three-source tools, decomposition, self-improving loop cadence, and
+the parity record — one block.
+
+**Worked approach:** the agentic-RAG build spans four files; the pin
+note is its manifest — every moving part's version and verification
+date.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
 ## Pitfalls recap
 
 - Tool descriptions duplicating the priority instructions — one priority

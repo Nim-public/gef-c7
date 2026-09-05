@@ -76,6 +76,19 @@ The battery asserts the *decomposition quality*: parts must be
 self-contained (no pronouns referencing siblings), each part routes to
 a defensible source, and the synthesis cites both.
 
+## 5. The decomposition pin note
+
+**Task:** extend `reports/sdk-versions.md` with the decomposition stack:
+SubQuestions schema version, the fan-out mechanism (Send vs sequential),
+the synthesis contract, and the probe-battery command.
+
+**Worked approach:** decomposition is the multi-hop multiplier — the
+pin note records the bound (2–4 parts) and the self-containment probe
+that keeps parts routable.
+
+**Pass criterion:** note committed; the probe battery green as
+recorded.
+
 ## Exercises
 
 1. Build the decomposer; run the multi-hop cases; verify sub-questions
@@ -84,6 +97,7 @@ a defensible source, and the synthesis cites both.
    synthesis cites per part.
 3. Refusal drill: an un-decomposable opinion question; zero parts and an
    honest refusal — the empty-parts path is a graded case.
+4. Pin drill: extend the note; confirm the bound and the probe coverage.
 
 ## Pitfalls
 

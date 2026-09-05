@@ -82,6 +82,20 @@ the same failures stop recurring, the taxonomy saturates. A rising rate
 means the fixes aren't landing (or the tool surface is changing faster
 than the eval).
 
+## 5. The loop's cadence (when mining runs)
+
+| Cadence | Action | Output |
+|---|---|---|
+| per run | classification (W13 taxonomy) | the store's labels |
+| weekly | mining query (§2) | candidate classes |
+| biweekly | case construction + gold | eval-set bump |
+| per release | regression gate re-run | the full set |
+
+The cadence is the loop's schedule — mining runs *weekly* because
+failure classes need time to accumulate, but the regression gate runs
+per release. The cadence table is part of the eval-set changelog's
+header; an unscheduled loop is a stalled loop.
+
 ## Exercises
 
 1. Run the mining over your full trajectory store; produce the class
@@ -90,6 +104,8 @@ than the eval).
    your data; add as eval-set v+1 with the changelog.
 3. Saturation drill: plot new-class rate by month; the curve tells you
    whether the system is converging or churning.
+4. Cadence drill: schedule the weekly mining (cron or CI); the mined
+   table lands in `reports/mining/` automatically.
 
 ## Pitfalls
 

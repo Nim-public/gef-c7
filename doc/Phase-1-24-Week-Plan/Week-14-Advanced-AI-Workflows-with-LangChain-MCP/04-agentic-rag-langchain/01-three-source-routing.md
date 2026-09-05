@@ -76,6 +76,19 @@ The battery is the W12-05 table, one column wider (LangChain). The
 typed `source` field makes the labels structural — the harness asserts
 corpus questions never answer `external`-only.
 
+## 5. The routing pin note
+
+**Task:** extend `reports/sdk-versions.md` with the three-source stack:
+tool list, priority-instruction version (W12 cvN ported), the `source`
+field schema, and the routing-battery command.
+
+**Worked approach:** the three-power routing is now in its second
+framework — the pin note records the battery's port status (same cases,
+same assertions) and the instruction wording's version.
+
+**Pass criterion:** note committed; the battery command green as
+recorded.
+
 ## Exercises
 
 1. Build the three-source agent; run the routing battery (5 cases × 3);
@@ -84,6 +97,8 @@ corpus questions never answer `external`-only.
    the corpus must win and be labeled.
 3. Disable drill: remove the web tool; external queries degrade
    honestly ("not in corpus; web disabled").
+4. Pin drill: extend the note; confirm the battery cases match the W12
+   set verbatim (the port's parity, router edition).
 
 ## Pitfalls
 

@@ -64,6 +64,19 @@ proof.
   LCEL/agent for linear chains, shared everything else.
 ```
 
+## 5. The parity pin note
+
+**Task:** extend `reports/sdk-versions.md` with the parity record: both
+implementations' versions, the eval-set version, the protocol header,
+and the parity-test command.
+
+**Worked approach:** parity is the port's contract — the pin note
+records both sides' versions so a future framework bump re-runs the
+same test against the same cases.
+
+**Pass criterion:** note committed; the parity command green as
+recorded.
+
 ## Exercises
 
 1. Run the 15-case parity test; document any outcome divergence with
