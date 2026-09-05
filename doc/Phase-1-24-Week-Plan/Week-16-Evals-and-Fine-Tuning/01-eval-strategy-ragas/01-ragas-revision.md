@@ -59,6 +59,33 @@ Recall needs gold facts (your data); relevancy needs no gold — the
 metrics differ in *labeling cost*, which is why the eval set (file 04)
 records which gold each case carries.
 
+## 5. The metric-lie table (where each metric misleads)
+
+| Metric | How it lies | Guard |
+|---|---|---|
+| faithfulness | one-sentence answers score 1.0 | claim splitting + length floor |
+| answer relevancy | echoes the question back | relevancy = new information check |
+| context precision | one perfect chunk among dross | rank-aware (MRR-style) |
+| context recall | gold facts trivially word-matched | fact paraphrase matching |
+
+Every metric has a failure mode where it rewards garbage — the guard
+column is the metric's own validation. The W9-04 walkthrough (one case
+per scoring type) applies here: hand-verify one case per metric before
+trusting any of them.
+
+## 6. The Ragas library vs your implementations (the port decision)
+
+| Option | Pros | Cons |
+|---|---|---|
+| Ragas library | maintained, standard | fixed metric definitions, LLM-judge cost |
+| your implementations | transparent, tunable, free | maintenance, drift risk |
+
+The decision rule: use the library when its definitions match your
+needs and the LLM-judge cost fits the budget; use your implementations
+when you need domain-specific claim matching (your corpus's vocabulary).
+Either way — hand-verify 10 cases first; the library is not exempt from
+the calibration protocol.
+
 ## Exercises
 
 1. Implement the four metrics on your 15-case set; produce the
@@ -67,3 +94,5 @@ records which gold each case carries.
    re-run; the leaf's population must shrink.
 3. Claim-splitter drill: improve `split_claims` on 5 answers; the
    faithfulness scores shift — the splitter is the metric's real work.
+4. Lie-drill: construct one garbage answer per metric that fools it;
+   then add the guard — the metric's validation by its own failure.

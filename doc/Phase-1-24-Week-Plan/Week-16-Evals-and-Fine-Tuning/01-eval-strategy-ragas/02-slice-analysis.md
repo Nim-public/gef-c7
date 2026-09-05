@@ -50,6 +50,31 @@ exists); invented slices need justification.
 The mapping is the routing table (W12-05) joined with the diagnosis
 tree (file 01) — each weak slice names its fix's week and file.
 
+## 5. The slice regression (slices as gates)
+
+Each slice's metric becomes a regression gate once measured:
+
+```python
+SLICE_GATES = {
+    ("kb", "chart"): {"context_recall": 0.60},
+    ("kb", "text"):  {"context_recall": 0.80},
+    ("data", "orders"): {"faithfulness": 0.95},
+}
+
+def slice_gates_pass(df: pd.DataFrame) -> bool:
+    for (route, doc), gates in SLICE_GATES.items():
+        s = slice_table(df, ["route", "doc"])
+        row = s[(s.route == route) & (s.doc == doc)]
+        for metric, floor in gates.items():
+            if row[metric].iloc[0] < floor:
+                return False
+    return True
+```
+
+The gates are the slice table, frozen — a slice's metric falling below
+its floor fails CI. The floors come from the slice table's first
+measurement (the W10-05 rubric rule: set from baselines, held after).
+
 ## Exercises
 
 1. Build the two-dimensional slice table (route × doc type) over your
@@ -59,3 +84,5 @@ tree (file 01) — each weak slice names its fix's week and file.
    corrected.
 3. Slice-drill: add one new slice dimension (e.g., answer length);
    check whether it reveals a hidden weak cell.
+4. Gate drill: freeze the slice gates from the healthy table; a
+   degraded slice (injected) turns the gate red.

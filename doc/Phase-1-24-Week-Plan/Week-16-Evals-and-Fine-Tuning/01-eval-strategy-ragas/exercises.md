@@ -68,6 +68,19 @@ parity verified.
 diagnosis tree (4-pointer) is the eval week's action layer — scores
 that name fixes, not just numbers.
 
+## 6. The eval-strategy pin note (the eval layer's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the eval layer: metric
+implementations (yours vs Ragas, versioned), slice gates, signal
+thresholds, and the dataset governance page — one block.
+
+**Worked approach:** the eval layer's manifest records which metric
+implementations and threshold sets the scores came from — the same pin
+discipline as every policy artifact.
+
+**Pass criterion:** the manifest lists the eval stack with green
+commands as recorded.
+
 ## Pitfalls recap
 
 - Faithfulness without claim splitting — one-sentence answers score

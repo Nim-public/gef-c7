@@ -68,6 +68,23 @@ may be tuned on the dev slice; the held-out slice is touched only at
 eval time — and its rotation (per major version) prevents the held-out
 set from becoming dev through repetition.
 
+## 5. The dataset's governance page (the version model as a document)
+
+```markdown
+# Eval dataset governance (W16)
+- location: eval-sets/vN/ (parquet + changelog.md per version)
+- immutability: frozen versions; improvements = new versions
+- splits: dev ~70% / held-out ~30%, stratified by class, seed recorded
+- provenance: every case cites its motivating artifact
+- review: the changelog is reviewed like code (PRs touch the set)
+- leakage checks: dedup audit + held-out rotation per major version
+```
+
+The governance page is the dataset's constitution — the rules that keep
+the eval set trustworthy as it grows through the self-improving loop.
+It is the W16 answer to "who watches the watchmen": the dataset's own
+changelog, splits, and leakage audits.
+
 ## Exercises
 
 1. Restructure your eval set into the version model; write the v1
@@ -77,3 +94,5 @@ set from becoming dev through repetition.
 3. Bump drill: add two mined cases as a v2 bump with a proper changelog;
    re-run the harness on both versions — the scores differ, the
    changelog explains why.
+4. Governance drill: run the §5 page's checks (dedup, rotation,
+   provenance); every check green; the page cites them.
