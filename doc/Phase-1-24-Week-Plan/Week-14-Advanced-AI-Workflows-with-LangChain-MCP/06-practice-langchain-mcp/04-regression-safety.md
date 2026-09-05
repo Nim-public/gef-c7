@@ -73,6 +73,20 @@ The chapter is the safety documentation's index — each line links to
 its drills and artifacts. The reviewer's security questions are
 answered before they are asked.
 
+## 5. The gate onboarding (how a new gate joins)
+
+```text
+1. the gate is a test (pytest) or a script step
+2. it has a mutation (a planted bug that trips it)
+3. it has a CI slot (push / nightly / pre-demo)
+4. it joins the inventory table + the acceptance command
+5. its first mutation run is committed as evidence
+```
+
+The onboarding is the gate's five-step entry — the same procedure every
+gate in the inventory followed. A new safety idea without these five
+steps is a wish; the onboarding is what makes it a gate.
+
 ## Exercises
 
 1. Wire the gate inventory into the workflow; verify each gate's CI slot
@@ -83,6 +97,9 @@ answered before they are asked.
    gates PASS under the time budget.
 4. Documentation drill: the safety chapter's every link resolves to a
    committed artifact; no dead links, no vibes.
+5. Onboarding drill: add one new gate through the §5 procedure (e.g., a
+   prompt-injection spot-check for the analytics path); its first
+   mutation run committed.
 
 ## Pitfalls
 

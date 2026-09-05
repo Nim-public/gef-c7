@@ -45,6 +45,19 @@ Every trigger names its metric and threshold — the same discipline as
 every memo since W10. The triggers are the architecture's maintenance
 contract.
 
+## 4. The budget's guardrails (how the table stays true)
+
+| Guardrail | Mechanism | Cadence |
+|---|---|---|
+| p95 re-measurement | the ledger per component | weekly |
+| budget breach alarm | gate threshold on p95 | per run |
+| new-tool budget check | the surface review (W10) | per tool added |
+| token inflation watch | blended cost vs baseline | nightly |
+
+The guardrails are the budget's enforcement — a table without
+re-measurement is a snapshot, not a budget. Each guardrail cites its
+mechanism (most are gates you built in W11–W13) and its cadence.
+
 ## Exercises
 
 1. Merge the four prior memos into `doc/capstone/architecture.md` —
@@ -53,3 +66,5 @@ contract.
    any component exceeding budget gets a named optimization task.
 3. Trigger drill: simulate one trigger firing; the action must be
    executable from the memo alone.
+4. Guardrail drill: breach one budget on purpose; the alarm fires; the
+   memo's optimization task is created by the drill, not by memory.

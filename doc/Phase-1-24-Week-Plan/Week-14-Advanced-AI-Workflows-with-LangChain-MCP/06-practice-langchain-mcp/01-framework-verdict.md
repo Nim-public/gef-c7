@@ -53,6 +53,21 @@ The ledger is the framework arc's yield: five weeks, five mechanisms
 audited, five ideas kept. The ideas travel; the migrations didn't
 happen.
 
+## 4. The per-framework "when to reach for it" page (the verdict's user guide)
+
+| Reach for | When | Cite |
+|---|---|---|
+| W10 patterns | debugging any framework's magic | the loop is the substrate |
+| W11 SDK | production QA agent with gates | W11 battery, W13 parity |
+| Agno | fast data agents with Knowledge | W12-02 parity loop |
+| CrewAI | role-play content pipelines | W12-06 bake-off |
+| LangChain/LCEL | linear chains in any system | W14-02 parity |
+| LangGraph | interactive, stateful, HITL | W13 interrupts |
+
+The user guide is the verdict's practical form: not "which framework
+won" but "which framework for which job, with the evidence link". Every
+row's cite is a battery or a parity run from the program.
+
 ## Exercises
 
 1. Fill the table's parity columns from your runs; mark the not-compared
@@ -61,6 +76,8 @@ happen.
    table — the same two cited numbers rule.
 3. Ledger drill: verify every ported idea has a living test (a run or a
    battery row); dead ideas get pruned from the ledger.
+4. User-guide drill: for each "reach for" row, name the artifact a
+   teammate would read to start — the guide's links must resolve.
 
 ## Pitfalls
 

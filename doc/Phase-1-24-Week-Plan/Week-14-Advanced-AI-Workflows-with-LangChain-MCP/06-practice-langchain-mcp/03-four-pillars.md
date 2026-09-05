@@ -57,6 +57,19 @@ The degradation ladder (W8 file 04, W9, W13) applied per pillar — the
 demo's last act is killing one component per pillar and showing the
 flagged fallback.
 
+## 5. The pillar artifacts (what each demo commits)
+
+| Pillar | Artifacts committed |
+|---|---|
+| RAG | the transcript with citations, the refusal transcript |
+| SQL | the SQL texts, the verification verdicts, the chart |
+| Voice | the latency table, the audio files |
+| HITL | the approval record, the edit diff, the resume trace |
+
+The artifacts are the demo's evidence — the demo *prints* them and the
+repo *commits* them. A reviewer who missed the live demo reads these;
+the four-pillar page links every one.
+
 ## Exercises
 
 1. Build the demo script; run all four pillars; every pillar prints its
@@ -66,6 +79,8 @@ flagged fallback.
 3. Fresh-clone drill: run from a clean clone; the ingest + demo pipeline
    completes under 10 minutes (or the slow stage gets a documented
    cache).
+4. Artifact drill: commit the four pillars' artifacts; the four-pillar
+   page links them; every link resolves.
 
 ## Pitfalls
 
