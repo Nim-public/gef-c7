@@ -86,6 +86,20 @@ gate there, and re-measure monthly.
 Urgency inflation is the classic classification failure — the battery
 case keeps the model honest about *blockage*, not *punctuation*.
 
+## 5. The classification calibration table (the threshold's evidence)
+
+| Confidence bucket | n | auto-accuracy | action |
+|---|---|---|---|
+| ≥0.9 | 40 | 0.95 | auto |
+| 0.8–0.9 | 30 | 0.85 | auto |
+| 0.7–0.8 | 20 | 0.70 | gate here |
+| <0.7 | 10 | 0.40 | human |
+
+The calibration table is the threshold's evidence: bucket the eval runs
+by reported confidence, measure accuracy per bucket, and place the gate
+where accuracy drops below your bar. Model confidence is not calibrated
+by default — this table is what makes the number meaningful.
+
 ## Exercises
 
 1. Build the classification node with the typed output; run 10 tickets;
@@ -94,6 +108,8 @@ case keeps the model honest about *blockage*, not *punctuation*.
    accuracy; pick the knee and record it.
 3. Inflation drill: run the urgency-inflation case; the model must rank
    a polite blocker above a punctuated question.
+4. Calibration drill: build §5's table from 100 runs (or your eval set
+   × repeats); re-place the gate; document the move.
 
 ## Pitfalls
 

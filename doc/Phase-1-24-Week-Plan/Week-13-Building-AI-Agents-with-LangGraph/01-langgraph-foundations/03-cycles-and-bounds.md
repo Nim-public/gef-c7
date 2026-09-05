@@ -77,14 +77,30 @@ state field the harness already reads — the regression gate tracks it.
 The W10 detectors (loop rate) run over the graph's `attempts` histogram
 — the harness survives, the graph is just a new capture surface.
 
+## 5. The bound table (every cycle in your system, one page)
+
+| Graph | Cycle | Bound | Exit node | Flag |
+|---|---|---|---|---|
+| ReAct agent | agent↔tools | 6 | force_answer | `degraded` |
+| repair loop | write↔test | 4 | report_failures | `degraded` |
+| refinement | answer↔critique | 2 | accept current | `confidence<0.8` |
+| choice re-prompt | apply↔generate | 2 | open thread | `unresolved` |
+
+The bound table is the cycle inventory from the anti-patterns file
+(W11-03), graph edition — one row per loop, each with its exit and its
+honesty flag. The harness reads the table: any cycle without a row is
+an unbounded loop waiting to happen.
+
 ## Exercises
 
-1. Build the ReAct cycle with the three-way exit; run the 10-task eval;
-   verify attempts distribution matches W10's.
+1. Build the ReAct cycle with the three-way exit; run the eval set;
+   verify the attempts distribution matches W10's.
 2. Bound drill: set `max_steps=2` on task 8; the force-answer edge must
    fire with `degraded=True`; the session stays clean.
 3. Cap drill: unbounded-retrieval stress; `bounded_add` caps at 20; the
    trim node drops the oldest — the fitter, as a reducer.
+4. Table drill: fill the §5 table for *your* graphs; any cycle missing a
+   row gets bounded this session.
 
 ## Pitfalls
 

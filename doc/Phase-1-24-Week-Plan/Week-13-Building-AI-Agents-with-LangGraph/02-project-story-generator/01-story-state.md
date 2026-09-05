@@ -61,14 +61,39 @@ class StoryStep(BaseModel):
 schema is the UI's contract (a Gradio radio group renders it directly —
 the W9 explorer pattern, one more surface).
 
+## 5. The story-state invariants (the game's constitution)
+
+| Invariant | Test |
+|---|---|
+| chapters only grow | reducer is append; length never shrinks |
+| world passes its schema every generation | validator node per step |
+| options non-empty until `done` | schema min_length=2 |
+| chosen consumed on apply | `chosen == ""` after apply |
+
+```python
+def invariants_hold(state: StoryState) -> list[str]:
+    issues = []
+    if state["options"] and not (2 <= len(state["options"]) <= 4):
+        issues.append("option count out of range")
+    if state["chosen"] and state["chosen"] not in state["options"] \
+            and not state.get("free_text", False):
+        issues.append("chosen not in options and not flagged free")
+    return issues
+```
+
+The invariant checker runs as a post-generation node — the story's
+constitution, enforced per step, reported per trajectory row.
+
 ## Exercises
 
 1. Build the state + two nodes; run one full generation; verify the
    world JSON evolves coherently across 3 chapters.
 2. Schema drill: constrain options 2–4; prompt the model to emit 6; the
    schema must clamp or reject — validation at the seam.
-3. Session drill: pause mid-story (file 02's pattern), resume in a
-   *new process*; the world and chapters survive — checkpointing proof.
+3. Session drill: pause mid-story (file 02's pattern), resume in a new
+   process; the world and chapters survive — checkpointing proof.
+4. Invariant drill: break each §5 invariant on purpose (shrink chapters,
+   duplicate a character); the checker must catch every one.
 
 ## Pitfalls
 

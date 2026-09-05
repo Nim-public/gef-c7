@@ -67,15 +67,33 @@ waits*. The state machine's honesty, mechanically verified.
 Each is one graph, one checkpointer, one UI loop — the story generator's
 skeleton with domain nouns. Week 14+ builds the real ones.
 
+## 5. The builder's interface contract
+
+```python
+def interactive_flow(generate_fn, options_fn, apply_fn,
+                     world_schema=None, max_reprompts: int = 2):
+    """Assemble the propose → WAIT → apply graph.
+    generate_fn(state) -> {"artifact": ..., "options": [...]}
+    options_fn(state)  -> choice set (or free-text flag)
+    apply_fn(state)    -> state update from the choice
+    """
+```
+
+The builder's contract is four callables and a bound — the story was
+one instance; the ticket router and the approval flow are others. The
+contract's rule: `apply_fn` receives the state *with the choice
+recorded*, so audit trails are automatic.
+
 ## Exercises
 
-1. Abstract the story graph into a reusable `interactive_flow` builder
-   (generate_fn, apply_fn, options_fn); rebuild the story with it as the
-   smoke test.
+1. Abstract the story graph into the builder; rebuild the story with it
+   as the smoke test.
 2. Invariant drill: write the §3 tests for your builder; run them on the
    story and on one work flow.
 3. Mapping drill: list three capstone flows that fit the pattern; pick
    one for Week 14; justify with the boundary memo.
+4. Second-instance drill: implement the guided-ticket-triage instance
+   (§2) on the builder; verify the same invariant tests pass unchanged.
 
 ## Pitfalls
 

@@ -80,12 +80,28 @@ Week-07 batch encode could have used.
 [ ] the diagram in the README matches builder code (one source: code)
 ```
 
+## 5. The graph review checklist, applied to your W9 path
+
+```text
+[ ] START → classify → route → nodes → END   (no orphan nodes)
+[ ] classify returns partial state           (never the whole dict)
+[ ] route's mapping dict covers every class  (exhaustiveness)
+[ ] node names match the README diagram      (review them together)
+[ ] every edge has an owner (why does this edge exist?)
+```
+
+The checklist is the graph review's rubric — the same four gates as the
+W10 pipeline review (contract, quarantine, determinism, settings) but
+addressing *wiring* instead of transforms. The last item is the one that
+rots: diagrams drift from code unless they are reviewed together, so
+generate the diagram from the builder or read them side by side.
+
 ## Exercises
 
 1. Wire the W9 hot path as a graph; run 5 queries; verify identical
-   outcomes vs the W9 function-composed pipeline.
+   outcomes and node sequences vs the W9 function chain.
 2. Conditional drill: implement `route`; table-test it (10 inputs →
-   expected nodes) — the router, now a pure function.
+   expected nodes) — the router, now a pure function with a truth table.
 3. Send drill: fan out 12 units through `process_unit`; verify the
    reducer's order and the parallel speedup.
 
@@ -93,7 +109,7 @@ Week-07 batch encode could have used.
 
 - Nodes returning full state — the reducers then double-apply; return
   partials.
-- Unmapped conditional returns — the framework errors at runtime; the
-  mapping dict is the exhaustiveness check.
-- Graph code that drifts from the README diagram — generate the diagram
-  from the builder or review them together.
+- Unmapped conditional returns — runtime errors that a table-test would
+  have caught at write time.
+- Graph code drifting from the README diagram — generate or review
+  together; drift is how dead edges survive.

@@ -69,6 +69,25 @@ result = graph.invoke(inputs, config)
 checkpointing, history, and interrupts. The trajectory store's
 `session_id` maps to it; the pin note records the mapping.
 
+## 5. The three-views parity test (the capture contract)
+
+```python
+def test_three_views_agree(config):
+    final = graph.invoke(inputs, config)                       # view 1
+    stream_events = list(graph.stream(inputs, config,
+                                      stream_mode="updates"))  # view 2
+    hist = list(graph.get_state_history(config))               # view 3
+    steps_invoke = len([k for k in final if final[k]])
+    steps_stream = len({n for e in stream_events for n in e})
+    steps_history = len(hist) - 1
+    assert abs(steps_invoke - steps_history) <= 1
+```
+
+The three views (result, live, record) must agree on the step count —
+the W11 capture-parity test, graph edition. When they disagree, one
+capture is wrong, and the merge into the trajectory store inherits the
+lie.
+
 ## Exercises
 
 1. Run one task three ways (invoke/stream/history); produce the three
@@ -77,6 +96,8 @@ checkpointing, history, and interrupts. The trajectory store's
    confirm the node sequence matches the W11 trace for the same query.
 3. History drill: run a failing task; use `get_state_history` to find
    the pre-failure snapshot; name the failing node from `next`.
+4. Parity drill: implement the §5 test; run over 5 tasks; document any
+   systematic gap (retry turns are the usual suspect).
 
 ## Pitfalls
 

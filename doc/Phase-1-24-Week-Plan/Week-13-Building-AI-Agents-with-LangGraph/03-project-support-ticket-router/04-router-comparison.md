@@ -53,6 +53,23 @@ powerful but post-hoc. Graph: the route is *state* — the classification
 and its justification are the same artifact. For the capstone's
 review-gated flows, that last property is the graph's genuine edge.
 
+## 5. The decision record (the router's page)
+
+```markdown
+## Ticket routing decision (W13)
+- Accuracy: graph 0.90 | handoffs 0.87 | rules 0.77 (25 tickets, 3 runs)
+- Escalation correctness: 1.00 across all three (the battery is shared)
+- Chosen: graph (state-carried classification + edge order)
+- Kept from rules: the exact-term regex as a pre-classifier hint
+- Kept from handoffs: the transfer semantics for conversational follow-ups
+- Revisit: if ticket volume triples, rules-first for the top class
+```
+
+The decision record is the three-way table plus the verdict — the same
+memo discipline as the W11 framework decision. Every row cites runs;
+the "kept from" lines are the ported-ideas ledger (W12 file 06-04),
+router edition.
+
 ## Exercises
 
 1. Implement the handoffs version of the router (one afternoon); run the
@@ -61,6 +78,8 @@ review-gated flows, that last property is the graph's genuine edge.
    store; the classification-turn sharing is the graph's saving — verify.
 3. Verdict drill: write the router decision into the boundary memo
    citing accuracy, cost, and auditability rows.
+4. Record drill: render §5 from the table; confirm the "kept from" rows
+   cite real artifacts (your regex, your handoff descriptions).
 
 ## Pitfalls
 

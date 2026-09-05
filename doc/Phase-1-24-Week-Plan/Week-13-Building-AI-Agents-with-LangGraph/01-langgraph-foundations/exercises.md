@@ -70,6 +70,21 @@ parity within tolerance.
 bounded cycle (4-pointer) is the foundations' capstone — the W10 loop,
 now a picture.
 
+## 6. The foundations recap sheet
+
+**Task:** write `reports/langgraph-recap.md`: the week's five load-bearing
+ideas (state reducers, conditional edges, bounded cycles, three run
+views, config/thread identity) — one line each with the test that proves
+it and the W-week concept it re-expresses.
+
+**Worked approach:** the recap is the translation dictionary between
+your W10 vocabulary (loop, budget, trace) and LangGraph's (reducer,
+bound, snapshot). Later weeks read it instead of re-deriving the
+mapping.
+
+**Pass criterion:** five ideas, five tests, five source-weeks; the sheet
+linked from this subfolder's README.
+
 ## Pitfalls recap
 
 - Missing reducers silently overwriting accumulations — the multi-hop

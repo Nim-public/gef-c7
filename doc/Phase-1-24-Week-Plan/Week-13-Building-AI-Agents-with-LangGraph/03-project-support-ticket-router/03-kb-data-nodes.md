@@ -72,6 +72,20 @@ The W9 pattern-selection table has become graph topology — the route
 The battery runs the *paths*, not just endpoints — each case asserts the
 node sequence from the trace, which is the graph's whole advantage.
 
+## 5. The resolution-node test matrix
+
+| Node | Drill | Assert |
+|---|---|---|
+| kb (hit) | known-answer query | citation present |
+| kb (0-hit) | empty the KB for one query | escalation message |
+| data (valid) | numeric question | `sql_used`, no writes |
+| data (blocked) | write attempt | instructive refusal, verbatim |
+
+The matrix runs after any node change — it is the integration battery
+from §4, formalized as the node's contract test. The kb/data parity
+rows re-run the W12 validators verbatim: same hints, same refusals,
+different transport.
+
 ## Exercises
 
 1. Wire both nodes; run the four integration cases; assert node
@@ -80,6 +94,8 @@ node sequence from the trace, which is the graph's whole advantage.
    battery verbatim — same validator, same hints.
 3. 0-hit drill: empty the KB for one query; the kb node escalates with
    the honest message — the W10 refusal path, graph edition.
+4. Matrix drill: run the §5 matrix; every drill's assertion green; the
+   matrix itself committed next to the node code.
 
 ## Pitfalls
 

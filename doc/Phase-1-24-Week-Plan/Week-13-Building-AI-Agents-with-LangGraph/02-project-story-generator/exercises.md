@@ -69,6 +69,20 @@ three candidates listed with the chosen one justified.
 crash drill (4-pointer) is the WAIT pattern's proof — persistence is
 the point of the whole checkpointing arc.
 
+## 6. The story demo script
+
+**Task:** write `scripts/story_demo.py`: seeded story, scripted choices
+(the reviewer "plays"), printing chapters + options + world diffs per
+turn — one command, three chapters, deterministic with a fixed seed.
+
+**Worked approach:** the demo is the story's evidence artifact: same
+discipline as the W9 metrics demo — the artifacts (chapters, world
+diffs) land in `reports/story-demo.md`, and the reviewer can replay the
+identical run from the seed.
+
+**Pass criterion:** one command produces the three-chapter transcript;
+world diffs show the choices taking effect; the run is reproducible.
+
 ## Pitfalls recap
 
 - Piecemeal world patches — coherence dies by chapter 4; whole-document

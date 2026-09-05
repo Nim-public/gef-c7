@@ -75,6 +75,31 @@ The UI never holds story state — the checkpointer does. A browser
 refresh, a different device, a crashed server: same thread_id, same
 story.
 
+## 5. The pause/resume test suite (the pattern's contract)
+
+```python
+def test_pauses_before_apply():
+    graph.invoke({"premise": P}, CONFIG)
+    assert graph.get_state(CONFIG).next == ("apply",)
+
+def test_resume_needs_choice():
+    graph.invoke(None, CONFIG)                       # no choice set
+    snap = graph.get_state(CONFIG)
+    assert snap.next == ("apply",)                   # still paused? no:
+    # it advanced with empty choice — the bug this test documents.
+    # fix: the apply node re-prompts when chosen is empty (file 03).
+
+def test_choice_recorded():
+    graph.update_state(CONFIG, {"chosen": "follow the whale song"})
+    graph.invoke(None, CONFIG)
+    assert any("whale" in c for c in graph.get_state(CONFIG)["chapters"])
+```
+
+The suite is the WAIT pattern's contract in three tests: pause position,
+choice necessity, choice effect. The middle test documents the *empty-
+choice resume* bug class — resuming without a decision either loops or
+guesses, and the test is where you decide which.
+
 ## Exercises
 
 1. Run the story graph to the first pause; inspect `get_state`; verify
@@ -83,6 +108,8 @@ story.
    across 3 chapters.
 3. Crash drill: kill the process mid-story; restart; resume from the
    same thread_id — durability, proven.
+4. Suite drill: implement §5's three tests; make the middle one pass by
+   fixing apply's empty-choice handling (re-prompt, once).
 
 ## Pitfalls
 
