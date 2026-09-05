@@ -77,6 +77,19 @@ same test against the same cases.
 **Pass criterion:** note committed; the parity command green as
 recorded.
 
+## 6. What parity does NOT cover (the honest boundaries)
+
+| Outside parity | Why |
+|---|---|
+| UI surfaces (Playground vs Gradio) | presentation, not behavior |
+| checkpoint formats | framework-internal storage |
+| interactive WAIT flows | tested in their own weeks |
+| latency tails | hardware-dependent; p50 only compared |
+
+The boundaries keep the parity test honest: it proves *behavioral*
+equivalence on the eval set — not identical deployments. The interactive
+flows (W13 file 06) and the voice stack have their own parity stories.
+
 ## Exercises
 
 1. Run the 15-case parity test; document any outcome divergence with

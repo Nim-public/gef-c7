@@ -69,7 +69,19 @@ the memo updated.
 self-improving loop (4-pointer) is the week's compounding deliverable —
 the eval set that maintains itself.
 
-## 6. The RAG pin note (the agentic-RAG manifest)
+## 7. The decomposition pin note
+
+**Task:** extend `reports/sdk-versions.md` with the decomposition stack:
+SubQuestions schema, the fan-out mechanism, the synthesis contract, and
+the probe-battery command.
+
+**Worked approach:** decomposition is the multi-hop multiplier — the
+pin note records the part bound and the self-containment probe coverage.
+
+**Pass criterion:** note committed; the probe battery green as
+recorded.
+
+## 8. The agentic-RAG manifest (consolidated)
 
 **Task:** consolidate the agentic-RAG stack in `reports/sdk-versions.md`:
 the three-source tools, decomposition, self-improving loop cadence, and
