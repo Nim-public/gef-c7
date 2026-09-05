@@ -59,7 +59,21 @@ that only filters is still useful but must be documented as such in the
 architecture section. The W14-06 gate inventory grows by the adopted
 component's tests; the memo states the growth.
 
-## 5. The verdict's evidence appendix (the memo's audit trail)
+## 5. The decision drills (the memo's evidence)
+
+1. Run the comparison (file 03); write the verdict memo with cited
+   numbers; commit as the capstone's retrieval decision.
+2. Reversibility drill: the adopted component must be removable — a flag
+   or an adapter boundary; verify by disabling it and re-running the
+   eval.
+3. Revisit drill: name the trigger that would flip adopt → ship (or
+   reject); the trigger is measurable.
+4. Provenance drill: every memo number links to the comparison report;
+   the walk-through takes a reviewer under five minutes.
+5. Appendix drill: build §7's evidence appendix; a reviewer clicks two
+   claims at random — both resolve.
+
+## 6. The verdict's evidence appendix (the memo's audit trail)
 
 | Memo claim | Evidence artifact |
 |---|---|
@@ -72,19 +86,18 @@ The appendix is the memo's audit trail — four claims, four artifacts.
 The W11 framework-verdict format, applied to a component decision: the
 reviewer clicks and verifies, no vibes.
 
-## Exercises
+## 7. The adopt decision's maintenance column (the standing cost)
 
-1. Run the comparison (file 03); write the verdict memo with cited
-   numbers; commit as the capstone's retrieval decision.
-2. Reversibility drill: the adopted component must be removable — a flag
-   or an adapter boundary; verify by disabling it and re-running the
-   eval.
-3. Revisit drill: name the trigger that would flip adopt → ship (or
-   reject); the trigger is measurable.
-4. Provenance drill: every memo number links to the comparison report;
-   the walk-through takes a reviewer under five minutes.
-5. Appendix drill: build §5's evidence appendix; a reviewer clicks two
-   claims at random — both resolve.
+| Adopted component | Standing cost |
+|---|---|
+| node parser | version pin + chunk-parity test |
+| readers | format-coverage tests per reader |
+| query engine (if shipped) | harness adapters + full parity |
+
+The maintenance column is the adopt decision's honest cost — an adopted
+component joins the pin notes, the parity tests, and the upgrade
+schedule. The W14-06 gate inventory grows by the adopted component's
+tests; the memo states the growth.
 
 ## Pitfalls
 
