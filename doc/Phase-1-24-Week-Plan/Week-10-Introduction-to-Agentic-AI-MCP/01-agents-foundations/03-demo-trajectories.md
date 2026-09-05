@@ -77,6 +77,31 @@ table honest; trajectories you imagined make it fiction.
 3. Impossible-battery: 5 absent-fact queries; score the agent on the
    honest-failure rubric (no invention ≤ budget). Anything below 4/5 is a
    system-prompt fix (file 05), not a model problem.
+4. Harden two of your predictions into trajectory-shape assertions:
+   tools-as-a-set + step bounds (the test that survives model variance,
+   unlike exact-text assertions).
+
+## 5. Trajectory regression — the table becomes a test
+
+Each predicted trajectory hardens into an assertion:
+
+```python
+EXPECTED = {
+    "Which chart shows Q3 margin?": {"tools": {"retrieve", "get_unit_text"},
+                                     "max_steps": 3, "cites": True},
+    "What was the CEO's 2019 bonus?": {"tools": {"retrieve"},
+                                       "max_steps": 2, "must_refuse": True},
+}
+
+def test_trajectory_shape(run, expected):
+    assert {t["tool"] for t in run.trace} == expected["tools"]
+    assert run.steps <= expected["max_steps"]
+```
+
+Shape assertions (tools-as-sets, step bounds) survive model variance;
+exact-text assertions do not. This is the bridge from §4's eval table to
+file 06's suite — trajectories you have *seen* become the tests that keep
+the agent honest after every change.
 
 ## Pitfalls
 

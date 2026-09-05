@@ -70,6 +70,20 @@ version boundary; aggregate delta reported.
 certification (4-pointer) is the deliverable — an untested constitution
 is prose, not engineering.
 
+## 6. The prompt regression suite
+
+**Task:** collect every prompt artifact you touched this week
+(constitution, 6 observation formatters, hint variants) into one
+pytest-marked suite (`-m prompts`) that runs in <60 s — the suite that
+runs before any prompt edit merges.
+
+**Worked approach:** the suite's speed comes from the canned LLM; its
+coverage comes from the week's battery cases. Any prompt change without a
+green run is a revert, the same rule as code.
+
+**Pass criterion:** suite <60 s; one deliberate prompt break caught by
+the right case (constitution case, formatter leak, or hint regression).
+
 ## Pitfalls recap
 
 - Battery cases written for the rules you find easy — the failing rule is

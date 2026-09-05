@@ -71,6 +71,29 @@ judge is a *router for human attention*, not a verdict. That framing
 keeps it honest: the 10% sample you hand-check is the audit of the judge
 itself.
 
+## 5. Judge orchestration — offline, on stored trajectories
+
+The judge runs *offline*, on stored trajectories — never in the serving
+path:
+
+```text
+runs → trajectory store (file 01) → judge (nightly) → flagged queue
+                                                    → hand review (10%)
+```
+
+Three orchestration rules: (1) judge versions are stamped into scores,
+like every other version; (2) the flagged queue is *small by design* — a
+judge flagging 30% of runs is miscalibrated, not diligent; (3) every
+human review of a flag doubles as judge-quality data (the precision drill
+below).
+
+```python
+def nightly_judge(store, judge_version: str) -> pd.DataFrame:
+    df = load_recent(store, days=1)
+    df[f"judge_{judge_version}"] = [judge(t) for t in df.trace]
+    return df, df[df.judge_total < 5]          # full table + review queue
+```
+
 ## Exercises
 
 1. Hand-label 10 trajectories on the four dimensions; run the judge twice;
@@ -80,6 +103,9 @@ itself.
 3. Judge-as-router: flag the bottom 10% of your 25 runs by judge total;
    hand-check them — measure how many flags were justified (the judge's
    precision, measured).
+4. Nightly drill: wire `nightly_judge`; confirm the queue stays under 15%
+   of runs on a healthy day, and grows visibly when you degrade a tool
+   description on purpose.
 
 ## Pitfalls
 

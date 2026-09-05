@@ -59,16 +59,40 @@ The server revalidates arguments even though the client does — the
 client is the model's side of the wire, and the model is exactly the
 component you do not fully trust.
 
+## 5. The surface in one page — the client-facing contract
+
+```text
+GEF C7 tool surface v1 (2026-09-05)
+  server: gef-c7-rag, version 1.0.0, read-only
+  tools:
+    retrieve(query, modality?, k?) -> hits[]      scores + ids + paths
+    get_unit_text(unit_id)         -> text        hint-error on unknown
+    get_image(unit_id)             -> path        processed image path
+  resources:
+    corpus://stats                 -> summary     counts, versions
+  errors: isError + hint text (shape of valid input + next action)
+  limits: k ∈ [1,20] server-enforced; timeouts per tool
+  client minimum: version assert at initialize; tools/list diff on connect
+```
+
+This page is what any future client (Week 11 UI, Week 12 evaluator,
+another agent) reads instead of your code. It is generated where possible
+(from the registry) and frozen by the same decision-memo discipline as
+encoders and boundaries.
+
 ## Exercises
 
 1. Freeze your surface: write the four-tool table with your real
    signatures; mark any deviation from Week-09 contracts as a bug.
-2. Revalidation drill: call the server directly with a schema-valid but
-   semantically hostile arg (`k=10_000`); verify the server clamps or
-   rejects — client trust is zero.
+2. Revalidation drill: call the server directly with schema-valid but
+   semantically hostile args (`k=10_000`, `unit_id="../../etc/passwd"`);
+   verify the server clamps or rejects — client trust is zero.
 3. Version drill: bump the server's tool list by one tool without
    bumping the version; verify the client's diff check fails the
    connection.
+4. Contract-page drill: regenerate §5 from the server's actual
+   `tools/list` output; diff against the hand-written page — they must
+   agree, or the page is fiction.
 
 ## Pitfalls
 

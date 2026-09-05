@@ -69,6 +69,35 @@ is recorded with the exact texts.
 **Pass bar:** 9/12 to proceed to file 02 (tools and memory). The loop
 tests are the week's foundation — every later week runs on them.
 
+## 5. The definition drill, on real systems
+
+**Task:** classify five systems against §5's one-question test (who
+chooses the next function?): your W9 pipeline, a UI chatbot with
+"tool-like" buttons, a cron job that calls retrieval, an agent framework's
+default template, and your own `run_react`. Write one sentence each.
+
+**Worked approach:** the drill's value is calibration — after five
+verdicts you will stop calling pipelines agents, and start seeing where
+the transfer actually sits in frameworks (usually: their `AgentExecutor`
+*is* the loop you hand-rolled, with more logging).
+
+**Pass criterion:** five verdicts, each citing the decision-maker; any
+"it depends" gets resolved by writing the if-statement question precisely.
+
+## 6. Capstone tie-in: the boundary artifact
+
+**Task:** append the boundary statement to
+`doc/capstone/agentic-boundary.md` (from exercise 3) with the shadow-mode
+plan: which week the agent goes live, on which flag, with which
+win-metric.
+
+**Worked approach:** the artifact is three sentences plus the shadow
+metric — it is the contract between this week's enthusiasm and the
+measured cutover.
+
+**Pass criterion:** artifact committed; the cutover metric is testable
+(success AND steps ≤ pipeline+1), not vibes.
+
 ## Pitfalls recap
 
 - Scripted-LLM tests that only cover the happy path — the three failure

@@ -65,6 +65,23 @@ memory week; for now, the summary *line* in the system context is the
 File 04 implements this table as the fitter; the taxonomy file's job is
 to decide *what* lives where so the fitter has clean layers to cut.
 
+## 5. The tier handoffs — what moves between tiers
+
+Memory tiers are not silos; content flows along defined edges:
+
+| Edge | Trigger | Mechanism |
+|---|---|---|
+| history → scratchpad | agent writes a conclusion | `scratchpad_add` tool |
+| scratchpad → closed summary | step closes | one-line summary (fitter) |
+| history → episodic | episode ends | `summarize_trajectory` (§3) |
+| episodic → history | similar new query | top-1 summary into system context |
+| episodic → semantic | pattern repeats 5+ runs | mined rule → constitution/tooling |
+
+The last edge is the valuable one: five similar trajectories are not
+memory, they are a *discovered pipeline route* (file 01's mining) or a
+tool-surface proposal (file 03's v2 policy). Memory that never graduates
+into structure is just a longer log.
+
 ## Exercises
 
 1. Instrument your loop: log tokens per tier after every step; produce the
@@ -72,21 +89,23 @@ to decide *what* lives where so the fitter has clean layers to cut.
 2. Scratchpad drill: give the agent the `scratchpad_add` tool on a
    multi-hop query; verify the final answer cites notes, not raw
    observations (the tier doing its job).
-3. Compression drill: at 70% history budget, summarize all closed steps
-   into one line each; re-run the query and confirm the answer is
-   unchanged — compression that changes answers is a bug, not a feature.
+3. Compression drill: at 70% history budget, summarize all closed steps;
+   re-run the query and confirm the answer is unchanged — compression
+   that changes answers is a bug, not a feature.
+4. Handoff audit: for 3 finished episodes, list what *should* have moved
+   to episodic and whether the summary line (§3) captures the outcome.
 
 ## Pitfalls
 
 - "Memory = bigger history" — unbounded history is the #1 cost failure in
   student agents; tiers exist to bound it.
-- Scratchpad entries that are copies of observations — the tier is for
-  conclusions; the observation is already in history.
-- Episodic memory storing full traces in-context — traces are for file
-  04's harness, not the model's window.
+- Scratchpad entries that copy observations — the tier is for conclusions;
+  the observation is already in history.
+- Episodic memory storing full traces in-context — traces belong to file
+  04's store; the context gets the one-line summary.
 
 ## Resources
 
 - Your Week-09 context budget (the RAG layer of this table).
-- [`03-mcp-servers-fastmcp/`](../03-mcp-servers-fastmcp/) — next: the tool
-  surface, out-of-process.
+- [`../04-measuring-agents-patterns/01-trajectory-instrumentation.md`](../04-measuring-agents-patterns/01-trajectory-instrumentation.md)
+  — the store the episodic tier writes to.

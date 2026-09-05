@@ -60,6 +60,20 @@ metrics harness (file 04) because you no longer know the path in advance.
 - **Episode budget**: max steps/tokens before forced stop.
 - **HITL gate**: a step that pauses for human approval (file 04).
 
+## 5. The definition applied — classifying real systems
+
+| System | Agent? | Why |
+|---|---|---|
+| RAG chain with a router (W9) | no | *you* wrote the if-statements |
+| Same chain, LLM picks tools per query | yes | control-flow transfer happened |
+| Chatbot with "tools" it describes but never calls | no | no execution, no transfer |
+| LLM that calls `retrieve` then decides whether to call `get_unit_text` | yes | runtime composition |
+| AutoGPT-style planner with subagents | yes (and more) | transfer at multiple levels |
+
+The classifier is a one-question interview: *when the query is new, who
+chooses the next function?* If the answer is a lookup table you wrote, it
+is a pipeline — possibly a very good one (file 04).
+
 ## Exercises
 
 1. Convert your Week-09 router into a 4-tool agent definition (retrieve_p1,
@@ -69,18 +83,20 @@ metrics harness (file 04) because you no longer know the path in advance.
    would produce with a vague tool description (4+ steps).
 3. Find one capstone query where the fixed DAG beats the agent, and one
    where the agent wins — the pair that frames file 04's boundary.
+4. Classify three systems you have built this program against §5's
+   one-question test; write the verdicts down.
 
 ## Pitfalls
 
-- Calling every LLM app an agent — without control-flow transfer it is a
-  pipeline with extra steps (costly, less predictable).
-- Unbounded loops without a budget — `max_steps` and token caps are not
-  optional; they are the degradation ladder's trigger.
+- Treating every LLM app as an agent — without control-flow transfer it
+  is a pipeline with extra steps (cost, variance, and untestability).
+- Unbounded loops without a budget — `max_steps` and token caps are the
+  degradation ladder's trigger, not optional hygiene.
 - Tool descriptions written for you, not for the model — the model *is*
   the router now; descriptions are its routing table.
 
 ## Resources
 
-- ReAct (Yao et al. 2022) §2; your Week-09 tool contract.
+- ReAct (Yao et al. 2022) §2; your Week-09 tool contract (the schemas).
 - Anthropic "Building effective agents" — the workflow-vs-agent boundary,
   stated the same way.

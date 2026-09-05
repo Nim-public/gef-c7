@@ -79,6 +79,27 @@ Demo-day pattern: pre-stage one gated action (a write to a scratch corpus
 copy), approve it live, narrate the diff. The rehearsal proves the *worst*
 path works; un-rehearsed gates are where agents freeze on stage.
 
+## 5. Gate placement in the loop — the ask-forgiveness trap
+
+Gates belong *before* execution, with the full payload — not after, as a
+"hope it was fine" review:
+
+```python
+if needs_gate(action):
+    payload = gate_payload(action, trace)
+    decision = human_decide(payload)          # approve | edit | reject
+    if decision.kind == "reject":
+        history.append(observation_from_rejection(decision.reason))
+        continue                              # the loop learns, not crashes
+    if decision.kind == "edit":
+        action = decision.edited
+```
+
+The reject-continues branch is the subtle one: a rejection is an
+*observation* (file 05 formats it like any error), not an abort — the
+agent adjusts and proceeds. Gates that abort on reject teach the agent
+nothing and train humans to avoid gating.
+
 ## Exercises
 
 1. Write `GATE_POLICY` for your capstone; wire `needs_gate` into the
@@ -87,6 +108,9 @@ path works; un-rehearsed gates are where agents freeze on stage.
    (scripted); measure gate rate and approval rate over 50 runs.
 3. Reject-reason mining: take 5 scripted rejections; write the prompt-fix
    each reason implies (file 05's input) — the loop that makes gates pay.
+4. Placement drill: implement the reject-continues branch; verify a
+   rejected write leads to a revised attempt (not an aborted episode),
+   and the reason lands in the trajectory's annotations.
 
 ## Pitfalls
 

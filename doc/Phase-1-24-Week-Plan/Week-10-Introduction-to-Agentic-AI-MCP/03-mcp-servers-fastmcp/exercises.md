@@ -71,6 +71,20 @@ CI.
 wiring (4-pointer) is the deliverable that makes every later week's
 agent changes safe.
 
+## 6. The out-of-process migration story
+
+**Task:** document the migration in `reports/mcp-migration.md`: the
+in-process registry's test list, the wire-parity test results (schemas,
+errors, hints), the one behavioral difference found (if any), and the
+rollback plan (registry-only mode behind a flag).
+
+**Worked approach:** the story is the proof that MCP added transport, not
+behavior. Any behavioral difference is either a bug (fix) or a documented
+boundary semantic (e.g., timeouts now fire at the client).
+
+**Pass criterion:** one-page migration story committed; parity table
+complete; behavioral differences each have a verdict.
+
 ## Pitfalls recap
 
 - Handlers reimplemented in the server instead of imported — two sources

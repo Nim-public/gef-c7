@@ -71,6 +71,20 @@ dimensions; the fourth documented as "known weak, hand-checked".
 scorecard (4-pointer) is the harness's face — it feeds every later
 week's regression gates.
 
+## 6. The instrumentation debt audit
+
+**Task:** list every field in the trajectory schema; for each, name its
+capture seam (loop return, fitter, registry audit, post-classifier) — any
+field captured *inside the model call* is debt; migrate it to a seam.
+
+**Worked approach:** the audit is one table (field → seam → status).
+Fields captured mid-loop break on every loop refactor; seam-captured
+fields survive. The audit usually surfaces 1–2 debt fields on a first
+pass.
+
+**Pass criterion:** complete table; zero fields captured inside model
+calls; debt items ticketed with a due week.
+
 ## Pitfalls recap
 
 - Gold labels invented after the runs — the eval set (file 06) defines

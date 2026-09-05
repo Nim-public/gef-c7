@@ -60,22 +60,44 @@ Your Week-09 tool-contract version string rides along in the server's
 metadata — the client asserts compatibility before first call, the same
 manifest-version discipline across a process boundary.
 
+## 5. Failure modes at the boundary — what breaks across processes
+
+| Failure | In-process behavior | Cross-process behavior | Defense |
+|---|---|---|---|
+| tool crash | exception, caught | process may die | server per-call isolation, restart policy |
+| slow tool | latency spike | timeout + dead client | server timeouts, client deadline |
+| big result | memory pressure | transport limits | pagination, size caps |
+| partial write | transaction rolls back | state visible mid-flight | staging tables (W9-04) |
+
+```python
+# client-side deadline — the loop never waits forever:
+result = client.call(name, args, timeout_s=tool["timeout_s"])
+```
+
+The table is why the registry's per-tool `timeout_s` mattered in file 02:
+in-process it was hygiene; across a boundary it is the difference between
+a slow step and a hung agent. Every boundary failure has an in-process
+twin — the battery (file 03) runs the cases against both to prove parity.
+
 ## Exercises
 
 1. Draw your capstone's role diagram (host/client/server/transport) with
    the exact tools that cross; mark what stays in-process.
-2. Statefulness audit: list every piece of state in your current loop and
-   assign host/server ownership — anything assigned "server" that is not
-   LanceDB is a design smell; note it.
+2. Statefulness audit: list every piece of state in your loop; assign
+   host/server ownership — anything assigned "server" that is not LanceDB
+   is a design smell; note it.
 3. Transport drill: run the same server over stdio and HTTP; diff the
    tool listings — they must be identical.
+4. Boundary-failure drill: kill the server mid-trajectory; verify the
+   client's error observation is instructive and the agent degrades (not
+   hangs).
 
 ## Pitfalls
 
 - Servers that import the host's memory or scratchpad — state boundary
   violation; the server sees requests, not sessions.
 - Tool schemas diverging between registry and server — single source: the
-  server derives schemas from the same registry definitions.
+  server derives schemas from the same definitions.
 - Skipping the initialize handshake's version assert — silent protocol
   drift; assert, don't hope.
 

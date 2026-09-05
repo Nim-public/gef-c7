@@ -69,6 +69,34 @@ borrowed numbers.
 **Pass bar:** 14/18 to close Week 10. The metrics table (4-pointer) is
 the week's face — every later agent week reads its trend lines.
 
+## 6. The week-in-one-command artifact
+
+**Task:** build `scripts/week10_accept.py`: smoke test → Tier 1 battery →
+10-task eval (Tier 2, if keys present) → metrics table → baseline gate.
+One command, four gates, one verdict line per gate.
+
+**Worked approach:** the acceptance script composes everything the week
+built; its runtime budget is <5 min with keys, <30 s without (Tier 2
+skips with a visible reason). This is the script a reviewer runs before
+reading anything else.
+
+**Pass criterion:** green run prints four PASS lines; each of the two
+mutation drills (bad description, loop injection) turns its gate red.
+
+## 7. The Week 11 handoff note
+
+**Task:** write `doc/capstone/week11-handoff.md` (half a page): the agent
+surface, the boundary statement, the baseline numbers, and the two open
+questions (e.g., write-tool design, multi-agent split) with their
+triggering conditions.
+
+**Worked approach:** the handoff is generated where possible (baseline
+numbers from the metrics table) and hand-written only for the open
+questions — Week 11 starts by reading it, not by excavating this week.
+
+**Pass criterion:** the page answers "what exists, what is the baseline,
+what is open, and what triggers work?" in one read.
+
 ## Pitfalls recap
 
 - Eval sets that avoid the agent's weak spots — tasks 7 and 9 exist

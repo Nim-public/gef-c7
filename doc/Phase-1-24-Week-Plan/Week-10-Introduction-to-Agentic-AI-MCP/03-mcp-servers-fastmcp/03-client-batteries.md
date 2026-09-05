@@ -81,6 +81,23 @@ The nightly Tier-2 report (pass rates per task, over time) is the drift
 detector: a task that passed 3/3 for two weeks and now passes 1/3 is a
 model-update signal, caught before your demo.
 
+## 5. The two-tier report — one page, both tiers
+
+```text
+# Battery report — server v1.0.0 — model: pinned-id — 2026-09-05
+
+Tier 1 (deterministic): 24/24 cases green        [every push]
+Tier 2 (real-LLM):      9/10 tasks at 3/3        [nightly]
+  task 8 (multi-hop): 2/3 — steps 5,4,6; loop detector fired once
+
+Hint fidelity: 3/3 sites intact across the wire
+```
+
+The report's value is the *pairing*: a Tier-2 flip with Tier-1 green is a
+model-behavior finding (description quality, drift); a Tier-1 failure with
+Tier-2 green is a contract bug the real runs haven't hit yet. Reading them
+together is the skill; running them at two speeds is the mechanism.
+
 ## Exercises
 
 1. Build Tier 1 with the four-case table plus hint-quality assertions;
@@ -90,12 +107,15 @@ model-update signal, caught before your demo.
 3. Drift rehearsal: rerun Tier 2 with a different (weaker) model; record
    which tasks flip — the sensitivity map that tells you where description
    quality matters most.
+4. Combined-report drill: render §5's page from both battery outputs in
+   one command; confirm the pairing rule (which tier explains which
+   failure) is stated in its footer.
 
 ## Pitfalls
 
 - Tier-2 tests asserting answer text — variance theater; assert tools,
   steps, refusals.
-- Deterministic tests that mock away the *server* (test handlers
+- Deterministic tests that mock away the *server* (call handlers
   directly) — the battery's value is the wire.
 - Nightly reports nobody reads — the pass-rate table belongs in the
   weekly retrospective (W9-05 exercises), with flip alerts.

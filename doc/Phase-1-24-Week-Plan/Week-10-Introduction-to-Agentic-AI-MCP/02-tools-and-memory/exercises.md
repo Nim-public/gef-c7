@@ -69,6 +69,21 @@ conclusions; the compression drill (70% budget) leaves answers unchanged.
 are the week's quiet keystone — every later context change runs through
 them.
 
+## 6. The memory lifecycle drill
+
+**Task:** take one finished 8-step trajectory and walk it through the full
+lifecycle: per-tier token audit (exercise 4) → episode summary into the
+episodic store → replay a similar query with the summary injected →
+measure steps-to-answer vs the first run.
+
+**Worked approach:** the drill tests the *payoff* of the taxonomy: if the
+episodic summary saves a step on the similar query, the tier has earned
+its complexity; if not, your summaries are noise and the tier should stay
+disabled until it earns its tokens.
+
+**Pass criterion:** lifecycle documented for one trajectory; the replay
+delta (steps saved or not) reported honestly, whatever it shows.
+
 ## Pitfalls recap
 
 - Tests that mock jsonschema away — the validation gate is the product;

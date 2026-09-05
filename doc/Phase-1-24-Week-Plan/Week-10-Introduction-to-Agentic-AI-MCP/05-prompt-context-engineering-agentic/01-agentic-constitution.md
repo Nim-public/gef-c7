@@ -68,15 +68,35 @@ tokens per-rule, not as a block.
 | Repeats identical tool call | 4 | loop detector *plus* rule 4 (belt and braces) |
 | Recites the system prompt | 5 | red-team case, then move secrets out entirely |
 
+## 5. Constitution evolution — rules change through the battery
+
+The constitution is versioned like every other artifact (`cv1`, `cv2`),
+and rules change only through the battery:
+
+| Change trigger | Procedure |
+|---|---|
+| a case fails 3/3 | reword the rule; rerun its case + neighbors |
+| HITL reject reason repeats | propose a rule or hint amendment (file 04) |
+| model bump | full battery re-run before serving |
+| rule unused by any case | delete it (dead rules dilute) |
+
+```python
+CONSTITUTION_VERSION = "cv1"     # stamped into every trajectory row
+```
+
+The version stamp closes the loop with the harness: scorecards split
+cleanly across constitution versions, so "the agent got better" becomes
+"rule 4's rewording fixed the loop cases at cv2" — an engineering claim
+with a diff.
+
 ## Exercises
 
 1. Write your constitution; run the four battery cases; fix any failing
    rule's wording before touching anything else.
 2. Token diet: full vs compressed constitution on the battery — report
    pass rates and tokens; keep the cheapest passing version.
-3. Rule-poster drill: turn each rule into one test name
-   (`test_rule1_not_found_on_absent_fact`) — the suite that *is* your
-   constitution's enforcement.
+3. Evolution drill: fail one case on purpose (weaken rule 1), observe the
+   battery, reword, recover — the maintenance loop, rehearsed end to end.
 
 ## Pitfalls
 

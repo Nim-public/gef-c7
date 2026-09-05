@@ -64,6 +64,29 @@ One registry, two callers — that sentence is the whole architecture. The
 agent adds no new tools; it adds *ordering freedom* over the ones you
 already tested.
 
+## 5. The migration path — pipeline to agent without a rewrite
+
+The boundary is not a wall; it is a schedule:
+
+```text
+week 10: pipeline stays default; agent runs in shadow (log-only, no user)
+week 11: agent serves the long tail behind a flag; hot path unchanged
+week 12+: mined trajectories promote repeated patterns into pipeline
+          routes; the agent's share shrinks as the pipeline grows
+```
+
+```python
+def shadow_mode(query: str) -> dict:
+    pipeline_answer = run_pipeline(query)
+    agent_answer = run_agent(query)          # logged, not served
+    log_comparison(query, pipeline_answer, agent_answer)
+    return pipeline_answer                   # users still get the pipeline
+```
+
+Shadow mode gives you the comparison data of exercise 3 for free, on real
+traffic, with zero user risk — the standard way to introduce an agent
+into a working system.
+
 ## Exercises
 
 1. Apply `needs_agent` to your Week-09 query distribution; write the
@@ -74,6 +97,9 @@ already tested.
 3. Cost comparison: same 10 queries through (a) fixed pipeline, (b)
    agent; report tokens, latency p50/p95, and success — the table that
    justifies the split (or reverses it).
+4. Shadow-mode sketch: write `shadow_mode` + the comparison log schema;
+   define the metric on which the agent "wins" the flag (success AND
+   steps ≤ pipeline steps + 1).
 
 ## Pitfalls
 
@@ -83,9 +109,12 @@ already tested.
   the agent calls the *same* audited code, not a parallel path.
 - Forgetting variance: an agent demo succeeds at p50 and dies at p95 —
   budget from file 04's tables, not the happy path.
+- Cutover without shadow data — the flag flips on vibes; a week of
+  shadow logs buys the decision.
 
 ## Resources
 
 - Anthropic "Building effective agents" (workflows vs agents); your
   Week-09 routing table (the distribution data).
-- File 04 of this week — measuring the agent you decide to build.
+- [`../04-measuring-agents-patterns/`](../04-measuring-agents-patterns/)
+  — the harness that grades the shadow runs.
