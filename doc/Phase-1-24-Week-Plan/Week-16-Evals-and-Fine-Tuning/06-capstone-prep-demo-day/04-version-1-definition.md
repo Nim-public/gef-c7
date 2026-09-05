@@ -65,6 +65,20 @@ The scorecard is the 1.0 definition's measurement — five bars, five
 thresholds, five evidence links. It is the release's receipt; the tag
 is earned, not declared.
 
+## 6. The 1.0-adjacent work (what 1.0 explicitly excludes)
+
+| Excluded | Why | Where it goes |
+|---|---|---|
+| multi-user deployment | a different reliability class | the deployment sprint |
+| fine-tuned models in production | the capstone uses the base + RAG | the extension weeks |
+| real-time voice | the cascade is demo-grade | the voice roadmap |
+| mobile/edge | a different serving stack | out of scope |
+
+The exclusions are the 1.0 definition's boundary — the definition of
+done includes what 1.0 *is not*. Each exclusion names its future home;
+the exclusions prevent the scope creep that the freeze process exists
+to block.
+
 ## Exercises
 
 1. Measure all five bars; produce the 1.0 scorecard; the gaps named with
@@ -77,3 +91,5 @@ is earned, not declared.
 4. Scorecard drill: render §5 from the gates' outputs; the measured
    values must match the gate logs — the scorecard is derived, not
    hand-written.
+5. Exclusion drill: write §6; each exclusion's future home cited; the
+   exclusions reviewed against the boundary memo's scope statement.

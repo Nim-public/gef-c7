@@ -57,6 +57,19 @@ The risk register is the roadmap's honesty — each sprint's most likely
 derailment named with its mitigation. The register is reviewed at each
 sprint's end; risks that fired get post-mortems.
 
+## 6. The roadmap's review cadence (the standing schedule)
+
+| When | Review | Output |
+|---|---|---|
+| each sprint's end | the exit artifact vs its gate | the roadmap row's verdict |
+| monthly | the risk register review | risks re-scored |
+| per release | the five bars re-measured | the scorecard updated |
+
+The cadence is the roadmap's heartbeat — each review produces a
+recorded verdict, and the risk register's re-scoring keeps the
+mitigations honest. The cadence is committed in the roadmap's header;
+missed reviews are visible in the file's history.
+
 ## Exercises
 
 1. Fill the sprint table with your themes, exit artifacts, and gates;
@@ -68,3 +81,5 @@ sprint's end; risks that fired get post-mortems.
    against its gate; the review's verdict is recorded in the roadmap.
 4. Risk drill: add one risk per sprint from your own history; the
    mitigation column cites the program's artifacts.
+5. Cadence drill: write the §6 schedule; the first monthly review
+   scheduled with the risk register on the agenda.

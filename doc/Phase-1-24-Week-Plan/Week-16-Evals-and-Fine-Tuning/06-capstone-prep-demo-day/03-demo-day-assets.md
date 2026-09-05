@@ -76,6 +76,23 @@ The runbook is the demo's minute-by-minute plan — every segment timed,
 every fallback placed, the Q&A prepared. The acceptance command is the
 Q&A's ace: if asked "does it really work", the command runs live.
 
+## 6. The demo-day checklist (the morning-of list)
+
+```text
+[ ] accept.py --full green on the demo machine
+[ ] the seeded demo run rehearsed twice
+[ ] the fallback drills rehearsed (the failure section)
+[ ] the artifacts committed (transcripts, charts, tables)
+[ ] the overlay numbers matching the ledger's p50s
+[ ] the network checked (or the offline path ready)
+[ ] the runbook printed (the minute-by-minute plan)
+```
+
+The checklist is the demo's pre-flight — seven items, each verifiable
+in minutes. The morning-of list exists because demo failures are
+environment failures (network, projector, stale state) far more often
+than code failures.
+
 ## Exercises
 
 1. Build the demo script; run it end-to-end twice; byte-identical
@@ -86,3 +103,5 @@ Q&A's ace: if asked "does it really work", the command runs live.
    fallbacks fire visibly; the committed transcript covers them.
 4. Runbook drill: rehearse the §5 plan with a timer; the segments fit;
    the Q&A's acceptance command rehearsed.
+5. Checklist drill: run the §6 list on the demo machine the morning of;
+   all seven green before the audience arrives.

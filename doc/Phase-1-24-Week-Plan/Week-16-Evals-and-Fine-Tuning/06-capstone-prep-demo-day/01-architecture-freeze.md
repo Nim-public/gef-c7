@@ -71,6 +71,21 @@ The freeze report is the freeze's receipt — committed, dated, hash-
 pinned. It is the document that says "this architecture is the release
 candidate"; every later change cites it and its process.
 
+## 5. The freeze's dependency inventory (the components, pinned)
+
+| Component | Version source | Battery that re-verifies |
+|---|---|---|
+| model | `AGENT_CONFIG` | the 15-case eval |
+| embedder | W8 memo | the parity loop |
+| LanceDB | W9 pin | the golden-query parity |
+| LangGraph | W13 pin | the span-shape fixture |
+| SDK/LangChain/Agno | per-framework pins | their batteries |
+
+The dependency inventory is the freeze's technical annex — every
+component's version source and its re-verification battery. A dependency
+bump after the freeze re-runs the battery before the freeze is amended;
+the inventory is what makes that rule enforceable.
+
 ## Exercises
 
 1. Run the freeze checklist end-to-end; every row verified by execution;
@@ -82,3 +97,5 @@ candidate"; every later change cites it and its process.
    rehearsed.
 4. Report drill: render §4 from the checklist results; the hash pinned;
    the freeze receipt is the capstone's milestone artifact.
+5. Inventory drill: fill §5; every battery green at the recorded
+   versions; the annex joined to the freeze report.
