@@ -101,6 +101,19 @@ totals verified) and the drill that proves them.
 **Pass criterion:** note committed; the audit-drill command green as
 recorded.
 
+## 6. The grounding demo (the reviewer's view)
+
+The demo shows one numeric answer in both views: the user sees the
+number and its caveat status; the reviewer sees `numbers_supported` —
+each check's code and verified flag. The pairing audit runs live, and
+the reviewer can delete a check in the UI to watch the audit flag it.
+
+## Exercises (continued)
+
+5. Two-view drill: render one numeric answer in user and reviewer views;
+   the user view must not leak the raw code; the reviewer view must show
+   every check.
+
 ## Pitfalls
 
 - `numbers_supported` filled with the answer's own restatement — the

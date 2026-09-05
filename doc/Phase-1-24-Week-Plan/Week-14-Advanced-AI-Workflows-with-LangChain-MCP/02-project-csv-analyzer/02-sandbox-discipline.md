@@ -101,6 +101,24 @@ containment level guarded it and when the probes last ran.
 **Pass criterion:** note committed; the probe command green at the
 recorded containment level.
 
+## 6. The two-tier sandbox (production shape)
+
+```python
+def run_code(code: str, df, trust: str) -> str:
+    if trust == "restricted":        # restricted-exec: pandas only
+        return run_restricted(code, df)
+    return run_subprocess(code, df)  # subprocess: full stdlib, capped
+```
+
+| Tier | Environment | When |
+|---|---|---|
+| restricted | pandas + 5 builtins | default for analysis code |
+| subprocess | capped stdlib | when analysis legitimately needs more |
+
+The two tiers let the capability dial move per trust level without
+changing the guard suite — the probes run against *both* tiers, and the
+drill's matrix records which tier catches which probe.
+
 ## Pitfalls
 
 - `eval`-based sandboxes without builtin restrictions — `__import__`

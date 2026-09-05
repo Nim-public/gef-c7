@@ -91,6 +91,20 @@ and the battery re-run stay paired.
 **Pass criterion:** note committed; the feature battery green at the
 recorded variant versions.
 
+## 6. The mode-routing eval (the four features as routes)
+
+| Query | Expected mode | Assert |
+|---|---|---|
+| "hello!" | chat | no tools fired |
+| "summarize this" | summary | profiler fired |
+| "average by group" | analyze | pandas + verify fired |
+| "plot it" | visualize | render fired |
+
+The mode-routing eval is the W9 router pattern, four-way: the UI sets
+the mode explicitly, so the assertion is that each mode's *prompt
+variant* produces its feature's behavior — same battery shape, one
+column per mode.
+
 ## Pitfalls
 
 - Chat mode as ungrounded mode — data questions arrive in chat; the

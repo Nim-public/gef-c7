@@ -68,7 +68,20 @@ drill's flag fires in the harness gate.
 sandbox (4-pointer) is the CSV project's non-negotiable — user data plus
 model code is the program's sharpest edge.
 
-## 6. The CSV pin note (the project's version manifest)
+## 6. The end-to-end drill (the demo's acceptance run)
+
+**Task:** one command runs the full CSV feature set: upload a fixture
+CSV → summary → analyze → visualize → numeric-audit — printing each
+artifact path; the drill fails if any layer degrades.
+
+**Worked approach:** the acceptance run is the project's single-command
+evidence (the W13 accept.py pattern): four gates, one verdict per gate,
+runtime under 2 minutes.
+
+**Pass criterion:** four PASS lines; every artifact path exists; the
+numeric audit is clean on the fixture data.
+
+## 7. The CSV pin note (the project's version manifest)
 
 **Task:** extend `reports/sdk-versions.md` with the CSV project's full
 stack: tool schemas date, sandbox level, feature prompt variants, and
