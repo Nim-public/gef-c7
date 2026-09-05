@@ -97,6 +97,33 @@ explicit.
 3. Sampled-QA drill: hand-check 30% of findings on 3 files; the
    agreement rate goes in the pin note (the W9 judge protocol).
 
+## 5. The review-prompt calibration (the Finding model's rubric)
+
+The severity rubric lives in the prompt verbatim (W11 file 03-06's
+table) — and the sampled QA grades *consistency* against it:
+
+| Rubric element | Graded by |
+|---|---|
+| severity classes | two-run self-consistency + hand labels |
+| category classes | dedup + grouping sanity |
+| line_hint accuracy | the diff audit (file 04) |
+
+The calibration loop is the W9 judge protocol: hand-label, self-
+consistency check, reword the rubric where agreement drops. The Finding
+model is the rubric's data form; the prompt is its prose form; both
+carry version stamps (`rvN`), because a rubric edit is a model-behavior
+change.
+
+## Exercises
+
+1. Build the `Finding`/`Review` models; run the LLM layer with the
+   scanner findings in context; run the dedup; hand-check 30% of
+   findings (the sampled QA).
+2. Dedup drill: an LLM finding that duplicates a scanner finding; the
+   dedup must drop it; the merged report is the proof.
+3. Sampled-QA drill: hand-check 30% of findings on 3 files; the
+   agreement rate goes in the pin note (the W9 judge protocol).
+
 ## Pitfalls
 
 - Findings without line hints — unanchored judgment is noise; the schema
