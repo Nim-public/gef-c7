@@ -86,3 +86,16 @@ a feeling.
 3. Held-out drill: eval on the held-out slice per checkpoint; the gap
    per epoch is the second axis of the chart.
 4. Pin drill: write the record; the probes' numbers cited.
+
+## 6. The overfitting pitfalls (the diagnosis's own battery)
+
+| Pitfall | Symptom | Guard |
+|---|---|---|
+| eval set = training set | the curve never diverges | the version model's split |
+| paraphrases too close to originals | the probe passes while the model memorized | hand-check the paraphrase distance |
+| judging by training loss only | divergence invisible | eval-during-training is mandatory |
+| "one more epoch" syndrome | eval rising, training continues | the decision rules (§3) are the stop |
+
+The pitfalls are the diagnosis's battery — each row's guard is a §1–§3
+mechanism. The first row is the W16 file 01-04 governance applied to
+training data: the split exists before the run, not after the failure.

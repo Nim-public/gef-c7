@@ -93,3 +93,31 @@ applied to training: the run is reproducible from the note.
 3. Artifact drill: commit the config/curve/eval trio; a teammate
    reproduces the run from the config alone (seed included).
 4. Pin drill: write the note; the trio's hashes recorded.
+
+## 6. The training-run pitfalls (the loop's own battery)
+
+| Pitfall | Symptom | Guard |
+|---|---|---|
+| LR too high | eval loss oscillates/rises from step 25 | the band (1–2e-5) |
+| effective batch too small | noisy curve, unstable best-pick | accumulation to 32 |
+| no eval during training | you discover overfitting at the end | `eval_strategy="steps"` |
+| checkpoint explosion | disk full mid-run | save cadence + retention |
+| seed forgotten | unreproducible best-pick | seed in the pin note |
+
+The pitfalls are the loop's battery — each row's guard is a §1 argument
+or a discipline from the file. The training run is engineering; its
+failures are named and pre-guarded.
+
+## 7. The single-GPU reality (the capstone's training budget)
+
+| Resource | 7B SFT, LoRA (file 04) | Constraint |
+|---|---|---|
+| VRAM | ~16–20 GB with QLoRA | one 24 GB card works |
+| wall time | ~1–2 h for 200 records × 3 epochs | run overnight |
+| disk | adapter ~100 MB + checkpoints | retention applies |
+| parallelism | one run at a time | schedule the LR drill sequentially |
+
+The reality table is the capstone's training budget — LoRA (file 04)
+makes the single card viable, and the wall time fits an overnight run.
+The W10 ledger discipline applies: the run's hours and artifacts are
+budgeted like everything else.

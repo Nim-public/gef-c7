@@ -87,6 +87,18 @@ The tokenizer pin records the seam's configuration — the template and
 masking choices are *the* data-to-tensor contract, and the four audits
 verify them per run.
 
+## 6. The loader pin (the audits as CI)
+
+**Task:** wire the four loader checks into the training script's
+startup — the audits run before step 1, every run, or the run aborts.
+
+**Worked approach:** the startup gate converts the audits from habits
+into enforcement — the loader audit is the training run's own
+acceptance test. Five minutes of checking, every run.
+
+**Pass criterion:** the audits abort a deliberately mangled dataset at
+startup.
+
 ## Exercises
 
 1. Apply the chat template to 20 records; decode and diff; the
@@ -97,3 +109,5 @@ verify them per run.
    asserts the citation tokens survive — the tail-protection rule,
    tested.
 4. Pin drill: write the pin table; the audit command green as recorded.
+5. Startup-gate drill: wire the checks into the training script's
+   startup; a mangled dataset aborts the run before step 1.
