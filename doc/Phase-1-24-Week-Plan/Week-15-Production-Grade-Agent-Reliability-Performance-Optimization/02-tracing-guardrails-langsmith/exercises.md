@@ -80,6 +80,20 @@ drills proved each.
 **Pass criterion:** the manifest lists all four files' artifacts with
 green commands as recorded.
 
+## 8. The observability drill set (one page)
+
+**Task:** write `reports/observability-drills.md`: the mapping drill,
+the reconciliation drill, the layer-attribution drill, and the hygiene
+drills — one page, four drill results, all dated.
+
+**Worked approach:** the drill set is the hosted layer's evidence —
+every drill from files 01–04 with its date and result. The reviewer
+question — "who sees your data and how do you know?" — is answered by
+the page.
+
+**Pass criterion:** four drills dated and green; every claim cites its
+drill output.
+
 ## Pitfalls recap
 
 - Tracing left on with default settings — full corpus content leaves;
