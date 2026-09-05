@@ -28,3 +28,22 @@ framed as a buildable inventory rather than an abstract warning.
 
 - Week 01 (text tokens, embeddings) and Week 04 (retrieval foundations).
 - A Python env with `datasets`, `pillow`, `pandas` available.
+
+## Conventions used throughout this subfolder
+
+- **Corpus root** is `data/raw/`; every path in code is repo-relative and
+  POSIX-separated (`Path.as_posix()`), so the same snippets run on Windows
+  and macOS.
+- **One unit, one manifest row.** A *unit* is the smallest retrievable thing
+  (a page, an image, a 30 s clip, a 12-frame video sample). Files here build
+  the vocabulary; file 04 turns it into the capstone inventory.
+- **Costs are measured, not guessed.** Tables quote concrete numbers
+  (bytes/unit, ms/encode) so exercise 1 produces a real audit of your disk,
+  not an estimate.
+- **Deletion safety** is the test for every artifact: raw is immutable
+  truth, processed and embeddings are regenerable caches keyed by content
+  hash + settings.
+- Cross-links: representation levels and manifests reappear in
+  [`../04-data-alignment-synchronization/`](../04-data-alignment-synchronization/);
+  encoding costs feed the pipeline drills in
+  [`../02-modality-processing-pipelines/`](../02-modality-processing-pipelines/).

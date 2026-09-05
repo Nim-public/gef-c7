@@ -87,3 +87,21 @@ sidecar cell must name the week that fills it (Week 08 for ASR).
 - Grouping by suffix without lowercasing — `.JPG` files silently vanish.
 - Audit double-counts when a directory is a symlink into `data/raw`.
 - Inventory units chosen per *file* for video — retrieval granularity is the sampled clip, not the container.
+
+## 6. Capstone: the one-page corpus report
+
+**Task:** combine exercises 1, 3, and 5 into `reports/corpus-report.md` —
+modality cost table, manifest coverage (units with/without EXIF timestamps),
+and the inventory table with every empty `sidecar` cell assigned a filling
+week. Regenerate it with one command (`py scripts/build_manifest.py --report`)
+so it never drifts from the data.
+
+**Worked approach:** the script already computes everything; this exercise
+is *assembly*: render the three tables from the same parquet the manifest
+build wrote, assert no unit is missing `sha256` or `license`, and add a
+footer line with the generation timestamp and manifest schema version.
+Commit the report generator, not the report itself — the report is derived.
+
+**Pass criterion:** a teammate can regenerate the identical report from a
+fresh clone with only `py scripts/build_manifest.py --report`; both copies
+hash to the same value.
