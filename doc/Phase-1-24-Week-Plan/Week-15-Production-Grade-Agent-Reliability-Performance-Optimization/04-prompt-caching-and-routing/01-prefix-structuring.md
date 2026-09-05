@@ -75,6 +75,21 @@ The checklist is the prompt-architecture review (W10 file 05-07) with
 the caching column added — every deployed prompt audited for its
 stable/variable split.
 
+## 5. The provider cache comparison (the rules differ slightly)
+
+| Provider | Min prefix | Discount | TTL / invalidation |
+|---|---|---|---|
+| OpenAI | 1024 tokens | ~50% on cached | short TTL (minutes) |
+| Anthropic | 1024 tokens, explicit `cache_control` blocks | up to 90% write, 10% read | 5 min default, extendable |
+| DeepSeek | automatic | ~90% on hit | hours |
+| self-hosted (vLLM) | block size | free | until eviction |
+
+The comparison matters because the *rules* differ: Anthropic requires
+explicit cache-control markers, OpenAI caches automatically from the
+1024-token mark, DeepSeek is near-free on hits. The reorder rule is
+universal; the discount and TTL are per-provider — the pin note records
+which provider your numbers came from.
+
 ## Exercises
 
 1. Reorder one of your prompts to the stable/variable rule; measure the
@@ -84,3 +99,6 @@ stable/variable split.
 3. Timestamp drill: add a timestamp to the prefix; watch the audit drop
    to 0; move it to the tail; watch it recover — the rule, proven by
    its violation.
+4. Provider drill: if you have keys for two providers, run the same
+   reordered prompt on both; compare `cached_tokens` semantics and the
+   realized discount.

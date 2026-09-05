@@ -73,11 +73,27 @@ The battery asserts model choice *and* answer quality — a weak-model
 answer that drops quality is a misroute, whatever the rung. The eval
 set gains a `model` column; the cost/quality table (file 04) reads it.
 
+## 5. The routing pin note (the ladder's manifest)
+
+```markdown
+# Model routing (W15)
+- rung 1: rules (patterns listed, versioned)
+- rung 2: classifier (model, prompt pvN, accuracy measured)
+- rung 3: RouteLLM — deferred until volume justifies
+- default: strong (the asymmetry principle)
+- battery: routing table (model choice + quality per case)
+```
+
+The manifest records the ladder's rungs and the promotion state — the
+same format as the tool-surface policy. Rung 3's deferral is a
+*decision with a trigger* (volume), not an omission.
+
 ## Exercises
 
-1. Implement rung 1; run the battery; the rules' precision/recording on
-   known patterns verified.
+1. Implement rung 1; run the battery; the rules' precision on known
+   patterns verified.
 2. Classifier drill: train/prompt rung 2 on 20 labeled queries; measure
    its accuracy on the borderline band.
 3. Ladder drill: measure cost and quality per rung on the eval set; the
    promotion decision (when to move from rules to classifier) is data.
+4. Pin drill: write the manifest; the promotion trigger named.

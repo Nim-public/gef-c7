@@ -60,6 +60,21 @@ The table is the router's spec — bands, evidence, and the route. The
 thresholds live in the router config with the same version discipline
 as every policy artifact.
 
+## 5. The calibration pin note (the threshold's record)
+
+```markdown
+# Routing thresholds (W15)
+- weak-safe band: [characterization, e.g. short + single-tool + factual]
+- threshold: [the band's boundary in the router config]
+- evidence: delta table (N cases, both models), verification run
+- revisit: on model change, or eval-set class drift
+```
+
+The pin note is the threshold's evidence record — the band, the
+boundary, the table, and the verification. The same page format as
+every calibrated artifact in the program (the W9 judge thresholds, the
+W13 confidence gates).
+
 ## Exercises
 
 1. Run the eval on both models; build the per-case delta table; find the
@@ -70,3 +85,4 @@ as every policy artifact.
 3. Asymmetry drill: price the quality loss (what would a wrong number
    cost the demo?) vs the token saving; the default-to-strong rule's
    economics, made explicit.
+4. Pin drill: write the note; the threshold change is a version bump.

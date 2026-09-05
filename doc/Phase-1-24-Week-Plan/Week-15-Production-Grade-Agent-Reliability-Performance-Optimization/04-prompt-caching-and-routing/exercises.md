@@ -69,6 +69,19 @@ hold quality; the threshold in the router config.
 calibration (4-pointer) is the routing's honesty — thresholds without
 measured bands are vibes with decimals.
 
+## 6. The caching-routing pin note (the cost lever's manifest)
+
+**Task:** consolidate the cost levers in `reports/sdk-versions.md`: the
+prefix reorder + audit, the cache verification, the routing ladder, and
+the calibrated thresholds — one block.
+
+**Worked approach:** the two levers (cache the prefix, route the model)
+are the cost chapter's content — the manifest lists both with their
+measured savings.
+
+**Pass criterion:** the manifest lists both levers with green commands
+and measured savings.
+
 ## Pitfalls recap
 
 - Variable content in the prefix — one timestamp kills the cache; the

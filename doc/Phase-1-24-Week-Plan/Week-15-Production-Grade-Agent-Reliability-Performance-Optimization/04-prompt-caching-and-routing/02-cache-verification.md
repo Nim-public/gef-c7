@@ -69,6 +69,20 @@ The agent loop is the multiplier: six turns sharing one prefix pay the
 prefix once (or at the cached rate six times) — the savings compound
 with conversation length.
 
+## 5. The cache pin note (the savings' manifest)
+
+```markdown
+# Prompt caching (W15)
+- reorder: stable/variable split, audit at 100%
+- provider: [yours], min prefix 1024 tok, discount [measured]
+- verification: test_prefix_cache_working (CI, after prompt changes)
+- savings: [measured $/task before vs after]
+```
+
+The pin note is the caching decision's record — the reorder, the
+measured discount, the verification test, and the savings. It is the
+deployment memo's cost chapter, one block.
+
 ## Exercises
 
 1. Implement the verification test; run it against your reordered
@@ -78,3 +92,4 @@ with conversation length.
    baseline.
 3. Minimum-length drill: shrink the stable prefix below the provider's
    minimum; observe the cache stop hitting — the floor, discovered.
+4. Pin drill: write the note; the savings row cites the ledger.
