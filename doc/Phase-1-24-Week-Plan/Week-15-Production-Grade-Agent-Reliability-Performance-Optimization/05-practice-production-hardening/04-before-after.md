@@ -65,6 +65,22 @@ committed artifacts, and the chain is walkable by a reviewer in minutes.
 The chain is also the anti-fraud mechanism: a number that cannot show
 its chain is removed from the table.
 
+## 6. The quality deep-dive (the trade's fine print)
+
+| Quality check | Before | After | Method |
+|---|---|---|---|
+| numeric exact-match | 12/15 | 12/15 | the parser |
+| citation gate | 100% | 100% | the pairing audit |
+| judge rubric | 6.8 | 6.9 | calibrated judge |
+| refusal honesty | 5/5 | 5/5 | the insufficiency battery |
+| parity vs graph | 15/15 | 15/15 | the W13 test |
+
+The deep-dive breaks "quality" into its five measurable faces — the
+guard is only as strong as its narrowest check, and the table shows
+which check is binding. The verification tokens' premium bought the
+numeric row's stability; the trade's fine print is the memo's
+justification.
+
 ## Exercises
 
 1. Run the after-state eval; fill the table; verify the attribution
@@ -75,3 +91,5 @@ its chain is removed from the table.
    traces to the ledger and the baseline.
 4. Chain drill: pick three cells; walk each evidence chain live for a
    reviewer — the walk is the table's acceptance test.
+5. Deep-dive drill: fill §6 for your after-state; the narrowest check
+   gets a named watch-item for Week 16.

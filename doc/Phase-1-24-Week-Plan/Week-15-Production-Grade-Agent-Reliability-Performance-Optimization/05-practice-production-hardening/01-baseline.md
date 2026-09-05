@@ -74,6 +74,21 @@ by time of day, and a baseline captured at 3 a.m. is not comparable to
 an after-state captured at peak. The pin makes the comparison honest or
 explains the noise.
 
+## 6. The baseline's honest gaps (what the baseline cannot show)
+
+| Gap | Why the baseline misses it | Covered by |
+|---|---|---|
+| behavior under concurrent load | the baseline runs sequentially | soak tier + chaos drills |
+| multi-day drift | one-shot capture | soak trend chart |
+| adversarial inputs | the eval set is friendly | the injection batteries |
+| cost under burst | single-run accounting | the concurrency drill |
+
+The gaps table is the baseline's scope statement — a baseline is a
+sequential, friendly-input, single-run measurement. The concurrency,
+drift, adversarial, and burst dimensions are covered by other
+instruments (the soak tier, the batteries, the chaos drills); the
+baseline is one input to the production review, not the whole review.
+
 ## Exercises
 
 1. Capture the baseline under the protocol; commit the JSON with the
@@ -86,3 +101,6 @@ explains the noise.
 4. Noise-floor drill: run the baseline twice at different hours; the
    delta bounds the noise — the after-state's improvements must exceed
    it to count.
+5. Gap drill: for each §6 row, name the instrument that covers it and
+   its latest result — the baseline + the gaps = the honest before-
+   state.
