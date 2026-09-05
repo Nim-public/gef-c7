@@ -51,6 +51,22 @@ occasionally on very long ones (the needle test is the sentinel).
 | AWQ weights (~4 GB) | ~4 GB weights | ~70 |
 | AWQ + FP8 KV | ~4 GB + half KV | ~110 |
 
+## 5. The quantization pin note (the serving memo's last row)
+
+```markdown
+## Quantization (W15)
+- weights: AWQ 4-bit, prebuilt checkpoint (source)
+- KV: fp16 (FP8 rejected: needle-test regression)
+- quality: 15-case eval unchanged (15/15); PPL drift 1.8%
+- throughput: +40% (batch 35 → 70 at 4k)
+- revisit: on model change or context-length requirement change
+```
+
+The pin note is the quantization decision's record — scheme, quality
+evidence, throughput gain, and the revisit trigger. The same memo
+discipline as every decision since W10; the numbers are the before/after
+runs.
+
 ## Exercises
 
 1. Compute §3's table for your card and model; fill in the sequences
@@ -59,6 +75,8 @@ occasionally on very long ones (the needle test is the sentinel).
    regression (if any) is the cost.
 3. FP8-KV drill: enable FP8 KV; rerun the long-context needle probe;
    the sentinel result is the KV decision.
+4. Pin drill: write the memo; every number cites a run; the revisit
+   trigger names its metric.
 
 ## Pitfalls
 

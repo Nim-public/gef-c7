@@ -69,6 +69,19 @@ the before/after numbers.
 benchmark (4-pointer) is the week's measurement crown — your prompts,
 your knobs, your numbers.
 
+## 6. The serving pin note (the inference manifest)
+
+**Task:** consolidate the inference stack in `reports/sdk-versions.md`:
+the KV formula inputs, the benchmark protocol, the knob settings, and
+the quantization decision — one block.
+
+**Worked approach:** the serving manifest follows the pin discipline:
+the formula's model-config values, the benchmark protocol, and the knob
+settings that produced your numbers.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
 ## Pitfalls recap
 
 - Full head-count on GQA models — 8× the real KV memory; check the

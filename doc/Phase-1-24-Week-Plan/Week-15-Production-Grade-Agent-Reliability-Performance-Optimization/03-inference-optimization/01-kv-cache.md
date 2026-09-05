@@ -61,6 +61,41 @@ def max_batch(free_vram_gb: float, kv_per_seq_gb: float,
 print(max_batch(80, 0.268, 16))    # ~230 sequences on an 80GB card
 ```
 
+## 5. The per-request cost model (from KV to dollars)
+
+| Component | Formula | 7B @ 4k in / 500 out, fp16 |
+|---|---|---|
+| prefill FLOPs | 2 × params × input_tokens | 2 × 7e9 × 4000 = 56 TFLOP |
+| decode FLOPs | 2 × params × output_tokens | 2 × 7e9 × 500 = 7 TFLOP |
+| KV memory-seconds | KV bytes × decode time | 268 MB × ~10 s |
+| served cost | FLOPs ÷ card FLOPS + overhead | ~1.2 s ideal, 3–6 s real |
+
+```python
+def request_cost(params: float, in_tok: int, out_tok: int,
+                 card_tflops: float = 400) -> dict:
+    prefill = 2 * params * in_tok / (card_tflops * 1e12)
+    decode = 2 * params * out_tok / (card_tflops * 1e12)
+    return {"prefill_s": round(prefill, 2), "decode_s_ideal": round(decode, 3)}
+```
+
+The cost model connects the KV math to your ledger: prefill dominates
+for long-prompt workloads (your retrieval context!), decode dominates
+for long outputs. The W12-04 token tables and this FLOP model are the
+same bill from two sides.
+
+## 6. The context-length decision (the capstone's number)
+
+| Context | KV/seq (7B, fp16) | Sequences on 24 GB |
+|---|---|---|
+| 4k | 268 MB | ~35 |
+| 16k | 1.07 GB | ~8 |
+| 32k | 2.15 GB | ~4 |
+
+The capstone's context decision (how much retrieval context to stuff)
+is a *serving* decision: 16k contexts cut your batch 4× — the fitter's
+trim rules (W10) are worth real serving capacity, not just prompt
+hygiene.
+
 ## Exercises
 
 1. Compute the KV cache for Llama-3-70B at 32k context, fp16, batch 1;
@@ -71,6 +106,9 @@ print(max_batch(80, 0.268, 16))    # ~230 sequences on an 80GB card
 3. Batch drill: given a 24 GB card with a 7B model (14 GB weights), what
    batch fits at 4k context? Then at 16k? The context/batch trade, in
    numbers.
+4. Cost-model drill: fill §5's table for one of your real requests; the
+   ideal-vs-real gap is the serving overhead you will benchmark in file
+   03.
 
 ## Pitfalls
 

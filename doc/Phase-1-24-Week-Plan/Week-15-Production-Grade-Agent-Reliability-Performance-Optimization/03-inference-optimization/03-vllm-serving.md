@@ -63,6 +63,36 @@ The protocol uses *your* prompts — marketing numbers use uniform
 lengths and hide the head-of-line blocking your corpus's long
 retrieval prompts would cause.
 
+## 5. The serving decision table (hosted API vs self-hosted)
+
+| Factor | Hosted API | Self-hosted (vLLM) |
+|---|---|---|
+| setup | minutes | hours (GPU + driver + serving) |
+| cost model | per token | per GPU-hour |
+| grounding data privacy | leaves your machine | stays local |
+| knobs | provider's | all of §2's |
+| when | most capstones | corpus privacy, cost at scale, or knob-driven research |
+
+The decision table frames the whole file: you learn the knobs for two
+reasons — to self-host when privacy/cost demands it, and to understand
+what the hosted provider is optimizing (their continuous batching and
+prefix caching are why your hosted TTFT looks good).
+
+## 6. The serving health checks (the ops view)
+
+| Check | Metric | Alarm |
+|---|---|---|
+| KV pressure | preempt count / min | >0 sustained |
+| queue depth | waiting sequences | > max_num_seqs |
+| prefix-cache hit rate | cached tokens / total | <50% on agent workloads |
+| TTFT p99 | streaming client | >2× baseline |
+
+The health checks are the serving stack's ledger — the same ledger
+discipline applied to the inference server. The prefix-cache hit rate
+is the agent-workload's signature metric: your shared constitution and
+schemas should push it high, and a drop means the prompts started
+rotating.
+
 ## Exercises
 
 1. Serve the 7B model with defaults; benchmark your eval set; record
@@ -75,3 +105,5 @@ retrieval prompts would cause.
 4. Protocol drill: write `reports/serving-benchmark.md` with the §3
    protocol and your numbers; the knob table gains a "your result"
    column.
+5. Health-check drill: run the four checks under load; the preempt count
+   and cache-hit rate are the numbers the knobs were tuned to protect.
