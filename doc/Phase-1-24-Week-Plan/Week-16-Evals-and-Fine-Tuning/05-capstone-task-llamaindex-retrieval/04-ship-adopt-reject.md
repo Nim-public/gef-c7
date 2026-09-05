@@ -20,6 +20,9 @@ W10 tool-surface discipline (adopt components, not frameworks) applied.
 ## 2. The decision memo
 
 ```markdown
+## 4. The decision memo
+
+```markdown
 ## LlamaIndex decision (W16)
 - Verdict: ADOPT (node parser only)
 - Evidence: chunk parity with W4 settings (file 02's pin);
@@ -27,6 +30,11 @@ W10 tool-surface discipline (adopt components, not frameworks) applied.
   ingestion code for new formats
 - Rejected: query engine (our synthesizer + citation gate are stricter)
 - Revisit: if LlamaIndex's retriever beats W9 on the weak slice
+```
+
+The memo is the decision's record — verdict, evidence, rejected parts,
+revisit trigger. The same format as the W11 framework verdict; the
+discipline is program-wide.
 ```
 
 The memo is the decision's record — verdict, evidence, rejected parts,

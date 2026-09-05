@@ -72,6 +72,20 @@ week's configuration.
 **Pass criterion:** note committed; the audit command green as
 recorded.
 
+## 5. The Settings pin table (the values' record)
+
+| Setting | Value | Source |
+|---|---|---|
+| `embed_model` | bge-small-en-v1.5 | W8 memo encoder decision |
+| `llm` | pinned-model-id, temp 0 | AGENT_CONFIG |
+| `node_parser.chunk_size` | 512 | W4 chunking pin |
+| `node_parser.chunk_overlap` | 64 | W4 chunking pin |
+| context window | per the demo plan | the token budget |
+
+The pin table is the Settings block's record — values, sources, and the
+audit that enforces them. It is the preproc-settings discipline applied
+to LlamaIndex's global configuration.
+
 ## Exercises
 
 1. Write the pinning block; run the settings audit; deliberately unpin
