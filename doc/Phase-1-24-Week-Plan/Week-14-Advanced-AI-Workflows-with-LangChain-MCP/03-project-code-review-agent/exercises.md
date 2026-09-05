@@ -81,6 +81,19 @@ what was verified, when, by which command.
 **Pass criterion:** note committed; the determinism and audit commands
 green as recorded.
 
+## 7. The review severity calibration (the judge protocol, code edition)
+
+**Task:** hand-label 10 findings' severities; run the LLM layer twice;
+build the agreement table per severity class; reword the rubric where
+agreement drops below 80%.
+
+**Worked approach:** the calibration protocol (W9 judge → W13 rubric →
+here) — the severity classes are the rubric's dimensions. "Critical"
+disagreements matter most: they route to humans first.
+
+**Pass criterion:** two-run self-consistency ±1; hand agreement ≥80% on
+critical/major; the rubric version stamped.
+
 ## Pitfalls recap
 
 - LLM-only reviews — hallucinated line numbers and missed mechanical
