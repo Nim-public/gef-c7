@@ -69,7 +69,7 @@ for the honesty layer, and it belongs in the framework memo verbatim.
 3. Final-memo drill: write the framework decision (§3) into the boundary
    memo; cite the table and one cost number.
 
-## 5. The comparison pin note
+## 6. The comparison pin note
 
 **Task:** extend `reports/sdk-versions.md` with the comparison header:
 both agent versions, the 15-case set version, the protocol (3 runs,
@@ -81,6 +81,14 @@ every comparison since W9 has carried.
 
 **Pass criterion:** note committed; the rerun command reproduces the
 table's outcome column.
+
+## 7. The parity-failure drill (the port's contract, proven)
+
+Force a corpus-QA mismatch between the two agents (change one
+instruction in one of them); the parity test from file 05-03 must catch
+it — the drill's output joins the post-mortem collection as the parity
+property's live proof. A port whose parity was never broken has never
+been tested.
 
 ## Exercises (continued)
 

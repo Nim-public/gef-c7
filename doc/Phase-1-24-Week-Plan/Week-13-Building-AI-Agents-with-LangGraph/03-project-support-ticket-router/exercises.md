@@ -66,7 +66,19 @@ cost, and auditability rows.
 
 **Pass bar:** 14/18 to proceed to file 04 (the codegen loop). The
 comparison (4-pointer) closes the three-week routing arc — W9 rules, W11
-handoffs, W13 graph, one table.
+handoffs, W13 graph, one table, one decision.
+
+## 8. The router's drift watch
+
+**Task:** add the router's route-accuracy to the nightly Tier-2 report;
+define the drift threshold (accuracy −0.05 vs baseline); wire the gate.
+
+**Worked approach:** the router is a model behavior now — the same drift
+watch the W11 battery runs, one metric wider. A route-accuracy flip is a
+model-update signal, caught before the demo.
+
+**Pass criterion:** the gate runs nightly; a planted degradation turns
+it red; the baseline updates only via accepted runs.
 
 ## 7. The escalation drill set (the safety cases, one page)
 
