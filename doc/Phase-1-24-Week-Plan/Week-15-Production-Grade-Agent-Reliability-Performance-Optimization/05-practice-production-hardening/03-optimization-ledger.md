@@ -82,7 +82,10 @@ a future optimization adds a row and re-runs the attribution against
 the recorded cumulative state.
 
 **Pass criterion:** note committed; the re-measurement command
-reproduces the cumulative column.
+reproduces the cumulative column. The ledger is the production week's
+centerpiece: every optimization attributable, every interaction logged,
+and the honesty premium defended in the memo — improvements without
+attribution are anecdotes, and the ledger is what makes them evidence.
 
 ## Exercises
 
