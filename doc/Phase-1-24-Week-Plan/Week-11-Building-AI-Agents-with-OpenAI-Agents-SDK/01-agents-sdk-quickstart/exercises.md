@@ -82,9 +82,19 @@ within tolerance; discrepancies documented.
 | Session drills (multi-turn, undo, budget) | drill report | 3 |
 | Traces → trajectory parity ≤5% | merge test | 3 |
 
-**Pass bar:** 12/15 to proceed to file 02 (tools, handoffs, guardrails).
-The typed-answer migration (4-pointer) is the week's first real win —
-validation moves to model time, where failures are cheaper.
+## 7. The API-pin note
+
+**Task:** record in `reports/sdk-versions.md`: the SDK version pinned,
+the context7 library id used (`/websites/openai_github_io_openai-agents-python`),
+the date the API surface was verified, and the three SDK behaviors this
+week depends on (loop steps, strict schema, session semantics).
+
+**Worked approach:** the pin note is the API-drift insurance — the
+span-shape fixture test pins behavior, and this note pins the *reason*:
+a future session reading it knows exactly what to re-verify on upgrade.
+
+**Pass criterion:** note committed with the pin, id, date, and the three
+dependency behaviors; linked from the verdict memo.
 
 ## Pitfalls recap
 

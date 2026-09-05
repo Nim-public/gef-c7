@@ -73,14 +73,27 @@ agent cannot hear tone, TTS flattens emphasis. The mitigation stack:
 Cascade voice is a *feature* on top of a working text agent — never the
 core. The capstone rule: the text path works without the voice path.
 
+## 5. The stage-failure matrix (what the demo must survive)
+
+| Dead stage | User experience | Fallback |
+|---|---|---|
+| STT down | text box appears | text path (W10 agent) |
+| agent down | cached last answer + banner | retry once, degrade |
+| TTS down | answer renders as text | UI text, transcript intact |
+
+The matrix is the voice week's contract with the text week: every audio
+failure lands in a working text experience. The failure drill (exercise
+3) walks the matrix one row at a time — three kills, three graceful
+landings, one demo that never dies.
+
 ## Exercises
 
 1. Build the three stages locally; measure per-stage latency on one
    query; fill the budget table with your numbers.
 2. First-sentence streaming drill: TTS the first sentence vs the whole
    answer; measure the perceived-latency delta (time to first audio).
-3. Failure drill: kill each stage in turn; verify the text path still
-   answers — the cascade must be a garnish, not a dependency.
+3. Failure drill: walk the §5 matrix — kill each stage in turn; verify
+   the text path still answers every time.
 
 ## Pitfalls
 
