@@ -76,3 +76,28 @@ node* with the state as updated. Rules:
    (a different thing entirely).
 3. **One gate, one decision** — re-interrupting on the same node without
    state change is a policy bug, not a feature.
+
+## 5. The interrupt inventory (the gate policy, rendered)
+
+| Gated node | Decision model | Resume action | Battery case |
+|---|---|---|---|
+| `send_email` | approve/edit/reject | 3-branch | send blocked without approval |
+| `ingest_units` | approve/edit | 2-branch | ingestion needs human sign-off |
+| `answer` (sampled) | spot-check | sampled by run_id | the W12 sampled gate |
+| search/retrieve | never | — | read-only, zero gates |
+
+The inventory is the W10 `GATE_POLICY` rendered as the interrupt list —
+and the battery asserts the *invariant*: no gated node executes without
+a state change. The last row is as important as the first: zero-gate
+read-only paths prove the policy is not blanket paranoia.
+
+## Exercises
+
+1. Wire `interrupt_before` on the two gated nodes; run the three
+   decisions (approve/edit/reject) through the resume contract; verify
+   no advance without a decision (the invariant test).
+2. Inventory drill: render §5 from your `GATE_POLICY`; every gated node
+   has a battery case; every read-only node has a zero-gate test.
+3. Resume-mistake drill: resume with new inputs (the classic error);
+   observe the new-run behavior; add the guard (assert pending interrupt
+   before resume).

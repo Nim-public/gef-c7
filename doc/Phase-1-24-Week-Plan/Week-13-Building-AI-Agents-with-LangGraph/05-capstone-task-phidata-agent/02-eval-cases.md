@@ -50,6 +50,28 @@ verification policy (W12 file 04-03) applies to exactly these.
 [ ] the set is versioned (eval-set vN) and committed
 ```
 
+## 4. The gold-answer workbench (how the table gets filled)
+
+| Case type | Gold procedure |
+|---|---|
+| numeric (6–10) | run the SQL yourself; record the exact value |
+| corpus (1–5) | find the unit; record its id + the quote |
+| mixed (11–12) | both, labeled internal/external |
+| refusal (13–14) | verify absence (searches ran, nothing found) |
+| ambiguous (15) | write the accepted behaviors |
+
+```python
+GOLD = {
+    6: {"answer": 1_240_000, "tolerance": 0, "sql": "SELECT SUM(revenue) ..."},
+    3: {"unit_id": "u042"},
+    14: {"refusal": True},
+}
+```
+
+The gold table is code — computable checks, not prose. Case 13 is the
+interesting refusal: "forecast" is *unanswerable* because no future data
+exists — the gold asserts the agent says so rather than extrapolating.
+
 ## Exercises
 
 1. Write the 15-case table with gold answers *from your data*; verify
@@ -57,4 +79,6 @@ verification policy (W12 file 04-03) applies to exactly these.
 2. Scoring drill: implement the numeric exact-match parser (thousands
    separators, currency, decimals); test it against 10 formats.
 3. Adversarial-case drill: add one case per failure class you have seen
-  (W10/W11/W12 post-mortems) — the eval set grows from your scars.
+   (W10/W11/W12 post-mortems) — the eval set grows from your scars.
+4. Refusal drill: run case 13 three times; any extrapolated forecast is
+   a grounding failure — record and fix the constitution wording.

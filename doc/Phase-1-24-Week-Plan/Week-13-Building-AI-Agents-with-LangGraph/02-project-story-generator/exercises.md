@@ -83,6 +83,19 @@ identical run from the seed.
 **Pass criterion:** one command produces the three-chapter transcript;
 world diffs show the choices taking effect; the run is reproducible.
 
+## 7. The story-gen pin note
+
+**Task:** extend `reports/sdk-versions.md` with the story stack:
+LangGraph version, checkpointer backend, interrupt list, and the
+crash-drill test command.
+
+**Worked approach:** the story generator is the first durable flow —
+the pin note records what the crash drill verified (backend, thread
+scheme, resume semantics) so the durability claim has a version.
+
+**Pass criterion:** note committed; the crash drill command green as
+recorded.
+
 ## Pitfalls recap
 
 - Piecemeal world patches — coherence dies by chapter 4; whole-document

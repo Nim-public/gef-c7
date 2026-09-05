@@ -47,6 +47,18 @@ the fourth comparison of the program, same rules.
 frameworks are *mechanisms*, the system (store, evals, policies) is
 yours. The verdict memo records which mechanism each path uses and why.
 
+## 5. The verification value drill (the table's fine print)
+
+```text
+runs with verify enabled:    5/5 numeric correct, +5% tokens
+runs with verify disabled:   3/5 numeric correct (2 silent drifts)
+```
+
+The two-line drill is the comparison's most important number: the
+verification node's *marginal value* — two silently-wrong numbers per
+five, caught for five percent more tokens. That ratio is the argument
+for the honesty layer, and it belongs in the framework memo verbatim.
+
 ## Exercises
 
 1. Run the 15 cases through both agents; fill the table; investigate any

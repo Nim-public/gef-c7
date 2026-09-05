@@ -69,6 +69,22 @@ resume from the same thread, and the run continues *from the same node*
 # document the policy in reports/checkpoint-policy.md
 ```
 
+## 5. The checkpoint policy (the committed page)
+
+```markdown
+# Checkpoint policy — W13
+- backend: SqliteSaver, data/checkpoints.db (gitignored)
+- thread scheme: {task_kind}-{task_id} (e.g., eval-task-3, story-42)
+- retention: keep last 20 checkpoints per thread; prune on close
+- negative proof: MemorySaver drill in tests/ (state must be lost)
+- positive proof: crash drill in tests/ (resume from same node)
+```
+
+The policy page is the checkpoint layer's contract — backend, identity
+scheme, retention, and the two proofs. It is the settings-version
+discipline applied to durability: the page changes when the backend or
+scheme changes, and the tests re-run.
+
 ## Exercises
 
 1. Run a task with MemorySaver; kill the process; confirm state is gone
@@ -77,6 +93,8 @@ resume from the same thread, and the run continues *from the same node*
    no state bleed.
 3. Policy drill: write `reports/checkpoint-policy.md` (backend, thread
    scheme, retention); implement the prune command.
+4. Retention drill: generate 25 checkpoints on one thread; run the
+   prune; verify the last 20 survive and history still works.
 
 ## Pitfalls
 

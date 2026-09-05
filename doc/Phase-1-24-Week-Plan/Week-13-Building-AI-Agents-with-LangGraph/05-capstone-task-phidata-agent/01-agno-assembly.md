@@ -65,6 +65,23 @@ The case table is file 02's subject; the assembly's job is to *not*
 special-case any of them — one agent, one tool surface, fifteen shapes
 of question.
 
+## 4. The assembly checklist (the capstone's agent review)
+
+```text
+[ ] toolkits: battery-green at current Agno version
+[ ] knowledge: parity loop green (5 golden queries)
+[ ] grounding rules: battery green, version stamped (cvN)
+[ ] typed output: citation validator catches phantoms
+[ ] verification: policy wired, mismatch drill passed
+[ ] config stamps: every trajectory row carries component versions
+```
+
+The checklist is the assembly's acceptance review — six rows, each
+citing an artifact from Weeks 10–12. It is the W10 pipeline gates
+(contract, quarantine, determinism, settings) applied to an agent
+constructor: the constructor is thin *because* everything behind it is
+tested.
+
 ## Exercises
 
 1. Assemble the agent; run the smoke test (W10-06 style) on both canned
@@ -73,6 +90,8 @@ of question.
    versions (toolkits, knowledge, rules, model).
 3. Thin-agent drill: list what is *not* in the constructor (ingest,
    battery, drills) — the surrounding system, named.
+4. Checklist drill: run the §4 review; every row cites its artifact;
+   any red row blocks the 15-case run (file 02).
 
 ## Pitfalls
 

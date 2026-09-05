@@ -54,6 +54,19 @@ with a repair cycle. The A/B's repair-heavy row is where it earns its
 keep: the specialized test/repair nodes beat one agent grading its own
 homework. The measured number is the argument; write it down.
 
+## 5. The verdict's caveats (the honest footnotes)
+
+| Caveat | Effect on the verdict |
+|---|---|
+| team runs share a warmed supervisor | first-turn costs are higher in prod |
+| repair-heavy scoring counts attempt-2 wins | generous to teams; state it |
+| tasks were *designed* to need specialization | natural traffic may differ |
+| single agent had no sub-agents | the strongest single baseline |
+
+The caveats are the A/B's honesty ledger — every design choice that
+could tilt the comparison, stated. The verdict stands *with* the
+caveats; a verdict that hides them is marketing.
+
 ## Exercises
 
 1. Run the protocol; produce the class-level table with ranges (3 runs);
@@ -63,6 +76,8 @@ homework. The measured number is the argument; write it down.
 3. Crossover drill: find the task complexity where team starts winning
    (the crossover point); state it as a rule ("≥3 distinct stages →
    team").
+4. Caveat drill: re-run the strongest team win with a cold supervisor
+   and natural phrasings; does the win survive? Record either way.
 
 ## Pitfalls
 

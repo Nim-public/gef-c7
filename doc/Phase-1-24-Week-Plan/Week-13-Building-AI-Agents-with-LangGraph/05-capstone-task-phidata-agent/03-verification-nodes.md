@@ -64,6 +64,20 @@ and the display contract (W12 file 04-04) relays them to the user.
 The battery re-runs the W12 drills as graph-path assertions — node
 sequences from the trace are the evidence, same as every W13 battery.
 
+## 5. The verification wiring options (three depths)
+
+| Option | Wiring | Cost | Guarantee |
+|---|---|---|---|
+| post-hoc | verify after END, flag in report | 1 extra query | flagged, not blocked |
+| in-graph (this file) | verify node before END | 1 query, 1 turn | caveat mandatory |
+| in-loop | mismatch → recompute → verify again | 2–3 queries | converged or flagged |
+
+The W12 policy's `spot_check_rate` chooses the option per claim class —
+totals verify in-loop, lookups post-hoc. The budget table (W12-04)
+prices each; the drill measures them. There is no free verification —
+the options trade tokens for guarantee strength, and the policy states
+which numbers get which level.
+
 ## Exercises
 
 1. Build verify + sanity nodes; wire the three-way route; run the
@@ -73,3 +87,5 @@ sequences from the trace are the evidence, same as every W13 battery.
    detection. The independence property, proven by its absence.
 3. Display drill: a flagged mismatch must appear in the user view's
    caveats (the W12 rendering contract, now graph-fed).
+4. Options drill: run the numeric eval with each of the three wiring
+   options; produce the cost/guarantee table.

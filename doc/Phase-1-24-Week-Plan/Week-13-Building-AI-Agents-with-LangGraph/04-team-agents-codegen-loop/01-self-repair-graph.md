@@ -85,6 +85,20 @@ passes where attempt 1 failed, the debug node works; if attempts never
 converge, the task or the test suite is broken — and the A/B (file 04)
 quantifies it.
 
+## 5. The task suite (the loop's fuel)
+
+| Task | Test assertions | Difficulty |
+|---|---|---|
+| `slugify(title)` | output format, edge cases | easy |
+| `parse_csv_row(line)` | quoted fields, malformed rows | medium |
+| `validate_email(addr)` | RFC-ish cases, rejects | medium |
+| `top_k_by_margin(df, k)` | ordering, ties | hard |
+
+The task suite is the repair loop's benchmark — real assertions, graded
+difficulty, and at least one task designed to fail on attempt 1 (a
+missing import) so the debug node has work to do. The suite lives in
+`tests/codegen_tasks/` and is the A/B's shared fixture (file 04).
+
 ## Exercises
 
 1. Build the four-node graph; run 5 codegen tasks; produce the attempts
@@ -93,6 +107,9 @@ quantifies it.
    repair note breaks the repetition within 2 attempts.
 3. Bound drill: set attempts ≥4 on a hard task; the loop exits with
    honest failure — no infinite repair.
+4. Suite drill: add one task of your own with three assertions; verify
+   the loop reaches green — and that a deliberately wrong task (no valid
+   solution) exits at the bound with the honest failure.
 
 ## Pitfalls
 

@@ -70,6 +70,23 @@ def apply_human_edit(edit: dict) -> str:
 The battery is the edit policy as tests — four cases, four refusals or
 acceptances, provable.
 
+## 5. The correction's downstream proof (edits must propagate)
+
+```python
+def test_correction_flows_downstream():
+    # classification corrected mid-run
+    graph.update_state(CONFIG, values={"classification": FIXED})
+    graph.invoke(None, CONFIG)                     # resume
+    snap = graph.get_state(CONFIG)
+    assert snap.values["resolution"] != OLD_RESOLUTION
+    assert "human correction" in snap.values["classification"]["reason"]
+```
+
+The proof that an edit *mattered*: the downstream artifact changed. An
+edit accepted but ignored (a downstream node reading a cached value) is
+the silent failure this test documents — corrections must flow, and the
+test is how you know they do.
+
 ## Exercises
 
 1. Implement the edit protocol; run the correction drill (wrong
@@ -79,6 +96,8 @@ acceptances, provable.
 3. Audit drill: after 3 corrections, `get_state_history` shows every
    edit as a checkpoint; the trajectory store has the `human_edit`
    events.
+4. Downstream drill: implement §5's test for one correction; deliberately
+   break the flow (stale cache); confirm the test catches it.
 
 ## Pitfalls
 

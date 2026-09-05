@@ -70,6 +70,19 @@ the memo updated.
 sandbox (4-pointer) is non-negotiable — generated code without walls is
 the one failure this program does not ship.
 
+## 6. The codegen safety review
+
+**Task:** write `reports/codegen-review.md`: the repair graph diagram,
+the sandbox decision table, the escape-probe results, and the attempts
+histogram — the codegen loop's safety and effectiveness evidence.
+
+**Worked approach:** the review composes files 01–02 into one sheet: the
+loop's learning curve (attempts histogram) next to its containment proof
+(escape probes). A codegen feature ships only when both are green.
+
+**Pass criterion:** the review answers "what happens when the generated
+code misbehaves?" in one read, citing the probes.
+
 ## Pitfalls recap
 
 - Test suites that assert only execution — the repair loop optimizes

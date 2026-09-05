@@ -77,6 +77,31 @@ Same menu, fourth entry. The supervisor's distinctive feature is the
 *shared blackboard* — workers see accumulated state, not just their
 inputs.
 
+## 5. The team state schema (the blackboard's contract)
+
+```python
+class TeamState(TypedDict):
+    task: str
+    turns: int
+    research_notes: Annotated[list[str], operator.add]
+    research_done: bool
+    analysis: str
+    analysis_done: bool
+    report: str
+```
+
+| Field | Writer | Reader |
+|---|---|---|
+| `research_notes` | researcher (append) | analyst, writer |
+| `research_done` | researcher (set) | supervisor |
+| `analysis` | analyst | writer |
+| `report` | writer | END / harness |
+
+The schema is the team's contract: who writes what, who reads what, and
+the flags the supervisor routes on. The state-passing audit (W11 file
+03-04) runs on this table — any field with two writers needs a merge
+policy or a refactoring.
+
 ## Exercises
 
 1. Build the supervisor topology; run a research→analyze→write task;
@@ -85,6 +110,8 @@ inputs.
    5 tasks; compare plan quality, tokens, and determinism.
 3. Bounded drill: set the turn cap at 6; force a task that needs 8;
    verify honest degradation — the bound holds under pressure.
+4. Schema drill: write the §5 table for your team; probe for
+   two-writer fields; add merge policies or split the fields.
 
 ## Pitfalls
 

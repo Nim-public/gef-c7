@@ -69,6 +69,19 @@ The four questions are the W10 post-mortem template, with native
 mechanics. The post-mortem artifact gains a fork link: the reviewer can
 replay the counterfactual themselves.
 
+## 5. The fork etiquette (branches are data)
+
+| Rule | Why |
+|---|---|
+| fork with `update_state`, never by editing history | the original run is evidence |
+| name the branch intent in the state | `{"fork_reason": "clearer query test"}` |
+| compare branches on the same metrics | the counterfactual must be measured |
+| prune abandoned forks on the retention schedule | branch sprawl is checkpoint bloat |
+
+Time travel creates *data* — branches are part of the run's record and
+follow the retention policy. The post-mortem links both branches; the
+store keeps both; the policy cleans them later.
+
 ## Exercises
 
 1. Walk the history of a failing run; identify the first bad snapshot;
@@ -79,3 +92,6 @@ replay the counterfactual themselves.
 3. Determinism drill: replay the same checkpoint 5×; measure variance;
    classify the failure (logic vs sampling) — the W11 drill, one API
    call now.
+4. Etiquette drill: fork three branches for three "what if" questions;
+   record each intent; prune the uninformative ones per the retention
+   schedule.

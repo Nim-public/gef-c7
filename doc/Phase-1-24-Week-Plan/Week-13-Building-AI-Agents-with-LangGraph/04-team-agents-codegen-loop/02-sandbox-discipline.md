@@ -92,6 +92,20 @@ the walls are only walls if they are tested.
 [ ] sandbox artifacts (stdout/files) are quarantined, not trusted
 ```
 
+## 5. The sandbox decision table
+
+| Code source | Sandbox level | Rationale |
+|---|---|---|
+| your own repo code (tests) | subprocess, minimal env | trusted-adjacent |
+| generated code in the repair loop | container | model-written, unverified |
+| user-submitted code | container + network off | fully untrusted |
+| library install steps | never in-sandbox | supply-chain surface |
+
+The decision rule generalizes the W10 read-only-first posture: the
+sandbox level tracks the *trust level of the code source*, and the
+escape drill runs at whichever level you deploy. Generated code is
+never "yours" — it is model output until the test suite says otherwise.
+
 ## Exercises
 
 1. Build the subprocess sandbox; run the four escape probes; document
@@ -101,3 +115,5 @@ the walls are only walls if they are tested.
 3. Integration drill: wire the sandbox into the repair graph's test
    node; verify the loop handles a code-bomb probe as "test failed" and
    repairs or exits.
+4. Policy drill: write `reports/sandbox-policy.md` — which code sources
+   get which sandbox level, per the §5 table.
