@@ -88,7 +88,13 @@ Force a corpus-QA mismatch between the two agents (change one
 instruction in one of them); the parity test from file 05-03 must catch
 it — the drill's output joins the post-mortem collection as the parity
 property's live proof. A port whose parity was never broken has never
-been tested.
+been tested; the broken-parity record below shows the drill working:
+
+```text
+mutation: answerer instruction changed to "answer from general knowledge"
+parity test: FAILED — corpus-QA cases 1–5 diverge
+verdict: mutation caught; restore; test green; parity property live
+```
 
 ## Exercises (continued)
 
