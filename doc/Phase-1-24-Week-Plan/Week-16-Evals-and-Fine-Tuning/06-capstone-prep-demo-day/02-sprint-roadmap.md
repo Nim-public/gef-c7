@@ -83,3 +83,23 @@ missed reviews are visible in the file's history.
    mitigation column cites the program's artifacts.
 5. Cadence drill: write the §6 schedule; the first monthly review
    scheduled with the risk register on the agenda.
+
+## 7. The roadmap pin note (the extension weeks' manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the roadmap block: the
+sprint themes, their exit artifacts, their gates, and the cadence
+schedule (file 01-06 of W13 for the review rhythm).
+
+**Worked approach:** the roadmap's pin records the extension plan —
+the same manifest discipline as every artifact, applied to time.
+
+**Pass criterion:** note committed; the first sprint's gate in CI.
+
+## Pitfalls
+
+- Hierarchical "because it sounds smarter" — the manager is a token tax
+  with a plan-quality risk; earn it with an unknown-order requirement.
+- Sequential pipelines that secretly need runtime branching — the list
+  order lies; move to hierarchical or a Flow with conditions.
+- Manager plans unasserted — a skipped task is a silent missing
+  deliverable; coverage assertions or it did not happen.
