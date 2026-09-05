@@ -51,6 +51,21 @@ default LangSmith configuration sends *everything*; the sampling and
 scrubbing (file 04) are what make sending compatible with a private
 corpus.
 
+## 5. The setup pin note (the observability manifest)
+
+```markdown
+# Observability setup (W15)
+- LangSmith: tracing on, projects dev/prod/eval, key separated
+- send-policy: reports/send-policy.md (sampled content, no PII)
+- retention: platform default overridden per policy (file 04)
+- mapping: hosted fields ↔ W10 store fields (file 01 §3)
+- local store: authoritative, scrubbed, indefinite
+```
+
+The setup pin note is the observability manifest — the same pin
+discipline applied to the tracing layer. It records what is sent, where
+it goes, and which local artifacts remain authoritative.
+
 ## Exercises
 
 1. Enable tracing on the dev project; run 5 eval tasks; verify runs
@@ -59,6 +74,8 @@ corpus.
    appears in the prod view.
 3. Mapping drill: for one run, list every LangSmith field and its W10
    store counterpart — the merge table, hosted edition.
+4. Pin drill: write the manifest page; every claim links its drill or
+   config.
 
 ## Pitfalls
 

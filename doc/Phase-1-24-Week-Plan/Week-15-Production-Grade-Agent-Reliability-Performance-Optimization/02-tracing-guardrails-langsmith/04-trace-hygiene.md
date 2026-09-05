@@ -77,6 +77,22 @@ W13-nightly-report logic applied to tracing volume. The hash-based
 sampling is deterministic per run (same run_id → same decision), which
 keeps the trajectory store and the traced subset consistent.
 
+## 5. The hygiene pin note (the privacy page)
+
+```markdown
+# Trace hygiene (W15)
+- scrubber: 4 patterns, runs at export boundary only
+- local raw: 30-day rotation, full fidelity
+- parquet store: indefinite, scrubbed, schema-shaped
+- sampling: dev/eval 100%; prod 20% + all failures (deterministic)
+- hosted retention: set per policy (checked, not defaulted)
+```
+
+The hygiene page is the privacy policy for traces — the W11 hygiene
+rules (firewall at export, sanitize both directions) plus the W15
+additions (retention, sampling). It is the page a privacy reviewer
+reads; every rule cites its test.
+
 ## Exercises
 
 1. Wire the scrubber into the export boundary; plant PII in a run; the
@@ -85,6 +101,7 @@ keeps the trajectory store and the traced subset consistent.
    parquet survives.
 3. Sampling drill: run 100 prod-mode invocations; ~20% trace, and every
    failed run traces — the policy, measured.
+4. Pin drill: write the page; every rule cites its drill.
 
 ## Pitfalls
 

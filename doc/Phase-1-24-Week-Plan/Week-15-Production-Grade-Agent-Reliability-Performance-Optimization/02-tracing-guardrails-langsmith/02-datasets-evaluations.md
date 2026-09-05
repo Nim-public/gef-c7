@@ -74,6 +74,21 @@ experiment's scores must match the local harness's within tolerance —
 same agent, same cases, same scorers. Divergence means the *dataset* or
 the *scorers* drifted between the two views.
 
+## 5. The hosted-eval pin note (the mirror's manifest)
+
+```markdown
+# Hosted evaluations (W15)
+- dataset: gef-c7-eval-v2 (mirrors local v2 — parity job in CI)
+- scorers: imported from eval harness (no re-implementation)
+- experiments: w15-regression* (comparable across versions)
+- reconciliation: nightly join on case ids; drift = failure
+- baselines: updated locally first; hosted reflects
+```
+
+The mirror's manifest: what is hosted, what is local, what reconciles
+when. The parity job (dataset-contents diff) runs in CI — the mirror
+rule is enforced, not aspirational.
+
 ## Exercises
 
 1. Upload the eval set; run the hosted evaluation; download the results
@@ -82,6 +97,8 @@ the *scorers* drifted between the two views.
    reconciliation must flag the divergence — the mirror rule, proven.
 3. Trend drill: run three experiments (three agent versions); compare
    the hosted trend chart with your soak chart — same shape or explain.
+4. Pin drill: write the manifest; the parity job in CI; the drift drill
+   committed as its evidence.
 
 ## Pitfalls
 

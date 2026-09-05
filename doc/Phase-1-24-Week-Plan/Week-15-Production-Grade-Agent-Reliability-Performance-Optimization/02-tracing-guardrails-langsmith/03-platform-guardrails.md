@@ -85,6 +85,21 @@ defense in depth, and the test proves each layer catches its class. A
 case caught by an earlier layer must also pass through the later layers
 cleanly (no double-refusals with conflicting messages).
 
+## 5. The guardrail pin note (the layered defense's manifest)
+
+```markdown
+# Guardrail layers (W15)
+- L1 moderation: hosted endpoint, categories, latency measured
+- L2 local PII: patterns versioned, bidirectional (in/out)
+- L3 firewall: W13 patterns (imported, not reimplemented)
+- L4 agent: constitution cvN + output filters
+- battery: layer-attribution table (4 cases), CI-wired
+```
+
+The manifest records each layer's mechanism and verification — the
+W11 trust-ladder, extended with the platform layers. The battery's
+attribution table is the manifest's evidence.
+
 ## Exercises
 
 1. Wire the moderation endpoint as layer 1; run the battery; verify the
@@ -93,6 +108,8 @@ cleanly (no double-refusals with conflicting messages).
    before the moderation call — ordering and masking verified.
 3. Layer-attribution drill: for each battery case, log which layer
    fired; the attribution table is the layering's proof.
+4. Pin drill: write the manifest; the attribution table committed as
+   its evidence.
 
 ## Pitfalls
 

@@ -67,6 +67,19 @@ works; ~20% sampling with 100% failure coverage.
 hygiene drills (4-pointer) are the privacy deliverable — what leaves
 your machine is a policy, not a default.
 
+## 6. The observability pin note (the hosted layer's manifest)
+
+**Task:** consolidate the observability stack in `reports/sdk-versions.md`:
+LangSmith setup, dataset mirror, guardrail layers, hygiene policy — one
+block.
+
+**Worked approach:** the hosted layer's manifest follows the pin
+discipline: what is sent, what is scrubbed, what reconciles, and which
+drills proved each.
+
+**Pass criterion:** the manifest lists all four files' artifacts with
+green commands as recorded.
+
 ## Pitfalls recap
 
 - Tracing left on with default settings — full corpus content leaves;
