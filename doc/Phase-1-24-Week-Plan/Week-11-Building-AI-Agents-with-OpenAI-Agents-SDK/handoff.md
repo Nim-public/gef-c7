@@ -107,12 +107,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-agents-sdk-quickstart/`
-- [ ] `02-tools-handoffs-guardrails/`
-- [ ] `03-multi-agent-orchestration/`
-- [ ] `04-voice-agents/`
-- [ ] `05-observability-eval-agents/`
-- [ ] `06-practice-agents-sdk-capstone/`
+- [x] `01-agents-sdk-quickstart/`
+- [x] `02-tools-handoffs-guardrails/`
+- [x] `03-multi-agent-orchestration/`
+- [x] `04-voice-agents/`
+- [x] `05-observability-eval-agents/`
+- [x] `06-practice-agents-sdk-capstone/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
