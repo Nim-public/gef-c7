@@ -79,7 +79,23 @@ ranking is the remaining delta
 
 The report is the protocol's output — the table, the header, and the
 verdict. It is the ship/adopt/reject decision's (file 04) input, and
-its every number is regenerable by the comparison script.
+its every number is regenerable by the comparison script. The W10-05
+rubric discipline applies per slice: every weakness gets an owner, an
+action, and a re-measurement.
+
+## 5. The comparison protocol checklist (the run's preconditions)
+
+```text
+[ ] both engines consume the same corpus version (manifest hash)
+[ ] both use the same embedder (pinned, from Settings)
+[ ] both use the same chunking (matched, from file 02)
+[ ] same k, same metric implementations, same gold labels
+[ ] the eval-set version is frozen (file 01-04 of this week)
+```
+
+The preconditions checklist is the comparison's validity — each row is
+a variable that must be held constant. Any unchecked row is a
+confound; the delta is then unattributable.
 
 ## Exercises
 
@@ -93,6 +109,8 @@ its every number is regenerable by the comparison script.
    quality.
 4. Report drill: render §4; the header carries the protocol; the verdict
    cites the table.
+5. Delta-drill: attribute the largest Δ — chunking, embedder, or
+   ranking — with an isolated experiment per hypothesis.
 5. Delta-drill: attribute the largest Δ — chunking, embedder, or
    ranking — with an isolated experiment per hypothesis.
 
