@@ -84,3 +84,5 @@ before any production claim.
    or looser); record the change in `budgets.json` with a version bump.
 4. Drill-set drill: implement §5's fifth drill (KB empty) if missing;
    wire all five into CI as the reliability suite.
+5. Pin drill: write the reliability manifest (budgets.json version,
+   breaker thresholds, chaos suite) into `reports/sdk-versions.md`.
