@@ -95,6 +95,21 @@ deltas annotated with their causes from the comparison report.
 **Pass criterion:** three walked queries; every delta annotated; the
 page cites the comparison report.
 
+## 8. The adoption decision record (the standing artifact)
+
+**Task:** finalize `reports/llamaindex-decision.md`: the verdict (ship/
+adopt/reject per component), the comparison numbers, the maintenance
+cost, and the revisit triggers — the decision record that Weeks 17–24
+cite.
+
+**Worked approach:** the record follows the W11 framework-verdict
+format — verdict, evidence, rejected parts, revisit trigger. The
+capstone's retrieval path is decided here once, with the option to
+revisit on triggers.
+
+**Pass criterion:** the record committed; every claim cites an
+artifact; the revisit triggers are measurable.
+
 ## Pitfalls recap
 
 - Default embedders silently used — the space mismatch is the silent
