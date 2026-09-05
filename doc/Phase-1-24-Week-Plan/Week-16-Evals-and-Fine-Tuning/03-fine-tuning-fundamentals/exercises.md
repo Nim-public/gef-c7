@@ -67,6 +67,19 @@ final checkpoint justified by the curve and the probes.
 diagnosis (4-pointer) is the fine-tuning week's discipline — the eval-
 during-training chart is where honesty lives.
 
+## 6. The fine-tuning pin note (the run's manifest)
+
+**Task:** consolidate the fine-tuning stack in `reports/sdk-versions.md`:
+the SFT data version, tokenizer audits, the run's args/seed, and the
+overfitting record — one block.
+
+**Worked approach:** the fine-tuning manifest follows the pin
+discipline: the data version, the audits, the run config, and the
+diagnosis record.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
 ## Pitfalls recap
 
 - Fine-tuning on prompts without masking — the model learns to write
