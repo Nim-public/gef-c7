@@ -59,6 +59,33 @@ The seed's provenance matters: logs and failure clusters are real
 demand; invented seeds are hypotheses. The expansion multiplies what
 exists — it does not manufacture demand.
 
+## 5. The seed-to-purpose mapping (what each expansion is for)
+
+| Destination | Which variants | Format |
+|---|---|---|
+| eval set (held-out) | 1 per seed, untouched phrasing | the gold-labeled case |
+| robustness data | paraphrases with typos/length shifts | training pairs |
+| red-team probes | the adversarial axis variants | the battery |
+| few-shot pool | the clearest variants | the prompt's examples |
+
+The mapping is the expansion's allocation plan — one seed's variants
+split across purposes, so the eval set stays honest (only the untouched
+phrasing) while the training data gets the variety. The W10 memory-tier
+rule applies: different destinations, different content.
+
+## 6. The expansion ledger (the seeds' record)
+
+| Seed | Source | Variants | Axes covered | Destinations |
+|---|---|---|---|---|
+| q-log-041 | live logs | 7 | phrasing, politeness, typos | eval 1, robustness 6 |
+| q-fail-017 | failure cluster | 6 | phrasing, specificity | robustness 6 |
+| q-invented-002 | persona grid | 5 | all | training only |
+
+The ledger is the expansion's provenance — every seed's source, output,
+and destination. It is the W14-04 self-improving loop's input (the
+log-derived seeds) and the persona grid's output (the invented ones) —
+the two data families meeting in one table.
+
 ## Exercises
 
 1. Expand 10 seeds (5 log-derived, 5 failure-cluster) with the
@@ -68,3 +95,6 @@ exists — it does not manufacture demand.
    survives.
 3. Provenance drill: tag every variant with its seed's source; the
    eval set only admits log/failure-derived expansions.
+4. Mapping drill: allocate one seed's variants across the four
+   destinations; the eval variant is the untouched one — the rule,
+   demonstrated.

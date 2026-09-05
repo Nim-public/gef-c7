@@ -62,6 +62,39 @@ existing set — direction matters (both ways are damage), and 8-gram
 overlap is the standard sensitivity. Hits quarantine the offending
 items, not the batch.
 
+## 5. The validation report (the batch's gate record)
+
+```markdown
+# Synthetic batch validation — expansion-batch-07 — [date]
+
+| gate | result | detail |
+|---|---|---|
+| labels | PASS | 10% sample, 0 errors |
+| diversity | PASS | dedup rate 12%, spread ≥3 axes |
+| leakage | PASS | 0 × 8-gram overlaps |
+| distribution | PASS | persona coverage ≥1.0, length dist within 10% |
+
+verdict: ACCEPTED → destination: robustness data (6), eval (1)
+```
+
+The report is the batch's gate record — four gates, four results, one
+verdict. It joins the batch's provenance (the expansion ledger) and the
+destination mapping — the synthetic data's full audit trail.
+
+## 6. The synthetic-data policy (the standing rules)
+
+| Rule | Why |
+|---|---|
+| every batch passes the four gates | generation is confident, not correct |
+| destinations are mapped (file 01 §5) | eval vs training separation |
+| provenance per item (seed → variant) | the audit trail survives scaling |
+| hand-sample per batch | the human anchor on the labels |
+| batches are versioned | a bad batch is removable |
+
+The policy is the synthetic data's constitution — the standing rules
+that survive team turnover and scale. It is the W7 validation-gate
+philosophy (validate before serving) applied to generated data.
+
 ## Exercises
 
 1. Run the four gates on one expansion batch (from file 01); produce the
@@ -71,6 +104,8 @@ items, not the batch.
 3. Distribution drill: compare synthetic vs real query length/class
    distributions; the persona grid's weights should make them close —
    the grid's validation.
+4. Policy drill: write the §6 policy; audit the last three batches
+   against it — every batch cited or regenerated.
 
 ## Pitfalls
 

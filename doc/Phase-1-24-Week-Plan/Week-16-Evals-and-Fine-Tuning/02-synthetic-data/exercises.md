@@ -68,6 +68,19 @@ distribution comparison committed.
 battery (4-pointer) is the synthetic week's gate — unvalidated synthetic
 data is noise with confidence.
 
+## 6. The synthetic-data pin note (the batch manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the synthetic stack:
+expansion prompt version, persona grid version, attack taxonomy version,
+and the validation-battery command — one block.
+
+**Worked approach:** the synthetic stack generates data at scale — the
+pin note records which prompt/grid/taxonomy versions produced which
+batches, and the validation command that gated them.
+
+**Pass criterion:** note committed; the validation command green for the
+current batches.
+
 ## Pitfalls recap
 
 - Expansion beyond the diversity budget — echoes crowd out variety; the

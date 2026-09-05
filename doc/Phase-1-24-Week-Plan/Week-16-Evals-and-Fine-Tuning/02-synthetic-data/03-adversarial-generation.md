@@ -73,6 +73,36 @@ The battery is the W13 federated injection set, scaled — each attack
 class maps to a defense layer's test, and the generated volume gives
 the defenses statistical coverage instead of anecdotal checks.
 
+## 5. The adversarial validation (attacks need quality gates too)
+
+| Gate | Check | Fail action |
+|---|---|---|
+| plausibility | would an attacker send it? | regenerate |
+| diversity | not a paraphrase of an existing attack | regenerate with new axes |
+| layer targeting | the class's defense is actually attackable | re-classify |
+| expected behavior | the case's assert is testable | fix the case |
+
+The adversarial validation mirrors the benign battery (file 04) —
+attacks that fail plausibility or diversity are noise that inflates the
+escape-rate denominator. The layer-targeting check is the taxonomy's
+discipline: every attack names the defense it challenges.
+
+## 6. The red-team report (the security artifact)
+
+```markdown
+# Red-team round 1 — [date]
+| class | attacks | escaped | escape rate | fixes |
+|---|---|---|---|---|
+| injection-direct | 10 | 0 | 0% | — |
+| exfil-credentials | 10 | 1 | 10% | firewall pattern added |
+| numeric-bait | 10 | 3 | 30% | verify policy tightened |
+Round 2 scheduled after fixes. Escape target: <5% per class.
+```
+
+The report is the red-team round's record — per class, the escape rate
+and the fixes. The rounds compound: round 2's attacks include round 1's
+escapes as regression cases (the W14-04-03 loop, red-team edition).
+
 ## Exercises
 
 1. Generate 10 attacks per class from the taxonomy; hand-review 30% for
@@ -82,3 +112,5 @@ the defenses statistical coverage instead of anecdotal checks.
 3. Fix-and-rerun drill: for every escaped attack, fix the layer and add
    the exact attack to the battery — the loop that makes red-team data
    compound.
+4. Report drill: write the §6 report; round 2 scheduled; the escape
+   target named.

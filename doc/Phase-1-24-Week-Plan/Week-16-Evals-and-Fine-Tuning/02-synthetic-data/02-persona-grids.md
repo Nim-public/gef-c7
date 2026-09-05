@@ -61,6 +61,41 @@ until every cell ≥1.0 (or the cell is explicitly deprioritized). The
 zero cells are the finding: what the generator avoids is often what
 real users say.
 
+## 5. The grid-to-generation prompt (the cell as a brief)
+
+```python
+def cell_prompt(persona: str, intent: str, n: int = 3) -> str:
+    voice = PERSONA_VOICES[persona]
+    need = INTENT_SPECS[intent]
+    return (f"Write {n} user queries from a {persona} whose goal is to "
+            f"{need}.\nVoice constraints: {voice}\n"
+            f"Vary length and specificity; keep the intent exact.")
+```
+
+| Prompt element | Source |
+|---|---|
+| persona | the grid's row + voice constraints |
+| intent | the grid's column + the need spec |
+| n | the cell's weight-allocated budget |
+
+The cell prompt composes the grid's two axes into a generation brief —
+the persona's voice constraints and the intent's need spec. The
+validation (file 04) closes the loop: the generated queries must sound
+like the persona and serve the intent.
+
+## 6. The grid's weight calibration (from traffic or targets)
+
+| Source | Weight basis | When |
+|---|---|---|
+| real traffic | the log's persona×intent counts | production data exists |
+| product targets | the desired distribution | building for a market |
+| uniform | no information yet | the honest default |
+
+The weights are the grid's allocation — real traffic beats targets,
+targets beat uniform, and the source is recorded with the grid. The
+coverage report (§3) uses the same weights, so generation and validation
+share one distribution.
+
 ## Exercises
 
 1. Design a 4×4 grid for your capstone's users; write the voice
@@ -69,3 +104,6 @@ real users say.
    ratio; top up the zero cells by hand.
 3. Voice drill: sample one query per persona; a blind reader matches
    queries to personas ≥75% — the voice landed.
+4. Calibration drill: if you have logs, replace the uniform weights
+   with traffic counts; the coverage report re-weights — the grid's
+   honesty about demand.
