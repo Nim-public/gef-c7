@@ -87,7 +87,8 @@ verification: 20 weak-routed cases re-run — 0 regression
 The drill record is the calibration's evidence — the delta table, the
 band's characterization, the threshold, and the verification. The same
 record format as every calibrated artifact since the W9 judge
-thresholds.
+thresholds; the record's `since` and `rubric` stamps travel with it
+into the pin-note family.
 
 ## Exercises
 
