@@ -93,3 +93,18 @@ applied to training data.
    its violation.
 4. Pin drill: write the manifest; the validation command green as
    recorded.
+
+## 7. The SFT-vs-RAG fork (the decision above the decision)
+
+| Symptom | Fix |
+|---|---|
+| the model doesn't know facts | RAG (your stack) — SFT cannot add knowledge |
+| the model knows but formats badly | SFT — format and style |
+| the model refuses when it shouldn't | SFT on refusal examples |
+| the model is slow/expensive | distillation (advanced SFT) |
+
+The fork is the SFT decision's first question: *is the failure a
+knowledge failure or a behavior failure?* Knowledge failures route to
+the retrieval stack (W12); behavior failures route here. A fine-tune
+attempting to teach facts produces a confident, still-wrong model —
+the fork prevents that week-long detour.
