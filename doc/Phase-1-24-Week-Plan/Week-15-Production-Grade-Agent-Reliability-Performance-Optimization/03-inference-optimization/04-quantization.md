@@ -78,6 +78,21 @@ runs.
 4. Pin drill: write the memo; every number cites a run; the revisit
    trigger names its metric.
 
+## 6. The quantization-vs-hosting fork (the decision above the decision)
+
+| Question | If yes → |
+|---|---|
+| Does the data leave your machine? | hosting is a privacy question first |
+| Is the GPU idle 20+ h/day? | self-hosting amortizes |
+| Is the quality bar strict (capstone eval)? | fp16 or carefully tested AWQ |
+| Is the deployment transient (demo)? | hosted API; skip quantization entirely |
+
+The fork sits above the scheme choice: quantization matters only when
+self-hosting is the answer, and self-hosting is a privacy/cost decision
+before it is a performance one. The capstone default: hosted API during
+development; the quantization knowledge is for the deployment memo's
+cost scenario.
+
 ## Pitfalls
 
 - Quantizing without the quality tests — a silent regression on *your*

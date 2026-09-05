@@ -82,6 +82,20 @@ settings that produced your numbers.
 **Pass criterion:** the manifest lists the stack with green commands as
 recorded.
 
+## 7. The inference quiz (the concepts, self-tested)
+
+**Task:** answer without notes: (a) why is decode memory-bound but
+prefill compute-bound? (b) why does GQA shrink the KV cache? (c) why do
+agent workloads benefit most from continuous batching? (d) why does
+prefix caching compound with agents? One paragraph each.
+
+**Worked approach:** the quiz is the concepts' compression test — if
+the paragraphs write themselves, the serving stack is understood; where
+they stall, re-read the section. The answers join the recap sheet.
+
+**Pass criterion:** four paragraphs, each mechanically correct (checked
+against the file's sections).
+
 ## Pitfalls recap
 
 - Full head-count on GQA models — 8× the real KV memory; check the
