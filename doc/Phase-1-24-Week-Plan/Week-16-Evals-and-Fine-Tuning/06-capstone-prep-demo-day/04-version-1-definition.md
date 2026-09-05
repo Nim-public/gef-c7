@@ -79,6 +79,17 @@ done includes what 1.0 *is not*. Each exclusion names its future home;
 the exclusions prevent the scope creep that the freeze process exists
 to block.
 
+## 7. The 1.0 pin note (the release's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the 1.0 block: the
+scorecard's measured values, the gate versions, the release-notes
+location, and the tag command.
+
+**Worked approach:** the 1.0 pin is the release's record — the scorecard
+is derived from the gates, and the pin ties the tag to its evidence.
+
+**Pass criterion:** note committed; the tag command rehearsed.
+
 ## Exercises
 
 1. Measure all five bars; produce the 1.0 scorecard; the gaps named with

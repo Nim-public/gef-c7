@@ -105,3 +105,14 @@ than code failures.
    the Q&A's acceptance command rehearsed.
 5. Checklist drill: run the §6 list on the demo machine the morning of;
    all seven green before the audience arrives.
+
+## 7. The demo-day pin note (the kit's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the demo kit: script
+version, seed, the overlay's data source, the fallback rehearsal date,
+and the runbook location.
+
+**Worked approach:** the kit's manifest records what the demo runs and
+when it was rehearsed — the demo's claims auditable down to the seed.
+
+**Pass criterion:** note committed; the rehearsal evidence cited.
