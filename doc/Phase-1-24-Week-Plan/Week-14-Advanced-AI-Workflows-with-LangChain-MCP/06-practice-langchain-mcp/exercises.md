@@ -94,6 +94,18 @@ names — the next sessions resume from it.
 **Pass criterion:** a teammate runs the acceptance command and reads the
 handoff in under 15 minutes total.
 
+## 8. The pillar pin notes
+
+**Task:** extend `reports/sdk-versions.md` with one block per pillar
+(RAG, SQL, voice, HITL): the components the demo exercised and their
+verification dates.
+
+**Worked approach:** the demo's claims are auditable down to the
+checkpointer — one block per pillar, current dates.
+
+**Pass criterion:** four blocks committed with current verification
+dates.
+
 ## Pitfalls recap
 
 - Parity cells guessed instead of run — the table's value is its
