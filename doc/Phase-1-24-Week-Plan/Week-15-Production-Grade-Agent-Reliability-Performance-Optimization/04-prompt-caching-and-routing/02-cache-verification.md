@@ -83,6 +83,21 @@ The pin note is the caching decision's record — the reorder, the
 measured discount, the verification test, and the savings. It is the
 deployment memo's cost chapter, one block.
 
+## 6. The cache-invalidation battery (what breaks the hits)
+
+| Breaker | Effect | Test |
+|---|---|---|
+| timestamp in the prefix | 0% hit | audit drops to 0 |
+| reordered few-shot examples | cache miss from the reorder point | audit partial |
+| tool-schema bump | prefix changes at that byte | version-stamped, expected |
+| different model | separate cache space | per-model test |
+
+The invalidation battery is the audit's complement: each breaker is
+*deliberately introduced*, and the test asserts the expected hit-rate
+collapse. The tool-schema bump is the *legitimate* breaker — it is
+version-stamped and the cache re-warms, which is why the surface policy
+requires a version bump on changes.
+
 ## Exercises
 
 1. Implement the verification test; run it against your reordered
@@ -93,3 +108,5 @@ deployment memo's cost chapter, one block.
 3. Minimum-length drill: shrink the stable prefix below the provider's
    minimum; observe the cache stop hitting — the floor, discovered.
 4. Pin drill: write the note; the savings row cites the ledger.
+5. Invalidation drill: run the battery — each breaker introduced,
+   expected collapse measured, restored.

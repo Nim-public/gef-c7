@@ -90,6 +90,20 @@ explicit cache-control markers, OpenAI caches automatically from the
 universal; the discount and TTL are per-provider — the pin note records
 which provider your numbers came from.
 
+## 6. The agent-loop prefix (the compounding case)
+
+| Turn | Prefix tokens | Variable tokens | Cached? |
+|---|---|---|---|
+| 1 (constitution+tools+fewshot+ctx1+q1) | 2000 | 400 | first: writes cache |
+| 2 (same prefix, ctx2, q2) | 2000 | 450 | hit |
+| 3 … | 2000 | 500 | hit |
+
+The agent loop is the compounding case: every turn re-sends the same
+2000-token prefix, so six turns pay the prefix six times at full price —
+or once (plus cheap hits) when cached. The session-level savings are
+the loop length × the prefix; your W11 voice cascade and W13 flows both
+qualify.
+
 ## Exercises
 
 1. Reorder one of your prompts to the stable/variable rule; measure the
@@ -102,3 +116,5 @@ which provider your numbers came from.
 4. Provider drill: if you have keys for two providers, run the same
    reordered prompt on both; compare `cached_tokens` semantics and the
    realized discount.
+5. Loop drill: run one 6-turn session; compute the session-level savings
+   from the ledger's cached columns.
