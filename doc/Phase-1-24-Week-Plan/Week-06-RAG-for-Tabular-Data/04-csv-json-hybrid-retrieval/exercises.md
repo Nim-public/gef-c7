@@ -79,6 +79,20 @@ citing its drill.
 **Pass criterion:** the manifest lists the stack with green commands as
 recorded.
 
+## 7. The hybrid-bridge quiz (self-tested)
+
+**Task:** answer without notes: (a) why do field names belong in the
+serialized text? (b) why does the summary chunk carry the "use the SQL
+tool" hint? (c) why is the retrieved chunk a pointer, not the answer?
+(d) what does the staleness flag protect? One paragraph each.
+
+**Worked approach:** the quiz is the bridge contract's compression test
+— the answers name the mechanisms (embedding semantics, routing hints,
+live-row authority, drift detection).
+
+**Pass criterion:** four paragraphs mechanically correct; added to the
+recap sheet family.
+
 ## Pitfalls recap
 
 - Rows serialized without field names — "16.9" embeds like any float;
