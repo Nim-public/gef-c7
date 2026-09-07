@@ -75,6 +75,19 @@ The battery asserts the route per rung — rules cases hit rung 1,
 variance cases rung 2, ambiguous cases rung 3. The route decisions are
 logged (the W9-05 discipline) for the miss analysis.
 
+## 5. The router pin note (the ladder's manifest)
+
+```markdown
+# Tabular router (W06)
+- rung 1: rules (SUM/total/how-many → sql; greetings → paste)
+- rung 2: zero-shot (bart-large-mnli, threshold 0.5, calibrated)
+- rung 3: the agent (fall-through)
+- decisions logged per rung for the miss analysis
+```
+
+The pin note is the ladder's manifest — the rungs, the threshold, and
+the logging. The miss analysis (W9-05) consumes the logged decisions.
+
 ## Exercises
 
 1. Implement rung 1; run 10 keyword queries; verify 10/10 correct
@@ -84,3 +97,4 @@ logged (the W9-05 discipline) for the miss analysis.
    distribution.
 3. Ladder drill: run the full ladder on the mixed set; produce the
    route-accuracy table per rung.
+4. Pin drill: write the note; the logged decisions cited.

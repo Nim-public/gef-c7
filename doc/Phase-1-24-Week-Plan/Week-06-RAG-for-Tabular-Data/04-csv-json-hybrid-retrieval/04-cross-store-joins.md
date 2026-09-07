@@ -65,6 +65,20 @@ provenance:
 The provenance line is the answer's receipt — it shows the retrieval
 path AND the live verification in one glance.
 
+## 6. The cross-store pin note (the join's manifest)
+
+```markdown
+# Cross-store join (W06)
+- hydrate: LanceDB hit → live warehouse row by row_key
+- staleness: re-serialize the live row, compare (normalized)
+- paths: fresh (answer live), drifted (live + note), deleted (honest)
+- provenance line: vector hit + live row + status + ids
+```
+
+The pin note is the join's manifest — the hydration, the staleness
+policy, and the provenance line. The staleness flag is what makes the
+cross-store join honest rather than decorative.
+
 ## Exercises
 
 1. Implement `hydrate_row`; retrieve 10 row chunks; verify every live
@@ -74,3 +88,4 @@ path AND the live verification in one glance.
    live value.
 3. Deletion drill: delete a row post-ingest; the hydration reports
    "no longer exists" — the honest-deletion path.
+4. Pin drill: write the note; the staleness drill command recorded.

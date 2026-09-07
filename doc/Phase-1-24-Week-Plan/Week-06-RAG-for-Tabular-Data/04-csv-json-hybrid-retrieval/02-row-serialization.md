@@ -69,6 +69,20 @@ The retrieved chunk is a *pointer*: the SQL path can fetch the current
 row by `row_key`, so the answer's numbers come from the warehouse, not
 from the stale serialized text. This is the cross-store join (file 04).
 
+## 5. The serialization pin note (the chunk contract's record)
+
+```markdown
+# Row serialization (W06)
+- format: "col: value | col: value" (field names included)
+- metadata: unit_id, source_table, row_key, serialization version
+- summary chunks: one per table (shape + "use the SQL tool" hint)
+- round-trip: retrieved chunk → live warehouse row by row_key
+```
+
+The pin note is the serialization contract — the format, the metadata,
+and the round-trip. The round-trip is what makes the vector hit and
+the warehouse row the same fact (file 04).
+
 ## Exercises
 
 1. Serialize 100 order rows; embed them; query "which product appears
@@ -77,3 +91,4 @@ from the stale serialized text. This is the cross-store join (file 04).
    the live row via SQL; compare — the two sources must agree.
 3. Summary drill: write the table summary chunk; query "what data do
    we have"; the summary must be the top hit.
+4. Pin drill: write the note; the round-trip command recorded.

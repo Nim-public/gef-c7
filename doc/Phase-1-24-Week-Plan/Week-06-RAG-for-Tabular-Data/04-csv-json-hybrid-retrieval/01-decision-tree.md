@@ -68,6 +68,21 @@ computes, paste shows everything, hybrid finds semantically. The
 routing errors are measurable — a "paste" of a 10k-row table blows the
 budget; an SQL route on a semantic question returns nothing useful.
 
+## 5. The decision-tree pin note (the router's record)
+
+```markdown
+# Data-shape routing (W06)
+- thresholds: rows>50, cols>10, numeric_cols≥3 → sql
+- else: paste (context-resident)
+- hybrid: chosen per query (semantic row-finding)
+- measured at ingest: no model call for the shape decision
+- battery: 6 files, boundary drill, misroute drill
+```
+
+The pin note is the router's record — thresholds, routes, and the
+battery. The shape decision is deterministic; the battery proves the
+edges.
+
 ## Exercises
 
 1. Implement `route_data`; run it on 6 data files of varying shapes;
@@ -77,3 +92,4 @@ budget; an SQL route on a semantic question returns nothing useful.
 3. Misroute drill: force the wrong route (SQL on a semantic question);
    record the failure mode — the tree's edges, proven by their
    violation.
+4. Pin drill: write the note; the battery results cited.
