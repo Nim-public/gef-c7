@@ -104,12 +104,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-eval-strategy-ragas/`
-- [ ] `02-synthetic-data/`
-- [ ] `03-fine-tuning-fundamentals/`
-- [ ] `04-lora-qlora/`
-- [ ] `05-capstone-task-llamaindex-retrieval/`
-- [ ] `06-capstone-prep-demo-day/`
+- [x] `01-eval-strategy-ragas/`
+- [x] `02-synthetic-data/`
+- [x] `03-fine-tuning-fundamentals/`
+- [x] `04-lora-qlora/`
+- [x] `05-capstone-task-llamaindex-retrieval/`
+- [x] `06-capstone-prep-demo-day/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
