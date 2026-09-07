@@ -65,6 +65,20 @@ The report is the router's scorecard — per rung, with the overall and
 the recalibration note. The threshold changes are version-bumped (the
 W16 file 01-04 governance).
 
+## 5. The router pin note (the deployed router's manifest)
+
+```markdown
+# Tabular router (W06 capstone)
+- shape decisions: pre-computed at ingest (rows/cols/numeric thresholds)
+- rungs: rules → zero-shot (threshold calibrated) → agent
+- decisions: logged per query (query, shape, rung, route)
+- report: per-rung accuracy + miss analysis
+```
+
+The pin note is the deployed router's manifest — the shape map, the
+rungs, the logging, and the report. The logged decisions are the miss
+analysis's input.
+
 ## Exercises
 
 1. Implement `TabularRouter`; run 25 queries; produce the per-rung
@@ -73,3 +87,4 @@ W16 file 01-04 governance).
    modal type; remeasure.
 3. Logging drill: verify every decision row lands in the store; the
    miss analysis runs from the logged rows alone.
+4. Pin drill: write the note; the threshold recalibration recorded.

@@ -77,6 +77,21 @@ def rebuild_warehouse(seed: int = 42):
 The rebuild is the ingestion's acceptance test: two rebuilds produce
 identical databases (the determinism drill from file 01).
 
+## 5. The schema pin note (the capstone schema's manifest)
+
+```markdown
+# Capstone schema (W06 capstone)
+- base: customers, products, orders, order_items (file 01)
+- extended: refunds (FK, CHECK amount>0), customer_notes (free text)
+- edge-case families: empty orders, high-value outliers, PII notes
+- seed: 42; rebuild determinism proven (two rebuilds identical)
+- ingest: children-before-parents delete order; row-count parity
+```
+
+The pin note is the capstone schema's manifest — the base plus the
+extensions, the designed edge cases, and the determinism proof. The
+Text2SQL agent's schema prompt regenerates from this DDL.
+
 ## Exercises
 
 1. Extend the schema with `refunds` and `customer_notes`; the CHECKs
@@ -85,3 +100,4 @@ identical databases (the determinism drill from file 01).
    counts recorded; the rebuild determinism proven.
 3. PII drill: confirm the notes' PII-shaped text triggers the masking
    layer (W15 file 03) when serialized for vector search.
+4. Pin drill: write the manifest; the rebuild command recorded.

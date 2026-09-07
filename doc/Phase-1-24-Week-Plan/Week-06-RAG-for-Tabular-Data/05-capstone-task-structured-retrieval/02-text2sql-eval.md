@@ -76,6 +76,20 @@ The per-band report is the capability map (file 01-04's pin note)
 populated — the bands where accuracy drops name the schema-prompt
 examples to add.
 
+## 5. The gold-SQL pin note (the eval's manifest)
+
+```markdown
+# Gold-SQL eval (W06 capstone)
+- set: 8 ladder queries + 2 edge-case queries (empty, outlier)
+- gold: result sets (values, tolerance 0.01), not query strings
+- scoring: results_match() — order-insensitive, float-tolerant
+- report: per-band accuracy (basic/intermediate/hard)
+```
+
+The pin note is the gold-SQL eval's manifest — the set, the scoring
+rules, and the report format. The result-set scorer is the anti-
+memorization device: any correct SQL scores.
+
 ## Exercises
 
 1. Write gold SQL + result sets for all 8 ladder queries; verify each
@@ -84,3 +98,4 @@ examples to add.
    order); the result-set scorer must accept it.
 3. Band-report drill: run the Text2SQL agent on the ladder; produce the
    per-band accuracy; the weakest band names the schema-prompt fix.
+4. Pin drill: write the note; the gold files committed.

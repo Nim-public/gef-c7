@@ -66,6 +66,21 @@ The battery is pure tool testing — no model calls — so it runs in
 seconds on every push. The real-model probes (will the *model* try
 these?) belong to the nightly tier-2 battery.
 
+## 5. The safety pin note (the battery's manifest)
+
+```markdown
+# SQL safety battery (W06 capstone)
+- 8 probes: write, multi-statement, comment tricks, ATTACH/PRAGMA,
+  system tables, PII masking
+- layers asserted: L1 allow-list, L2 parse, L3 ro-mode, PII mask
+- independence: validator disabled → ro-mode still blocks
+- CI: push (tool tests) + nightly (model-behavior edition)
+```
+
+The pin note is the battery's manifest — the probes, the layers, the
+independence proof, and the CI wiring. It is the tabular tool's safety
+contract.
+
 ## Exercises
 
 1. Implement the eight-probe battery; run against the guarded tool;
@@ -75,3 +90,4 @@ these?) belong to the nightly tier-2 battery.
 3. Nightly drill: run the battery as *queries the model generates* —
    does the model ever produce a blocked shape? The model-behavior
    edition of the battery.
+4. Pin drill: write the note; the battery command green as recorded.
