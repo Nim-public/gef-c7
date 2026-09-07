@@ -1,15 +1,32 @@
-# 03-rag-over-structured-data
+# Deep-Dive: RAG over Structured Data — Text2SQL & the Pipeline
 
-> Parent topic: [../03-rag-over-structured-data.md](../03-rag-over-structured-data.md)
+Parent overview: [`../03-rag-over-structured-data.md`](../03-rag-over-structured-data.md)
 
-The parent file contains the full deep-dive for this topic. This subfolder is reserved for expanded content.
+The Text2SQL pipeline, deepened: the schema prompt generated from the
+database catalog, the four-layer validation stack, the bounded repair
+loop with error→hint mappings, and the grounded answer format with SQL
+audit lines.
 
-## Key content from the parent
+## File map
 
-See the parent topic file for the complete treatment. This subfolder will contain:
+| File | What it covers |
+|---|---|
+| [`01-schema-prompts.md`](01-schema-prompts.md) | Generated-from-DB, dialect rules, dates |
+| [`02-validation-layers.md`](02-validation-layers.md) | Allow-lists, read-only, row caps |
+| [`03-repair-loops.md`](03-repair-loops.md) | Error feedback retries |
+| [`04-result-formatting.md`](04-result-formatting.md) | Grounded answers with SQL audit lines |
+| [`exercises.md`](exercises.md) | Expanded exercises with worked approaches |
 
-- Expanded worked examples
-- Additional exercises
-- Edge-case drills
-- Capstone integration notes
+## Build order
 
+1. `01-schema-prompts.md` — generate the prompt from the catalog.
+2. `02-validation-layers.md` — four layers, defense in depth.
+3. `03-repair-loops.md` — errors as observations.
+4. `04-result-formatting.md` — answers with provenance.
+
+## Prerequisites
+
+- [`../01-rdbms-sql-fundamentals/`](../01-rdbms-sql-fundamentals/) — the
+  schema, corpus, and query ladder.
+- [`../02-database-choices/03-read-only-safety.md`](../02-database-choices/03-read-only-safety.md)
+  — the structural wall under the validation stack.
