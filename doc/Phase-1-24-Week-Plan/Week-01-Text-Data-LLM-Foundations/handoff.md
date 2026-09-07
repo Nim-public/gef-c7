@@ -137,14 +137,14 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-tokenization-and-text-representation/`
-- [ ] `02-string-manipulation-and-regex/`
-- [ ] `03-pandas-structured-data/`
-- [ ] `04-file-handling-and-web-crawling/`
-- [ ] `05-ml-fundamentals/`
-- [ ] `06-from-neural-networks-to-llms/`
-- [ ] `07-llm-concepts-and-demos/`
-- [ ] `08-capstone-task-formalize-scope/`
+- [x] `01-tokenization-and-text-representation/`
+- [x] `02-string-manipulation-and-regex/`
+- [x] `03-pandas-structured-data/`
+- [x] `04-file-handling-and-web-crawling/`
+- [x] `05-ml-fundamentals/`
+- [x] `06-from-neural-networks-to-llms/`
+- [x] `07-llm-concepts-and-demos/`
+- [x] `08-capstone-task-formalize-scope/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
