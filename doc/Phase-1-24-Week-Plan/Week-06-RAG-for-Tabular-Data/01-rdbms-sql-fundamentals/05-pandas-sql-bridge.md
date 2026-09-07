@@ -80,9 +80,34 @@ The W12 analytics toolkit's `render_chart` executes SQL through this bridge — 
 
 The pin note is the bridge's contract — the dtype conversions and the staging pattern are the data-integrity rules for everything crossing between the worlds. The W12 analytics toolkit inherits this contract.
 
-## Exercises
+## 6. The bridge drill record (the two-path equality proof)
 
-1. Bridge drill: read the full order-items join into pandas; compute the monthly revenue *in pandas*; verify it equals the SQL GROUP BY result (file 04's Q2) to the cent.
-2. Trap drill: introduce each §1 trap (skip to_datetime, keep float ids); observe the downstream failure; fix.
-3. Loading drill: `to_sql` a new 20-product DataFrame into staging; promote with SQL; verify the constrained table's CHECKs rejected anything invalid.
-4. Pin drill: write the note; the equality check joins the tests.
+```text
+SQL path:    SELECT month, SUM(...) → [2025-05: 412.50, 2025-06: 388.20, ...]
+pandas path: df.groupby(month).revenue.sum() → identical values
+delta:       0.00 on every month
+```
+
+The record is the bridge's acceptance proof — the same aggregation
+computed through both worlds, equal to the cent. The W9-04 evaluation
+philosophy (two computation paths agreeing) applied to the SQL/pandas
+boundary.
+
+## 7. The bridge quiz (self-tested)
+
+**Task:** answer without notes: (a) why parameterize `read_sql` even
+locally? (b) why does `to_sql` go to a staging table? (c) why do ids
+become floats after a read with NULLs? (d) why does the monthly revenue
+match to the cent across both paths? One paragraph each.
+
+**Worked approach:** the quiz is the bridge contract's compression
+test — the answers name the traps by mechanism (type inference,
+constraint enforcement, nullable dtypes, determinism).
+
+**Pass criterion:** four paragraphs mechanically correct; added to the
+recap sheet family.
+
+## Exercises (continued)
+
+5. Record drill: produce §6's two-path proof for the monthly revenue;
+   commit it beside the pin note.
