@@ -98,11 +98,11 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-rag-fundamentals/`
-- [ ] `02-chunking-strategies/`
-- [ ] `03-embeddings-vector-databases/`
-- [ ] `04-search-keyword-vs-semantic/`
-- [ ] `05-capstone-task-search-engine/`
+- [x] `01-rag-fundamentals/`
+- [x] `02-chunking-strategies/`
+- [x] `03-embeddings-vector-databases/`
+- [x] `04-search-keyword-vs-semantic/`
+- [x] `05-capstone-task-search-engine/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
