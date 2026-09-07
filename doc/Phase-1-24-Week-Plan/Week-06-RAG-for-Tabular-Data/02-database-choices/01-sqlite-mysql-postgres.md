@@ -64,6 +64,20 @@ The probes run at connection setup — the agent's tool *knows* which
 dialect it serves, and the schema prompt is generated from the probes'
 results rather than assumed.
 
+## 4. The dialect drill record (the probes' evidence)
+
+```text
+probe 1: date('now')            → ok (SQLite)
+probe 2: substr('2025-06-15',1,7) → '2025-06' (SQLite)
+probe 3: DATE_FORMAT(...)       → OperationalError: no such function
+conclusion: MySQL dialect constructs fail loudly; the schema prompt
+states the SQLite dialect and the repair loop teaches the substitution
+```
+
+The drill record is the dialect table's evidence — the probes run, the
+failures captured, the conclusion drawn. It is the schema prompt's
+dialect section, verified rather than assumed.
+
 ## 5. The engine pin note (the choice's record)
 
 ```markdown
@@ -90,3 +104,5 @@ every decision since W10.
    demo, LAMP web app, analytics platform), pick the engine and justify
    from §1's table.
 4. Pin drill: write the note; the probes committed beside it.
+5. Record drill: fill §4; the failing probe's exact error message
+   recorded — it becomes a repair-loop test case.
