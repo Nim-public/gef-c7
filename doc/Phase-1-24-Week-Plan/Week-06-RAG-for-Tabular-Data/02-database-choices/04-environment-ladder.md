@@ -67,6 +67,21 @@ The pin note is the ladder's record — per-environment settings and the
 promotion rule. It is the W9 deployment checklist's data-policy
 chapter.
 
+## 6. The ladder drill record (the promotion's evidence)
+
+```text
+promotion: staging → prod (local rehearsal)
+gates: accept.py --full on the staging copy → 6/6 PASS
+corpus hash: staging == prod source ✓
+secrets: env-only scan clean ✓
+fallback drills: rehearsed on prod host ✓
+verdict: promoted; the promotion checklist is the receipt
+```
+
+The drill record is the promotion's evidence — the gates re-run on the
+staging copy, the corpus hash verified, the secrets scanned, the
+fallbacks rehearsed. Promotion is a gate passage with a receipt.
+
 ## Exercises
 
 1. Create the environment split in your config (`ENV=dev|staging|prod`);
@@ -77,3 +92,5 @@ chapter.
    (and your own checklist) refuses — the no-prod-to-dev rule, made
    explicit.
 4. Pin drill: write the note; the promotion checklist referenced.
+5. Record drill: fill §6 from a real promotion rehearsal; the checklist
+   items checked off in the record.
