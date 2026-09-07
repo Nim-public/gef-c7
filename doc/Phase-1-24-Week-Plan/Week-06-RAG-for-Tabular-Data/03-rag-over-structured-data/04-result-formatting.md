@@ -66,6 +66,19 @@ The synthesis prompt is the borderline between reporting and computing:
 simple comparisons of *shown* values are safe; new aggregations go
 through another query (the verification loop).
 
+## 5. The formatting pin note (the answer contract's manifest)
+
+```markdown
+# SQL result formatting (W06)
+- format: per-row lines, truncation notice, sql audit line, row count
+- empty: honest "no rows matched" message (never a crash)
+- synthesis: only from shown rows; simple comparisons; refuse gaps
+- audit: numbers_supported pairing extends to SQL results
+```
+
+The pin note is the answer format's manifest — the display contract
+(W12 file 04-04) SQL edition, with the honesty paths named.
+
 ## Exercises
 
 1. Implement `format_result`; run it on the ladder's Q1–Q8 outputs;
@@ -75,3 +88,4 @@ through another query (the verification loop).
 3. Synthesis drill: run the synthesis prompt on 5 results; audit every
    number in the prose against the rows_json — the pairing audit, SQL
    edition.
+4. Pin drill: write the note; the pairing audit command green.

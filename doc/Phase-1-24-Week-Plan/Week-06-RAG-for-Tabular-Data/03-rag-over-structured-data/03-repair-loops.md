@@ -69,6 +69,20 @@ The metrics are the repair loop's report card — a rising exhaustion
 rate means the schema prompt is drifting from the schema, or the
 questions outgrew the examples.
 
+## 5. The repair pin note (the loop's manifest)
+
+```markdown
+# Text2SQL repair loop (W06)
+- bound: 3 attempts (the W10 file 01-03 rule)
+- hint map: 4 error classes → actionable hints (versioned)
+- metrics: first-pass >70%, exhaustion <5%
+- battery: the 8-query ladder through the loop
+```
+
+The pin note is the loop's manifest — the bound, the hint map, the
+metrics thresholds, and the battery. The hint map's version stamps the
+error→hint translations.
+
 ## Exercises
 
 1. Implement the loop; run the 8-query ladder (file 01-04) through it;
@@ -77,3 +91,4 @@ questions outgrew the examples.
    steers the retry to success — the mapping table, validated.
 3. Exhaustion drill: ask an unanswerable question (a table that doesn't
    exist); the loop must exhaust honestly with the degraded flag.
+4. Pin drill: write the note; the histogram committed.

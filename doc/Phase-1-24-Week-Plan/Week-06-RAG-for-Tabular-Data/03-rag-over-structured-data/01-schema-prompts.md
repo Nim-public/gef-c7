@@ -57,6 +57,19 @@ Each block is a failure class from file 01's ladder, pre-answered. The
 worked example teaches shape better than any instruction — the few-shot
 principle from W14 file 01-03, applied to SQL.
 
+## 5. The schema prompt pin note (the prompt's manifest)
+
+```markdown
+# Schema prompt (W06)
+- generated from sqlite_master (never hand-typed)
+- blocks: dialect, DDL, date semantics, CTE example, counting rules
+- version: spv3 (bumped when the DDL or rules change)
+- battery: date-grounding drill, dialect drill
+```
+
+The pin note is the schema prompt's manifest — generated, versioned,
+battery-tested. It is the W10 prompt-inventory page's SQL entry.
+
 ## Exercises
 
 1. Generate the schema prompt from your DDL; diff it against the
@@ -65,3 +78,4 @@ principle from W14 file 01-03, applied to SQL.
    three must resolve to the same BETWEEN clause.
 3. Dialect drill: remove the dialect declaration; give a monthly-revenue
    question; observe the MySQL dialect error; restore.
+4. Pin drill: write the note; the battery command green as recorded.

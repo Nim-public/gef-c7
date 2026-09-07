@@ -68,6 +68,19 @@ honest; the pairing audit green.
 validator (4-pointer) is the pipeline's safety — the layers are
 independent by the drill's proof.
 
+## 6. The Text2SQL pin note (the pipeline's manifest)
+
+**Task:** consolidate the Text2SQL stack in `reports/sdk-versions.md`:
+the schema prompt version, the validation layers, the repair metrics,
+and the formatting contract — one block.
+
+**Worked approach:** the Text2SQL manifest follows the pin discipline:
+the prompt, the validator, the loop metrics, and the format contract —
+each citing its drill.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
 ## Pitfalls recap
 
 - Hand-typed schema prompts — they drift from the DDL; generate from

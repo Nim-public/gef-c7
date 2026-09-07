@@ -64,6 +64,21 @@ The cap is honest: the answer *states* the truncation rather than
 silently showing partial data — the same principle as the observation
 formatting (W10 file 05-02).
 
+## 5. The validation pin note (the stack's manifest)
+
+```markdown
+# SQL validation stack (W06)
+- L1 allow-list: SELECT-only + FORBIDDEN keywords + LIMIT
+- L2 structural parse: single statement, sqlglot or split
+- L3 read-only connection: file:...?mode=ro (structural)
+- L4 row cap: 100 rows, honest truncation message
+- independence drill: any layer disabled → others still hold
+```
+
+The pin note is the stack's manifest — four layers, four independent
+mechanisms. The independence drill is the stack's proof: any single
+layer can fail without the write path opening.
+
 ## Exercises
 
 1. Implement the four-layer stack; run the trick battery (multi-
@@ -72,3 +87,4 @@ formatting (W10 file 05-02).
    write probes — the depth property, proven.
 3. Cap drill: query a 1,204-row result; verify the honest truncation
    message and the exact row count stated.
+4. Pin drill: write the note; the drill results cited.
