@@ -64,6 +64,22 @@ The probes run at connection setup — the agent's tool *knows* which
 dialect it serves, and the schema prompt is generated from the probes'
 results rather than assumed.
 
+## 5. The engine pin note (the choice's record)
+
+```markdown
+# Warehouse engine (W06)
+- choice: SQLite (stdlib driver, file: data/warehouse.db)
+- dialect: SQLite — strftime for dates, || for concat, LIMIT
+- rationale: zero-ops single-process demo; FKs + CHECKs enforced;
+  FTS5 available if keyword search needs it
+- dialect probes: live-tested (MySQL DATE_FORMAT fails, strftime works)
+- revisit: multi-user concurrent writes → Postgres
+```
+
+The pin note is the engine decision's record — choice, dialect,
+rationale, probes, and the revisit trigger. The same memo discipline as
+every decision since W10.
+
 ## Exercises
 
 1. Run the dialect probes against SQLite; record which MySQL/Postgres
@@ -73,3 +89,4 @@ results rather than assumed.
 3. Heuristic drill: for three hypothetical deployments (single-user
    demo, LAMP web app, analytics platform), pick the engine and justify
    from §1's table.
+4. Pin drill: write the note; the probes committed beside it.

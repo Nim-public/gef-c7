@@ -51,6 +51,22 @@ The checklist is the W14 acceptance command, re-run on the staging copy
 of the *prod* environment — the promotion is a gate passage, not a copy
 command.
 
+## 5. The environment pin note (the ladder's record)
+
+```markdown
+# Environments (W06)
+- dev: seeded corpus, tracing 100%, generous budgets
+- staging: full corpus copy, full acceptance gates
+- prod: the real corpus, sampling 20%+failures, production budgets
+- model/temperature: identical across all three
+- promotion: staging → prod via the acceptance checklist only
+- prod → dev: never (the leak drill refuses)
+```
+
+The pin note is the ladder's record — per-environment settings and the
+promotion rule. It is the W9 deployment checklist's data-policy
+chapter.
+
 ## Exercises
 
 1. Create the environment split in your config (`ENV=dev|staging|prod`);
@@ -60,3 +76,4 @@ command.
 3. Leak drill: attempt to copy a prod database file into dev; the policy
    (and your own checklist) refuses — the no-prod-to-dev rule, made
    explicit.
+4. Pin drill: write the note; the promotion checklist referenced.

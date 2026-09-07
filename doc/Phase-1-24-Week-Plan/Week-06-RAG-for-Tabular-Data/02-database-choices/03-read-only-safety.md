@@ -51,6 +51,20 @@ validator's blind spots because it operates below SQL — at the storage
 layer. The W15 defense-stack table cites this as the layer that
 "cannot be prompted away".
 
+## 5. The read-only pin note (the wall's record)
+
+```markdown
+# SQL read-only safety (W06)
+- connection: file:...?mode=ro (structural wall — tested)
+- validator: SELECT-only, LIMIT, allow-list (W12-02-04, imported)
+- user separation: Postgres/MySQL → agent_ro with SELECT grants
+- tests: 3 write probes refused, validator-independence drill green
+```
+
+The pin note is the wall's record — the connection mode, the validator,
+the user separation, and the tests. It is the containment row of the
+W15 defense-stack table, SQL edition.
+
 ## Exercises
 
 1. Open the warehouse read-only; attempt INSERT, DELETE, and
@@ -59,3 +73,4 @@ layer. The W15 defense-stack table cites this as the layer that
    blocks writes — the layers' independence, proven.
 3. Port drill: on Postgres (if available), create an `agent_ro` user
    with SELECT-only; attempt a write; the server refuses.
+4. Pin drill: write the note; the wall tests in CI cited.

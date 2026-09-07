@@ -70,6 +70,19 @@ green; the leak drill refused.
 The read-only wall (4-pointer) is the choices week's non-negotiable —
 the structural proof is what makes the agent's SQL tool safe.
 
+## 6. The choices pin note (the storage decisions' manifest)
+
+**Task:** consolidate the storage decisions in `reports/sdk-versions.md`:
+the engine choice, the storage map, the read-only wall, and the
+environment ladder — one block.
+
+**Worked approach:** the choices manifest follows the pin discipline:
+engine + dialect, the polyglot map, the structural wall, and the
+environment ladder — each citing its drill.
+
+**Pass criterion:** the manifest lists all four with green commands as
+recorded.
+
 ## Pitfalls recap
 
 - Engine choice by familiarity instead of heuristics — the table's axes

@@ -43,6 +43,20 @@ The sync rules are the W9 alignment discipline applied across stores:
 one writer per store, logical deletes, and consistency checks that
 compare counts and hashes across the map.
 
+## 5. The coexistence pin note (the map's record)
+
+```markdown
+# Storage map (W06)
+- SQLite: warehouse.db — orders, products, customers, order_items
+- LanceDB: data/lancedb/units — text chunks + embeddings (hybrid)
+- files: data/raw + data/sandbox — sources and artifacts
+- linking: unit_id (chunks→manifest), SQL text (answers→facts)
+- sync: one writer per store; logical deletes; V-gates check counts
+```
+
+The pin note is the map's record — each store, its data, its links, and
+the sync rules. The dual-pipeline agent (W12-04) cites this page.
+
 ## Exercises
 
 1. Draw your capstone's storage map with the linking keys; verify each
@@ -51,3 +65,4 @@ compare counts and hashes across the map.
    stores agree (SQLite rows, LanceDB vectors, manifest rows).
 3. Drift drill: delete a manifest row but leave the LanceDB vector; the
    consistency check must flag the orphan — the sync rule proven.
+4. Pin drill: write the note; the consistency command recorded.
