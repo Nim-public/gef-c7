@@ -72,8 +72,34 @@ ORDER BY o.order_date;
 
 The guarded tool (W12 file 02-04) allows exactly this family: SELECT-only, LIMIT required, allow-listed tables. The agent composes; the tool validates and executes.
 
+## 5. The DQL tool's guard (the SQL validator, preview)
+
+```python
+FORBIDDEN = ("insert", "update", "delete", "drop", "alter",
+             "create", "attach", "pragma")
+
+def validate_dql(sql: str) -> str | None:
+    low = sql.lower().strip()
+    if not low.startswith("select"):
+        return "blocked: only SELECT statements are allowed"
+    if any(w in low for w in FORBIDDEN):
+        return "blocked: write/DDL operations are disabled"
+    if "limit" not in low:
+        return "blocked: add a LIMIT clause (max 100)"
+    return None
+```
+
+| Check | Blocks |
+|---|---|
+| starts with SELECT | everything but queries |
+| forbidden keywords | write attempts hidden in CTEs/subqueries |
+| LIMIT required | runaway full-table scans |
+
+The validator is file 03's full guard in miniature — the agent's DQL tool imports it. The FORBIDDEN list includes `pragma` and `attach` because SQLite's pragmas can change behavior and attach foreign databases — the injection surface is broader than the classic CRUD.
+
 ## Exercises
 
 1. Write DDL for a `refunds` table (order reference, amount CHECK > 0, reason); insert 5 seeded refunds.
 2. DML drill: attempt an unguarded `UPDATE products SET unit_price = 0`; observe the table-wide damage on a scratch copy — the WHERE rule proven by its absence.
 3. DQL drill: write the two query shapes above from memory against your corpus; verify row counts against pandas (file 05's bridge).
+4. Validator drill: run the §5 guard against 6 malicious SQL shapes (write, drop, no-limit, pragma, attach, CTE-wrapped write); every one refused.

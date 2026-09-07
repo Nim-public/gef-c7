@@ -76,3 +76,31 @@ The agent instruction that pairs with this: "wrap aggregates in COALESCE so empt
 2. Count-trap drill: `COUNT(*)` vs `COUNT(oi.product_id)` on the same LEFT JOIN — explain the differing numbers in one sentence.
 3. COALESCE drill: rewrite a query whose NULLs propagate (`SUM * price` with NULLs) into the COALESCE pattern; compare outputs.
 4. Agent drill: give the Text2SQL tool a join question; check whether the generated SQL uses LEFT or INNER appropriately for "all orders, even empty ones".
+
+## 5. The join-type reference (the other two, for completeness)
+
+| Join | Keeps | Agent use |
+|---|---|---|
+| INNER | matching rows only | the default for facts |
+| LEFT | all left + matches | "all X, even without Y" |
+| CROSS | every combination | rare — Cartesian products |
+| SELF | a table joined to itself | chains: employee→manager |
+
+CROSS and SELF appear rarely in agent queries, but the self-join shows up in hierarchies (orders referring to other orders). The four-shape table from the parent file is now complete with their zero-match behavior — INNER drops, LEFT keeps, CROSS explodes, SELF relates.
+
+## 6. The join pin note (the counting contract)
+
+```markdown
+# Join counting rules (W06)
+- LEFT JOIN + COUNT(col): counts matches only (0 for empty)
+- LEFT JOIN + COUNT(*): counts rows (1 for empty) — the trap
+- aggregates wrapped in COALESCE: empty groups read 0
+- every LEFT JOIN query's intent stated: "even without Y" or not
+```
+
+The pin note is the counting contract — the Text2SQL schema prompt (file 03) carries these rules verbatim, because the LLM's count-trap errors are the most common wrong-number class in tabular RAG.
+
+## Exercises (continued)
+
+5. Reference drill: write the self-join for a "referred_by" customer column (customer → referring customer); list who referred whom.
+6. Pin drill: write the note; the schema prompt inherits the counting rules.

@@ -96,3 +96,33 @@ CTEs name intermediate results — the LLM produces dramatically better SQL when
 1. Climb the ladder: write Q1–Q8 against your corpus without help; score yourself against the gold SQL.
 2. WHERE-vs-HAVING drill: write both interpretations of "products with more than 10 units"; run both; the differing row sets are the lesson.
 3. CTE drill: rewrite your Q8 as a CTE; compare readability and identical results.
+
+## 5. The ladder as the eval blueprint (the gold-SQL set)
+
+| Query | Band | Tests |
+|---|---|---|
+| Q1–Q2 | basic | single table, aggregate, group |
+| Q3 | basic | order + limit |
+| Q4–Q5 | intermediate | HAVING, joins + group |
+| Q6 | hard | time series |
+| Q7 | hard | anti-join (IS NULL) |
+| Q8 | hard | subquery in SELECT, share math |
+
+The ladder *is* the capstone task's gold-SQL set (file 05-02): eight shapes, banded by difficulty, each with a verifiable numeric gold. The Text2SQL agent's eval reports accuracy per band — "Q1–Q3 at 100%, Q6–Q8 at 40%" is a readable capability map.
+
+## 6. The ladder pin note (the gold-SQL set's record)
+
+```markdown
+# Aggregation ladder (W06)
+- 8 queries, banded basic/intermediate/hard
+- gold SQL committed: tests/gold-sql/q1..q8.sql
+- scoring: exact result-set match (values, not formatting)
+- per-band accuracy = the Text2SQL capability map
+```
+
+The pin note records the ladder as the eval asset — the gold SQL is committed, the scoring is result-based, and the per-band accuracy is the capability map the Text2SQL agent reports.
+
+## Exercises (continued)
+
+4. Band drill: give Q1 and Q8 to the Text2SQL agent (W12 file 03); the per-band accuracy difference is the capability map, measured.
+5. Pin drill: write the note; commit the gold SQL files.

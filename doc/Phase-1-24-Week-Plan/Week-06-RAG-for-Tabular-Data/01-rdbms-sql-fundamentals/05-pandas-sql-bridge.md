@@ -68,8 +68,21 @@ The staging pattern: `to_sql` into a `_stage` table (no constraints), then `INSE
 
 The W12 analytics toolkit's `render_chart` executes SQL through this bridge — the chart is derived from executed queries over constrained data, not from pandas guesses.
 
+## 5. The bridge pin note (the dtype contract's record)
+
+```markdown
+# pandas↔SQL bridge (W06)
+- driver: sqlite3 stdlib, parameterized reads only
+- read: pd.read_sql + explicit dtype conversion (dates, nullable ints)
+- write: to_sql → staging table → INSERT INTO ... SELECT (constraints hold)
+- index=False on every to_sql
+```
+
+The pin note is the bridge's contract — the dtype conversions and the staging pattern are the data-integrity rules for everything crossing between the worlds. The W12 analytics toolkit inherits this contract.
+
 ## Exercises
 
 1. Bridge drill: read the full order-items join into pandas; compute the monthly revenue *in pandas*; verify it equals the SQL GROUP BY result (file 04's Q2) to the cent.
 2. Trap drill: introduce each §1 trap (skip to_datetime, keep float ids); observe the downstream failure; fix.
 3. Loading drill: `to_sql` a new 20-product DataFrame into staging; promote with SQL; verify the constrained table's CHECKs rejected anything invalid.
+4. Pin drill: write the note; the equality check joins the tests.
