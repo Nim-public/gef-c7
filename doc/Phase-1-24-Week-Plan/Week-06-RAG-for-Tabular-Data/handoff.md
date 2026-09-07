@@ -95,11 +95,11 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-rdbms-sql-fundamentals/`
-- [ ] `02-database-choices/`
-- [ ] `03-rag-over-structured-data/`
-- [ ] `04-csv-json-hybrid-retrieval/`
-- [ ] `05-capstone-task-structured-retrieval/`
+- [x] `01-rdbms-sql-fundamentals/`
+- [x] `02-database-choices/`
+- [x] `03-rag-over-structured-data/`
+- [x] `04-csv-json-hybrid-retrieval/`
+- [x] `05-capstone-task-structured-retrieval/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
