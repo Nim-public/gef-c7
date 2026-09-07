@@ -65,6 +65,20 @@ The pin note is the wall's record — the connection mode, the validator,
 the user separation, and the tests. It is the containment row of the
 W15 defense-stack table, SQL edition.
 
+## 6. The read-only drill record (the wall's proof)
+
+```text
+probe 1: INSERT INTO products ... → OperationalError: readonly ✓
+probe 2: DELETE FROM orders ...   → OperationalError: readonly ✓
+probe 3: PRAGMA journal_mode=WAL  → refused in ro mode ✓
+probe 4: ATTACH 'rw.db' + write   → ATTACH blocked / write refused ✓
+validator disabled: probes STILL refused (independence proven)
+```
+
+The drill record is the structural wall's evidence — every write probe
+refused *with the validator disabled*, proving the wall operates below
+SQL. This is the containment layer that cannot be prompted away.
+
 ## Exercises
 
 1. Open the warehouse read-only; attempt INSERT, DELETE, and
@@ -74,3 +88,5 @@ W15 defense-stack table, SQL edition.
 3. Port drill: on Postgres (if available), create an `agent_ro` user
    with SELECT-only; attempt a write; the server refuses.
 4. Pin drill: write the note; the wall tests in CI cited.
+5. Record drill: fill §6 from the probes; the validator-disabled run
+   documented.
