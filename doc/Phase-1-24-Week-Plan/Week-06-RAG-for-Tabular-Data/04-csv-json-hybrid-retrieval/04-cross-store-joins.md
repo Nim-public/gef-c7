@@ -79,6 +79,18 @@ The pin note is the join's manifest — the hydration, the staleness
 policy, and the provenance line. The staleness flag is what makes the
 cross-store join honest rather than decorative.
 
+## 5. The cross-store pin note (the join's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the cross-store join:
+the hydration procedure, the staleness policy, and the provenance-line
+format.
+
+**Worked approach:** the join's pin records the hydration and staleness
+discipline — the vector hit and the warehouse row are the same fact.
+
+**Pass criterion:** note committed; the staleness drill command green
+as recorded.
+
 ## Exercises
 
 1. Implement `hydrate_row`; retrieve 10 row chunks; verify every live
@@ -88,4 +100,5 @@ cross-store join honest rather than decorative.
    live value.
 3. Deletion drill: delete a row post-ingest; the hydration reports
    "no longer exists" — the honest-deletion path.
+4. Pin drill: write the note; the staleness drill command recorded.
 4. Pin drill: write the note; the staleness drill command recorded.

@@ -83,6 +83,21 @@ The pin note is the router's record — thresholds, routes, and the
 battery. The shape decision is deterministic; the battery proves the
 edges.
 
+## 6. The decision-tree pin note (the router's manifest)
+
+```markdown
+# Data-shape routing (W06)
+- thresholds: rows>50, cols>10, numeric_cols≥3 → sql
+- else: paste (context-resident)
+- hybrid: chosen per query (semantic row-finding)
+- measured at ingest: no model call for the shape decision
+- battery: 6 files, boundary drill, misroute drill
+```
+
+The pin note is the router's record — thresholds, routes, and the
+battery. The shape decision is deterministic; the battery proves the
+edges.
+
 ## Exercises
 
 1. Implement `route_data`; run it on 6 data files of varying shapes;
@@ -92,4 +107,17 @@ edges.
 3. Misroute drill: force the wrong route (SQL on a semantic question);
    record the failure mode — the tree's edges, proven by their
    violation.
+4. Pin drill: write the note; the battery results cited.
+
+## 7. The routing pin note (the router's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the routing block: the
+thresholds, the battery command, and the route-decision log location.
+
+**Worked approach:** the routing pin records the deterministic router's
+configuration — thresholds and battery — so the route table stays
+reproducible.
+
+**Pass criterion:** note committed; the battery command green as
+recorded.
 4. Pin drill: write the note; the battery results cited.

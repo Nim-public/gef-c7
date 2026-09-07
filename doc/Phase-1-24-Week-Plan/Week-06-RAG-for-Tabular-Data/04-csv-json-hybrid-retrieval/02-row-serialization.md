@@ -83,6 +83,19 @@ The pin note is the serialization contract — the format, the metadata,
 and the round-trip. The round-trip is what makes the vector hit and
 the warehouse row the same fact (file 04).
 
+## 5. The serialization pin note (the chunk contract's record)
+
+**Task:** extend `reports/sdk-versions.md` with the serialization
+contract: the format string, the metadata fields, the summary chunk's
+template, and the round-trip test command.
+
+**Worked approach:** the serialization contract follows the pin
+discipline — the format, the metadata, and the round-trip are the
+chunk's specification.
+
+**Pass criterion:** note committed; the round-trip command green as
+recorded.
+
 ## Exercises
 
 1. Serialize 100 order rows; embed them; query "which product appears

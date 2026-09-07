@@ -88,6 +88,19 @@ logged (the W9-05 discipline) for the miss analysis.
 The pin note is the ladder's manifest — the rungs, the threshold, and
 the logging. The miss analysis (W9-05) consumes the logged decisions.
 
+## 4. The router pin note (the ladder's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the router ladder: the
+rung implementations, the zero-shot threshold, the escalation policy,
+and the logged-decisions location.
+
+**Worked approach:** the router's pin records the ladder's rungs and
+the calibration — the same manifest discipline as every policy
+artifact.
+
+**Pass criterion:** note committed; the battery command green as
+recorded.
+
 ## Exercises
 
 1. Implement rung 1; run 10 keyword queries; verify 10/10 correct
