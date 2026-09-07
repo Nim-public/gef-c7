@@ -97,3 +97,16 @@ replays these shapes; the generated prompt eliminates them.
 
 5. Failure-mode drill: run the §6's four bad-prompt shapes; document
    each failure; confirm the full prompt prevents all four.
+
+## 7. The schema-prompt quiz (self-tested)
+
+**Task:** answer without notes: (a) why generate the schema prompt from
+the catalog? (b) why must dates be grounded with explicit patterns?
+(c) why does one worked CTE example improve generated SQL? (d) why is
+"LIMIT 100" part of the task line? One paragraph each.
+
+**Worked approach:** the quiz compresses the schema prompt's rationale
+— each answer names the failure class it prevents.
+
+**Pass criterion:** four paragraphs mechanically correct; added to the
+recap sheet family.
