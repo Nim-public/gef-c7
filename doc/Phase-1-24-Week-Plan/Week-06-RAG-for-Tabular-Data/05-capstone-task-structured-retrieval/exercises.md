@@ -69,7 +69,34 @@ nightly model edition run once and recorded.
 the capstone task's non-negotiable — a tabular agent that can write is
 a failed capstone.
 
-## Pitfalls recap
+## 6. The capstone-task pin note (the week's manifest)
+
+**Task:** consolidate the capstone-task stack in `reports/sdk-versions.md`:
+the extended schema, the gold-SQL eval, the deployed router, and the
+safety battery — one block.
+
+**Worked approach:** the capstone-task manifest follows the pin
+discipline: the schema, the gold set, the router, and the battery —
+each citing its drill.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
+## 7. The structured-retrieval walkthrough (the reviewer's page)
+
+**Task:** write `reports/structured-walkthrough.md`: one query per route
+(SQL, paste, hybrid) walked end-to-end — the query, the route decision,
+the artifact, and the grounded answer. The page demonstrates the whole
+week's architecture.
+
+**Worked approach:** the walkthrough is the routing tree (file 04-01)
+in motion — one query per route with the artifacts shown. The reviewer
+sees the decision tree *working*.
+
+**Pass criterion:** three walked routes; every artifact cited; the
+grounding audit green on each.
+
+## 8. The pitfalls recap (the week's failure catalog)
 
 - Edge cases omitted from the corpus — the count trap and outliers go
   untested; design the families in.
@@ -77,3 +104,7 @@ a failed capstone.
   punishes valid alternatives.
 - The battery testing only the tool — the model-behavior edition asks
   whether the *model* attempts the attacks.
+- Rebuild without determinism — an unseeded generator makes every eval
+  run incomparable.
+- Escalations without evidence — the exhausted repair carries the
+  attempted SQL and the schema excerpt.
