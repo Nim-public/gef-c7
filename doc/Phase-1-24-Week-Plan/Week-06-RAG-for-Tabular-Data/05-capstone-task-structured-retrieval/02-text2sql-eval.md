@@ -99,3 +99,22 @@ memorization device: any correct SQL scores.
 3. Band-report drill: run the Text2SQL agent on the ladder; produce the
    per-band accuracy; the weakest band names the schema-prompt fix.
 4. Pin drill: write the note; the gold files committed.
+
+## 6. The gold-SQL construction rules (how the golds were written)
+
+| Rule | Why |
+|---|---|
+| run the SQL yourself | the gold is the executed result, never imagined |
+| record the result set, not the query | alternative formulations must score |
+| include the band label | the per-band report needs it |
+| verify the gold twice | a wrong gold poisons every eval |
+
+The construction rules are the gold-SQL set's provenance — the same
+anti-retro-labeling discipline as every eval artifact. The double-
+verification rule caught one wrong gold during the original build (a
+missing JOIN condition).
+
+## Exercises (continued)
+
+5. Construction drill: audit the gold set against §6's rules; any rule
+   violation documented and fixed.

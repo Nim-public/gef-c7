@@ -88,3 +88,31 @@ analysis's input.
 3. Logging drill: verify every decision row lands in the store; the
    miss analysis runs from the logged rows alone.
 4. Pin drill: write the note; the threshold recalibration recorded.
+
+## 6. The router pin note (the deployed router's manifest)
+
+**Task:** extend `reports/sdk-versions.md` with the deployed router:
+the shape map, the rungs, the logging, and the per-rung accuracy
+report.
+
+**Worked approach:** the deployed router's manifest records the shape
+map, the rungs, the logging, and the report — the miss analysis's
+input.
+
+**Pass criterion:** note committed; the accuracy table cited.
+
+## 7. The router accuracy report (the rung table)
+
+```text
+# Router accuracy — 25 queries — 3 runs — [date]
+| rung | n | accuracy | notes |
+|---|---|---|---|
+| rules | 9 | 1.00 | keyword cases |
+| zero-shot | 11 | 0.82 | 2 paraphrase misses |
+| agent fall-through | 5 | 0.80 | 1 hallucinated route |
+| overall | 25 | 0.88 | threshold recalibrated after |
+```
+
+The report is the router's scorecard — per rung, with the overall and
+the recalibration note. The threshold changes are version-bumped (the
+W16 file 01-04 governance).

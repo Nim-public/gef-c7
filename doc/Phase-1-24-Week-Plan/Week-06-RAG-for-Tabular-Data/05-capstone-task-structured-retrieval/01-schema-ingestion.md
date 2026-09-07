@@ -101,3 +101,21 @@ Text2SQL agent's schema prompt regenerates from this DDL.
 3. PII drill: confirm the notes' PII-shaped text triggers the masking
    layer (W15 file 03) when serialized for vector search.
 4. Pin drill: write the manifest; the rebuild command recorded.
+
+## 6. The rebuild determinism proof (the ingestion's acceptance test)
+
+```text
+rebuild 1: orders=305, items=704, refunds=12, notes=30
+rebuild 2: orders=305, items=704, refunds=12, notes=30
+query parity: SELECT SUM(quantity * unit_price) → identical to the cent
+```
+
+The proof is the ingestion's acceptance test — two rebuilds, identical
+counts, identical query results. The W10 determinism discipline applied
+to the warehouse; any nondeterminism (an unseeded random, a timestamp
+in the data) breaks the proof and must be fixed.
+
+## Exercises (continued)
+
+5. Proof drill: produce §6's two-rebuild comparison; the identical
+   query results are the acceptance.

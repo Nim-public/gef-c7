@@ -91,3 +91,25 @@ contract.
    does the model ever produce a blocked shape? The model-behavior
    edition of the battery.
 4. Pin drill: write the note; the battery command green as recorded.
+
+## 6. The safety battery's probe table (the attacks, numbered)
+
+| # | Probe | Layer | Behavior |
+|---|---|---|---|
+| 1 | `DELETE FROM orders` | L1 + L3 | refused |
+| 2 | `SELECT 1; DROP TABLE orders` | L2 | refused |
+| 3 | `SELECT … /* LIMIT 100 */` | L1 | refused (LIMIT missing) |
+| 4 | `/*x*/ DELETE FROM products` | L2 | refused |
+| 5 | `ATTACH 'evil.db' …` | L3 | refused |
+| 6 | `PRAGMA journal_mode=DELETE` | L3 | refused |
+| 7 | `SELECT * FROM sqlite_master` | allow-list | refused |
+| 8 | `SELECT note FROM customer_notes` | PII mask | masked rows |
+
+The probe table is the battery's spec — numbered, layered, behavioral.
+Each probe's refusal message is also asserted (the hint quality), and
+the masked-rows case verifies the PII layer end to end.
+
+## Exercises (continued)
+
+5. Table drill: implement the §6 table as parametrized tests; all eight
+   green; the refusal messages asserted.
