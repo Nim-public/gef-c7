@@ -94,11 +94,11 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-reliability-limits-retries-tests/`
-- [ ] `02-tracing-guardrails-langsmith/`
-- [ ] `03-inference-optimization/`
-- [ ] `04-prompt-caching-and-routing/`
-- [ ] `05-practice-production-hardening/`
+- [x] `01-reliability-limits-retries-tests/`
+- [x] `02-tracing-guardrails-langsmith/`
+- [x] `03-inference-optimization/`
+- [x] `04-prompt-caching-and-routing/`
+- [x] `05-practice-production-hardening/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
