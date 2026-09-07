@@ -101,6 +101,19 @@ artifact.
 **Pass criterion:** note committed; the battery command green as
 recorded.
 
+## 5. The routing drill record (the ladder's evidence)
+
+```text
+rung 1 (rules):    9/10 routed correctly; 1 fall-through
+rung 2 (zero-shot): 8/10 correct; threshold calibrated at 0.45
+rung 3 (agent):     4/5 correct; 1 hallucinated route (flagged)
+overall: 21/25 = 84% — the miss analysis named the fixes
+```
+
+The drill record is the ladder's evidence — per-rung accuracy with the
+fixes named. The miss analysis produced: one widened regex, one added
+few-shot example, and one agent-prompt clarification.
+
 ## Exercises
 
 1. Implement rung 1; run 10 keyword queries; verify 10/10 correct

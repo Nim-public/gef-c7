@@ -91,6 +91,18 @@ discipline — the vector hit and the warehouse row are the same fact.
 **Pass criterion:** note committed; the staleness drill command green
 as recorded.
 
+## 6. The join drill record (the staleness proof)
+
+```text
+fresh corpus: 10/10 hydrated rows match chunks (fresh) ✓
+post-update:  price changed → stale flag fired, answer used live value ✓
+post-delete:  row removed → "no longer exists" honesty path ✓
+```
+
+The drill record is the staleness policy's proof — all three states
+(fresh, drifted, deleted) exercised and handled honestly. The join is
+the cross-store bridge's acceptance test.
+
 ## Exercises
 
 1. Implement `hydrate_row`; retrieve 10 row chunks; verify every live

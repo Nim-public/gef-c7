@@ -66,6 +66,19 @@ after an update; the deletion drill honest.
 cross-store join (4-pointer) is the hybrid bridge's point — the vector
 hit and the warehouse fact are the same fact.
 
+## 6. The hybrid pin note (the bridge's manifest)
+
+**Task:** consolidate the hybrid stack in `reports/sdk-versions.md`:
+the decision-tree thresholds, the serialization contract, the router
+ladder, and the cross-store join — one block.
+
+**Worked approach:** the hybrid bridge's manifest lists the router's
+thresholds, the serialization contract, and the staleness policy — each
+citing its drill.
+
+**Pass criterion:** the manifest lists the stack with green commands as
+recorded.
+
 ## Pitfalls recap
 
 - Rows serialized without field names — "16.9" embeds like any float;

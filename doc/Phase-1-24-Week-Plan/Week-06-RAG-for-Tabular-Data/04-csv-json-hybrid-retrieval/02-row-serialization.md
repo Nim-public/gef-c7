@@ -96,6 +96,20 @@ chunk's specification.
 **Pass criterion:** note committed; the round-trip command green as
 recorded.
 
+## 6. The serialization drill record (the round-trip's evidence)
+
+```text
+embed 100 rows: 100 vectors, 100 unit_ids in metadata
+query "which product appears most": top-3 all plausible (SKU-004, SKU-011, …)
+round-trip: row_key → warehouse row → values match chunk text ✓
+summary chunk: top hit for "what data do we have" ✓
+```
+
+The drill record is the serialization's evidence — the embedding count,
+the hit plausibility, the round-trip agreement, and the summary chunk's
+routing behavior. The contract (file 04-04's metadata) is verified per
+row.
+
 ## Exercises
 
 1. Serialize 100 order rows; embed them; query "which product appears
