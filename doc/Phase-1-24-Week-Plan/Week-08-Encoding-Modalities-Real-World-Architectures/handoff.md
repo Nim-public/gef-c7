@@ -104,12 +104,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-encoding-text-images/`
-- [ ] `02-encoding-audio-video/`
-- [ ] `03-modality-fusion/`
-- [ ] `04-clip-blip-architectures/`
-- [ ] `05-diffusion-architectures/`
-- [ ] `06-practice-encoding-lab/`
+- [x] `01-encoding-text-images/`
+- [x] `02-encoding-audio-video/`
+- [x] `03-modality-fusion/`
+- [x] `04-clip-blip-architectures/`
+- [x] `05-diffusion-architectures/`
+- [x] `06-practice-encoding-lab/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
