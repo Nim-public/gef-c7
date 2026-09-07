@@ -93,3 +93,17 @@ schema, corpus, ladder, and bridge contracts in one place, each citing
 its drill.
 
 **Pass criterion:** note committed; every referenced drill green.
+
+## 8. The SQL quiz (self-tested)
+
+**Task:** answer without notes: (a) why does a composite PK on
+order_items matter for revenue math? (b) why does COUNT(*) differ from
+COUNT(col) after a LEFT JOIN? (c) why is WHERE-vs-HAVING the classic
+Text2SQL error? (d) why do ids become floats after a read with NULLs?
+One paragraph each.
+
+**Worked approach:** the quiz is the subfolder's compression test —
+each paragraph names the mechanism, not just the rule.
+
+**Pass criterion:** four paragraphs mechanically correct; added to the
+recap sheet family.
