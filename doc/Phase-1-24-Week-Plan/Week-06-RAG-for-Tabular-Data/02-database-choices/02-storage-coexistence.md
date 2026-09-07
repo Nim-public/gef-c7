@@ -57,6 +57,20 @@ compare counts and hashes across the map.
 The pin note is the map's record — each store, its data, its links, and
 the sync rules. The dual-pipeline agent (W12-04) cites this page.
 
+## 6. The coexistence drill record (the map's proof)
+
+```text
+SQLite:  orders=312, order_items=704, products=15
+LanceDB: vectors=214 (units), unit_ids resolvable to manifest
+files:   data/raw = 214 source files
+cross-check: manifest count == LanceDB count == raw file count ✓
+orphan probe: manifest row deleted → flag raised ✓
+```
+
+The drill record is the map's proof — the counts across stores, the
+cross-check, and the orphan probe. The polyglot storage map is only
+trustworthy when its sync rules are demonstrably enforced.
+
 ## Exercises
 
 1. Draw your capstone's storage map with the linking keys; verify each
@@ -66,3 +80,4 @@ the sync rules. The dual-pipeline agent (W12-04) cites this page.
 3. Drift drill: delete a manifest row but leave the LanceDB vector; the
    consistency check must flag the orphan — the sync rule proven.
 4. Pin drill: write the note; the consistency command recorded.
+5. Record drill: fill §6 from your stores; the counts committed.
