@@ -104,12 +104,18 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-agents-foundations/`
-- [ ] `02-tools-and-memory/`
-- [ ] `03-mcp-servers-fastmcp/`
-- [ ] `04-measuring-agents-patterns/`
-- [ ] `05-prompt-context-engineering-agentic/`
-- [ ] `06-practice-first-mcp-agent/`
+- [x] `01-agents-foundations/`
+- [x] `02-tools-and-memory/`
+- [x] `03-mcp-servers-fastmcp/`
+- [x] `04-measuring-agents-patterns/`
+- [x] `05-prompt-context-engineering-agentic/`
+- [x] `06-practice-first-mcp-agent/`
+
+## 7.1 Continuation note (2026-09-05, session 2) — RESOLVED
+
+All six subfolders complete (README + 4–5 deep-dives + exercises each,
+all ≥4 KB, committed on `week-10-expansion`). Week 10 is done; proceed
+to Week 11 per its own handoff.
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
