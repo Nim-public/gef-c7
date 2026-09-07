@@ -104,12 +104,12 @@ Deep-dive files to create (suggested titles — refine as you write):
 
 ## 6. Progress checklist (tick as you complete each subfolder)
 
-- [ ] `01-multimodal-ai-landscape/`
-- [ ] `02-modality-processing-pipelines/`
-- [ ] `03-multimodal-datasets-dataloaders/`
-- [ ] `04-data-alignment-synchronization/`
-- [ ] `05-evaluation-metrics-benchmarks/`
-- [ ] `06-practice-multimodal-explorer/`
+- [x] `01-multimodal-ai-landscape/`
+- [x] `02-modality-processing-pipelines/`
+- [x] `03-multimodal-datasets-dataloaders/`
+- [x] `04-data-alignment-synchronization/`
+- [x] `05-evaluation-metrics-benchmarks/`
+- [x] `06-practice-multimodal-explorer/`
 
 ## 7. Next session prompt (paste into a fresh agent session)
 
