@@ -88,8 +88,24 @@ The seeded corpus gives every Text2SQL experiment the same data — the W10 dete
 
 The modeling decisions above are what make Text2SQL *possible*: ISO dates, integer keys, and constrained quantities give the LLM a schema whose semantics are guessable.
 
+## 6. The schema pin note (the modeling's record)
+
+```markdown
+# Warehouse schema (W06)
+- tables: customers, products, orders, order_items
+- keys: integer PKs, FKs with REFERENCES, composite PK on order_items
+- constraints: NOT NULL on identities, CHECK on quantities/prices, UNIQUE on skus
+- dates: ISO-8601 TEXT (SQLite has no native date type)
+- seeded: rng seed 42, ~120 days, ~300 orders — deterministic
+```
+
+The schema pin is the modeling's record — the DDL's decisions in one
+page. The Text2SQL schema prompt (file 03) is generated from the same
+DDL, so the prompt and the database can never disagree.
+
 ## Exercises
 
 1. Write the DDL for one more entity (e.g., `refunds` referencing orders) with two justified CHECK constraints.
 2. Constraint drill: attempt each §2 violation through sqlite3; capture the exact error message — these become the repair loop's vocabulary (W6 file 03).
 3. Corpus drill: rebuild the seeded corpus twice; assert identical row counts and identical query results — determinism proven.
+4. Pin drill: write the note; the DDL file committed alongside.

@@ -81,3 +81,15 @@ anything violating CHECKs.
 **Pass bar:** 13/16 to proceed to file 02 (database choices). The ladder
 (4-pointer) is the subfolder's capstone — these 8 shapes are the Text2SQL
 eval's gold set.
+
+## 7. The SQL fundamentals pin note
+
+**Task:** extend `reports/sdk-versions.md` with the SQL block: the schema
+pin, the seeded corpus (seed 42), the ladder's gold-SQL location, and the
+bridge contract — one block.
+
+**Worked approach:** the pin note is the subfolder's manifest — the
+schema, corpus, ladder, and bridge contracts in one place, each citing
+its drill.
+
+**Pass criterion:** note committed; every referenced drill green.
