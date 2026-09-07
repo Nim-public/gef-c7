@@ -68,7 +68,21 @@ honest; the pairing audit green.
 validator (4-pointer) is the pipeline's safety — the layers are
 independent by the drill's proof.
 
-## 6. The Text2SQL pin note (the pipeline's manifest)
+## 7. The Text2SQL failure-mode walkthrough (the reviewer's page)
+
+**Task:** write `reports/text2sql-walkthrough.md`: one query per
+failure class (dialect error, wrong join, HAVING misuse, hallucinated
+number) walked end-to-end — the bad SQL, the error, the repair, the
+final grounded answer.
+
+**Worked approach:** the walkthrough is the pipeline's documentation
+-by-example — each failure class from §1's diagnosis tree shown with
+its repair. The reviewer sees the loop *working*.
+
+**Pass criterion:** four walked failure classes; every repair shown
+with the before/after SQL; the page cites the repair metrics.
+
+## 7. The Text2SQL pin note (the pipeline's manifest)
 
 **Task:** consolidate the Text2SQL stack in `reports/sdk-versions.md`:
 the schema prompt version, the validation layers, the repair metrics,

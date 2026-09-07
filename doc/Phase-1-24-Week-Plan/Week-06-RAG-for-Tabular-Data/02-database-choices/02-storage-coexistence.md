@@ -81,3 +81,17 @@ trustworthy when its sync rules are demonstrably enforced.
    consistency check must flag the orphan — the sync rule proven.
 4. Pin drill: write the note; the consistency command recorded.
 5. Record drill: fill §6 from your stores; the counts committed.
+
+## 7. The store-choice per data type (the map's routing annex)
+
+| Data type | Store | Why |
+|---|---|---|
+| transactional facts | SQLite | constraints, joins, aggregates |
+| prose/chunks | LanceDB | embedding search |
+| media binaries | file system | too large for any DB |
+| free text in tables | SQLite + serialized copy in LanceDB | the hybrid bridge (file 04) |
+| derived aggregates | computed, not stored | freshness by construction |
+
+The annex extends the map per *data type* — the capstone's every data
+shape has a home, and the last row is the W12 lesson (derived aggregates
+are computed fresh, never cached into staleness).

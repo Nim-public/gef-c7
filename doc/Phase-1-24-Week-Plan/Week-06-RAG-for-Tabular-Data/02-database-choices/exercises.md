@@ -83,6 +83,21 @@ environment ladder — each citing its drill.
 **Pass criterion:** the manifest lists all four with green commands as
 recorded.
 
+## 8. The storage-choice quiz (self-tested)
+
+**Task:** answer without notes: (a) why does SQLite win for the capstone
+demo? (b) why must the vector store and warehouse link by keys rather
+than duplicate data? (c) why is the ro-mode wall stronger than the
+validator? (d) why does prod data never flow to dev? One paragraph
+each.
+
+**Worked approach:** the quiz is the storage decisions' compression
+test — each answer names the mechanism (zero-ops, linking keys,
+structural enforcement, blast radius).
+
+**Pass criterion:** four paragraphs mechanically correct; added to the
+recap sheet family.
+
 ## Pitfalls recap
 
 - Engine choice by familiarity instead of heuristics — the table's axes

@@ -89,3 +89,29 @@ The pin note is the answer format's manifest — the display contract
    number in the prose against the rows_json — the pairing audit, SQL
    edition.
 4. Pin drill: write the note; the pairing audit command green.
+
+## 6. The number-pairing audit (SQL edition)
+
+```python
+def audit_sql_numbers(answer: str, rows: list[dict]) -> list[str]:
+    issues = []
+    for n in extract_numbers(answer):
+        in_rows = any(str(n) in str(v) for r in rows for v in r.values())
+        if not in_rows:
+            issues.append(f"number {n} not in query results")
+    return issues
+```
+
+| Check | Catches |
+|---|---|
+| numbers in prose, not in rows | hallucinated figures |
+| rows with numbers never mentioned | incomplete answers (warning) |
+
+The pairing audit is the numeric-grounding check (W14 file 02-04)
+applied to SQL results — the answer's figures must be traceable to the
+returned rows. The audit runs in the harness gate (W15 file 04).
+
+## Exercises (continued)
+
+5. Audit drill: plant a hallucinated number in a draft answer; the audit
+   flags it before delivery.

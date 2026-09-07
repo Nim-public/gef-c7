@@ -90,3 +90,16 @@ SQL. This is the containment layer that cannot be prompted away.
 4. Pin drill: write the note; the wall tests in CI cited.
 5. Record drill: fill §6 from the probes; the validator-disabled run
    documented.
+
+## 7. The wall vs the validator (the division of labor)
+
+| Concern | Wall (ro-mode) | Validator (SQL rules) |
+|---|---|---|
+| write statements | blocks all, structurally | blocks by pattern |
+| ATTACH/PRAGMA | blocks at connection | blocks by keyword |
+| full-table scans | allows (reads are safe) | blocks via LIMIT |
+| resource exhaustion | allows | partially (row caps) |
+
+The division: the wall is absolute but blunt; the validator is nuanced
+but bypassable. Together they cover each other's gaps — the defense
+stack's layering principle (W15 file 03-03) applied at the database.

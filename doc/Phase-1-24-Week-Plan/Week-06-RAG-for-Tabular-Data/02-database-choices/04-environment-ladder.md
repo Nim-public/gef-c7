@@ -94,3 +94,17 @@ fallbacks rehearsed. Promotion is a gate passage with a receipt.
 4. Pin drill: write the note; the promotion checklist referenced.
 5. Record drill: fill §6 from a real promotion rehearsal; the checklist
    items checked off in the record.
+
+## 7. The environment checklist (per-env acceptance)
+
+```text
+[ ] model + temperature identical across environments
+[ ] data source matches the environment's policy
+[ ] secrets from env vars only (scan clean)
+[ ] gates green on this environment's acceptance run
+[ ] pin notes current for this environment
+```
+
+The checklist runs per environment — the same five checks, three times.
+The first row is the invariant: only operational settings differ; the
+model and its temperature never do.

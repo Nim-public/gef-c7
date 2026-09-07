@@ -79,3 +79,21 @@ battery-tested. It is the W10 prompt-inventory page's SQL entry.
 3. Dialect drill: remove the dialect declaration; give a monthly-revenue
    question; observe the MySQL dialect error; restore.
 4. Pin drill: write the note; the battery command green as recorded.
+
+## 6. The schema prompt's failure modes (what a bad prompt produces)
+
+| Bad prompt | Generated SQL | Result |
+|---|---|---|
+| no dialect declaration | `DATE_FORMAT(order_date, '%Y-%m')` | SQLite error |
+| no date semantics | `WHERE order_date > 'Q3'` | no rows, silently |
+| no counting rules | `COUNT(*)` after LEFT JOIN | inflated counts |
+| no worked example | 30-line nested subquery | unmaintainable, wrong |
+
+The failure-mode table is the schema prompt's justification — each bad
+prompt shape produces a *named* failure. The battery (file 05-04)
+replays these shapes; the generated prompt eliminates them.
+
+## Exercises (continued)
+
+5. Failure-mode drill: run the §6's four bad-prompt shapes; document
+   each failure; confirm the full prompt prevents all four.

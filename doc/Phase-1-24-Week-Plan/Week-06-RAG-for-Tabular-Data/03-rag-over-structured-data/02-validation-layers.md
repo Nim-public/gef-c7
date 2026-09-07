@@ -88,3 +88,21 @@ layer can fail without the write path opening.
 3. Cap drill: query a 1,204-row result; verify the honest truncation
    message and the exact row count stated.
 4. Pin drill: write the note; the drill results cited.
+
+## 6. The validator's error messages (the hints, SQL edition)
+
+| Rejection | Message |
+|---|---|
+| non-SELECT | "blocked: only SELECT statements are allowed — this tool reads data" |
+| missing LIMIT | "blocked: add a LIMIT clause (max 100) — large results should be aggregated" |
+| unknown table | "blocked: table 'x' not in the allow-list. Tables: orders, products, customers, order_items" |
+| multi-statement | "blocked: exactly one statement per call" |
+
+The messages follow the W10 file 05-04 phrasing rules — constraint,
+shape, next action. Each message names the *valid* alternative, which
+is what the repair loop (file 03) feeds back to the model.
+
+## Exercises (continued)
+
+5. Message drill: for each rejection type, verify the hint names the
+   valid alternative — the phrasing rules, checked.

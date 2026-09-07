@@ -92,3 +92,28 @@ error→hint translations.
 3. Exhaustion drill: ask an unanswerable question (a table that doesn't
    exist); the loop must exhaust honestly with the degraded flag.
 4. Pin drill: write the note; the histogram committed.
+
+## 6. The repair loop's escalation (when hints don't help)
+
+| Situation after max attempts | Escalation |
+|---|---|
+| schema mismatch (column truly missing) | honest refusal + the schema excerpt |
+| question needs JOINs beyond examples | flag for a few-shot addition |
+| repeated identical errors | the loop-detector fires (W10) |
+
+The escalation table is the loop's exit — exhausted repairs don't
+vanish; they escalate with the *evidence* (the attempted SQL, the
+errors). The few-shot addition row is the self-improving loop (W14
+file 04-03): failed shapes become examples.
+
+## Exercises
+
+1. Implement the loop; run the 8-query ladder (file 01-04) through it;
+   produce the attempts histogram.
+2. Hint drill: for each §2 error class, force the error; verify the hint
+   steers the retry to success — the mapping table, validated.
+3. Exhaustion drill: ask an unanswerable question (a table that doesn't
+   exist); the loop must exhaust honestly with the degraded flag.
+4. Pin drill: write the note; the histogram committed.
+5. Escalation drill: exhaust a repair deliberately; verify the
+   escalation includes the attempted SQL and the schema excerpt.
